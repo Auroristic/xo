@@ -3,11 +3,11 @@
   "prefix": ".",
   "categories": {
     "admin": {
-      "label": "Owner",
+      "label": "Admin",
       "desc": "Server management and AI configuration.",
-      "owner": true,
+      "owner": false,
       "staff": false,
-      "icon": "▪",
+      "icon": "◆",
       "sections": {
         "Command Channels": [
           {
@@ -75,7 +75,7 @@
             "usage": ".alias · .alias <new> <existing> · .alias remove <name>",
             "description": "list / add / remove custom command aliases.",
             "aliases": [],
-            "owner": true,
+            "owner": false,
             "staff": false
           },
           {
@@ -83,7 +83,7 @@
             "usage": ".confess set #channel",
             "description": "sets the confession channel.",
             "aliases": [],
-            "owner": true,
+            "owner": false,
             "staff": false
           },
           {
@@ -91,8 +91,8 @@
             "usage": ".ignore @user",
             "description": "toggles ignoring a user — bot won't respond to them in AI channels.",
             "aliases": [],
-            "owner": true,
-            "staff": false
+            "owner": false,
+            "staff": true
           },
           {
             "name": "setcolor",
