@@ -884,7 +884,7 @@ function makeBtn(id, icon, label, count) {
   btn.className = 'cat-btn';
   btn.dataset.cat = id;
   btn.innerHTML = `
-    <span class="cat-btn-icon">${escHtml(String(icon))}</span>
+    <span class="cat-btn-icon">${icon}</span>
     <span class="cat-btn-label">${escHtml(label)}</span>
     <span class="cat-btn-count">${count}</span>
   `;
