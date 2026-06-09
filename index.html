@@ -505,6 +505,7 @@ body {
 .cmd-usage .u-prefix { color: var(--red); font-weight: 600; }
 .cmd-usage .u-name   { color: var(--text); }
 .cmd-usage .u-args   { color: var(--text-muted); font-weight: 400; }
+.cmd-usage .u-sep    { color: var(--text-dim); }
 
 .cmd-desc {
   font-size: 12.5px;
@@ -769,6 +770,25 @@ let activeFilter = 'all';
 let activeCat = 'all';
 let searchQuery = '';
 
+const CAT_ORDER = ['general','music','image','reactions','leveling','profile','theme','utility','fun','misc','vanity','staff','ai','admin'];
+const SECTION_ORDER = {
+  music: ['Playback','Controls','Music','Filters'],
+};
+
+function getOrderedCats(cats) {
+  const known = CAT_ORDER.filter(id => cats[id]);
+  const extra = Object.keys(cats).filter(id => !CAT_ORDER.includes(id));
+  return [...known, ...extra];
+}
+
+function getOrderedSections(catId, sections) {
+  const order = SECTION_ORDER[catId];
+  if (!order) return Object.entries(sections);
+  const ordered = order.filter(n => sections[n]).map(n => [n, sections[n]]);
+  const extra = Object.entries(sections).filter(([n]) => !order.includes(n));
+  return [...ordered, ...extra];
+}
+
 async function loadData() {
   try {
     const res = await fetch(DATA_URL);
@@ -851,7 +871,8 @@ function buildCatList() {
   allBtn.onclick = () => setCat('all');
   list.appendChild(allBtn);
 
-  Object.entries(allData.categories).forEach(([id, cat]) => {
+  getOrderedCats(allData.categories).forEach(id => {
+    const cat = allData.categories[id];
     const btn = makeBtn(id, cat.icon, cat.label, catCount(id));
     btn.onclick = () => setCat(id);
     list.appendChild(btn);
@@ -903,15 +924,19 @@ function matchesSearch(cmd) {
   );
 }
 
-function renderUsage(usage) {
-  if (!usage.startsWith('.')) return escHtml(usage);
-  const spaceIdx = usage.indexOf(' ');
-  if (spaceIdx === -1) {
-    return `<span class="u-prefix">.</span><span class="u-name">${escHtml(usage.slice(1))}</span>`;
+function renderSingleToken(token) {
+  const s = token.replace(/^`|`$/g, '').trim();
+  if (!s.startsWith('.')) return escHtml(s);
+  const sp = s.indexOf(' ');
+  if (sp === -1) return `<span class="u-prefix">.</span><span class="u-name">${escHtml(s.slice(1))}</span>`;
+  return `<span class="u-prefix">.</span><span class="u-name">${escHtml(s.slice(1,sp))}</span><span class="u-args">${escHtml(s.slice(sp))}</span>`;
+}
+
+function renderUsage(raw) {
+  if (raw.includes(' · ')) {
+    return raw.split(' · ').map(p => renderSingleToken(p.trim())).join('<span class="u-sep"> · </span>');
   }
-  const cmd = usage.slice(1, spaceIdx);
-  const args = usage.slice(spaceIdx);
-  return `<span class="u-prefix">.</span><span class="u-name">${escHtml(cmd)}</span><span class="u-args">${escHtml(args)}</span>`;
+  return renderSingleToken(raw);
 }
 
 function render() {
@@ -921,7 +946,7 @@ function render() {
   let totalRendered = 0;
 
   const cats = activeCat === 'all'
-    ? Object.entries(allData.categories)
+    ? getOrderedCats(allData.categories).map(id => [id, allData.categories[id]])
     : [[activeCat, allData.categories[activeCat]]].filter(([, v]) => v);
 
   const frag = document.createDocumentFragment();
@@ -932,7 +957,7 @@ function render() {
     let catHasAny = false;
     const secNodes = [];
 
-    Object.entries(cat.sections).forEach(([secName, cmds]) => {
+    getOrderedSections(catId, cat.sections).forEach(([secName, cmds]) => {
       const filtered = cmds.filter(cmd => passesFilter(cmd, catOwner, catStaff) && matchesSearch(cmd));
       if (!filtered.length) return;
       catHasAny = true;
