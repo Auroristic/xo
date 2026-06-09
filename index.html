@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>neiXO — Commands</title>
+<style>
+  :root {
+    --red: #e63946;
+    --red-dim: #a8222d;
+    --red-glow: rgba(230,57,70,0.18);
+    --red-glow-sm: rgba(230,57,70,0.10);
+    --bg: #0a0a0b;
+    --bg2: #111114;
+    --bg3: #18181c;
+    --glass: rgba(255,255,255,0.04);
+    --glass-border: rgba(255,255,255,0.07);
+    --glass-border-red: rgba(230,57,70,0.25);
+    --text: #f0f0f0;
+    --text-muted: #888;
+    --text-dim: #555;
+    --owner: #f4a261;
+    --staff: #52b788;
+    --font: 'Inter', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 14px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* bg grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(230,57,70,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230,57,70,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* top glow orb */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(230,57,70,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+  .logo span { color: var(--red); }
+  .logo-sub { font-size: 12px; color: var(--text-muted); font-weight: 400; margin-left: 2px; }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .cmd-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .cmd-count b { color: var(--red); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 52px 0 36px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--red); }
+  .hero p { color: var(--text-muted); font-size: 15px; margin-bottom: 28px; }
+  .prefix-badge {
+    display: inline-block;
+    background: var(--red-glow-sm);
+    border: 1px solid var(--glass-border-red);
+    color: var(--red);
+    font-family: monospace;
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 32px;
+  }
+
+  /* ── CONTROLS ── */
+  .controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    align-items: center;
+  }
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+  }
+  .search-wrap svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  #search {
+    width: 100%;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 9px 12px 9px 36px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #search::placeholder { color: var(--text-dim); }
+  #search:focus { border-color: var(--glass-border-red); }
+
+  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--glass-border-red); color: var(--text); }
+  .filter-btn.active { background: var(--red-glow); border-color: var(--glass-border-red); color: var(--red); }
+
+  /* ── CATEGORY NAV ── */
+  .cat-nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .cat-pill {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .cat-pill:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+  .cat-pill.active { background: var(--red-glow); border-color: var(--glass-border-red); color: var(--red); }
+
+  /* ── CATEGORY SECTION ── */
+  .cat-section { margin-bottom: 44px; }
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .cat-icon {
+    font-size: 15px;
+    color: var(--red);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--red-glow-sm);
+    border: 1px solid var(--glass-border-red);
+    border-radius: 6px;
+  }
+  .cat-name { font-size: 16px; font-weight: 600; }
+  .cat-desc { font-size: 12px; color: var(--text-muted); margin-left: 4px; }
+  .cat-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    margin-left: 4px;
+  }
+  .badge-owner { background: rgba(244,162,97,0.15); color: var(--owner); border: 1px solid rgba(244,162,97,0.25); }
+  .badge-staff { background: rgba(82,183,136,0.15); color: var(--staff); border: 1px solid rgba(82,183,136,0.25); }
+
+  /* ── SECTION ── */
+  .sec-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 18px 0 8px;
+    padding-left: 2px;
+  }
+
+  /* ── COMMAND GRID ── */
+  .cmd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px;
+  }
+
+  /* ── COMMAND CARD ── */
+  .cmd-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+  }
+  .cmd-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--red);
+    opacity: 0;
+    transition: opacity 0.15s;
+    border-radius: 10px 0 0 10px;
+  }
+  .cmd-card:hover {
+    border-color: var(--glass-border-red);
+    background: rgba(230,57,70,0.05);
+    transform: translateY(-1px);
+  }
+  .cmd-card:hover::before { opacity: 1; }
+  .cmd-card.copied { border-color: var(--staff); background: rgba(82,183,136,0.06); }
+  .cmd-card.copied::before { background: var(--staff); opacity: 1; }
+
+  .cmd-usage {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 5px;
+    word-break: break-all;
+  }
+  .cmd-usage .prefix { color: var(--red); }
+  .cmd-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .cmd-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .alias-pill {
+    font-family: monospace;
+    font-size: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--text-dim);
+  }
+  .copy-hint {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--text-dim);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .cmd-card:hover .copy-hint { opacity: 1; }
+  .copied-text { color: var(--staff) !important; opacity: 1 !important; }
+
+  /* ── BADGE ── */
+  .cmd-badge {
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── NO RESULTS ── */
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+  .no-results b { color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 20px;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    margin-top: 40px;
+  }
+  footer a { color: var(--red); text-decoration: none; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--red-dim); }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 28px; }
+    .cmd-grid { grid-template-columns: 1fr; }
+    .controls { flex-direction: column; }
+    .search-wrap { width: 100%; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">nei<span>XO</span> <span class="logo-sub">commands</span></div>
+    <div class="header-right">
+      <div class="cmd-count">prefix <b>.</b></div>
+      <div class="cmd-count" id="total-badge">loading...</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>All <span>Commands</span></h1>
+    <p>Click any command to copy it to your clipboard.</p>
+    <div class="prefix-badge">prefix: .</div>
+  </div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="Search commands..." autocomplete="off" spellcheck="false">
+    </div>
+    <div class="filter-btns">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="public">Public only</button>
+      <button class="filter-btn" data-filter="staff">Staff</button>
+      <button class="filter-btn" data-filter="owner">Owner</button>
+    </div>
+  </div>
+
+  <div class="cat-nav" id="cat-nav"></div>
+
+  <div id="content"></div>
+  <div class="no-results" id="no-results">No commands found for <b id="no-results-query"></b></div>
+</div>
+
+<footer>
+  neiXO · <a href="https://discord.gg/seoulities">discord.gg/seoulities</a> · prefix <code style="color:var(--red)">.</code>
+</footer>
+
+<script>
+const DATA_URL = 'commands.json';
+
+let allData = null;
+let activeFilter = 'all';
+let activeCat = 'all';
+let searchQuery = '';
+
+async function loadData() {
+  try {
+    const res = await fetch(DATA_URL);
+    allData = await res.json();
+    init();
+  } catch(e) {
+    document.getElementById('content').innerHTML = '<p style="color:var(--red);padding:40px 0;text-align:center">Failed to load commands.json</p>';
+  }
+}
+
+function init() {
+  const total = allData.total_commands;
+  document.getElementById('total-badge').innerHTML = `<b>${total}</b> commands`;
+
+  buildCatNav();
+  render();
+
+  document.getElementById('search').addEventListener('input', e => {
+    searchQuery = e.target.value.trim().toLowerCase();
+    activeCat = 'all';
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
+    render();
+  });
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.dataset.filter;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render();
+    });
+  });
+}
+
+function buildCatNav() {
+  const nav = document.getElementById('cat-nav');
+  const all = document.createElement('button');
+  all.className = 'cat-pill active';
+  all.textContent = 'All';
+  all.dataset.cat = 'all';
+  all.onclick = () => setCat('all');
+  nav.appendChild(all);
+
+  Object.entries(allData.categories).forEach(([id, cat]) => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-pill';
+    btn.textContent = cat.icon + ' ' + cat.label;
+    btn.dataset.cat = id;
+    btn.onclick = () => setCat(id);
+    nav.appendChild(btn);
+  });
+}
+
+function setCat(id) {
+  activeCat = id;
+  searchQuery = '';
+  document.getElementById('search').value = '';
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.toggle('active', p.dataset.cat === id));
+  render();
+}
+
+function passesFilter(cmd, catOwner, catStaff) {
+  const isOwner = cmd.owner || catOwner;
+  const isStaff = cmd.staff || catStaff;
+  if (activeFilter === 'owner') return isOwner;
+  if (activeFilter === 'staff') return isStaff;
+  if (activeFilter === 'public') return !isOwner && !isStaff;
+  return true;
+}
+
+function matchesSearch(cmd) {
+  if (!searchQuery) return true;
+  return (
+    cmd.name.toLowerCase().includes(searchQuery) ||
+    cmd.usage.toLowerCase().includes(searchQuery) ||
+    cmd.description.toLowerCase().includes(searchQuery) ||
+    (cmd.aliases || []).some(a => a.toLowerCase().includes(searchQuery))
+  );
+}
+
+function render() {
+  const content = document.getElementById('content');
+  const noResults = document.getElementById('no-results');
+  content.innerHTML = '';
+  let totalRendered = 0;
+
+  const cats = activeCat === 'all'
+    ? Object.entries(allData.categories)
+    : [[activeCat, allData.categories[activeCat]]].filter(([,v]) => v);
+
+  cats.forEach(([catId, cat]) => {
+    const catOwner = cat.owner;
+    const catStaff = cat.staff;
+    let catHasAny = false;
+    const secFrags = [];
+
+    Object.entries(cat.sections).forEach(([secName, cmds]) => {
+      const filtered = cmds.filter(cmd => passesFilter(cmd, catOwner, catStaff) && matchesSearch(cmd));
+      if (!filtered.length) return;
+      catHasAny = true;
+      totalRendered += filtered.length;
+
+      const secDiv = document.createElement('div');
+      const label = document.createElement('div');
+      label.className = 'sec-label';
+      label.textContent = secName;
+      secDiv.appendChild(label);
+
+      const grid = document.createElement('div');
+      grid.className = 'cmd-grid';
+
+      filtered.forEach(cmd => {
+        const isOwner = cmd.owner || catOwner;
+        const isStaff = cmd.staff || catStaff;
+        const card = document.createElement('div');
+        card.className = 'cmd-card';
+
+        const usageClean = cmd.usage.replace(/^\./, '');
+        const usageDisplay = cmd.usage.startsWith('.')
+          ? `<span class="prefix">.</span>${escHtml(usageClean)}`
+          : escHtml(cmd.usage);
+
+        let badgeHtml = '';
+        if (isOwner) badgeHtml = `<span class="cmd-badge badge-owner">owner</span>`;
+        else if (isStaff) badgeHtml = `<span class="cmd-badge badge-staff">staff</span>`;
+
+        const aliasHtml = (cmd.aliases || []).slice(0,3)
+          .map(a => `<span class="alias-pill">.${a}</span>`).join('');
+
+        card.innerHTML = `
+          <div class="cmd-usage">${usageDisplay}</div>
+          <div class="cmd-desc">${escHtml(cmd.description)}</div>
+          <div class="cmd-footer">
+            ${badgeHtml}
+            ${aliasHtml}
+            <span class="copy-hint" data-copy-hint>copy</span>
+          </div>
+        `;
+
+        card.addEventListener('click', () => copyCmd(card, cmd.usage));
+        grid.appendChild(card);
+      });
+
+      secDiv.appendChild(grid);
+      secFrags.push(secDiv);
+    });
+
+    if (!catHasAny) return;
+
+    const section = document.createElement('div');
+    section.className = 'cat-section';
+    section.id = 'cat-' + catId;
+
+    let catBadge = '';
+    if (catOwner) catBadge = `<span class="cat-badge badge-owner">owner only</span>`;
+    else if (catStaff) catBadge = `<span class="cat-badge badge-staff">staff only</span>`;
+
+    const hdr = document.createElement('div');
+    hdr.className = 'cat-header';
+    hdr.innerHTML = `
+      <div class="cat-icon">${cat.icon}</div>
+      <span class="cat-name">${cat.label}</span>
+      ${cat.desc ? `<span class="cat-desc">— ${escHtml(cat.desc)}</span>` : ''}
+      ${catBadge}
+    `;
+    section.appendChild(hdr);
+    secFrags.forEach(f => section.appendChild(f));
+    content.appendChild(section);
+  });
+
+  if (totalRendered === 0) {
+    noResults.style.display = 'block';
+    document.getElementById('no-results-query').textContent = searchQuery || 'this filter';
+  } else {
+    noResults.style.display = 'none';
+  }
+}
+
+function copyCmd(card, usage) {
+  const text = usage.replace(/`/g, '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    card.classList.add('copied');
+    const hint = card.querySelector('[data-copy-hint]');
+    if (hint) { hint.textContent = 'copied!'; hint.classList.add('copied-text'); }
+    setTimeout(() => {
+      card.classList.remove('copied');
+      if (hint) { hint.textContent = 'copy'; hint.classList.remove('copied-text'); }
+    }, 1400);
+  });
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+loadData();
+</script>
+</body>
+</html>

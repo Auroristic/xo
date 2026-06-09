@@ -1,0 +1,1808 @@
+{
+  "total_commands": 188,
+  "prefix": ".",
+  "categories": {
+    "admin": {
+      "label": "Owner",
+      "desc": "Server management and AI configuration.",
+      "owner": true,
+      "staff": false,
+      "icon": "▪",
+      "sections": {
+        "Command Channels": [
+          {
+            "name": "allow",
+            "usage": ".cmd allow <#channel>... <category|command>",
+            "description": "restrict a category/command to specific channels.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "clear",
+            "usage": ".cmd clear <category|command>",
+            "description": "remove rule for a category/command (works everywhere).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "cmd_group",
+            "usage": ".cmd <allow|deny|clear|show>",
+            "description": "manage command channel rules — restrict or block commands in specific channels.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "deny",
+            "usage": ".cmd deny <#channel>... <category|command>",
+            "description": "block a category/command in specific channels.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "show",
+            "usage": ".cmd show [category|command]",
+            "description": "show active rule(s) for this server.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Moderation": [
+          {
+            "name": "bots",
+            "usage": ".purge bots [limit]",
+            "description": "bulk-deletes bot messages and messages starting with `.` in this channel.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "purge_group",
+            "usage": ".purge · .purge bots [limit]",
+            "description": "root — shows subcommands. .purge bots bulk-deletes bot and prefix messages.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Server Management": [
+          {
+            "name": "alias",
+            "usage": ".alias · .alias <new> <existing> · .alias remove <name>",
+            "description": "list / add / remove custom command aliases.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "confess",
+            "usage": ".confess set #channel",
+            "description": "sets the confession channel.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "ignore",
+            "usage": ".ignore @user",
+            "description": "toggles ignoring a user — bot won't respond to them in AI channels.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "setcolor",
+            "usage": ".setcolor #HEX",
+            "description": "changes the embed accent colour for this server.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "whitelist",
+            "usage": ".whitelist @user",
+            "description": "toggles a user on/off the staff whitelist.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "whitelistshow",
+            "usage": ".whitelistshow",
+            "description": "shows all whitelisted users.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "ai": {
+      "label": "AI",
+      "desc": "Server management and AI configuration.",
+      "owner": true,
+      "staff": false,
+      "icon": "▲",
+      "sections": {
+        "AI": [
+          {
+            "name": "aiadd",
+            "usage": ".aiadd [#channel]",
+            "description": "enables AI chat in a channel.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "ailist",
+            "usage": ".ailist",
+            "description": "shows all AI-enabled channels and DM whitelist.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "airemove",
+            "usage": ".airemove [#channel]",
+            "description": "disables AI chat in a channel.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "aitoggle",
+            "usage": ".aitoggle nvidia | .aitoggle zen",
+            "description": "switches AI provider between nvidia and zen.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "crefresh",
+            "usage": ".crefresh or .crefresh all",
+            "description": "wipes and re-reads the last 60 messages.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "creset",
+            "usage": ".creset [@user] or .creset all",
+            "description": "resets conversation memory for a user or everyone.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "crestore",
+            "usage": ".crestore",
+            "description": "restores conversation memory from the last backup.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "dmadd",
+            "usage": ".dmadd @user",
+            "description": "enables DM AI responses for a user.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "dmrefresh",
+            "usage": ".dmrefresh",
+            "description": "refreshes your DM conversation from scratch.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "dmremove",
+            "usage": ".dmremove @user",
+            "description": "disables DM AI responses for a user.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "dmreset",
+            "usage": ".dmreset",
+            "description": "resets your DM conversation memory.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "model",
+            "usage": ".model | .model add <model> | .model remove <number>",
+            "description": "manages AI models used for response racing.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "mreset",
+            "usage": ".mreset [@user]",
+            "description": "clears bot memory notes for a user.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "mrestore",
+            "usage": ".mrestore",
+            "description": "restores bot memory from the last backup.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "fun": {
+      "label": "Fun",
+      "desc": "Fun staff tools.",
+      "owner": false,
+      "staff": true,
+      "icon": "♢",
+      "sections": {
+        "Fun": [
+          {
+            "name": "imagine",
+            "usage": "`.imagine <prompt>`",
+            "description": "Generate an image using AI.",
+            "aliases": [
+              "draw",
+              "gen"
+            ],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Moderation": [
+          {
+            "name": "uwulist",
+            "usage": "`.uwulist`",
+            "description": "shows who is currently uwulocked.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "uwulock",
+            "usage": "`.uwulock @user [#channel]`",
+            "description": "toggles uwulock — all their messages become uwufied.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          }
+        ]
+      }
+    },
+    "general": {
+      "label": "General",
+      "desc": "Core utility and reaction commands.",
+      "owner": false,
+      "staff": false,
+      "icon": "☆",
+      "sections": {
+        "Leaderboards": [
+          {
+            "name": "leaderboard",
+            "usage": "`.lb` · `.lb messages` · `.lb vctime`",
+            "description": "leaderboards for messages and VC time.",
+            "aliases": [
+              "lb"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "messages",
+            "usage": "`.lb messages`",
+            "description": "top 200 message senders in the server.",
+            "aliases": [
+              "msgs",
+              "msg"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "vctime",
+            "usage": "`.lb vctime`",
+            "description": "top 200 VC time leaders in the server.",
+            "aliases": [
+              "vc",
+              "voice"
+            ],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Reminders": [
+          {
+            "name": "bday",
+            "usage": "`.bday <date> [@user|name]` · `.bday list` · `.bday remove [@user]`",
+            "description": "save a birthday — bot DMs you every year on the date.",
+            "aliases": [
+              "birthday"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "cancel",
+            "usage": ".remind cancel <id>",
+            "description": "cancel a reminder by its id.",
+            "aliases": [
+              "rm",
+              "del",
+              "delete"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "list",
+            "usage": ".remind list",
+            "description": "list all your reminders.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "list",
+            "usage": ".bday list",
+            "description": "list all your saved birthdays.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "remind",
+            "usage": "`.remind <when> <text>` · `.remind list` · `.remind cancel <id>`",
+            "description": "DM-yourself reminder. `<when>` accepts `5s 5m 2h 2d 1w` or `YYYY/MM/DD [HH:MM]`.",
+            "aliases": [
+              "reminder"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "remove",
+            "usage": ".bday remove [@user]",
+            "description": "remove a saved birthday.",
+            "aliases": [
+              "rm",
+              "del",
+              "delete"
+            ],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Server Stats": [
+          {
+            "name": "seoulities",
+            "usage": "`.seoulities`",
+            "description": "server info card with member stats, top emoji, top reactor, top chatter, top VC user.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "starboard",
+            "usage": "`.starboard #channel`",
+            "description": "set the starboard channel.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          }
+        ]
+      }
+    },
+    "image": {
+      "label": "Image",
+      "desc": "Image and GIF manipulation commands.",
+      "owner": false,
+      "staff": false,
+      "icon": "▪",
+      "sections": {
+        "Image": [
+          {
+            "name": "bar",
+            "usage": "`.bar [type] [color] [size] [name]`",
+            "description": "adds a coloured bar/border to an image.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "bouncegif",
+            "usage": "`.bouncegif [name]`",
+            "description": "makes the image bounce with easing.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "downscale",
+            "usage": "`.downscale [factor] [name]`",
+            "description": "shrinks an image by a given factor.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "fadegif",
+            "usage": "`.fadegif [color] [name]`",
+            "description": "creates a fade-in animation from a solid color.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "gif",
+            "usage": "`.gif [name]`",
+            "description": "converts an image to a GIF. reply to any image.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "lowquality",
+            "usage": "`.lowquality [factor] [name]`",
+            "description": "crunches image quality (cursed pixelated look).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "spingif",
+            "usage": "`.spingif [name]`",
+            "description": "makes the image spin (45° steps).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "textgif",
+            "usage": "`.textgif <text>`",
+            "description": "creates a typing animation GIF (max 30 chars).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "thisu",
+            "usage": "`.thisu`",
+            "description": "applies a POV overlay effect to an image or GIF.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "upscale",
+            "usage": "`.upscale [factor] [name]`",
+            "description": "upscales an image by a given factor (1x-6x).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "zoomgif",
+            "usage": "`.zoomgif [in/out] [fade] [color] [name]`",
+            "description": "creates a smooth zoom animation.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "leveling": {
+      "label": "Leveling",
+      "desc": "",
+      "owner": false,
+      "staff": false,
+      "icon": "▪",
+      "sections": {
+        "Leveling": [
+          {
+            "name": "disable",
+            "usage": ".levelnotify disable",
+            "description": "Disable level-up notifications",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "enable",
+            "usage": ".levelnotify enable",
+            "description": "Enable level-up notifications",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "givexp",
+            "usage": ".givexp <amount> [@user]",
+            "description": "Give XP to a user (admin only)",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "levelleaderboard",
+            "usage": ".llb",
+            "description": "Show server XP leaderboard",
+            "aliases": [
+              "llb",
+              "xpleaderboard"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "levelnotify",
+            "usage": ".levelnotify [enable|disable]",
+            "description": "Toggle level-up notifications",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "levelrole",
+            "usage": ".levelrole [level] [@role]",
+            "description": "Manage level roles",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "rank",
+            "usage": ".rank [@user]",
+            "description": "Check your or another user's rank",
+            "aliases": [
+              "lvl"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "remove",
+            "usage": ".levelrole remove <level>",
+            "description": "Remove a level role",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "misc": {
+      "label": "Echo",
+      "desc": "Staff utility to echo messages through the bot.",
+      "owner": false,
+      "staff": true,
+      "icon": "▪",
+      "sections": {
+        "Echo": [
+          {
+            "name": "dm",
+            "usage": "`.dm @user <message>`",
+            "description": "sends a DM to a user as the bot.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "dmcheck",
+            "usage": "`.dmcheck @user`",
+            "description": "exports DM history with a user as a text file.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "echo",
+            "usage": "`.echo <message>`",
+            "description": "repeats your message as the bot.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "link",
+            "usage": "`.link`",
+            "description": "sends the Seoulities website link.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "ping",
+            "usage": "`.ping`",
+            "description": "shows the bot's current latency.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "random",
+            "usage": "`.random`",
+            "description": "picks a random non-bot member and mentions them.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "status",
+            "usage": "`.status`",
+            "description": "shows uptime, latency, memory, and Lavalink status.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "music": {
+      "label": "Music",
+      "desc": "Music playback, queue controls, and audio filters.",
+      "owner": false,
+      "staff": false,
+      "icon": "♪",
+      "sections": {
+        "Controls": [
+          {
+            "name": "empty",
+            "usage": "`.queue empty`",
+            "description": "clears the entire queue.",
+            "aliases": [
+              "clear"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "fastforward",
+            "usage": "`.fastforward [seconds]`",
+            "description": "fast-forwards by n seconds (default 10s).",
+            "aliases": [
+              "ff"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "move",
+            "usage": "`.queue move <from> <to>`",
+            "description": "moves a track to a different position in the queue.",
+            "aliases": [
+              "mv"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "queue_group",
+            "usage": "`.queue`",
+            "description": "shows the queue with total duration and loop mode. paginated.",
+            "aliases": [
+              "q"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "remove",
+            "usage": "`.queue remove <position>`",
+            "description": "removes a track from the queue by its position number.",
+            "aliases": [
+              "rm"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "replay",
+            "usage": "`.replay`",
+            "description": "restarts the current track from the beginning.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "rewind",
+            "usage": "`.rewind [seconds]`",
+            "description": "rewinds by n seconds (default 10s).",
+            "aliases": [
+              "rw"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "seek",
+            "usage": "`.seek <time>`",
+            "description": "jumps to a position in the track. accepts `1:30` or `90` (seconds).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "shuffle",
+            "usage": "`.queue shuffle`",
+            "description": "shuffles the queue in place.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Filters": [
+          {
+            "name": "bassboost",
+            "usage": "`.bassboost`",
+            "description": "heavy bass boost — punchy low-end.",
+            "aliases": [
+              "bass",
+              "bb"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "clearfilter",
+            "usage": "`.clearfilter`",
+            "description": "clears all active filters and restores clean audio.",
+            "aliases": [
+              "cf",
+              "clearfilters"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "concert",
+            "usage": "`.concert`",
+            "description": "live concert hall effect.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "dolby",
+            "usage": "`.dolby`",
+            "description": "Dolby surround sound effect.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "dreamcore",
+            "usage": "`.dreamcore`",
+            "description": "trance-like dreamy filter.",
+            "aliases": [
+              "dreamy",
+              "dream",
+              "trance"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "eightd",
+            "usage": "`.eightd`",
+            "description": "8D audio — sound rotates around your head.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "heaven",
+            "usage": "`.heaven`",
+            "description": "ethereal, airy filter — floaty and soft.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "instrumental",
+            "usage": "`.instrumental`",
+            "description": "removes vocals — karaoke mode.",
+            "aliases": [
+              "karaoke",
+              "vocalscut"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "lofi",
+            "usage": "`.lofi`",
+            "description": "low fidelity filter — mellow and warm.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "muffled",
+            "usage": "`.muffled`",
+            "description": "muffled underwater effect.",
+            "aliases": [
+              "underwater",
+              "muffle"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "nightcore",
+            "usage": "`.nightcore`",
+            "description": "higher pitch and speed — anime/nightcore style.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "preset",
+            "usage": "`.preset`",
+            "description": "opens a dropdown to browse and apply all available filters.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "reverseroom",
+            "usage": "`.reverseroom`",
+            "description": "reverse room — flipped spatial effect.",
+            "aliases": [
+              "reversefx",
+              "fliproom"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "rotation",
+            "usage": "`.rotation`",
+            "description": "hall — spacious cave-like ambience (use `.eightd` for 8D rotation).",
+            "aliases": [
+              "hall",
+              "cave"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "slowed",
+            "usage": "`.slowed`",
+            "description": "slowed down with reverb — chill and dreamy.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "tremolocmd",
+            "usage": "`.tremolocmd`",
+            "description": "tremolo — rapid volume oscillation.",
+            "aliases": [
+              "tremolo",
+              "trem"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "vibrato",
+            "usage": "`.vibrato`",
+            "description": "vibrato — rapid pitch oscillation.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Music": [
+          {
+            "name": "delete",
+            "usage": ".playlist delete <name>",
+            "description": "Delete a playlist",
+            "aliases": [
+              "del"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "info",
+            "usage": ".playlist info <name>",
+            "description": "Show playlist details",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "list",
+            "usage": ".playlist list",
+            "description": "List all your playlists",
+            "aliases": [
+              "ls"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "load",
+            "usage": ".playlist load <name>",
+            "description": "Load a playlist to queue",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "playlist",
+            "usage": ".playlist <name>",
+            "description": "Play a saved playlist",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "save",
+            "usage": ".playlist save <name>",
+            "description": "Save current queue as playlist",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Playback": [
+          {
+            "name": "autoplay",
+            "usage": "`.autoplay`",
+            "description": "toggles autoplay — plays similar tracks after the queue ends.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "dailyhits",
+            "usage": "`.dailyhits`",
+            "description": "pick a genre from a dropdown and load daily hits.",
+            "aliases": [
+              "dh",
+              "genre",
+              "hits"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "disconnect",
+            "usage": "`.disconnect`",
+            "description": "stops playback, clears queue, and leaves voice.",
+            "aliases": [
+              "dc",
+              "stop"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "history",
+            "usage": "`.history`",
+            "description": "shows the last 10 tracks that were played.",
+            "aliases": [
+              "recent"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "loop",
+            "usage": "`.loop`",
+            "description": "opens a dropdown to set loop mode (track / queue / off).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "lyrics",
+            "usage": "`.lyrics [query]`",
+            "description": "fetches lyrics for the current track or a search query. paginated.",
+            "aliases": [
+              "l",
+              "lyric"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "nowplaying",
+            "usage": "`.nowplaying`",
+            "description": "shows the current track with a generated music card.",
+            "aliases": [
+              "np",
+              "now"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "pause",
+            "usage": "`.pause`",
+            "description": "pauses playback.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "play",
+            "usage": "`.play <query>`",
+            "description": "plays a song or playlist. auto-detects YouTube, Spotify, and SoundCloud links.",
+            "aliases": [
+              "p"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "playnext",
+            "usage": "`.playnext <query>`",
+            "description": "adds a track to the front of the queue so it plays next.",
+            "aliases": [
+              "pn"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "resume",
+            "usage": "`.resume`",
+            "description": "resumes paused playback.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "save",
+            "usage": "`.save`",
+            "description": "DMs you the current track info so you don't lose it.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "shuffle",
+            "usage": "`.shuffle`",
+            "description": "shuffles the current queue.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "similar",
+            "usage": "`.similar`",
+            "description": "shows similar tracks to the current one. pick up to 7 to add.",
+            "aliases": [
+              "sim"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "skip",
+            "usage": "`.skip`",
+            "description": "skips the current track. requires a vote if multiple people are in VC.",
+            "aliases": [
+              "next"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "sync",
+            "usage": "`.sync`",
+            "description": "forces synced karaoke-style lyrics for the current track.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "volume",
+            "usage": "`.volume [1-200]`",
+            "description": "checks or sets playback volume.",
+            "aliases": [
+              "vol"
+            ],
+            "owner": false,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "profile": {
+      "label": "Profile",
+      "desc": "",
+      "owner": false,
+      "staff": false,
+      "icon": "●",
+      "sections": {
+        "Guild Avatars": [
+          {
+            "name": "viewavatar",
+            "usage": ".viewavatar [@user]",
+            "description": "View a user's custom server avatar",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Profile": [
+          {
+            "name": "activity",
+            "usage": "`.activity <playing|listening|watching|competing> <text>` · `.activity none`",
+            "description": "sets the bot's activity, or clears it.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "banner",
+            "usage": "`.banner [url|attachment|reset]`",
+            "description": "changes the bot's banner.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "pfp",
+            "usage": "`.pfp [url|attachment|reset]`",
+            "description": "changes the bot's avatar.",
+            "aliases": [
+              "avatar"
+            ],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "presence",
+            "usage": "`.presence <online|idle|dnd|invisible>`",
+            "description": "sets the bot's online status.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "profile",
+            "usage": ".profile [@user]",
+            "description": "View your or another user's profile",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "removeavatar",
+            "usage": ".removeavatar",
+            "description": "Remove your custom server avatar",
+            "aliases": [
+              "clearavatar"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "rpc_group",
+            "usage": "`.rpc` · `.rpc add [emoji] <text>` · `.rpc remove <n>` · `.rpc clear` · `.rpc interval <secs>`",
+            "description": "auto-managed status rotation. 1 entry = static, 2+ = cycles. max 5, min 5s interval.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "serveravatars",
+            "usage": ".serveravatars",
+            "description": "Show all custom avatars in this server",
+            "aliases": [
+              "pfps"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "setavatar",
+            "usage": ".setavatar <image_url>",
+            "description": "Set a custom avatar for this server only",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "username",
+            "usage": "`.username <name>`",
+            "description": "changes the bot's username (rate-limited by Discord, ~2 per 2 hours).",
+            "aliases": [
+              "botname"
+            ],
+            "owner": true,
+            "staff": false
+          }
+        ],
+        "RPC": [
+          {
+            "name": "add",
+            "usage": ".rpc add [emoji] <text>",
+            "description": "add a custom-status entry for rotation.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "clear",
+            "usage": ".rpc clear",
+            "description": "remove all RPC entries.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "interval",
+            "usage": ".rpc interval [seconds]",
+            "description": "set rotation interval for status cycling.",
+            "aliases": [],
+            "owner": true,
+            "staff": false
+          },
+          {
+            "name": "remove",
+            "usage": ".rpc remove <n>",
+            "description": "remove a custom-status entry by index.",
+            "aliases": [
+              "rm",
+              "del",
+              "delete"
+            ],
+            "owner": true,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "reactions": {
+      "label": "Reactions",
+      "desc": "Core utility and reaction commands.",
+      "owner": false,
+      "staff": false,
+      "icon": "♥",
+      "sections": {
+        "Reactions": [
+          {
+            "name": "rc",
+            "usage": "`.rc [@user] [emoji]`",
+            "description": "shows reaction count for a user. optionally filter by emoji.",
+            "aliases": [
+              "reactioncount"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "rctop",
+            "usage": "`.rctop <emoji>`",
+            "description": "leaderboard filtered to one specific emoji.",
+            "aliases": [
+              "reactiontopemoji"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "rsr",
+            "usage": "`.rsr`",
+            "description": "resets ALL reaction data for this server.",
+            "aliases": [
+              "resetservereactions"
+            ],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "rtop",
+            "usage": "`.rtop`",
+            "description": "reaction leaderboard for the whole server.",
+            "aliases": [
+              "reactiontop"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "rur",
+            "usage": "`.rur @user`",
+            "description": "resets all reaction data for a specific user.",
+            "aliases": [
+              "resetusereaction"
+            ],
+            "owner": false,
+            "staff": true
+          }
+        ]
+      }
+    },
+    "staff": {
+      "label": "Staff",
+      "desc": "Staff moderation and vanity tools.",
+      "owner": false,
+      "staff": true,
+      "icon": "▪",
+      "sections": {
+        "Staff": [
+          {
+            "name": "cid",
+            "usage": "`.cid latest | number | user <id>`",
+            "description": "reveals who sent a confession (DM only).",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          }
+        ]
+      }
+    },
+    "theme": {
+      "label": "Theme",
+      "desc": "Server theme management — roles, channel prefixes, unicode fonts.",
+      "owner": false,
+      "staff": false,
+      "icon": "★",
+      "sections": {
+        "Channels": [
+          {
+            "name": "add",
+            "usage": "`.theme prefix add <emoji> <#cat> [...]`",
+            "description": "add or replace a prefix emoji on all channels in one or more categories.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "add",
+            "usage": "`.theme group add <name> #category`",
+            "description": "add a category to a group and apply the group's prefix to all its channels.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "apply",
+            "usage": "`.theme group apply <name> #channel`",
+            "description": "stamp a group's prefix onto one specific channel without adding it to the group.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "create",
+            "usage": "`.theme group create <name> <prefix>`",
+            "description": "manually create a prefix group.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "delete",
+            "usage": "`.theme group delete <name>`",
+            "description": "delete a prefix group record. does not rename any channels.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "list",
+            "usage": "`.theme prefix list`",
+            "description": "show all stored channel prefixes for this server.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "list",
+            "usage": "`.theme font list`",
+            "description": "show all available unicode font styles with live examples.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "list",
+            "usage": "`.theme group list`",
+            "description": "show all prefix groups — name, prefix, categories, and channel count.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "remove",
+            "usage": "`.theme prefix remove <#cat>`",
+            "description": "strip prefixes from channels in specific categories, or from every channel.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "remove",
+            "usage": "`.theme group remove <name> #category`",
+            "description": "remove a category from a group. channel names are not changed.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "replace",
+            "usage": "`.theme prefix replace <n> <new>`",
+            "description": "replace a detected prefix with a new one across the server.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "reset",
+            "usage": "`.theme font reset [all|<#cat>]`",
+            "description": "strip unicode font styling from channel names.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "scan",
+            "usage": "`.theme prefix scan <#cat>`",
+            "description": "detect existing emoji/symbol prefixes in a category or server-wide.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "server",
+            "usage": "`.theme prefix server <emoji>`",
+            "description": "apply a prefix to every channel in the server, or remove all prefixes server-wide.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "set",
+            "usage": "`.theme font set <font> [all|<#cat> ...]`",
+            "description": "apply a unicode font to channel names.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "set",
+            "usage": "`.theme group set <name> <new prefix>`",
+            "description": "change a group's prefix and rename all channels in that group.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme group setup`",
+            "description": "scan the entire server for prefixes and interactively create named prefix groups.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "strip",
+            "usage": "`.theme channel strip <text>`",
+            "description": "strip an exact piece of text from every channel name in the server.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "tg",
+            "usage": "`.tg`",
+            "description": "shorthand alias for `.theme group` — accepts all the same subcommands.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "theme_channel",
+            "usage": "`.theme channel`",
+            "description": "manage channel names — subcommands: `strip`.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "theme_font",
+            "usage": "`.theme font`",
+            "description": "manage channel fonts — list, set, reset.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "theme_group",
+            "usage": "`.theme group` / `.tg`",
+            "description": "manage named prefix groups — run `.theme group setup` to get started.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "theme_prefix",
+            "usage": "`.theme prefix`",
+            "description": "manage channel prefixes — run `.theme prefix scan` to get started.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "undo",
+            "usage": "`.theme prefix undo`",
+            "description": "undo the last prefix operation (add, remove, or all).",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Overview": [
+          {
+            "name": "theme",
+            "usage": "`.theme`",
+            "description": "show current theme summary — roles, prefixes, font, and snapshot status.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Presets": [
+          {
+            "name": "apply",
+            "usage": "`.theme apply <name>`",
+            "description": "preview then apply a saved preset to this server.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "delete",
+            "usage": "`.theme delete <name>`",
+            "description": "delete a saved preset.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "presets",
+            "usage": "`.theme presets`",
+            "description": "list all saved presets for this server.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "reset",
+            "usage": "`.theme reset`",
+            "description": "undo the last `.theme apply` — restores roles and channels from the snapshot.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "save",
+            "usage": "`.theme save <name>`",
+            "description": "save the current server role/channel state as a named preset.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "snapshot",
+            "usage": "`.theme snapshot`",
+            "description": "show what's currently saved in the undo snapshot.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "undo",
+            "usage": "`.theme undo`",
+            "description": "alias for `.theme reset` — pops a single snapshot to undo the last change.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Roles": [
+          {
+            "name": "revert",
+            "usage": "`.theme role revert <slot>`",
+            "description": "revert one role back to its name from before the last theme apply.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "roleicon",
+            "usage": "`.theme roleicon <slot> [emoji|url|attachment]`",
+            "description": "set a role icon via emoji, url, or image attachment. requires boost level 2.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "theme_role",
+            "usage": "`.theme role <slot> <new name>`",
+            "description": "rename the discord role mapped to a slot. e.g. `.theme role Owner God Emperor`",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ],
+        "Setup": [
+          {
+            "name": "clear",
+            "usage": "`.theme roles clear`",
+            "description": "wipe all slot mappings. role names in discord are not changed. run `.theme roles setup` after to remap.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "help",
+            "usage": "`.theme help`",
+            "description": "show all theme commands organised by section.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "setbanner",
+            "usage": "`.theme setbanner [url|attachment]`",
+            "description": "set and store the server banner in the current theme.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "seticon",
+            "usage": "`.theme seticon [url|attachment]`",
+            "description": "set and store the server icon in the current theme.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "setrole",
+            "usage": "`.theme setrole <slot> @Role`",
+            "description": "quickly remap one slot to a different role without going through the full wizard.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme setup`",
+            "description": "interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme roles setup`",
+            "description": "run the role mapping wizard. shows current mapping per slot so you can skip or remap individual ones.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "theme_roles",
+            "usage": "`.theme roles`",
+            "description": "list all mapped role slots and their current discord roles.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "utility": {
+      "label": "Utility",
+      "desc": "API status checks and utilities.",
+      "owner": false,
+      "staff": false,
+      "icon": "■",
+      "sections": {
+        "Utility": [
+          {
+            "name": "anilist",
+            "usage": "`.anilist`",
+            "description": "checks AniList API status and latency.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          }
+        ]
+      }
+    },
+    "vanity": {
+      "label": "Vanity",
+      "desc": "Vanity and custom status tools.",
+      "owner": false,
+      "staff": true,
+      "icon": "◆",
+      "sections": {
+        "Vanity": [
+          {
+            "name": "channel",
+            "usage": ".vanity channel <#channel>",
+            "description": "set notification channel for matches.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "config",
+            "usage": ".vanity config",
+            "description": "show current vanity config.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "message",
+            "usage": ".vanity message <text>",
+            "description": "set notification message (use {{user}}, {{server}}).",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "reset",
+            "usage": ".vanity reset",
+            "description": "reset all vanity config.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "role",
+            "usage": ".vanity role <@role>",
+            "description": "set role to assign on status match.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "substring",
+            "usage": ".vanity substring <text>",
+            "description": "set the status substring to watch for.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "vanity",
+            "usage": "`.vanity [config|substring|channel|message|role|reset]`",
+            "description": "Vanity status tracker — subcommands to configure substring, channel, role, and message. Requires admin.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          }
+        ]
+      }
+    }
+  }
+}
