@@ -624,7 +624,7 @@
             "description": "repeats your message as the bot.",
             "aliases": [],
             "owner": false,
-            "staff": true
+            "staff": false
           },
           {
             "name": "link",
@@ -1318,8 +1318,8 @@
             "aliases": [
               "resetservereactions"
             ],
-            "owner": false,
-            "staff": true
+            "owner": true,
+            "staff": false
           },
           {
             "name": "rtop",
@@ -1338,8 +1338,8 @@
             "aliases": [
               "resetusereaction"
             ],
-            "owner": false,
-            "staff": true
+            "owner": true,
+            "staff": false
           }
         ]
       }
