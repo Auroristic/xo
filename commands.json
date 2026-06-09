@@ -1,5 +1,5 @@
 {
-  "total_commands": 188,
+  "total_commands": 189,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -90,6 +90,14 @@
             "name": "ignore",
             "usage": ".ignore @user",
             "description": "toggles ignoring a user — bot won't respond to them in AI channels.",
+            "aliases": [],
+            "owner": false,
+            "staff": true
+          },
+          {
+            "name": "ignorelist",
+            "usage": ".ignorelist",
+            "description": "shows all users currently ignored by the bot in AI channels.",
             "aliases": [],
             "owner": false,
             "staff": true
