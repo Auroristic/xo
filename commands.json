@@ -1,5 +1,5 @@
 {
-  "total_commands": 189,
+  "total_commands": 195,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -316,7 +316,8 @@
             "description": "top 200 message senders in the server.",
             "aliases": [
               "msgs",
-              "msg"
+              "msg",
+              "lbm"
             ],
             "owner": false,
             "staff": false
@@ -327,7 +328,8 @@
             "description": "top 200 VC time leaders in the server.",
             "aliases": [
               "vc",
-              "voice"
+              "voice",
+              "lbv"
             ],
             "owner": false,
             "staff": false
@@ -406,8 +408,8 @@
           },
           {
             "name": "starboard",
-            "usage": "`.starboard #channel`",
-            "description": "set the starboard channel.",
+            "usage": "`.starboard #channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5`",
+            "description": "manage the starboard: channel, emoji, and reaction threshold.",
             "aliases": [],
             "owner": false,
             "staff": true
@@ -670,11 +672,29 @@
       "sections": {
         "Controls": [
           {
+            "name": "dedupe",
+            "usage": "`.queue dedupe`",
+            "description": "removes duplicate tracks from the queue.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
             "name": "empty",
             "usage": "`.queue empty`",
             "description": "clears the entire queue.",
             "aliases": [
               "clear"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "exportqueue",
+            "usage": "`.exportqueue`",
+            "description": "DMs you the current queue as clickable links.",
+            "aliases": [
+              "eq"
             ],
             "owner": false,
             "staff": false
@@ -750,6 +770,16 @@
             "usage": "`.queue shuffle`",
             "description": "shuffles the queue in place.",
             "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "skipto",
+            "usage": "`.queue skipto <pos>`",
+            "description": "skips to a specific position in the queue.",
+            "aliases": [
+              "st"
+            ],
             "owner": false,
             "staff": false
           }
@@ -1072,6 +1102,14 @@
             "staff": false
           },
           {
+            "name": "radio",
+            "usage": "`.radio <name>`",
+            "description": "play an internet radio station by name.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
             "name": "resume",
             "usage": "`.resume`",
             "description": "resumes paused playback.",
@@ -1116,6 +1154,14 @@
             "staff": false
           },
           {
+            "name": "stats",
+            "usage": "`.stats`",
+            "description": "session stats: tracks played, total time, top requester.",
+            "aliases": [],
+            "owner": false,
+            "staff": false
+          },
+          {
             "name": "sync",
             "usage": "`.sync`",
             "description": "forces synced karaoke-style lyrics for the current track.",
@@ -1129,6 +1175,16 @@
             "description": "checks or sets playback volume.",
             "aliases": [
               "vol"
+            ],
+            "owner": false,
+            "staff": false
+          },
+          {
+            "name": "voteskip",
+            "usage": "`.voteskip`",
+            "description": "starts a vote to skip the current track.",
+            "aliases": [
+              "vs"
             ],
             "owner": false,
             "staff": false
