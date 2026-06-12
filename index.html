@@ -735,6 +735,80 @@ body.search-focused .filter-bar {
 .modal-copy-btn:active { transform: scale(0.98); }
 .modal-copy-btn.done { color: var(--staff); border-color: var(--staff-border); background: var(--staff-bg); }
 
+/* Modal header top row */
+.modal-header-top {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.modal-header-badges { display: flex; gap: 5px; align-items: center; }
+.modal-hbadge {
+  font-size: 8.5px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 3px;
+}
+.modal-hbadge.sub { background: rgba(99,102,241,0.10); color: #818cf8; border: 1px solid rgba(99,102,241,0.22); }
+.modal-hbadge.parent { background: rgba(14,165,233,0.10); color: #38bdf8; border: 1px solid rgba(14,165,233,0.22); }
+.modal-hbadge.admin-only { background: rgba(230,57,70,0.10); color: var(--red); border: 1px solid var(--border-red); }
+
+/* Params table */
+.modal-params { display: flex; flex-direction: column; gap: 6px; }
+.modal-param-row {
+  display: grid; grid-template-columns: auto auto 1fr;
+  align-items: baseline; gap: 8px;
+  padding: 7px 10px; border-radius: var(--radius-sm);
+  background: var(--bg-1); border: 1px solid var(--border);
+}
+.param-name {
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 600;
+  color: var(--cat-accent, var(--red));
+}
+.param-type {
+  font-family: var(--font-mono); font-size: 9.5px; color: var(--text-dim);
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  padding: 1px 5px; border-radius: 3px; white-space: nowrap;
+}
+.param-req {
+  font-size: 8px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 1px 5px; border-radius: 3px; white-space: nowrap;
+}
+.param-req.required { color: var(--red); background: var(--red-xlo); border: 1px solid var(--border-red); }
+.param-req.optional { color: var(--text-dim); background: rgba(255,255,255,0.03); border: 1px solid var(--border); }
+.param-desc { font-size: 12px; color: var(--text-muted); grid-column: 1 / -1; margin-top: 2px; line-height: 1.4; }
+
+/* Examples list */
+.modal-examples { display: flex; flex-direction: column; gap: 5px; }
+.modal-example {
+  font-family: var(--font-mono); font-size: 11.5px;
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 7px 12px; color: var(--text-muted); cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.modal-example:hover { background: rgba(255,255,255,0.04); border-color: var(--cat-accent, var(--border-red)); color: var(--text); }
+.modal-example.copied-ex { color: var(--staff); border-color: var(--staff-border); background: var(--staff-bg); }
+.modal-example-copy { opacity: 0; font-size: 9px; color: var(--text-dim); transition: opacity 0.1s; flex-shrink: 0; }
+.modal-example:hover .modal-example-copy { opacity: 1; }
+
+/* Note banner */
+.modal-note {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+  border-left: 2px solid var(--text-dim); border-radius: var(--radius-sm);
+  padding: 9px 12px; font-size: 12px; color: var(--text-muted); line-height: 1.45;
+}
+.modal-note-icon { flex-shrink: 0; margin-top: 1px; opacity: 0.5; }
+
+/* Card subcommand indicator */
+.cmd-sub-badge {
+  font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
+  padding: 1.5px 5px; border-radius: 2px;
+  background: rgba(99,102,241,0.08); color: #818cf8; border: 1px solid rgba(99,102,241,0.2);
+}
+.cmd-parent-badge {
+  font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
+  padding: 1.5px 5px; border-radius: 2px;
+  background: rgba(14,165,233,0.08); color: #38bdf8; border: 1px solid rgba(14,165,233,0.2);
+}
+.perm-admin { background: rgba(230,57,70,0.08); color: var(--red-hi); border: 1px solid var(--border-red); }
+
 /* ── KEYBOARD SHORTCUTS PANEL ── */
 .shortcuts-overlay {
   position: fixed; inset: 0; z-index: 600;
@@ -1002,7 +1076,10 @@ body.search-focused .filter-bar {
 <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
   <div class="modal-box" id="modal-box">
     <div class="modal-header" id="modal-header">
-      <div class="modal-cat-label" id="modal-cat-label"></div>
+      <div class="modal-header-top">
+        <div class="modal-cat-label" id="modal-cat-label"></div>
+        <div class="modal-header-badges" id="modal-header-badges"></div>
+      </div>
       <div class="modal-title" id="modal-title"></div>
       <div class="modal-desc" id="modal-desc"></div>
       <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
@@ -1012,6 +1089,14 @@ body.search-focused .filter-bar {
         <label>Usage</label>
         <div class="modal-usage" id="modal-usage"></div>
       </div>
+      <div class="modal-field" id="modal-params-wrap" style="display:none">
+        <label>Parameters</label>
+        <div class="modal-params" id="modal-params"></div>
+      </div>
+      <div class="modal-field" id="modal-examples-wrap" style="display:none">
+        <label>Examples <span style="font-size:9px;color:var(--text-dim);letter-spacing:0;text-transform:none;font-weight:400">(click to copy)</span></label>
+        <div class="modal-examples" id="modal-examples"></div>
+      </div>
       <div class="modal-field" id="modal-aliases-wrap" style="display:none">
         <label>Aliases <span style="font-size:9px;color:var(--text-dim);letter-spacing:0;text-transform:none;font-weight:400">(click to copy)</span></label>
         <div class="modal-aliases" id="modal-aliases"></div>
@@ -1020,6 +1105,7 @@ body.search-focused .filter-bar {
         <label>Permission</label>
         <div class="modal-perm-row" id="modal-perm"></div>
       </div>
+      <div class="modal-note" id="modal-note" style="display:none"></div>
       <button class="modal-copy-btn" id="modal-copy-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -1137,7 +1223,7 @@ function init() {
 function buildStats() {
   const cats = allData.categories;
   const catIds = Object.keys(cats);
-  let pubCount = 0, restrictedCount = 0, ownerCount = 0, staffCount = 0;
+  let pubCount = 0, restrictedCount = 0, ownerCount = 0, staffCount = 0, adminCount = 0;
 
   // Per-category counts for "Total Commands" tooltip
   const catCounts = {};
@@ -1148,6 +1234,7 @@ function buildStats() {
         n++;
         if (cmd.owner || cat.owner) { restrictedCount++; ownerCount++; }
         else if (cmd.staff || cat.staff) { restrictedCount++; staffCount++; }
+        else if (cmd.admin || cat.admin) { restrictedCount++; adminCount++; }
         else pubCount++;
       });
     });
@@ -1207,6 +1294,11 @@ function buildStats() {
         <span style="flex:1">Staff only</span>
         <span style="font-family:var(--font-mono);color:var(--staff);font-size:10px">${staffCount}</span>
       </div>
+      <div class="stat-tooltip-row">
+        <span class="stat-tooltip-dot" style="background:var(--red)"></span>
+        <span style="flex:1">Admin only</span>
+        <span style="font-family:var(--font-mono);color:var(--red);font-size:10px">${adminCount}</span>
+      </div>
       <div class="stat-tooltip-row" style="margin-top:3px;padding-top:3px;border-top:1px solid var(--border);color:var(--text-dim);font-size:9.5px">
         <span>Requires elevated permissions</span>
       </div>
@@ -1236,6 +1328,7 @@ function buildNav() {
     { key: 'all',    label: 'All' },
     { key: 'public', label: 'Public' },
     { key: 'staff',  label: 'Staff',  cls: 'staff-pill' },
+    { key: 'admin',  label: 'Admin',  cls: 'owner-pill' },
     { key: 'owner',  label: 'Owner',  cls: 'owner-pill' },
   ];
   filters.forEach(({ key, label, cls }) => {
@@ -1437,14 +1530,38 @@ function setupModal() {
 function openModal(cmd, catId, catLabel) {
   const overlay = document.getElementById('modal-overlay');
   const col = CAT_COLORS[catId] || CAT_COLORS.admin;
+  const cat = allData.categories[catId];
 
-  // Set CSS variables on modal header
+  // Header accent
   const header = document.getElementById('modal-header');
   header.style.setProperty('--cat-accent', col.accent);
 
-  document.getElementById('modal-cat-label').innerHTML =
-    `<span style="font-size:11px">${escHtml(allData.categories[catId]?.icon || '')}</span> ${escHtml(catLabel)}`;
-  document.getElementById('modal-cat-label').style.color = col.accent;
+  // Cat label
+  const catLabelEl = document.getElementById('modal-cat-label');
+  catLabelEl.innerHTML = `<span style="font-size:11px">${escHtml(cat?.icon || '')}</span> ${escHtml(catLabel)}`;
+  catLabelEl.style.color = col.accent;
+
+  // Header badges (subcommand / parent / admin)
+  const badgesEl = document.getElementById('modal-header-badges');
+  badgesEl.innerHTML = '';
+  if (cmd.is_subcommand) {
+    const b = document.createElement('span');
+    b.className = 'modal-hbadge sub';
+    b.textContent = cmd.group ? `sub of .${cmd.group}` : 'subcommand';
+    badgesEl.appendChild(b);
+  } else if (cmd.has_subcommands) {
+    const b = document.createElement('span');
+    b.className = 'modal-hbadge parent';
+    b.textContent = 'has subcommands';
+    badgesEl.appendChild(b);
+  }
+  const isAdmin = cmd.admin || cat?.admin;
+  if (isAdmin && !cmd.owner && !cat?.owner && !cmd.staff && !cat?.staff) {
+    const b = document.createElement('span');
+    b.className = 'modal-hbadge admin-only';
+    b.textContent = 'admin';
+    badgesEl.appendChild(b);
+  }
 
   document.getElementById('modal-title').textContent = '.' + cmd.name;
   document.getElementById('modal-desc').textContent = cmd.description || '—';
@@ -1453,6 +1570,64 @@ function openModal(cmd, catId, catLabel) {
   const usageEl = document.getElementById('modal-usage');
   usageEl.innerHTML = renderUsage(cmd.usage);
   usageEl.style.color = col.accent;
+
+  // Params
+  const paramsWrap = document.getElementById('modal-params-wrap');
+  const paramsContainer = document.getElementById('modal-params');
+  const params = (cmd.params || []).filter(p => p.name);
+  if (params.length) {
+    paramsWrap.style.display = '';
+    paramsContainer.innerHTML = '';
+    paramsContainer.style.setProperty('--cat-accent', col.accent);
+    params.forEach(p => {
+      const row = document.createElement('div');
+      row.className = 'modal-param-row';
+      const req = p.required === true ? true : p.required === false ? false : null;
+      const reqBadge = req === true
+        ? `<span class="param-req required">required</span>`
+        : req === false
+          ? `<span class="param-req optional">optional</span>`
+          : '';
+      const typeStr = p.type ? p.type.replace('discord.', '') : '';
+      row.innerHTML = `
+        <span class="param-name">${escHtml(p.name)}</span>
+        ${typeStr ? `<span class="param-type">${escHtml(typeStr)}</span>` : ''}
+        ${reqBadge}
+        ${p.desc ? `<span class="param-desc">${escHtml(p.desc)}</span>` : ''}
+      `;
+      paramsContainer.appendChild(row);
+    });
+  } else {
+    paramsWrap.style.display = 'none';
+  }
+
+  // Examples
+  const examplesWrap = document.getElementById('modal-examples-wrap');
+  const examplesContainer = document.getElementById('modal-examples');
+  examplesContainer.innerHTML = '';
+  const examples = cmd.examples || [];
+  if (examples.length) {
+    examplesWrap.style.display = '';
+    examples.forEach(ex => {
+      const row = document.createElement('div');
+      row.className = 'modal-example';
+      row.innerHTML = `<span>${escHtml(ex)}</span><span class="modal-example-copy">copy</span>`;
+      row.style.setProperty('--cat-accent', col.accent);
+      row.addEventListener('click', () => {
+        navigator.clipboard.writeText(ex).then(() => {
+          row.classList.add('copied-ex');
+          row.querySelector('.modal-example-copy').textContent = '✓';
+          setTimeout(() => {
+            row.classList.remove('copied-ex');
+            row.querySelector('.modal-example-copy').textContent = 'copy';
+          }, 1500);
+        });
+      });
+      examplesContainer.appendChild(row);
+    });
+  } else {
+    examplesWrap.style.display = 'none';
+  }
 
   // Aliases
   const aliasWrap = document.getElementById('modal-aliases-wrap');
@@ -1479,14 +1654,30 @@ function openModal(cmd, catId, catLabel) {
 
   // Permission
   const permEl = document.getElementById('modal-perm');
-  const isOwner = cmd.owner || (allData.categories[catId]?.owner);
-  const isStaff = cmd.staff || (allData.categories[catId]?.staff);
+  const isOwner = cmd.owner || cat?.owner;
+  const isStaff = cmd.staff || cat?.staff;
   if (isOwner) {
     permEl.innerHTML = `<span class="modal-perm-badge perm-owner">owner only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to bot owner</span>`;
   } else if (isStaff) {
     permEl.innerHTML = `<span class="modal-perm-badge perm-staff">staff only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to server staff</span>`;
+  } else if (isAdmin) {
+    permEl.innerHTML = `<span class="modal-perm-badge perm-admin">admin only</span><span style="font-size:12px;color:var(--text-muted)">Requires server admin</span>`;
   } else {
     permEl.innerHTML = `<span class="modal-perm-badge" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.22);">public</span><span style="font-size:12px;color:var(--text-muted)">Available to everyone</span>`;
+  }
+
+  // Note
+  const noteEl = document.getElementById('modal-note');
+  if (cmd.note) {
+    noteEl.style.display = 'flex';
+    noteEl.innerHTML = `
+      <svg class="modal-note-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <span>${escHtml(cmd.note)}</span>
+    `;
+  } else {
+    noteEl.style.display = 'none';
   }
 
   // Copy button
@@ -1537,30 +1728,34 @@ function countVisible() {
   cats.forEach(([, cat]) => {
     Object.values(cat.sections).forEach(cmds => {
       cmds.forEach(cmd => {
-        if (passesFilter(cmd, cat.owner, cat.staff) && matchesSearch(cmd)) total++;
+        if (passesFilter(cmd, cat.owner, cat.staff, cat.admin) && matchesSearch(cmd)) total++;
       });
     });
   });
   return total;
 }
 
-function passesFilter(cmd, catOwner, catStaff) {
+function passesFilter(cmd, catOwner, catStaff, catAdmin) {
   const isOwner = cmd.owner || catOwner;
   const isStaff = cmd.staff || catStaff;
+  const isAdmin = cmd.admin || catAdmin;
   if (activeFilter === 'owner') return isOwner;
   if (activeFilter === 'staff') return isStaff;
-  if (activeFilter === 'public') return !isOwner && !isStaff;
+  if (activeFilter === 'admin') return isAdmin && !isOwner && !isStaff;
+  if (activeFilter === 'public') return !isOwner && !isStaff && !isAdmin;
   return true;
 }
 
 function matchesSearch(cmd) {
   if (!searchQuery) return true;
-  return (
-    cmd.name.toLowerCase().includes(searchQuery) ||
-    cmd.usage.toLowerCase().includes(searchQuery) ||
-    cmd.description.toLowerCase().includes(searchQuery) ||
-    (cmd.aliases || []).some(a => a.toLowerCase().includes(searchQuery))
-  );
+  if (cmd.name.toLowerCase().includes(searchQuery)) return true;
+  if (cmd.usage.toLowerCase().includes(searchQuery)) return true;
+  if (cmd.description.toLowerCase().includes(searchQuery)) return true;
+  if ((cmd.aliases || []).some(a => a.toLowerCase().includes(searchQuery))) return true;
+  if (cmd.note && cmd.note.toLowerCase().includes(searchQuery)) return true;
+  if ((cmd.params || []).some(p => p.name.toLowerCase().includes(searchQuery) || (p.desc && p.desc.toLowerCase().includes(searchQuery)))) return true;
+  if ((cmd.examples || []).some(ex => ex.toLowerCase().includes(searchQuery))) return true;
+  return false;
 }
 
 /* ── HIGHLIGHT MATCHED TEXT ── */
@@ -1601,13 +1796,14 @@ function render() {
   cats.forEach(([catId, cat]) => {
     const catOwner = cat.owner;
     const catStaff = cat.staff;
+    const catAdmin = cat.admin;
     const col = CAT_COLORS[catId] || CAT_COLORS.admin;
     let catHasAny = false;
     const secNodes = [];
     let catCardCount = 0;
 
     getOrderedSections(catId, cat.sections).forEach(([secName, cmds]) => {
-      const filtered = cmds.filter(cmd => passesFilter(cmd, catOwner, catStaff) && matchesSearch(cmd));
+      const filtered = cmds.filter(cmd => passesFilter(cmd, catOwner, catStaff, cat.admin) && matchesSearch(cmd));
       if (!filtered.length) return;
       catHasAny = true;
       totalRendered += filtered.length;
@@ -1630,10 +1826,16 @@ function render() {
       filtered.forEach((cmd, i) => {
         const isOwner = cmd.owner || catOwner;
         const isStaff = cmd.staff || catStaff;
+        const isAdmin = cmd.admin || catAdmin;
 
         let badge = '';
         if (isOwner)      badge = `<span class="cmd-badge perm-owner">owner</span>`;
         else if (isStaff) badge = `<span class="cmd-badge perm-staff">staff</span>`;
+        else if (isAdmin) badge = `<span class="cmd-badge perm-admin">admin</span>`;
+
+        let structBadge = '';
+        if (cmd.is_subcommand) structBadge = `<span class="cmd-sub-badge">sub</span>`;
+        else if (cmd.has_subcommands) structBadge = `<span class="cmd-parent-badge">+ subs</span>`;
 
         const aliases = (cmd.aliases || []).slice(0, 3)
           .map(a => `<span class="alias-tag">.${escHtml(a)}</span>`).join('');
@@ -1655,7 +1857,7 @@ function render() {
           <div class="cmd-usage">${usageHtml}</div>
           <div class="cmd-desc">${descHtml}</div>
           <div class="cmd-footer">
-            ${badge}${aliases}
+            ${badge}${structBadge}${aliases}
             <span class="copy-btn" data-copy-btn>
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -1693,6 +1895,7 @@ function render() {
     let permBadge = '';
     if (catOwner)      permBadge = `<span class="cat-perm perm-owner">owner only</span>`;
     else if (catStaff) permBadge = `<span class="cat-perm perm-staff">staff only</span>`;
+    else if (catAdmin) permBadge = `<span class="cat-perm perm-admin">admin only</span>`;
 
     const hdr = document.createElement('div');
     hdr.className = 'cat-header';
