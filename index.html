@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="icon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#07070a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
 <title>xo — commands</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ── TOKENS ── */
@@ -42,63 +45,24 @@
   --staff:         #4ab882;
   --staff-bg:      rgba(74,184,130,0.10);
   --staff-border:  rgba(74,184,130,0.25);
+  --pin:           #fbbf24;
+  --pin-bg:        rgba(251,191,36,0.10);
+  --pin-border:    rgba(251,191,36,0.30);
 
-  /* Category accent colors */
   --cat-music:     #a855f7;
-  --cat-music-bg:  rgba(168,85,247,0.08);
-  --cat-music-bdr: rgba(168,85,247,0.22);
-
   --cat-image:     #06b6d4;
-  --cat-image-bg:  rgba(6,182,212,0.08);
-  --cat-image-bdr: rgba(6,182,212,0.22);
-
   --cat-ai:        #f59e0b;
-  --cat-ai-bg:     rgba(245,158,11,0.08);
-  --cat-ai-bdr:    rgba(245,158,11,0.22);
-
   --cat-general:   #3b82f6;
-  --cat-general-bg: rgba(59,130,246,0.08);
-  --cat-general-bdr: rgba(59,130,246,0.22);
-
   --cat-admin:     #e63946;
-  --cat-admin-bg:  rgba(230,57,70,0.08);
-  --cat-admin-bdr: rgba(230,57,70,0.22);
-
   --cat-fun:       #ec4899;
-  --cat-fun-bg:    rgba(236,72,153,0.08);
-  --cat-fun-bdr:   rgba(236,72,153,0.22);
-
   --cat-reactions: #f43f5e;
-  --cat-reactions-bg: rgba(244,63,94,0.08);
-  --cat-reactions-bdr: rgba(244,63,94,0.22);
-
   --cat-leveling:  #10b981;
-  --cat-leveling-bg: rgba(16,185,129,0.08);
-  --cat-leveling-bdr: rgba(16,185,129,0.22);
-
   --cat-profile:   #8b5cf6;
-  --cat-profile-bg: rgba(139,92,246,0.08);
-  --cat-profile-bdr: rgba(139,92,246,0.22);
-
   --cat-theme:     #f97316;
-  --cat-theme-bg:  rgba(249,115,22,0.08);
-  --cat-theme-bdr: rgba(249,115,22,0.22);
-
   --cat-misc:      #64748b;
-  --cat-misc-bg:   rgba(100,116,139,0.08);
-  --cat-misc-bdr:  rgba(100,116,139,0.22);
-
   --cat-utility:   #0ea5e9;
-  --cat-utility-bg: rgba(14,165,233,0.08);
-  --cat-utility-bdr: rgba(14,165,233,0.22);
-
   --cat-vanity:    #d946ef;
-  --cat-vanity-bg: rgba(217,70,239,0.08);
-  --cat-vanity-bdr: rgba(217,70,239,0.22);
-
   --cat-staff:     #4ab882;
-  --cat-staff-bg:  rgba(74,184,130,0.08);
-  --cat-staff-bdr: rgba(74,184,130,0.22);
 
   --font-display:  'Playfair Display', Georgia, serif;
   --font-ui:       'Outfit', system-ui, sans-serif;
@@ -111,10 +75,34 @@
 
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --shadow-lg:     0 32px 80px rgba(0,0,0,0.6);
+  --shadow-md:     0 8px 28px rgba(0,0,0,0.35);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg:           #fafafa;
+  --bg-1:         #f4f4f7;
+  --bg-2:         #ededf2;
+  --bg-3:         #e4e4ec;
+  --bg-4:         #d6d6e0;
+  --bg-5:         #c4c4d0;
+
+  --border:       rgba(0,0,0,0.07);
+  --border-md:    rgba(0,0,0,0.13);
+
+  --text:         #1a1a24;
+  --text-muted:   #5a5a70;
+  --text-dim:     #8888a0;
+
+  --shadow-lg:    0 32px 80px rgba(0,0,0,0.15);
+  --shadow-md:    0 8px 28px rgba(0,0,0,0.08);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; color-scheme: dark; }
+[data-theme="light"] { color-scheme: light; }
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -122,15 +110,15 @@ body {
   font-size: 14px;
   line-height: 1.6;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ── BACKGROUND ── */
-.bg-canvas {
-  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-}
+.bg-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .bg-canvas::before {
   content: '';
   position: absolute; inset: 0;
@@ -138,6 +126,7 @@ body {
   background-size: 200px 200px;
   opacity: 0.5;
 }
+[data-theme="light"] .bg-canvas::before { opacity: 0.25; }
 .bg-orb { position: absolute; border-radius: 50%; }
 .bg-orb-a {
   width: 700px; height: 400px; top: -160px; left: 10%;
@@ -166,47 +155,32 @@ body {
   mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 0%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 0%, transparent 70%);
 }
-@keyframes drift-a {
-  from { transform: translate(0,0) scale(1) rotate(-2deg); }
-  to   { transform: translate(30px,20px) scale(1.08) rotate(2deg); }
+[data-theme="light"] .bg-grid {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px);
 }
-@keyframes drift-b {
-  from { transform: translate(0,0) scale(1); }
-  to   { transform: translate(-20px,-30px) scale(1.1); }
-}
-@keyframes drift-c {
-  from { transform: translate(0,0); }
-  to   { transform: translate(15px,-20px); }
-}
+@keyframes drift-a { from { transform: translate(0,0) scale(1) rotate(-2deg); } to { transform: translate(30px,20px) scale(1.08) rotate(2deg); } }
+@keyframes drift-b { from { transform: translate(0,0) scale(1); } to { transform: translate(-20px,-30px) scale(1.1); } }
+@keyframes drift-c { from { transform: translate(0,0); } to { transform: translate(15px,-20px); } }
 
-/* ── SEARCH BLUR: dims bg + sticky chrome, leaves content sharp ── */
+/* ── SEARCH BLUR ── */
 .search-blur-overlay {
   position: fixed; inset: 0; z-index: 0;
   background: rgba(7,7,10,0.5);
   opacity: 0; pointer-events: none;
   transition: opacity 0.25s ease;
 }
+[data-theme="light"] .search-blur-overlay { background: rgba(250,250,250,0.5); }
 .search-blur-overlay.active { opacity: 1; }
-
-/* Blur/dim the sticky chrome above content when search is focused */
 body.search-focused .topbar,
 body.search-focused .stats-row,
-body.search-focused .nav-bar {
-  filter: blur(1.5px) saturate(0.6);
-  opacity: 0.4;
-}
-body.search-focused .filter-bar {
-  filter: blur(1px);
-  opacity: 0.5;
-}
-/* Keep search + results fully sharp — no filter applied */
-/* Smooth transitions on all blurred elements */
-.topbar, .stats-row, .nav-bar, .filter-bar {
-  transition: filter 0.25s ease, opacity 0.25s ease;
-}
+body.search-focused .nav-bar { filter: blur(1.5px) saturate(0.6); opacity: 0.4; }
+body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
+.topbar, .stats-row, .nav-bar, .filter-bar { transition: filter 0.25s ease, opacity 0.25s ease; }
 
 /* ── SHELL ── */
-#app { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100vh; }
+#app { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
 
 /* ── TOPBAR ── */
 .topbar {
@@ -217,6 +191,7 @@ body.search-focused .filter-bar {
   -webkit-backdrop-filter: blur(20px) saturate(1.3);
   position: sticky; top: 0; z-index: 300; gap: 14px; flex-shrink: 0;
 }
+[data-theme="light"] .topbar { background: rgba(250,250,250,0.85); }
 .topbar::after {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent 0%, var(--border-red) 30%, var(--border-red) 70%, transparent 100%);
@@ -230,23 +205,18 @@ body.search-focused .filter-bar {
 }
 @keyframes pulse-dot {
   0%, 100% { box-shadow: 0 0 6px var(--red), 0 0 12px rgba(230,57,70,0.3); }
-  50%       { box-shadow: 0 0 10px var(--red), 0 0 22px rgba(230,57,70,0.5); }
+  50%      { box-shadow: 0 0 10px var(--red), 0 0 22px rgba(230,57,70,0.5); }
 }
-.brand-name {
-  font-family: var(--font-display);
-  font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); line-height: 1;
-}
+.brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); line-height: 1; }
 .brand-name em { color: var(--red); font-style: italic; }
-.brand-tag {
-  font-size: 10.5px; font-weight: 300; color: var(--text-dim);
-  letter-spacing: 1px; text-transform: uppercase;
-}
+.brand-tag { font-size: 10.5px; font-weight: 300; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
 .topbar-sep { width: 1px; height: 18px; background: var(--border-md); flex-shrink: 0; }
 .prefix-chip {
   font-family: var(--font-mono); font-size: 11.5px; color: var(--red);
   background: var(--red-xlo); border: 1px solid var(--border-red);
   padding: 3px 10px; border-radius: var(--radius-xs); letter-spacing: 0.3px; flex-shrink: 0;
 }
+[data-theme="light"] .prefix-chip { background: rgba(230,57,70,0.08); }
 .topbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .count-pill {
   font-size: 11.5px; color: var(--text-muted);
@@ -254,18 +224,17 @@ body.search-focused .filter-bar {
   padding: 3px 11px; border-radius: var(--radius-xs); white-space: nowrap;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
-.count-pill:hover {
-  background: rgba(230,57,70,0.06); border-color: var(--border-red); color: var(--text);
-}
+.count-pill:hover { background: rgba(230,57,70,0.06); border-color: var(--border-red); color: var(--text); }
 .count-pill strong { color: var(--text); font-weight: 600; }
-.kb-hint-btn {
+.icon-btn {
   width: 28px; height: 28px; border-radius: var(--radius-sm);
   background: rgba(255,255,255,0.03); border: 1px solid var(--border);
   color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s var(--ease-spring);
   font-family: var(--font-mono); font-size: 12px;
 }
-.kb-hint-btn:hover { background: rgba(255,255,255,0.07); color: var(--text); border-color: var(--border-md); }
+.icon-btn:hover { background: rgba(255,255,255,0.07); color: var(--text); border-color: var(--border-md); }
+.icon-btn:active { transform: scale(0.92); }
 
 /* ── STATS ROW ── */
 .stats-row {
@@ -274,97 +243,73 @@ body.search-focused .filter-bar {
   backdrop-filter: blur(10px);
   overflow: visible; position: relative; z-index: 10;
 }
+[data-theme="light"] .stats-row { background: rgba(250,250,250,0.5); }
 .stat-card {
   flex: 1; min-width: 120px;
   background: linear-gradient(145deg, rgba(21,21,28,0.8) 0%, rgba(16,16,22,0.9) 100%);
   border: 1px solid var(--border); border-radius: var(--radius-md);
   padding: 12px 16px; display: flex; flex-direction: column; gap: 2px;
-  cursor: default; position: relative; overflow: hidden;
+  cursor: pointer; position: relative; overflow: hidden;
   transition: border-color 0.22s var(--ease-out-expo),
               box-shadow 0.22s var(--ease-out-expo),
               transform 0.22s var(--ease-spring),
               background 0.22s;
   will-change: transform;
+  -webkit-tap-highlight-color: transparent;
 }
-/* shimmer sweep on hover */
+[data-theme="light"] .stat-card { background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(245,245,250,0.95) 100%); }
 .stat-card::before {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%);
   transform: translateX(-100%); pointer-events: none; transition: none;
 }
-.stat-card:hover::before {
-  transform: translateX(100%);
-  transition: transform 0.55s ease;
-}
-/* bottom glow bar */
+.stat-card:hover::before { transform: translateX(100%); transition: transform 0.55s ease; }
 .stat-card::after {
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--sc-accent, var(--red)), transparent);
   opacity: 0; transform: scaleX(0.4);
   transition: opacity 0.22s, transform 0.3s var(--ease-out-expo);
 }
-.stat-card:hover::after { opacity: 1; transform: scaleX(1); }
+.stat-card:hover::after, .stat-card.active::after { opacity: 1; transform: scaleX(1); }
 .stat-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 32px rgba(0,0,0,0.4), 0 0 0 1px var(--sc-glow, rgba(230,57,70,0.12));
   border-color: var(--sc-border, rgba(230,57,70,0.3));
 }
-.stat-num {
-  font-family: var(--font-mono); font-size: 22px; font-weight: 600;
-  color: var(--text); line-height: 1; letter-spacing: -1px;
-  transition: transform 0.2s var(--ease-spring);
+.stat-card.active {
+  border-color: var(--sc-border, rgba(230,57,70,0.5));
+  box-shadow: 0 0 0 1px var(--sc-border, rgba(230,57,70,0.4));
 }
+.stat-num { font-family: var(--font-mono); font-size: 22px; font-weight: 600; color: var(--text); line-height: 1; letter-spacing: -1px; transition: transform 0.2s var(--ease-spring); }
 .stat-card:hover .stat-num { transform: scale(1.06); }
-.stat-label { font-size: 10.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px;
-  transition: color 0.18s; }
+.stat-label { font-size: 10.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; transition: color 0.18s; }
 .stat-card:hover .stat-label { color: var(--text); }
-.stat-card.stat-total {
-  --sc-accent: var(--red); --sc-glow: rgba(230,57,70,0.12); --sc-border: rgba(230,57,70,0.3);
-}
+.stat-card.stat-total    { --sc-accent: var(--red); --sc-glow: rgba(230,57,70,0.12); --sc-border: rgba(230,57,70,0.3); }
 .stat-card.stat-total .stat-num { color: var(--red); }
-.stat-card.stat-cats {
-  --sc-accent: var(--cat-music); --sc-glow: rgba(168,85,247,0.12); --sc-border: rgba(168,85,247,0.3);
-}
+.stat-card.stat-cats     { --sc-accent: var(--cat-music); --sc-glow: rgba(168,85,247,0.12); --sc-border: rgba(168,85,247,0.3); }
 .stat-card.stat-cats .stat-num { color: var(--cat-music); }
-.stat-card.stat-pub {
-  --sc-accent: var(--cat-leveling); --sc-glow: rgba(16,185,129,0.12); --sc-border: rgba(16,185,129,0.3);
-}
+.stat-card.stat-pub      { --sc-accent: var(--cat-leveling); --sc-glow: rgba(16,185,129,0.12); --sc-border: rgba(16,185,129,0.3); }
 .stat-card.stat-pub .stat-num { color: var(--cat-leveling); }
-.stat-card.stat-restricted {
-  --sc-accent: var(--owner); --sc-glow: rgba(240,148,88,0.12); --sc-border: rgba(240,148,88,0.3);
-}
+.stat-card.stat-restricted { --sc-accent: var(--owner); --sc-glow: rgba(240,148,88,0.12); --sc-border: rgba(240,148,88,0.3); }
 .stat-card.stat-restricted .stat-num { color: var(--owner); }
 
-/* ── STAT TOOLTIP ── */
 .stat-tooltip {
   position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px);
   background: var(--bg-4); border: 1px solid var(--border-md);
   border-radius: var(--radius-sm); padding: 8px 12px;
   white-space: nowrap; pointer-events: none; z-index: 50;
   opacity: 0; transition: opacity 0.18s, transform 0.18s var(--ease-out-expo);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-md);
 }
 .stat-tooltip::after {
   content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
   border: 5px solid transparent; border-top-color: var(--bg-4);
 }
-.stat-tooltip-title {
-  font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 3px;
-  font-family: var(--font-mono);
-}
-.stat-tooltip-body {
-  font-size: 10.5px; color: var(--text-muted); line-height: 1.5;
-  display: flex; flex-direction: column; gap: 2px;
-}
-.stat-tooltip-row {
-  display: flex; align-items: center; gap: 6px;
-}
-.stat-tooltip-dot {
-  width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
-}
-.stat-card:hover .stat-tooltip {
-  opacity: 1; transform: translateX(-50%) translateY(0);
-}
+.stat-tooltip-title { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 3px; font-family: var(--font-mono); }
+.stat-tooltip-body { font-size: 10.5px; color: var(--text-muted); line-height: 1.5; display: flex; flex-direction: column; gap: 2px; }
+.stat-tooltip-row { display: flex; align-items: center; gap: 6px; }
+.stat-tooltip-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.stat-card:hover .stat-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* ── NAV BAR ── */
 .nav-bar {
@@ -374,29 +319,29 @@ body.search-focused .filter-bar {
   -webkit-backdrop-filter: blur(20px) saturate(1.2);
   border-bottom: 1px solid var(--border); flex-shrink: 0;
 }
+[data-theme="light"] .nav-bar { background: rgba(250,250,250,0.85); }
 .nav-scroll {
   display: flex; align-items: center; gap: 4px; padding: 0 20px;
   overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
   height: 46px; cursor: grab;
+  scroll-behavior: smooth;
+  will-change: scroll-position;
 }
 .nav-scroll:active { cursor: grabbing; }
 .nav-scroll::-webkit-scrollbar { display: none; }
-
 .nav-bar::before, .nav-bar::after {
   content: ''; position: absolute; top: 0; bottom: 0; width: 32px; z-index: 1;
   pointer-events: none; opacity: 0; transition: opacity 0.2s;
 }
 .nav-bar::before { left: 0; background: linear-gradient(90deg, rgba(7,7,10,0.9), transparent); }
 .nav-bar::after  { right: 0; background: linear-gradient(-90deg, rgba(7,7,10,0.9), transparent); }
+[data-theme="light"] .nav-bar::before { background: linear-gradient(90deg, rgba(250,250,250,0.9), transparent); }
+[data-theme="light"] .nav-bar::after  { background: linear-gradient(-90deg, rgba(250,250,250,0.9), transparent); }
 .nav-bar.fade-left::before  { opacity: 1; }
 .nav-bar.fade-right::after  { opacity: 1; }
 
-/* ── FILTER BAR ── */
-.filter-bar {
-  display: flex; align-items: center; gap: 5px; margin-bottom: 24px; flex-wrap: wrap;
-}
+.filter-bar { display: flex; align-items: center; gap: 5px; margin-bottom: 24px; flex-wrap: wrap; }
 
-/* ── NAV PILL ── */
 .nav-pill {
   display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
   border-radius: 20px; border: 1px solid transparent;
@@ -404,12 +349,13 @@ body.search-focused .filter-bar {
   color: var(--text-muted); cursor: pointer; white-space: nowrap; flex-shrink: 0;
   transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s var(--ease-spring);
   position: relative; line-height: 1;
+  -webkit-tap-highlight-color: transparent;
 }
 .nav-pill:hover { background: rgba(255,255,255,0.04); color: var(--text); border-color: var(--border); }
-.nav-pill.active {
-  background: rgba(230,57,70,0.10); border-color: var(--border-red); color: var(--red); font-weight: 500;
-}
+[data-theme="light"] .nav-pill:hover { background: rgba(0,0,0,0.04); }
+.nav-pill.active { background: rgba(230,57,70,0.10); border-color: var(--border-red); color: var(--red); font-weight: 500; }
 .nav-pill:active { transform: scale(0.96); }
+.nav-pill:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
 .nav-pill.filter-pill { padding: 4px 11px; font-size: 12px; }
 .pill-count {
@@ -417,19 +363,17 @@ body.search-focused .filter-bar {
   border-radius: 10px; background: rgba(255,255,255,0.05); color: var(--text-dim);
   border: 1px solid var(--border); transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-/* Active pill count inherits the pill's own accent via currentColor */
-.nav-pill.active .pill-count {
-  background: rgba(255,255,255,0.06);
-  color: currentColor;
-  border-color: currentColor;
-  opacity: 0.8;
-}
+[data-theme="light"] .pill-count { background: rgba(0,0,0,0.04); }
+.nav-pill.active .pill-count { background: rgba(255,255,255,0.06); color: currentColor; border-color: currentColor; opacity: 0.8; }
 .nav-pill.staff-pill { color: var(--staff); }
 .nav-pill.staff-pill:hover { border-color: var(--staff-border); background: var(--staff-bg); }
 .nav-pill.staff-pill.active { background: var(--staff-bg); border-color: var(--staff-border); color: var(--staff); }
 .nav-pill.owner-pill { color: var(--owner); }
 .nav-pill.owner-pill:hover { border-color: var(--owner-border); background: var(--owner-bg); }
 .nav-pill.owner-pill.active { background: var(--owner-bg); border-color: var(--owner-border); color: var(--owner); }
+.nav-pill.pin-pill { color: var(--pin); }
+.nav-pill.pin-pill:hover { border-color: var(--pin-border); background: var(--pin-bg); }
+.nav-pill.pin-pill.active { background: var(--pin-bg); border-color: var(--pin-border); color: var(--pin); }
 
 .nav-pill.filter-pill::before {
   content: ''; width: 4px; height: 4px; border-radius: 50%; background: currentColor;
@@ -441,10 +385,7 @@ body.search-focused .filter-bar {
 .main { flex: 1; padding: 28px 40px 80px; }
 
 /* ── SEARCH ── */
-.search-wrap {
-  position: relative; margin-bottom: 12px; z-index: 160;
-  transition: transform 0.2s var(--ease-out-expo);
-}
+.search-wrap { position: relative; margin-bottom: 12px; z-index: 160; transition: transform 0.2s var(--ease-out-expo); }
 .search-wrap.focused { transform: scale(1.005); }
 .search-icon-wrap {
   position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
@@ -453,25 +394,28 @@ body.search-focused .filter-bar {
 .search-wrap:focus-within .search-icon-wrap { color: var(--red); }
 #search {
   width: 100%; background: rgba(255,255,255,0.025); border: 1px solid var(--border);
-  border-radius: var(--radius-md); padding: 12px 120px 12px 44px;
+  border-radius: var(--radius-md); padding: 12px 140px 12px 44px;
   color: var(--text); font-size: 14px; font-family: var(--font-ui); outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
+[data-theme="light"] #search { background: rgba(255,255,255,0.7); }
 #search::placeholder { color: var(--text-dim); }
 #search:focus {
   border-color: var(--border-red);
   box-shadow: 0 0 0 3px rgba(230,57,70,0.06), 0 2px 12px rgba(0,0,0,0.3);
   background: rgba(230,57,70,0.015);
 }
-.search-right {
-  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  display: flex; align-items: center; gap: 6px; z-index: 1;
-}
-.search-count {
-  font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
-  transition: color 0.15s; white-space: nowrap;
-}
+.search-right { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 6px; z-index: 1; }
+.search-count { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); transition: color 0.15s; white-space: nowrap; }
 .search-count.visible { color: var(--red); }
+.search-clear {
+  display: none; width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); color: var(--text-muted);
+  cursor: pointer; align-items: center; justify-content: center;
+  border: none; font-size: 11px; transition: background 0.15s, color 0.15s;
+}
+.search-clear:hover { background: rgba(255,255,255,0.15); color: var(--text); }
+.search-clear.visible { display: flex; }
 .search-kbd {
   font-size: 10px; color: var(--text-dim); background: var(--bg-3);
   border: 1px solid var(--border); padding: 2px 6px; border-radius: 3px;
@@ -479,21 +423,34 @@ body.search-focused .filter-bar {
 }
 #search:focus ~ .search-right .search-kbd { opacity: 0; }
 
+/* Recent searches */
+.recent-searches {
+  display: none; gap: 6px; margin-bottom: 16px; align-items: center; flex-wrap: wrap;
+  animation: fade-in 0.25s ease both;
+}
+.recent-searches.show { display: flex; }
+.recent-label { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+.recent-tag {
+  font-size: 11.5px; color: var(--text-muted);
+  background: rgba(255,255,255,0.025); border: 1px solid var(--border);
+  padding: 3px 9px; border-radius: 12px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 5px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.recent-tag:hover { background: rgba(230,57,70,0.08); color: var(--red); border-color: var(--border-red); }
+.recent-tag-x { font-size: 10px; opacity: 0.5; }
+.recent-tag-x:hover { opacity: 1; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
 /* ── CATEGORY SECTION ── */
-.cat-section {
-  margin-bottom: 52px;
-  animation: section-in 0.4s var(--ease-out-expo) both;
-}
+.cat-section { margin-bottom: 52px; animation: section-in 0.4s var(--ease-out-expo) both; }
 .cat-section:last-child { margin-bottom: 0; }
-@keyframes section-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+@keyframes section-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
 .cat-header {
   display: flex; align-items: center; gap: 14px; margin-bottom: 22px;
   padding-bottom: 16px; border-bottom: 1px solid var(--border);
-  position: relative; cursor: default;
+  position: relative; cursor: pointer;
 }
 .cat-header::after {
   content: ''; position: absolute; bottom: -1px; left: 0; height: 2px;
@@ -512,34 +469,27 @@ body.search-focused .filter-bar {
   box-shadow: 0 0 12px var(--cat-glow, var(--red-glow-md)), inset 0 1px 0 rgba(255,255,255,0.05);
   transition: box-shadow 0.3s, transform 0.3s var(--ease-spring);
 }
-.cat-header:hover .cat-icon-wrap {
-  box-shadow: 0 0 22px var(--cat-glow, var(--red-glow-xl)), inset 0 1px 0 rgba(255,255,255,0.07);
-  transform: scale(1.08) rotate(-3deg);
-}
-.cat-name-group { display: flex; flex-direction: column; gap: 3px; }
-.cat-title {
-  font-family: var(--font-display);
-  font-size: 19px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.1;
-  transition: letter-spacing 0.25s var(--ease-out-expo);
-}
+.cat-header:hover .cat-icon-wrap { box-shadow: 0 0 22px var(--cat-glow, var(--red-glow-xl)), inset 0 1px 0 rgba(255,255,255,0.07); transform: scale(1.08) rotate(-3deg); }
+.cat-name-group { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.cat-title { font-family: var(--font-display); font-size: 19px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.1; transition: letter-spacing 0.25s var(--ease-out-expo); }
 .cat-header:hover .cat-title { letter-spacing: 0.2px; }
-.cat-desc { font-size: 12px; color: var(--text-muted); font-weight: 300; line-height: 1;
-  transition: color 0.18s; }
+.cat-desc { font-size: 12px; color: var(--text-muted); font-weight: 300; line-height: 1.3; transition: color 0.18s; }
 .cat-header:hover .cat-desc { color: var(--text); }
-.cat-meta { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-.cat-cmd-count {
-  font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
-  transition: color 0.18s;
-}
+.cat-meta { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.cat-cmd-count { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); transition: color 0.18s; }
 .cat-header:hover .cat-cmd-count { color: var(--cat-accent, var(--red)); }
-.cat-perm {
-  font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
-  padding: 3px 9px; border-radius: var(--radius-xs);
-}
+.cat-perm { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius-xs); }
 .perm-owner { background: var(--owner-bg); color: var(--owner); border: 1px solid var(--owner-border); }
-.perm-staff  { background: var(--staff-bg);  color: var(--staff);  border: 1px solid var(--staff-border); }
+.perm-staff { background: var(--staff-bg); color: var(--staff); border: 1px solid var(--staff-border); }
 
-/* ── COLLAPSIBLE SECTION LABEL ── */
+.cat-collapse-arrow {
+  font-size: 10px; opacity: 0.4; transition: transform 0.25s var(--ease-out-expo), opacity 0.15s;
+}
+.cat-header:hover .cat-collapse-arrow { opacity: 0.8; }
+.cat-section.collapsed .cat-collapse-arrow { transform: rotate(-90deg); }
+.cat-section.collapsed .sec-wrap { display: none; }
+
+/* ── COLLAPSIBLE SECTION ── */
 .sec-wrap { overflow: hidden; }
 .sec-label {
   font-size: 9.5px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase;
@@ -549,107 +499,98 @@ body.search-focused .filter-bar {
 }
 .sec-label:hover { color: var(--text-muted); }
 .sec-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
-.sec-collapse-icon {
-  font-size: 8px; opacity: 0.4; transition: transform 0.25s var(--ease-out-expo), opacity 0.15s; margin-left: 2px;
-}
+.sec-collapse-icon { font-size: 8px; opacity: 0.4; transition: transform 0.25s var(--ease-out-expo), opacity 0.15s; margin-left: 2px; }
 .sec-label:hover .sec-collapse-icon { opacity: 0.8; }
 .sec-wrap.collapsed .sec-collapse-icon { transform: rotate(-90deg); }
-.sec-content { transition: max-height 0.3s var(--ease-out-expo), opacity 0.2s; max-height: 4000px; opacity: 1; }
+.sec-content { transition: max-height 0.3s var(--ease-out-expo), opacity 0.2s; max-height: 8000px; opacity: 1; }
 .sec-wrap.collapsed .sec-content { max-height: 0; opacity: 0; overflow: hidden; }
 
 /* ── GRID ── */
-.cmd-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 7px;
-}
+.cmd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 7px; }
 
 /* ── CARD ── */
 .cmd-card {
   background: linear-gradient(145deg, rgba(21,21,28,0.9) 0%, rgba(16,16,22,0.95) 100%);
   border: 1px solid var(--border); border-radius: var(--radius-md);
   padding: 14px 16px 12px; cursor: pointer;
-  transition: border-color 0.2s, background 0.2s, transform 0.22s var(--ease-spring), box-shadow 0.2s;
+  transition: border-color 0.2s, background 0.2s, transform 0.22s var(--ease-spring), box-shadow 0.2s, opacity 0.2s;
   position: relative; overflow: hidden; user-select: none; will-change: transform;
   animation: card-in 0.35s var(--ease-out-expo) both;
+  -webkit-tap-highlight-color: transparent;
 }
-@keyframes card-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-/* shimmer */
+[data-theme="light"] .cmd-card { background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(248,248,252,0.95) 100%); }
+.cmd-card:focus-visible { outline: 2px solid var(--cat-accent, var(--red)); outline-offset: 2px; }
+@keyframes card-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .cmd-card::before {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.016) 50%, transparent 60%);
   opacity: 0; transform: translateX(-100%); pointer-events: none; transition: none;
 }
-/* left accent bar — uses category color */
 .cmd-card::after {
   content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
   background: linear-gradient(180deg, var(--cat-accent, var(--red)), transparent);
   opacity: 0; transition: opacity 0.18s;
   border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
-.cmd-card:hover {
+.cmd-card:hover, .cmd-card.kb-focused {
   border-color: var(--cat-border, var(--border-red));
   background: linear-gradient(145deg, rgba(26,26,36,0.95) 0%, rgba(21,21,28,0.98) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.35), 0 0 0 1px var(--cat-glow, rgba(230,57,70,0.07));
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--cat-glow, rgba(230,57,70,0.07));
 }
+[data-theme="light"] .cmd-card:hover,
+[data-theme="light"] .cmd-card.kb-focused {
+  background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(252,252,255,1) 100%);
+}
+.cmd-card.kb-focused { transform: translateY(-2px) scale(1.01); }
 .cmd-card:hover::before { opacity: 1; transform: translateX(100%); transition: opacity 0.25s, transform 0.65s; }
-.cmd-card:hover::after  { opacity: 1; }
+.cmd-card:hover::after, .cmd-card.kb-focused::after { opacity: 1; }
 .cmd-card:active { transform: translateY(-1px); transition-duration: 0.1s; }
-.cmd-card.copied {
-  border-color: var(--staff-border);
-  background: linear-gradient(145deg, rgba(74,184,130,0.06) 0%, rgba(16,16,22,0.98) 100%);
-  box-shadow: 0 0 0 1px rgba(74,184,130,0.08);
-}
+.cmd-card.copied { border-color: var(--staff-border); background: linear-gradient(145deg, rgba(74,184,130,0.06) 0%, rgba(16,16,22,0.98) 100%); box-shadow: 0 0 0 1px rgba(74,184,130,0.08); }
 .cmd-card.copied::after { background: var(--staff); opacity: 1; }
+.cmd-card.pinned::before {
+  content: '★'; position: absolute; top: 6px; right: 8px;
+  color: var(--pin); font-size: 10px; opacity: 0.8; background: none; transform: none;
+  pointer-events: none; z-index: 2;
+}
 
-/* ── CARD CONTENT ── */
-.cmd-usage {
-  font-family: var(--font-mono); font-size: 12.5px; font-weight: 500;
-  color: var(--text); margin-bottom: 7px; word-break: break-word; line-height: 1.6;
+/* ── PIN BUTTON ── */
+.pin-btn {
+  position: absolute; top: 8px; right: 8px;
+  width: 22px; height: 22px; border-radius: 4px;
+  background: rgba(255,255,255,0.04); border: 1px solid transparent;
+  color: var(--text-dim); cursor: pointer; display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.15s, color 0.15s, background 0.15s, transform 0.15s var(--ease-spring);
+  z-index: 3; font-size: 11px;
 }
+.cmd-card:hover .pin-btn, .cmd-card.kb-focused .pin-btn { opacity: 1; }
+.pin-btn:hover { color: var(--pin); background: var(--pin-bg); border-color: var(--pin-border); transform: scale(1.1); }
+.pin-btn.pinned { opacity: 1; color: var(--pin); background: var(--pin-bg); border-color: var(--pin-border); }
+
+.cmd-usage { font-family: var(--font-mono); font-size: 12.5px; font-weight: 500; color: var(--text); margin-bottom: 7px; word-break: break-word; line-height: 1.6; padding-right: 22px; }
 .cmd-usage .u-prefix { color: var(--cat-accent, var(--red)); font-weight: 600; }
-.cmd-usage .u-name   { color: var(--text); }
-.cmd-usage .u-args   { color: var(--text-muted); font-weight: 400; }
-.cmd-usage .u-sep    { color: var(--text-dim); margin: 0 1px; }
-.cmd-usage .hl, .cmd-desc .hl {
-  background: rgba(230,57,70,0.18); color: var(--red-hi);
-  border-radius: 2px; padding: 0 1px;
-}
+.cmd-usage .u-name { color: var(--text); }
+.cmd-usage .u-args { color: var(--text-muted); font-weight: 400; }
+.cmd-usage .u-sep { color: var(--text-dim); margin: 0 1px; }
+.cmd-usage .hl, .cmd-desc .hl { background: rgba(230,57,70,0.18); color: var(--red-hi); border-radius: 2px; padding: 0 1px; }
 .cmd-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; font-weight: 300; }
-.cmd-footer {
-  display: flex; align-items: center; flex-wrap: wrap; gap: 5px;
-  margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--border); min-height: 26px;
-}
-.cmd-badge {
-  font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
-  padding: 2px 7px; border-radius: 3px;
-}
+.cmd-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--border); min-height: 26px; }
+.cmd-badge { font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; }
 .alias-tag {
   font-family: var(--font-mono); font-size: 9.5px; background: rgba(255,255,255,0.03);
   border: 1px solid var(--border); padding: 1.5px 6px; border-radius: 3px; color: var(--text-dim);
   transition: border-color 0.15s, color 0.15s;
 }
+[data-theme="light"] .alias-tag { background: rgba(0,0,0,0.03); }
 .cmd-card:hover .alias-tag { border-color: rgba(255,255,255,0.08); color: var(--text-muted); }
-.copy-btn {
-  margin-left: auto; display: flex; align-items: center; gap: 4px;
-  font-size: 10px; color: var(--text-dim); opacity: 0;
-  transition: opacity 0.15s, color 0.15s; pointer-events: none;
-}
-.cmd-card:hover .copy-btn { opacity: 1; }
+.copy-btn { margin-left: auto; display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-dim); opacity: 0; transition: opacity 0.15s, color 0.15s; pointer-events: none; }
+.cmd-card:hover .copy-btn, .cmd-card.kb-focused .copy-btn { opacity: 1; }
 .copy-btn.done { color: var(--staff); opacity: 1 !important; }
 
-/* Ripple */
-.ripple {
-  position: absolute; border-radius: 50%; background: rgba(230,57,70,0.09);
-  transform: scale(0); animation: ripple-out 0.55s var(--ease-out-expo) forwards; pointer-events: none;
-}
+.ripple { position: absolute; border-radius: 50%; background: rgba(230,57,70,0.09); transform: scale(0); animation: ripple-out 0.55s var(--ease-out-expo) forwards; pointer-events: none; }
 @keyframes ripple-out { to { transform: scale(5); opacity: 0; } }
 
-/* ── DETAIL MODAL ── */
+/* ── MODAL ── */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 500;
   background: rgba(7,7,10,0.75);
@@ -658,59 +599,40 @@ body.search-focused .filter-bar {
   display: flex; align-items: center; justify-content: center; padding: 20px;
   opacity: 0; pointer-events: none; transition: opacity 0.2s;
 }
+[data-theme="light"] .modal-overlay { background: rgba(0,0,0,0.4); }
 .modal-overlay.open { opacity: 1; pointer-events: auto; }
-
 .modal-box {
   background: linear-gradient(160deg, var(--bg-3) 0%, var(--bg-2) 100%);
   border: 1px solid var(--border-md); border-radius: var(--radius-lg);
-  width: 100%; max-width: 520px; max-height: 88vh; overflow-y: auto;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+  width: 100%; max-width: 540px; max-height: 88vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.04);
   transform: scale(0.95) translateY(10px);
   transition: transform 0.25s var(--ease-spring);
   scrollbar-width: thin; scrollbar-color: var(--bg-5) transparent;
   position: relative;
 }
 .modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
-
-.modal-header {
-  padding: 20px 20px 16px; border-bottom: 1px solid var(--border);
-  position: relative;
-}
-.modal-header::after {
-  content: ''; position: absolute; bottom: -1px; left: 0; width: 56px; height: 2px;
-  background: linear-gradient(90deg, var(--cat-accent, var(--red)), transparent);
-}
-.modal-cat-label {
-  font-size: 9.5px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
-  color: var(--cat-accent, var(--red)); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
-}
-.modal-title { font-family: var(--font-display); font-size: 22px; font-weight: 800; line-height: 1.1; margin-bottom: 6px; }
+.modal-header { padding: 20px 20px 16px; border-bottom: 1px solid var(--border); position: relative; }
+.modal-header::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 56px; height: 2px; background: linear-gradient(90deg, var(--cat-accent, var(--red)), transparent); }
+.modal-cat-label { font-size: 9.5px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--cat-accent, var(--red)); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.modal-title { font-family: var(--font-display); font-size: 22px; font-weight: 800; line-height: 1.1; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
 .modal-desc { font-size: 13.5px; color: var(--text-muted); font-weight: 300; line-height: 1.55; }
-.modal-close {
-  position: absolute; top: 16px; right: 16px;
+.modal-actions { position: absolute; top: 16px; right: 16px; display: flex; gap: 6px; }
+.modal-action-btn {
   width: 30px; height: 30px; border-radius: var(--radius-sm);
   background: rgba(255,255,255,0.04); border: 1px solid var(--border);
   color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s, color 0.15s; font-size: 16px; line-height: 1;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s var(--ease-spring);
+  font-size: 14px; line-height: 1;
 }
-.modal-close:hover { background: rgba(255,255,255,0.08); color: var(--text); }
-
+.modal-action-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+.modal-action-btn:active { transform: scale(0.92); }
+.modal-action-btn.pinned { color: var(--pin); background: var(--pin-bg); border-color: var(--pin-border); }
 .modal-body { padding: 18px 20px; display: flex; flex-direction: column; gap: 18px; }
-
-.modal-field label {
-  display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 1.2px;
-  text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px;
-}
-.modal-usage {
-  font-family: var(--font-mono); font-size: 13px;
-  background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-sm);
-  padding: 10px 14px; line-height: 1.7; word-break: break-all;
-}
+.modal-field label { display: block; font-size: 9.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+.modal-usage { font-family: var(--font-mono); font-size: 13px; background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; line-height: 1.7; word-break: break-all; }
 .modal-perm-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.modal-perm-badge {
-  font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
-  padding: 4px 10px; border-radius: var(--radius-xs);
-}
+.modal-perm-badge { font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-xs); }
 .modal-aliases { display: flex; flex-wrap: wrap; gap: 6px; }
 .modal-alias-tag {
   font-family: var(--font-mono); font-size: 11px;
@@ -728,52 +650,25 @@ body.search-focused .filter-bar {
   font-size: 13px; font-weight: 500; cursor: pointer;
   transition: background 0.15s, box-shadow 0.15s, transform 0.15s var(--ease-spring);
 }
-.modal-copy-btn:hover {
-  background: linear-gradient(135deg, rgba(230,57,70,0.16) 0%, rgba(168,0,30,0.2) 100%);
-  box-shadow: 0 4px 20px rgba(230,57,70,0.15);
-}
+.modal-copy-btn:hover { background: linear-gradient(135deg, rgba(230,57,70,0.16) 0%, rgba(168,0,30,0.2) 100%); box-shadow: 0 4px 20px rgba(230,57,70,0.15); }
 .modal-copy-btn:active { transform: scale(0.98); }
 .modal-copy-btn.done { color: var(--staff); border-color: var(--staff-border); background: var(--staff-bg); }
-
-/* Modal header top row */
-.modal-header-top {
-  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
-}
-.modal-header-badges { display: flex; gap: 5px; align-items: center; }
-.modal-hbadge {
-  font-size: 8.5px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase;
-  padding: 2px 7px; border-radius: 3px;
-}
+.modal-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding-right: 80px; }
+.modal-header-badges { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+.modal-hbadge { font-size: 8.5px; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; }
 .modal-hbadge.sub { background: rgba(99,102,241,0.10); color: #818cf8; border: 1px solid rgba(99,102,241,0.22); }
 .modal-hbadge.parent { background: rgba(14,165,233,0.10); color: #38bdf8; border: 1px solid rgba(14,165,233,0.22); }
 .modal-hbadge.admin-only { background: rgba(230,57,70,0.10); color: var(--red); border: 1px solid var(--border-red); }
 
-/* Params table */
 .modal-params { display: flex; flex-direction: column; gap: 6px; }
-.modal-param-row {
-  display: grid; grid-template-columns: auto auto 1fr;
-  align-items: baseline; gap: 8px;
-  padding: 7px 10px; border-radius: var(--radius-sm);
-  background: var(--bg-1); border: 1px solid var(--border);
-}
-.param-name {
-  font-family: var(--font-mono); font-size: 11.5px; font-weight: 600;
-  color: var(--cat-accent, var(--red));
-}
-.param-type {
-  font-family: var(--font-mono); font-size: 9.5px; color: var(--text-dim);
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  padding: 1px 5px; border-radius: 3px; white-space: nowrap;
-}
-.param-req {
-  font-size: 8px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-  padding: 1px 5px; border-radius: 3px; white-space: nowrap;
-}
+.modal-param-row { display: grid; grid-template-columns: auto auto 1fr; align-items: baseline; gap: 8px; padding: 7px 10px; border-radius: var(--radius-sm); background: var(--bg-1); border: 1px solid var(--border); }
+.param-name { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; color: var(--cat-accent, var(--red)); }
+.param-type { font-family: var(--font-mono); font-size: 9.5px; color: var(--text-dim); background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
+.param-req { font-size: 8px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
 .param-req.required { color: var(--red); background: var(--red-xlo); border: 1px solid var(--border-red); }
 .param-req.optional { color: var(--text-dim); background: rgba(255,255,255,0.03); border: 1px solid var(--border); }
 .param-desc { font-size: 12px; color: var(--text-muted); grid-column: 1 / -1; margin-top: 2px; line-height: 1.4; }
 
-/* Examples list */
 .modal-examples { display: flex; flex-direction: column; gap: 5px; }
 .modal-example {
   font-family: var(--font-mono); font-size: 11.5px;
@@ -787,105 +682,81 @@ body.search-focused .filter-bar {
 .modal-example-copy { opacity: 0; font-size: 9px; color: var(--text-dim); transition: opacity 0.1s; flex-shrink: 0; }
 .modal-example:hover .modal-example-copy { opacity: 1; }
 
-/* Note banner */
-.modal-note {
-  display: flex; align-items: flex-start; gap: 8px;
-  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-  border-left: 2px solid var(--text-dim); border-radius: var(--radius-sm);
-  padding: 9px 12px; font-size: 12px; color: var(--text-muted); line-height: 1.45;
-}
+.modal-note { display: flex; align-items: flex-start; gap: 8px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 2px solid var(--text-dim); border-radius: var(--radius-sm); padding: 9px 12px; font-size: 12px; color: var(--text-muted); line-height: 1.45; }
 .modal-note-icon { flex-shrink: 0; margin-top: 1px; opacity: 0.5; }
 
-/* Card subcommand indicator */
-.cmd-sub-badge {
-  font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
-  padding: 1.5px 5px; border-radius: 2px;
-  background: rgba(99,102,241,0.08); color: #818cf8; border: 1px solid rgba(99,102,241,0.2);
-}
-.cmd-parent-badge {
-  font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
-  padding: 1.5px 5px; border-radius: 2px;
-  background: rgba(14,165,233,0.08); color: #38bdf8; border: 1px solid rgba(14,165,233,0.2);
-}
+.cmd-sub-badge { font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 1.5px 5px; border-radius: 2px; background: rgba(99,102,241,0.08); color: #818cf8; border: 1px solid rgba(99,102,241,0.2); }
+.cmd-parent-badge { font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 1.5px 5px; border-radius: 2px; background: rgba(14,165,233,0.08); color: #38bdf8; border: 1px solid rgba(14,165,233,0.2); }
 .perm-admin { background: rgba(230,57,70,0.08); color: var(--red-hi); border: 1px solid var(--border-red); }
 
-/* ── KEYBOARD SHORTCUTS PANEL ── */
-.shortcuts-overlay {
-  position: fixed; inset: 0; z-index: 600;
-  background: rgba(7,7,10,0.75); backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center; padding: 20px;
-  opacity: 0; pointer-events: none; transition: opacity 0.2s;
-}
+/* ── SHORTCUTS PANEL ── */
+.shortcuts-overlay { position: fixed; inset: 0; z-index: 600; background: rgba(7,7,10,0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
 .shortcuts-overlay.open { opacity: 1; pointer-events: auto; }
-.shortcuts-box {
-  background: linear-gradient(160deg, var(--bg-3) 0%, var(--bg-2) 100%);
-  border: 1px solid var(--border-md); border-radius: var(--radius-lg);
-  width: 100%; max-width: 400px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
-  transform: scale(0.95); transition: transform 0.25s var(--ease-spring);
-  overflow: hidden;
-}
+.shortcuts-box { background: linear-gradient(160deg, var(--bg-3) 0%, var(--bg-2) 100%); border: 1px solid var(--border-md); border-radius: var(--radius-lg); width: 100%; max-width: 420px; box-shadow: var(--shadow-lg); transform: scale(0.95); transition: transform 0.25s var(--ease-spring); overflow: hidden; }
 .shortcuts-overlay.open .shortcuts-box { transform: scale(1); }
-.shortcuts-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 20px; border-bottom: 1px solid var(--border);
-}
+.shortcuts-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border); }
 .shortcuts-title { font-family: var(--font-display); font-size: 16px; font-weight: 800; }
-.shortcuts-close {
-  width: 28px; height: 28px; border-radius: var(--radius-sm);
-  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-  color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s, color 0.15s;
-}
-.shortcuts-close:hover { background: rgba(255,255,255,0.08); color: var(--text); }
-.shortcuts-body { padding: 14px 20px; display: flex; flex-direction: column; gap: 4px; }
-.shortcut-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 0; border-bottom: 1px solid var(--border);
-}
+.shortcuts-body { padding: 14px 20px; display: flex; flex-direction: column; gap: 4px; max-height: 60vh; overflow-y: auto; }
+.shortcut-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); gap: 12px; }
 .shortcut-row:last-child { border-bottom: none; }
 .shortcut-desc { font-size: 13px; color: var(--text-muted); }
-.shortcut-keys { display: flex; gap: 4px; align-items: center; }
-.kbd {
-  font-family: var(--font-mono); font-size: 10.5px; color: var(--text);
-  background: var(--bg-4); border: 1px solid var(--border-md);
-  padding: 3px 8px; border-radius: 4px;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.4);
-}
+.shortcut-keys { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
+.kbd { font-family: var(--font-mono); font-size: 10.5px; color: var(--text); background: var(--bg-4); border: 1px solid var(--border-md); padding: 3px 8px; border-radius: 4px; box-shadow: 0 2px 0 rgba(0,0,0,0.4); }
+[data-theme="light"] .kbd { box-shadow: 0 2px 0 rgba(0,0,0,0.08); }
 
 /* ── NO RESULTS ── */
-.no-results {
-  display: none; flex-direction: column; align-items: center;
-  text-align: center; padding: 100px 20px; gap: 10px;
-}
-.no-results.show { display: flex; }
-.nr-icon {
-  width: 52px; height: 52px; background: var(--bg-2); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;
-  color: var(--text-dim); margin-bottom: 6px;
-}
+.no-results { display: none; flex-direction: column; align-items: center; text-align: center; padding: 100px 20px; gap: 10px; }
+.no-results.show { display: flex; animation: fade-in 0.3s ease; }
+.nr-icon { width: 52px; height: 52px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; color: var(--text-dim); margin-bottom: 6px; }
 .nr-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; }
 .nr-sub { font-size: 13px; color: var(--text-muted); font-weight: 300; }
 .nr-sub strong { color: var(--text); font-weight: 500; }
+.nr-clear-btn {
+  margin-top: 12px; padding: 7px 18px; border-radius: 20px;
+  background: var(--red-xlo); border: 1px solid var(--border-red); color: var(--red);
+  font-size: 12px; font-family: var(--font-ui); cursor: pointer;
+  transition: background 0.15s, transform 0.15s var(--ease-spring);
+}
+.nr-clear-btn:hover { background: rgba(230,57,70,0.15); }
+.nr-clear-btn:active { transform: scale(0.96); }
 
 /* ── SKELETON LOADER ── */
 .loading-state { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 7px; }
-.skel-card {
-  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-  border-radius: var(--radius-md); padding: 14px 16px 12px; height: 100px;
-  position: relative; overflow: hidden;
-}
-.skel-card::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
-  animation: shim 1.8s ease-in-out infinite;
-}
+.skel-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px 12px; height: 100px; position: relative; overflow: hidden; }
+.skel-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%); animation: shim 1.8s ease-in-out infinite; }
 .skel-line { border-radius: 4px; background: rgba(255,255,255,0.04); }
-.skel-line:first-child  { width: 50%; height: 11px; margin-bottom: 9px; }
-.skel-line:nth-child(2) { width: 78%; height: 9px;  margin-bottom: 5px; opacity: 0.7; }
-.skel-line:nth-child(3) { width: 60%; height: 9px;  opacity: 0.45; }
+.skel-line:first-child { width: 50%; height: 11px; margin-bottom: 9px; }
+.skel-line:nth-child(2) { width: 78%; height: 9px; margin-bottom: 5px; opacity: 0.7; }
+.skel-line:nth-child(3) { width: 60%; height: 9px; opacity: 0.45; }
 @keyframes shim { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--bg-4); border: 1px solid var(--border-md);
+  border-radius: var(--radius-md); padding: 10px 18px;
+  font-size: 12.5px; color: var(--text); z-index: 700;
+  box-shadow: var(--shadow-md);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s var(--ease-spring);
+  display: flex; align-items: center; gap: 8px;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast-icon { color: var(--staff); display: flex; }
+
+/* ── SCROLL TO TOP ── */
+.scroll-top {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-4); border: 1px solid var(--border-md);
+  color: var(--text-muted); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; z-index: 250;
+  transition: opacity 0.25s, transform 0.25s var(--ease-spring), background 0.15s, color 0.15s;
+  box-shadow: var(--shadow-md);
+}
+.scroll-top.show { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { background: var(--red-xlo); color: var(--red); border-color: var(--border-red); transform: translateY(-2px); }
 
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -899,59 +770,28 @@ body.search-focused .filter-bar {
   .cmd-grid { grid-template-columns: 1fr; }
   .topbar { padding: 0 14px; gap: 10px; }
   .nav-scroll { padding: 0 14px; }
-  .brand-tag { display: none; }
-  .topbar-sep { display: none; }
-  .prefix-chip { display: none; }
-  .count-pill { display: none; }
-
-  /* Compact stats strip on mobile — single scrollable row of small chips */
-  .stats-row {
-    padding: 8px 14px;
-    gap: 6px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    border-bottom: 1px solid var(--border);
-  }
+  .brand-tag, .topbar-sep, .prefix-chip, .count-pill { display: none; }
+  .stats-row { padding: 8px 14px; gap: 6px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; border-bottom: 1px solid var(--border); }
   .stats-row::-webkit-scrollbar { display: none; }
-  .stat-card {
-    flex: 0 0 auto;
-    min-width: unset;
-    padding: 6px 12px;
-    flex-direction: row;
-    align-items: center;
-    gap: 7px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-  }
+  .stat-card { flex: 0 0 auto; min-width: unset; padding: 6px 12px; flex-direction: row; align-items: center; gap: 7px; border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); }
   .stat-num { font-size: 13px; letter-spacing: -0.5px; }
   .stat-label { font-size: 9.5px; letter-spacing: 0.4px; text-transform: uppercase; }
+  .stat-tooltip { display: none; }
+  #search { padding: 12px 90px 12px 44px; }
+  .scroll-top { bottom: 16px; right: 16px; width: 36px; height: 36px; }
 }
 
 /* ── STAT CARD ENTRANCE ── */
-@keyframes stat-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+@keyframes stat-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .stat-card { animation: stat-in 0.45s var(--ease-out-expo) both; }
 .stat-card:nth-child(1) { animation-delay: 0.05s; }
 .stat-card:nth-child(2) { animation-delay: 0.11s; }
 .stat-card:nth-child(3) { animation-delay: 0.17s; }
 .stat-card:nth-child(4) { animation-delay: 0.23s; }
 
-/* ── CAT SECTION ENTRANCE ── */
-@keyframes section-in {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.cat-section {
-  animation: section-in 0.4s var(--ease-out-expo) both;
-}
 @media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .bg-orb-a, .bg-orb-b, .bg-orb-c, .brand-dot { animation: none; }
-  .cmd-card, .cat-section, .stat-card { animation: none; }
 }
 </style>
 </head>
@@ -964,7 +804,6 @@ body.search-focused .filter-bar {
   <div class="bg-grid"></div>
 </div>
 
-<!-- Search blur overlay -->
 <div class="search-blur-overlay" id="search-blur-overlay"></div>
 
 <div id="app">
@@ -979,20 +818,20 @@ body.search-focused .filter-bar {
     <span class="prefix-chip">prefix: .</span>
     <div class="topbar-right">
       <div class="count-pill" id="total-badge">loading</div>
-      <button class="kb-hint-btn" id="kb-btn" title="Keyboard shortcuts (?)">?</button>
+      <button class="icon-btn" id="theme-btn" title="Toggle theme (T)" aria-label="Toggle theme">
+        <svg id="theme-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="icon-btn" id="kb-btn" title="Keyboard shortcuts (?)" aria-label="Show shortcuts">?</button>
     </div>
   </header>
 
-  <!-- Animated stats row -->
   <div class="stats-row" id="stats-row">
-    <div class="stat-card stat-total">
+    <div class="stat-card stat-total" data-stat-filter="all">
       <div class="stat-num" id="stat-total">0</div>
       <div class="stat-label">Total Commands</div>
       <div class="stat-tooltip" id="tooltip-total">
         <div class="stat-tooltip-title">All Commands</div>
-        <div class="stat-tooltip-body" id="tooltip-total-body">
-          <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--cat-leveling)"></span><span>Loading…</span></div>
-        </div>
+        <div class="stat-tooltip-body" id="tooltip-total-body"></div>
       </div>
     </div>
     <div class="stat-card stat-cats">
@@ -1000,30 +839,25 @@ body.search-focused .filter-bar {
       <div class="stat-label">Categories</div>
       <div class="stat-tooltip" id="tooltip-cats">
         <div class="stat-tooltip-title">Category Breakdown</div>
-        <div class="stat-tooltip-body" id="tooltip-cats-body">
-          <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--cat-music)"></span><span>Loading…</span></div>
-        </div>
+        <div class="stat-tooltip-body" id="tooltip-cats-body"></div>
       </div>
     </div>
-    <div class="stat-card stat-pub">
+    <div class="stat-card stat-pub" data-stat-filter="public">
       <div class="stat-num" id="stat-pub">0</div>
       <div class="stat-label">Public</div>
-      <div class="stat-tooltip" id="tooltip-pub">
+      <div class="stat-tooltip">
         <div class="stat-tooltip-title">Publicly Usable</div>
         <div class="stat-tooltip-body">
-          <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--cat-leveling)"></span><span>Available to everyone</span></div>
-          <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--text-dim)"></span><span>No special role required</span></div>
+          <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--cat-leveling)"></span><span>Click to filter</span></div>
         </div>
       </div>
     </div>
-    <div class="stat-card stat-restricted">
+    <div class="stat-card stat-restricted" data-stat-filter="restricted">
       <div class="stat-num" id="stat-restricted">0</div>
       <div class="stat-label">Restricted</div>
-      <div class="stat-tooltip" id="tooltip-restricted">
+      <div class="stat-tooltip">
         <div class="stat-tooltip-title">Restricted Access</div>
-        <div class="stat-tooltip-body" id="tooltip-restricted-body">
-          <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--owner)"></span><span>Loading…</span></div>
-        </div>
+        <div class="stat-tooltip-body" id="tooltip-restricted-body"></div>
       </div>
     </div>
   </div>
@@ -1042,9 +876,12 @@ body.search-focused .filter-bar {
       <input type="text" id="search" placeholder="Search commands, aliases, descriptions…" autocomplete="off" spellcheck="false" aria-label="Search commands">
       <span class="search-right">
         <span class="search-count" id="search-count"></span>
+        <button class="search-clear" id="search-clear" aria-label="Clear search" title="Clear">✕</button>
         <span class="search-kbd">/</span>
       </span>
     </div>
+
+    <div class="recent-searches" id="recent-searches"></div>
 
     <div class="filter-bar" id="filter-bar"></div>
 
@@ -1067,22 +904,29 @@ body.search-focused .filter-bar {
       </div>
       <div class="nr-title">Nothing found</div>
       <div class="nr-sub">No commands matched <strong id="no-results-query"></strong></div>
+      <button class="nr-clear-btn" id="nr-clear-btn">Clear filters</button>
     </div>
   </main>
 
 </div>
 
 <!-- Detail Modal -->
-<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
   <div class="modal-box" id="modal-box">
     <div class="modal-header" id="modal-header">
+      <div class="modal-actions">
+        <button class="modal-action-btn" id="modal-pin-btn" title="Pin command" aria-label="Pin command">★</button>
+        <button class="modal-action-btn" id="modal-share-btn" title="Copy link" aria-label="Share link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        </button>
+        <button class="modal-action-btn" id="modal-close" title="Close (Esc)" aria-label="Close">✕</button>
+      </div>
       <div class="modal-header-top">
         <div class="modal-cat-label" id="modal-cat-label"></div>
         <div class="modal-header-badges" id="modal-header-badges"></div>
       </div>
       <div class="modal-title" id="modal-title"></div>
       <div class="modal-desc" id="modal-desc"></div>
-      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-field">
@@ -1107,53 +951,50 @@ body.search-focused .filter-bar {
       </div>
       <div class="modal-note" id="modal-note" style="display:none"></div>
       <button class="modal-copy-btn" id="modal-copy-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-        </svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         Copy Command
       </button>
     </div>
   </div>
 </div>
 
-<!-- Keyboard Shortcuts Panel -->
+<!-- Shortcuts Panel -->
 <div class="shortcuts-overlay" id="shortcuts-overlay" role="dialog" aria-modal="true">
   <div class="shortcuts-box">
     <div class="shortcuts-header">
       <div class="shortcuts-title">Keyboard Shortcuts</div>
-      <button class="shortcuts-close" id="shortcuts-close" aria-label="Close">✕</button>
+      <button class="icon-btn" id="shortcuts-close" aria-label="Close">✕</button>
     </div>
     <div class="shortcuts-body">
-      <div class="shortcut-row">
-        <span class="shortcut-desc">Focus search</span>
-        <span class="shortcut-keys"><span class="kbd">/</span></span>
-      </div>
-      <div class="shortcut-row">
-        <span class="shortcut-desc">Open shortcuts</span>
-        <span class="shortcut-keys"><span class="kbd">?</span></span>
-      </div>
-      <div class="shortcut-row">
-        <span class="shortcut-desc">Close / blur</span>
-        <span class="shortcut-keys"><span class="kbd">Esc</span></span>
-      </div>
-      <div class="shortcut-row">
-        <span class="shortcut-desc">Open command detail</span>
-        <span class="shortcut-keys"><span class="kbd">Shift</span> + <span class="kbd">Click</span></span>
-      </div>
-      <div class="shortcut-row">
-        <span class="shortcut-desc">Copy command</span>
-        <span class="shortcut-keys"><span class="kbd">Click</span></span>
-      </div>
-      <div class="shortcut-row">
-        <span class="shortcut-desc">Collapse/expand section</span>
-        <span class="shortcut-keys"><span class="kbd">Click label</span></span>
-      </div>
+      <div class="shortcut-row"><span class="shortcut-desc">Focus search</span><span class="shortcut-keys"><span class="kbd">/</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Navigate cards</span><span class="shortcut-keys"><span class="kbd">↑</span><span class="kbd">↓</span><span class="kbd">←</span><span class="kbd">→</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Copy focused command</span><span class="shortcut-keys"><span class="kbd">Enter</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Open command detail</span><span class="shortcut-keys"><span class="kbd">Shift</span> + <span class="kbd">Enter</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Or shift-click a card</span><span class="shortcut-keys"><span class="kbd">⇧</span> + <span class="kbd">Click</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Pin/unpin focused</span><span class="shortcut-keys"><span class="kbd">P</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Toggle theme</span><span class="shortcut-keys"><span class="kbd">T</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Open shortcuts</span><span class="shortcut-keys"><span class="kbd">?</span></span></div>
+      <div class="shortcut-row"><span class="shortcut-desc">Close / blur</span><span class="shortcut-keys"><span class="kbd">Esc</span></span></div>
     </div>
   </div>
 </div>
 
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top" title="Scroll to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
 const DATA_URL = 'commands.json';
+const STORAGE_KEYS = {
+  theme: 'xo:theme',
+  pins: 'xo:pinned',
+  recent: 'xo:recent',
+  collapsed: 'xo:collapsedCats',
+};
 
 let allData = null;
 let activeFilter = 'all';
@@ -1161,8 +1002,15 @@ let activeCat = 'all';
 let searchQuery = '';
 let modalOpen = false;
 let shortcutsOpen = false;
+let currentModalCmd = null;
+let currentModalCatId = null;
+let pinned = new Set(JSON.parse(localStorage.getItem(STORAGE_KEYS.pins) || '[]'));
+let recentSearches = JSON.parse(localStorage.getItem(STORAGE_KEYS.recent) || '[]');
+let collapsedCats = new Set(JSON.parse(localStorage.getItem(STORAGE_KEYS.collapsed) || '[]'));
+let kbFocusedIdx = -1;
+let visibleCards = [];
+let searchDebounce = null;
 
-/* Category accent color map */
 const CAT_COLORS = {
   music:     { accent: '#a855f7', bg: 'rgba(168,85,247,0.08)',   border: 'rgba(168,85,247,0.22)',  glow: 'rgba(168,85,247,0.12)' },
   image:     { accent: '#06b6d4', bg: 'rgba(6,182,212,0.08)',    border: 'rgba(6,182,212,0.22)',   glow: 'rgba(6,182,212,0.10)' },
@@ -1188,7 +1036,6 @@ function getOrderedCats(cats) {
   const extra = Object.keys(cats).filter(id => !CAT_ORDER.includes(id));
   return [...known, ...extra];
 }
-
 function getOrderedSections(catId, sections) {
   const order = SECTION_ORDER[catId];
   if (!order) return Object.entries(sections);
@@ -1197,7 +1044,9 @@ function getOrderedSections(catId, sections) {
   return [...ordered, ...extra];
 }
 
+/* ── INIT ── */
 async function loadData() {
+  initTheme();
   try {
     const res = await fetch(DATA_URL);
     allData = await res.json();
@@ -1210,22 +1059,97 @@ async function loadData() {
 
 function init() {
   document.getElementById('total-badge').innerHTML = `<strong>${allData.total_commands}</strong> commands`;
+  parseURLState();
   buildNav();
   buildStats();
   setupSearch();
   setupScrollFade();
   setupModal();
   setupShortcuts();
+  setupKeyboardNav();
+  setupScrollTop();
+  setupStatClickFilters();
+  renderRecentSearches();
   render();
+  setupHashRouting();
 }
 
-/* ── ANIMATED STATS ── */
+/* ── THEME ── */
+function initTheme() {
+  const saved = localStorage.getItem(STORAGE_KEYS.theme);
+  const prefers = window.matchMedia('(prefers-color-scheme: light)').matches;
+  const theme = saved || (prefers ? 'light' : 'dark');
+  setTheme(theme);
+  document.getElementById('theme-btn').addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+  });
+}
+function setTheme(theme) {
+  if (theme === 'light') document.documentElement.dataset.theme = 'light';
+  else delete document.documentElement.dataset.theme;
+  localStorage.setItem(STORAGE_KEYS.theme, theme);
+  const icon = document.getElementById('theme-icon');
+  if (icon) {
+    icon.innerHTML = theme === 'light'
+      ? '<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>'
+      : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  }
+}
+
+/* ── URL STATE ── */
+function parseURLState() {
+  const params = new URLSearchParams(location.search);
+  const cat = params.get('cat');
+  const filter = params.get('filter');
+  const q = params.get('q');
+  if (cat) activeCat = cat;
+  if (filter) activeFilter = filter;
+  if (q) {
+    searchQuery = q.toLowerCase();
+    setTimeout(() => {
+      const s = document.getElementById('search');
+      if (s) s.value = q;
+    }, 0);
+  }
+}
+function syncURL() {
+  const params = new URLSearchParams();
+  if (activeCat !== 'all') params.set('cat', activeCat);
+  if (activeFilter !== 'all') params.set('filter', activeFilter);
+  if (searchQuery) params.set('q', searchQuery);
+  const newURL = params.toString() ? `?${params.toString()}` : location.pathname;
+  history.replaceState(null, '', newURL + location.hash);
+}
+
+/* ── HASH ROUTING (deep link to command) ── */
+function setupHashRouting() {
+  const handle = () => {
+    const match = location.hash.match(/^#cmd=(.+)$/);
+    if (match) {
+      const name = decodeURIComponent(match[1]);
+      openCommandByName(name);
+    }
+  };
+  window.addEventListener('hashchange', handle);
+  handle();
+}
+function openCommandByName(name) {
+  for (const [catId, cat] of Object.entries(allData.categories)) {
+    for (const cmds of Object.values(cat.sections)) {
+      const found = cmds.find(c => c.name === name || (c.aliases || []).includes(name));
+      if (found) {
+        openModal(found, catId, cat.label);
+        return;
+      }
+    }
+  }
+}
+
+/* ── STATS ── */
 function buildStats() {
   const cats = allData.categories;
   const catIds = Object.keys(cats);
   let pubCount = 0, restrictedCount = 0, ownerCount = 0, staffCount = 0, adminCount = 0;
-
-  // Per-category counts for "Total Commands" tooltip
   const catCounts = {};
   Object.entries(cats).forEach(([id, cat]) => {
     let n = 0;
@@ -1246,64 +1170,41 @@ function buildStats() {
   animCount('stat-pub', pubCount);
   animCount('stat-restricted', restrictedCount);
 
-  // Build tooltip: Total – top 5 categories by count
-  const topCats = Object.entries(catCounts)
-    .sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const topCats = Object.entries(catCounts).sort((a,b) => b[1]-a[1]).slice(0, 5);
   const totalBody = document.getElementById('tooltip-total-body');
   if (totalBody) {
     totalBody.innerHTML = topCats.map(([id, n]) => {
       const col = CAT_COLORS[id] || CAT_COLORS.admin;
-      const cat = cats[id];
-      return `<div class="stat-tooltip-row">
-        <span class="stat-tooltip-dot" style="background:${col.accent}"></span>
-        <span style="flex:1">${escHtml(cat.label)}</span>
-        <span style="font-family:var(--font-mono);color:${col.accent};font-size:10px">${n}</span>
-      </div>`;
+      return `<div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:${col.accent}"></span><span style="flex:1">${escHtml(cats[id].label)}</span><span style="font-family:var(--font-mono);color:${col.accent};font-size:10px">${n}</span></div>`;
     }).join('');
   }
-
-  // Build tooltip: Categories – list with icons
   const catsBody = document.getElementById('tooltip-cats-body');
   if (catsBody) {
     const listed = getOrderedCats(cats).slice(0, 6);
     catsBody.innerHTML = listed.map(id => {
       const col = CAT_COLORS[id] || CAT_COLORS.admin;
-      const cat = cats[id];
-      return `<div class="stat-tooltip-row">
-        <span style="font-size:10px;line-height:1">${escHtml(cat.icon)}</span>
-        <span style="flex:1">${escHtml(cat.label)}</span>
-        <span style="font-family:var(--font-mono);color:${col.accent};font-size:10px">${catCounts[id]}</span>
-      </div>`;
+      return `<div class="stat-tooltip-row"><span style="font-size:10px;line-height:1">${escHtml(cats[id].icon)}</span><span style="flex:1">${escHtml(cats[id].label)}</span><span style="font-family:var(--font-mono);color:${col.accent};font-size:10px">${catCounts[id]}</span></div>`;
     }).join('');
-    if (catIds.length > 6) {
-      catsBody.innerHTML += `<div class="stat-tooltip-row" style="color:var(--text-dim);font-size:9.5px;padding-top:2px">+ ${catIds.length - 6} more categories</div>`;
-    }
+    if (catIds.length > 6)
+      catsBody.innerHTML += `<div class="stat-tooltip-row" style="color:var(--text-dim);font-size:9.5px;padding-top:2px">+ ${catIds.length - 6} more</div>`;
   }
-
-  // Build tooltip: Restricted breakdown
   const restBody = document.getElementById('tooltip-restricted-body');
   if (restBody) {
     restBody.innerHTML = `
-      <div class="stat-tooltip-row">
-        <span class="stat-tooltip-dot" style="background:var(--owner)"></span>
-        <span style="flex:1">Owner only</span>
-        <span style="font-family:var(--font-mono);color:var(--owner);font-size:10px">${ownerCount}</span>
-      </div>
-      <div class="stat-tooltip-row">
-        <span class="stat-tooltip-dot" style="background:var(--staff)"></span>
-        <span style="flex:1">Staff only</span>
-        <span style="font-family:var(--font-mono);color:var(--staff);font-size:10px">${staffCount}</span>
-      </div>
-      <div class="stat-tooltip-row">
-        <span class="stat-tooltip-dot" style="background:var(--red)"></span>
-        <span style="flex:1">Admin only</span>
-        <span style="font-family:var(--font-mono);color:var(--red);font-size:10px">${adminCount}</span>
-      </div>
-      <div class="stat-tooltip-row" style="margin-top:3px;padding-top:3px;border-top:1px solid var(--border);color:var(--text-dim);font-size:9.5px">
-        <span>Requires elevated permissions</span>
-      </div>
+      <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--owner)"></span><span style="flex:1">Owner</span><span style="font-family:var(--font-mono);color:var(--owner);font-size:10px">${ownerCount}</span></div>
+      <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--staff)"></span><span style="flex:1">Staff</span><span style="font-family:var(--font-mono);color:var(--staff);font-size:10px">${staffCount}</span></div>
+      <div class="stat-tooltip-row"><span class="stat-tooltip-dot" style="background:var(--red)"></span><span style="flex:1">Admin</span><span style="font-family:var(--font-mono);color:var(--red);font-size:10px">${adminCount}</span></div>
     `;
   }
+}
+
+function setupStatClickFilters() {
+  document.querySelectorAll('.stat-card[data-stat-filter]').forEach(card => {
+    card.addEventListener('click', () => {
+      const f = card.dataset.statFilter;
+      setFilter(f === 'restricted' ? 'staff' : f);
+    });
+  });
 }
 
 function animCount(id, target) {
@@ -1330,22 +1231,25 @@ function buildNav() {
     { key: 'staff',  label: 'Staff',  cls: 'staff-pill' },
     { key: 'admin',  label: 'Admin',  cls: 'owner-pill' },
     { key: 'owner',  label: 'Owner',  cls: 'owner-pill' },
+    { key: 'pinned', label: '★ Pinned', cls: 'pin-pill' },
   ];
+  filterBar.innerHTML = '';
   filters.forEach(({ key, label, cls }) => {
     const btn = document.createElement('button');
-    btn.className = 'nav-pill filter-pill' + (cls ? ' ' + cls : '') + (key === 'all' ? ' active' : '');
+    btn.className = 'nav-pill filter-pill' + (cls ? ' ' + cls : '') + (key === activeFilter ? ' active' : '');
     btn.dataset.filter = key;
     btn.textContent = label;
     btn.addEventListener('click', () => setFilter(key));
     filterBar.appendChild(btn);
   });
 
-  const allBtn = makeCatPill('all', gridIcon(), 'All', catCount('all'), true);
+  scroll.innerHTML = '';
+  const allBtn = makeCatPill('all', gridIcon(), 'All', catCount('all'), activeCat === 'all');
   scroll.appendChild(allBtn);
 
   getOrderedCats(allData.categories).forEach(id => {
     const cat = allData.categories[id];
-    const btn = makeCatPill(id, cat.icon, cat.label, catCount(id), false);
+    const btn = makeCatPill(id, cat.icon, cat.label, catCount(id), activeCat === id);
     scroll.appendChild(btn);
   });
 }
@@ -1355,25 +1259,20 @@ function makeCatPill(id, icon, label, count, active) {
   btn.className = 'nav-pill' + (active ? ' active' : '');
   btn.dataset.cat = id;
   const col = CAT_COLORS[id];
-  if (col && !active) {
-    btn.style.setProperty('--pill-accent', col.accent);
-  }
   btn.innerHTML = `${typeof icon === 'string' && icon.length <= 3 ? `<span style="font-size:11px">${escHtml(icon)}</span>` : icon}<span>${escHtml(label)}</span><span class="pill-count">${count}</span>`;
   btn.addEventListener('click', () => setCat(id));
-  // Hover tint via category color
   if (col) {
+    if (active) {
+      btn.style.color = col.accent; btn.style.borderColor = col.border; btn.style.background = col.bg;
+    }
     btn.addEventListener('mouseenter', () => {
       if (!btn.classList.contains('active')) {
-        btn.style.color = col.accent;
-        btn.style.borderColor = col.border;
-        btn.style.background = col.bg;
+        btn.style.color = col.accent; btn.style.borderColor = col.border; btn.style.background = col.bg;
       }
     });
     btn.addEventListener('mouseleave', () => {
       if (!btn.classList.contains('active')) {
-        btn.style.color = '';
-        btn.style.borderColor = '';
-        btn.style.background = '';
+        btn.style.color = ''; btn.style.borderColor = ''; btn.style.background = '';
       }
     });
   }
@@ -1388,7 +1287,6 @@ function gridIcon() {
 function setupScrollFade() {
   const bar    = document.getElementById('nav-bar');
   const scroll = document.getElementById('nav-scroll');
-
   function update() {
     bar.classList.toggle('fade-left',  scroll.scrollLeft > 8);
     bar.classList.toggle('fade-right', scroll.scrollLeft < scroll.scrollWidth - scroll.clientWidth - 8);
@@ -1398,7 +1296,7 @@ function setupScrollFade() {
   window.addEventListener('resize', update);
   scroll.addEventListener('wheel', e => {
     if (e.deltaY === 0) return; e.preventDefault();
-    scroll.scrollBy({ left: e.deltaY * 1.2, behavior: 'smooth' });
+    scroll.scrollBy({ left: e.deltaY * 2.5, behavior: 'auto' });
   }, { passive: false });
 
   let isDown = false, startX = 0, startLeft = 0, dragged = false;
@@ -1429,29 +1327,23 @@ function setFilter(key) {
   activeFilter = key;
   document.querySelectorAll('.nav-pill.filter-pill').forEach(b =>
     b.classList.toggle('active', b.dataset.filter === key));
+  syncURL();
   render();
 }
-
 function setCat(id) {
   activeCat = id;
-  searchQuery = '';
-  document.getElementById('search').value = '';
-  document.getElementById('search-count').textContent = '';
-  document.getElementById('search-count').classList.remove('visible');
   document.querySelectorAll('.nav-pill[data-cat]').forEach(b => {
     const active = b.dataset.cat === id;
     b.classList.toggle('active', active);
     const col = CAT_COLORS[b.dataset.cat];
     if (col) {
-      if (active) {
-        b.style.color = col.accent; b.style.borderColor = col.border; b.style.background = col.bg;
-      } else {
-        b.style.color = ''; b.style.borderColor = ''; b.style.background = '';
-      }
+      if (active) { b.style.color = col.accent; b.style.borderColor = col.border; b.style.background = col.bg; }
+      else { b.style.color = ''; b.style.borderColor = ''; b.style.background = ''; }
     }
   });
   const active = document.querySelector('.nav-pill[data-cat].active');
   if (active) active.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
+  syncURL();
   render();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -1461,6 +1353,7 @@ function setupSearch() {
   const searchEl   = document.getElementById('search');
   const searchWrap = document.getElementById('search-wrap');
   const countEl    = document.getElementById('search-count');
+  const clearEl    = document.getElementById('search-clear');
 
   searchEl.addEventListener('focus', () => {
     document.body.classList.add('search-focused');
@@ -1469,17 +1362,14 @@ function setupSearch() {
   searchEl.addEventListener('blur', () => {
     document.body.classList.remove('search-focused');
     searchWrap.classList.remove('focused');
+    // Save to recent if non-trivial
+    if (searchQuery.length >= 2) saveRecentSearch(searchQuery);
   });
 
-  searchEl.addEventListener('input', e => {
-    searchQuery = e.target.value.trim().toLowerCase();
-    activeCat = 'all';
-    document.querySelectorAll('.nav-pill[data-cat]').forEach(b => {
-      const active = b.dataset.cat === 'all';
-      b.classList.toggle('active', active);
-      const col = CAT_COLORS[b.dataset.cat];
-      if (col) { b.style.color = ''; b.style.borderColor = ''; b.style.background = ''; }
-    });
+  const doSearch = (val) => {
+    searchQuery = val.trim().toLowerCase();
+    clearEl.classList.toggle('visible', !!searchQuery);
+    syncURL();
     render();
     if (searchQuery) {
       const n = countVisible();
@@ -1488,15 +1378,69 @@ function setupSearch() {
     } else {
       countEl.textContent = ''; countEl.classList.remove('visible');
     }
+  };
+
+  searchEl.addEventListener('input', e => {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => doSearch(e.target.value), 80);
+  });
+
+  clearEl.addEventListener('click', () => {
+    searchEl.value = '';
+    doSearch('');
+    searchEl.focus();
+  });
+  // restore from URL
+  if (searchQuery) {
+    searchEl.value = searchQuery;
+    clearEl.classList.add('visible');
+  }
+}
+
+function saveRecentSearch(q) {
+  recentSearches = recentSearches.filter(s => s !== q);
+  recentSearches.unshift(q);
+  if (recentSearches.length > 5) recentSearches = recentSearches.slice(0, 5);
+  localStorage.setItem(STORAGE_KEYS.recent, JSON.stringify(recentSearches));
+  renderRecentSearches();
+}
+
+function renderRecentSearches() {
+  const el = document.getElementById('recent-searches');
+  if (!el) return;
+  if (!recentSearches.length || searchQuery) { el.classList.remove('show'); return; }
+  el.classList.add('show');
+  el.innerHTML = '<span class="recent-label">Recent</span>';
+  recentSearches.forEach(q => {
+    const tag = document.createElement('span');
+    tag.className = 'recent-tag';
+    tag.innerHTML = `<span>${escHtml(q)}</span><span class="recent-tag-x" data-x>✕</span>`;
+    tag.addEventListener('click', e => {
+      if (e.target.dataset.x !== undefined) {
+        recentSearches = recentSearches.filter(s => s !== q);
+        localStorage.setItem(STORAGE_KEYS.recent, JSON.stringify(recentSearches));
+        renderRecentSearches();
+      } else {
+        document.getElementById('search').value = q;
+        searchQuery = q.toLowerCase();
+        document.getElementById('search-clear').classList.add('visible');
+        const countEl = document.getElementById('search-count');
+        syncURL();
+        render();
+        const n = countVisible();
+        countEl.textContent = n + ' result' + (n !== 1 ? 's' : '');
+        countEl.classList.add('visible');
+      }
+    });
+    el.appendChild(tag);
   });
 }
 
-/* ── KEYBOARD SHORTCUTS ── */
+/* ── KEYBOARD ── */
 function setupShortcuts() {
-  const btn       = document.getElementById('kb-btn');
-  const overlay   = document.getElementById('shortcuts-overlay');
-  const closeBtn  = document.getElementById('shortcuts-close');
-  const searchEl  = document.getElementById('search');
+  const btn = document.getElementById('kb-btn');
+  const overlay = document.getElementById('shortcuts-overlay');
+  const closeBtn = document.getElementById('shortcuts-close');
 
   const openShortcuts = () => { overlay.classList.add('open'); shortcutsOpen = true; };
   const closeShortcuts = () => { overlay.classList.remove('open'); shortcutsOpen = false; };
@@ -1504,44 +1448,148 @@ function setupShortcuts() {
   btn.addEventListener('click', () => shortcutsOpen ? closeShortcuts() : openShortcuts());
   closeBtn.addEventListener('click', closeShortcuts);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeShortcuts(); });
+}
 
+function setupKeyboardNav() {
+  const searchEl = document.getElementById('search');
   document.addEventListener('keydown', e => {
     if (document.activeElement === searchEl) {
       if (e.key === 'Escape') { searchEl.blur(); return; }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault(); searchEl.blur();
+        kbFocusedIdx = -1; moveFocus(1);
+      }
       return;
     }
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
     if (e.key === '/') { e.preventDefault(); searchEl.focus(); return; }
-    if (e.key === '?') { e.preventDefault(); shortcutsOpen ? closeShortcuts() : openShortcuts(); return; }
+    if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+      e.preventDefault();
+      document.getElementById('kb-btn').click();
+      return;
+    }
+    if (e.key === 't' || e.key === 'T') {
+      if (!modalOpen && !shortcutsOpen) document.getElementById('theme-btn').click();
+      return;
+    }
     if (e.key === 'Escape') {
-      if (shortcutsOpen) { closeShortcuts(); return; }
+      if (shortcutsOpen) { document.getElementById('shortcuts-close').click(); return; }
       if (modalOpen) { closeModal(); return; }
+      if (kbFocusedIdx >= 0) { clearKbFocus(); return; }
+    }
+    if (modalOpen || shortcutsOpen) return;
+
+    // Card navigation
+    if (['ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key)) {
+      e.preventDefault();
+      handleArrowNav(e.key);
+      return;
+    }
+    if (e.key === 'Enter' && kbFocusedIdx >= 0) {
+      e.preventDefault();
+      const card = visibleCards[kbFocusedIdx];
+      if (!card) return;
+      if (e.shiftKey) {
+        const cmd = card._cmdData;
+        openModal(cmd.cmd, cmd.catId, cmd.catLabel);
+      } else {
+        card.click();
+      }
+      return;
+    }
+    if ((e.key === 'p' || e.key === 'P') && kbFocusedIdx >= 0) {
+      e.preventDefault();
+      const card = visibleCards[kbFocusedIdx];
+      if (card) togglePin(card._cmdData.cmd.name);
     }
   });
+}
+
+function handleArrowNav(key) {
+  if (!visibleCards.length) return;
+  if (kbFocusedIdx < 0) { kbFocusedIdx = 0; updateKbFocus(); return; }
+  const card = visibleCards[kbFocusedIdx];
+  if (!card) return;
+
+  if (key === 'ArrowDown' || key === 'ArrowUp') {
+    // Move by grid column-aware row
+    const cardRect = card.getBoundingClientRect();
+    const grid = card.parentElement;
+    const gridCards = Array.from(grid.children);
+    const colCount = Math.max(1, Math.round(grid.clientWidth / (cardRect.width + 7)));
+    const localIdx = gridCards.indexOf(card);
+    const targetLocal = key === 'ArrowDown' ? localIdx + colCount : localIdx - colCount;
+    if (targetLocal >= 0 && targetLocal < gridCards.length) {
+      kbFocusedIdx = visibleCards.indexOf(gridCards[targetLocal]);
+    } else {
+      // jump to next/prev grid
+      moveFocus(key === 'ArrowDown' ? 1 : -1);
+      return;
+    }
+  } else {
+    moveFocus(key === 'ArrowRight' ? 1 : -1);
+    return;
+  }
+  updateKbFocus();
+}
+
+function moveFocus(delta) {
+  if (!visibleCards.length) return;
+  kbFocusedIdx = (kbFocusedIdx + delta + visibleCards.length) % visibleCards.length;
+  updateKbFocus();
+}
+
+function clearKbFocus() {
+  visibleCards.forEach(c => c.classList.remove('kb-focused'));
+  kbFocusedIdx = -1;
+}
+
+function updateKbFocus() {
+  visibleCards.forEach((c, i) => c.classList.toggle('kb-focused', i === kbFocusedIdx));
+  const target = visibleCards[kbFocusedIdx];
+  if (target) target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 /* ── MODAL ── */
 function setupModal() {
   const overlay = document.getElementById('modal-overlay');
-  const closeBtn = document.getElementById('modal-close');
+  document.getElementById('modal-close').addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-  closeBtn.addEventListener('click', closeModal);
+
+  document.getElementById('modal-share-btn').addEventListener('click', () => {
+    if (!currentModalCmd) return;
+    const url = `${location.origin}${location.pathname}#cmd=${encodeURIComponent(currentModalCmd.name)}`;
+    navigator.clipboard.writeText(url).then(() => showToast('Link copied!'));
+  });
+  document.getElementById('modal-pin-btn').addEventListener('click', () => {
+    if (!currentModalCmd) return;
+    togglePin(currentModalCmd.name);
+    updateModalPinState();
+  });
+}
+
+function updateModalPinState() {
+  const btn = document.getElementById('modal-pin-btn');
+  if (!currentModalCmd) return;
+  btn.classList.toggle('pinned', pinned.has(currentModalCmd.name));
+  btn.title = pinned.has(currentModalCmd.name) ? 'Unpin' : 'Pin command';
 }
 
 function openModal(cmd, catId, catLabel) {
+  currentModalCmd = cmd;
+  currentModalCatId = catId;
   const overlay = document.getElementById('modal-overlay');
   const col = CAT_COLORS[catId] || CAT_COLORS.admin;
   const cat = allData.categories[catId];
 
-  // Header accent
   const header = document.getElementById('modal-header');
   header.style.setProperty('--cat-accent', col.accent);
 
-  // Cat label
   const catLabelEl = document.getElementById('modal-cat-label');
   catLabelEl.innerHTML = `<span style="font-size:11px">${escHtml(cat?.icon || '')}</span> ${escHtml(catLabel)}`;
   catLabelEl.style.color = col.accent;
 
-  // Header badges (subcommand / parent / admin)
   const badgesEl = document.getElementById('modal-header-badges');
   badgesEl.innerHTML = '';
   if (cmd.is_subcommand) {
@@ -1566,12 +1614,10 @@ function openModal(cmd, catId, catLabel) {
   document.getElementById('modal-title').textContent = '.' + cmd.name;
   document.getElementById('modal-desc').textContent = cmd.description || '—';
 
-  // Usage
   const usageEl = document.getElementById('modal-usage');
   usageEl.innerHTML = renderUsage(cmd.usage);
   usageEl.style.color = col.accent;
 
-  // Params
   const paramsWrap = document.getElementById('modal-params-wrap');
   const paramsContainer = document.getElementById('modal-params');
   const params = (cmd.params || []).filter(p => p.name);
@@ -1583,11 +1629,7 @@ function openModal(cmd, catId, catLabel) {
       const row = document.createElement('div');
       row.className = 'modal-param-row';
       const req = p.required === true ? true : p.required === false ? false : null;
-      const reqBadge = req === true
-        ? `<span class="param-req required">required</span>`
-        : req === false
-          ? `<span class="param-req optional">optional</span>`
-          : '';
+      const reqBadge = req === true ? `<span class="param-req required">required</span>` : req === false ? `<span class="param-req optional">optional</span>` : '';
       const typeStr = p.type ? p.type.replace('discord.', '') : '';
       row.innerHTML = `
         <span class="param-name">${escHtml(p.name)}</span>
@@ -1597,11 +1639,8 @@ function openModal(cmd, catId, catLabel) {
       `;
       paramsContainer.appendChild(row);
     });
-  } else {
-    paramsWrap.style.display = 'none';
-  }
+  } else paramsWrap.style.display = 'none';
 
-  // Examples
   const examplesWrap = document.getElementById('modal-examples-wrap');
   const examplesContainer = document.getElementById('modal-examples');
   examplesContainer.innerHTML = '';
@@ -1625,11 +1664,8 @@ function openModal(cmd, catId, catLabel) {
       });
       examplesContainer.appendChild(row);
     });
-  } else {
-    examplesWrap.style.display = 'none';
-  }
+  } else examplesWrap.style.display = 'none';
 
-  // Aliases
   const aliasWrap = document.getElementById('modal-aliases-wrap');
   const aliasContainer = document.getElementById('modal-aliases');
   aliasContainer.innerHTML = '';
@@ -1648,39 +1684,25 @@ function openModal(cmd, catId, catLabel) {
       });
       aliasContainer.appendChild(tag);
     });
-  } else {
-    aliasWrap.style.display = 'none';
-  }
+  } else aliasWrap.style.display = 'none';
 
-  // Permission
   const permEl = document.getElementById('modal-perm');
   const isOwner = cmd.owner || cat?.owner;
   const isStaff = cmd.staff || cat?.staff;
-  if (isOwner) {
-    permEl.innerHTML = `<span class="modal-perm-badge perm-owner">owner only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to bot owner</span>`;
-  } else if (isStaff) {
-    permEl.innerHTML = `<span class="modal-perm-badge perm-staff">staff only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to server staff</span>`;
-  } else if (isAdmin) {
-    permEl.innerHTML = `<span class="modal-perm-badge perm-admin">admin only</span><span style="font-size:12px;color:var(--text-muted)">Requires server admin</span>`;
-  } else {
-    permEl.innerHTML = `<span class="modal-perm-badge" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.22);">public</span><span style="font-size:12px;color:var(--text-muted)">Available to everyone</span>`;
-  }
+  if (isOwner) permEl.innerHTML = `<span class="modal-perm-badge perm-owner">owner only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to bot owner</span>`;
+  else if (isStaff) permEl.innerHTML = `<span class="modal-perm-badge perm-staff">staff only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to server staff</span>`;
+  else if (isAdmin) permEl.innerHTML = `<span class="modal-perm-badge perm-admin">admin only</span><span style="font-size:12px;color:var(--text-muted)">Requires server admin</span>`;
+  else permEl.innerHTML = `<span class="modal-perm-badge" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.22);">public</span><span style="font-size:12px;color:var(--text-muted)">Available to everyone</span>`;
 
-  // Note
   const noteEl = document.getElementById('modal-note');
   if (cmd.note) {
     noteEl.style.display = 'flex';
     noteEl.innerHTML = `
-      <svg class="modal-note-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-      </svg>
+      <svg class="modal-note-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       <span>${escHtml(cmd.note)}</span>
     `;
-  } else {
-    noteEl.style.display = 'none';
-  }
+  } else noteEl.style.display = 'none';
 
-  // Copy button
   const copyBtn = document.getElementById('modal-copy-btn');
   copyBtn.style.borderColor = col.border;
   copyBtn.style.color = col.accent;
@@ -1695,20 +1717,24 @@ function openModal(cmd, catId, catLabel) {
       setTimeout(() => {
         copyBtn.classList.remove('done');
         copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Command`;
-        copyBtn.style.borderColor = col.border;
-        copyBtn.style.color = col.accent;
-        copyBtn.style.background = col.bg;
+        copyBtn.style.borderColor = col.border; copyBtn.style.color = col.accent; copyBtn.style.background = col.bg;
       }, 1800);
     });
   };
 
+  updateModalPinState();
   overlay.classList.add('open');
   modalOpen = true;
+  setTimeout(() => document.getElementById('modal-close').focus(), 50);
 }
 
 function closeModal() {
   document.getElementById('modal-overlay').classList.remove('open');
   modalOpen = false;
+  currentModalCmd = null;
+  if (location.hash.startsWith('#cmd=')) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
 }
 
 /* ── DATA HELPERS ── */
@@ -1718,7 +1744,6 @@ function catCount(catId) {
   if (!cat) return 0;
   return Object.values(cat.sections).reduce((n, cmds) => n + cmds.length, 0);
 }
-
 function countVisible() {
   if (!allData) return 0;
   let total = 0;
@@ -1734,7 +1759,6 @@ function countVisible() {
   });
   return total;
 }
-
 function passesFilter(cmd, catOwner, catStaff, catAdmin) {
   const isOwner = cmd.owner || catOwner;
   const isStaff = cmd.staff || catStaff;
@@ -1743,22 +1767,23 @@ function passesFilter(cmd, catOwner, catStaff, catAdmin) {
   if (activeFilter === 'staff') return isStaff;
   if (activeFilter === 'admin') return isAdmin && !isOwner && !isStaff;
   if (activeFilter === 'public') return !isOwner && !isStaff && !isAdmin;
+  if (activeFilter === 'pinned') return pinned.has(cmd.name);
   return true;
 }
-
 function matchesSearch(cmd) {
   if (!searchQuery) return true;
-  if (cmd.name.toLowerCase().includes(searchQuery)) return true;
-  if (cmd.usage.toLowerCase().includes(searchQuery)) return true;
-  if (cmd.description.toLowerCase().includes(searchQuery)) return true;
-  if ((cmd.aliases || []).some(a => a.toLowerCase().includes(searchQuery))) return true;
-  if (cmd.note && cmd.note.toLowerCase().includes(searchQuery)) return true;
-  if ((cmd.params || []).some(p => p.name.toLowerCase().includes(searchQuery) || (p.desc && p.desc.toLowerCase().includes(searchQuery)))) return true;
-  if ((cmd.examples || []).some(ex => ex.toLowerCase().includes(searchQuery))) return true;
+  const q = searchQuery;
+  if (cmd.name.toLowerCase().includes(q)) return true;
+  if (cmd.usage.toLowerCase().includes(q)) return true;
+  if (cmd.description.toLowerCase().includes(q)) return true;
+  if ((cmd.aliases || []).some(a => a.toLowerCase().includes(q))) return true;
+  if (cmd.note && cmd.note.toLowerCase().includes(q)) return true;
+  if ((cmd.params || []).some(p => p.name.toLowerCase().includes(q) || (p.desc && p.desc.toLowerCase().includes(q)))) return true;
+  if ((cmd.examples || []).some(ex => ex.toLowerCase().includes(q))) return true;
   return false;
 }
 
-/* ── HIGHLIGHT MATCHED TEXT ── */
+/* ── HIGHLIGHT ── */
 function highlight(text, query) {
   if (!query) return escHtml(text);
   const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -1778,20 +1803,53 @@ function renderUsage(raw) {
     return raw.split(' · ').map(p => renderSingleToken(p.trim())).join('<span class="u-sep"> · </span>');
   return renderSingleToken(raw);
 }
+function renderSingleTokenHl(token) {
+  const s = token.replace(/^`|`$/g, '').trim();
+  if (!s.startsWith('.')) return searchQuery ? highlight(s, searchQuery) : escHtml(s);
+  const sp = s.indexOf(' ');
+  if (sp === -1) return `<span class="u-prefix">.</span><span class="u-name">${searchQuery ? highlight(s.slice(1), searchQuery) : escHtml(s.slice(1))}</span>`;
+  return `<span class="u-prefix">.</span><span class="u-name">${searchQuery ? highlight(s.slice(1, sp), searchQuery) : escHtml(s.slice(1, sp))}</span><span class="u-args">${escHtml(s.slice(sp))}</span>`;
+}
+function renderUsageHighlighted(raw) {
+  if (raw.includes(' · '))
+    return raw.split(' · ').map(p => renderSingleTokenHl(p.trim())).join('<span class="u-sep"> · </span>');
+  return renderSingleTokenHl(raw);
+}
 
 /* ── RENDER ── */
 function render() {
   const content   = document.getElementById('content');
   const noResults = document.getElementById('no-results');
   content.innerHTML = '';
+  visibleCards = [];
+  kbFocusedIdx = -1;
   let totalRendered = 0;
 
+  // Show "Pinned" first as a virtual category if filter=pinned or always at top of "All"
   const cats = activeCat === 'all'
     ? getOrderedCats(allData.categories).map(id => [id, allData.categories[id]])
     : [[activeCat, allData.categories[activeCat]]].filter(([, v]) => v);
 
   const frag = document.createDocumentFragment();
   let secIdx = 0;
+
+  // Inject "Pinned" virtual section at the top if applicable
+  if (activeFilter === 'all' && activeCat === 'all' && pinned.size > 0 && !searchQuery) {
+    const pinnedCmds = [];
+    Object.entries(allData.categories).forEach(([catId, cat]) => {
+      Object.values(cat.sections).forEach(cmds => {
+        cmds.forEach(cmd => {
+          if (pinned.has(cmd.name)) pinnedCmds.push({ cmd, catId, cat });
+        });
+      });
+    });
+    if (pinnedCmds.length) {
+      const section = buildPinnedSection(pinnedCmds);
+      frag.appendChild(section);
+      secIdx++;
+      totalRendered += pinnedCmds.length;
+    }
+  }
 
   cats.forEach(([catId, cat]) => {
     const catOwner = cat.owner;
@@ -1810,72 +1868,18 @@ function render() {
 
       const secWrap = document.createElement('div');
       secWrap.className = 'sec-wrap';
-
       const label = document.createElement('div');
       label.className = 'sec-label';
       label.innerHTML = `${escHtml(secName)}<span class="sec-collapse-icon">▾</span>`;
       label.addEventListener('click', () => secWrap.classList.toggle('collapsed'));
       secWrap.appendChild(label);
-
       const secContent = document.createElement('div');
       secContent.className = 'sec-content';
-
       const grid = document.createElement('div');
       grid.className = 'cmd-grid';
 
       filtered.forEach((cmd, i) => {
-        const isOwner = cmd.owner || catOwner;
-        const isStaff = cmd.staff || catStaff;
-        const isAdmin = cmd.admin || catAdmin;
-
-        let badge = '';
-        if (isOwner)      badge = `<span class="cmd-badge perm-owner">owner</span>`;
-        else if (isStaff) badge = `<span class="cmd-badge perm-staff">staff</span>`;
-        else if (isAdmin) badge = `<span class="cmd-badge perm-admin">admin</span>`;
-
-        let structBadge = '';
-        if (cmd.is_subcommand) structBadge = `<span class="cmd-sub-badge">sub</span>`;
-        else if (cmd.has_subcommands) structBadge = `<span class="cmd-parent-badge">+ subs</span>`;
-
-        const aliases = (cmd.aliases || []).slice(0, 3)
-          .map(a => `<span class="alias-tag">.${escHtml(a)}</span>`).join('');
-
-        const card = document.createElement('div');
-        card.className = 'cmd-card';
-        card.style.animationDelay = `${Math.min(i * 22, 180)}ms`;
-        card.style.setProperty('--cat-accent', col.accent);
-        card.style.setProperty('--cat-border', col.border);
-        card.style.setProperty('--cat-glow', col.glow);
-        catCardCount++;
-
-        const usageHtml = renderUsageHighlighted(cmd.usage);
-        const descHtml = searchQuery
-          ? highlight(cmd.description, searchQuery)
-          : escHtml(cmd.description);
-
-        card.innerHTML = `
-          <div class="cmd-usage">${usageHtml}</div>
-          <div class="cmd-desc">${descHtml}</div>
-          <div class="cmd-footer">
-            ${badge}${structBadge}${aliases}
-            <span class="copy-btn" data-copy-btn>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-              </svg>
-              copy
-            </span>
-          </div>
-        `;
-
-        card.addEventListener('click', e => {
-          if (e.shiftKey) {
-            e.preventDefault();
-            openModal(cmd, catId, cat.label);
-          } else {
-            copyCmd(card, cmd.usage, e);
-          }
-        });
-
+        const card = buildCard(cmd, cat, catOwner, catStaff, catAdmin, col, catId, i);
         grid.appendChild(card);
       });
 
@@ -1886,8 +1890,12 @@ function render() {
 
     if (!catHasAny) return;
 
+    Object.values(cat.sections).flat().forEach(cmd => {
+      if (passesFilter(cmd, catOwner, catStaff, catAdmin) && matchesSearch(cmd)) catCardCount++;
+    });
+
     const section = document.createElement('div');
-    section.className = 'cat-section';
+    section.className = 'cat-section' + (collapsedCats.has(catId) ? ' collapsed' : '');
     section.id = 'cat-' + catId;
     section.style.animationDelay = `${secIdx * 55}ms`;
     secIdx++;
@@ -1911,8 +1919,15 @@ function render() {
       <div class="cat-meta">
         <span class="cat-cmd-count">${catCardCount} cmd${catCardCount !== 1 ? 's' : ''}</span>
         ${permBadge}
+        <span class="cat-collapse-arrow">▾</span>
       </div>
     `;
+    hdr.addEventListener('click', () => {
+      section.classList.toggle('collapsed');
+      if (section.classList.contains('collapsed')) collapsedCats.add(catId);
+      else collapsedCats.delete(catId);
+      localStorage.setItem(STORAGE_KEYS.collapsed, JSON.stringify([...collapsedCats]));
+    });
 
     section.appendChild(hdr);
     secNodes.forEach(n => section.appendChild(n));
@@ -1920,6 +1935,7 @@ function render() {
   });
 
   content.appendChild(frag);
+  visibleCards = Array.from(content.querySelectorAll('.cmd-card'));
 
   const empty = totalRendered === 0;
   noResults.classList.toggle('show', empty);
@@ -1927,29 +1943,135 @@ function render() {
     document.getElementById('no-results-query').textContent =
       `"${searchQuery || (activeFilter !== 'all' ? activeFilter : 'this filter')}"`;
   }
+  document.getElementById('nr-clear-btn').onclick = () => {
+    activeFilter = 'all'; activeCat = 'all'; searchQuery = '';
+    document.getElementById('search').value = '';
+    document.getElementById('search-clear').classList.remove('visible');
+    document.getElementById('search-count').textContent = '';
+    document.querySelectorAll('.nav-pill').forEach(b => {
+      const isAll = b.dataset.cat === 'all' || b.dataset.filter === 'all';
+      b.classList.toggle('active', isAll);
+      const col = CAT_COLORS[b.dataset.cat];
+      if (col) { b.style.color = ''; b.style.borderColor = ''; b.style.background = ''; }
+    });
+    syncURL();
+    render();
+  };
+  renderRecentSearches();
 }
 
-/* Usage renderer with search highlight */
-function renderSingleTokenHl(token) {
-  const s = token.replace(/^`|`$/g, '').trim();
-  if (!s.startsWith('.')) return searchQuery ? highlight(s, searchQuery) : escHtml(s);
-  const sp = s.indexOf(' ');
-  if (sp === -1) {
-    return `<span class="u-prefix">.</span><span class="u-name">${searchQuery ? highlight(s.slice(1), searchQuery) : escHtml(s.slice(1))}</span>`;
-  }
-  return `<span class="u-prefix">.</span><span class="u-name">${searchQuery ? highlight(s.slice(1, sp), searchQuery) : escHtml(s.slice(1, sp))}</span><span class="u-args">${escHtml(s.slice(sp))}</span>`;
+function buildPinnedSection(pinnedCmds) {
+  const section = document.createElement('div');
+  section.className = 'cat-section';
+  const col = { accent: 'var(--pin)', bg: 'var(--pin-bg)', border: 'var(--pin-border)', glow: 'var(--pin-bg)' };
+
+  const hdr = document.createElement('div');
+  hdr.className = 'cat-header';
+  hdr.style.setProperty('--cat-accent', '#fbbf24');
+  hdr.style.setProperty('--cat-glow', 'rgba(251,191,36,0.15)');
+  hdr.style.setProperty('--cat-border', 'rgba(251,191,36,0.3)');
+  hdr.style.cursor = 'default';
+  hdr.innerHTML = `
+    <div class="cat-icon-wrap">★</div>
+    <div class="cat-name-group">
+      <span class="cat-title" style="color:#fbbf24">Pinned</span>
+      <span class="cat-desc">Your favorite commands</span>
+    </div>
+    <div class="cat-meta">
+      <span class="cat-cmd-count">${pinnedCmds.length} cmd${pinnedCmds.length !== 1 ? 's' : ''}</span>
+    </div>
+  `;
+  section.appendChild(hdr);
+
+  const secWrap = document.createElement('div'); secWrap.className = 'sec-wrap';
+  const secContent = document.createElement('div'); secContent.className = 'sec-content';
+  const grid = document.createElement('div'); grid.className = 'cmd-grid';
+  pinnedCmds.forEach(({ cmd, catId, cat }, i) => {
+    const cc = CAT_COLORS[catId] || CAT_COLORS.admin;
+    grid.appendChild(buildCard(cmd, cat, cat.owner, cat.staff, cat.admin, cc, catId, i));
+  });
+  secContent.appendChild(grid);
+  secWrap.appendChild(secContent);
+  section.appendChild(secWrap);
+  return section;
 }
-function renderUsageHighlighted(raw) {
-  if (raw.includes(' · '))
-    return raw.split(' · ').map(p => renderSingleTokenHl(p.trim())).join('<span class="u-sep"> · </span>');
-  return renderSingleTokenHl(raw);
+
+function buildCard(cmd, cat, catOwner, catStaff, catAdmin, col, catId, i) {
+  const isOwner = cmd.owner || catOwner;
+  const isStaff = cmd.staff || catStaff;
+  const isAdmin = cmd.admin || catAdmin;
+  let badge = '';
+  if (isOwner)      badge = `<span class="cmd-badge perm-owner">owner</span>`;
+  else if (isStaff) badge = `<span class="cmd-badge perm-staff">staff</span>`;
+  else if (isAdmin) badge = `<span class="cmd-badge perm-admin">admin</span>`;
+  let structBadge = '';
+  if (cmd.is_subcommand) structBadge = `<span class="cmd-sub-badge">sub</span>`;
+  else if (cmd.has_subcommands) structBadge = `<span class="cmd-parent-badge">+ subs</span>`;
+  const aliases = (cmd.aliases || []).slice(0, 3)
+    .map(a => `<span class="alias-tag">.${escHtml(a)}</span>`).join('');
+
+  const card = document.createElement('div');
+  card.className = 'cmd-card' + (pinned.has(cmd.name) ? ' pinned' : '');
+  card.style.animationDelay = `${Math.min(i * 22, 180)}ms`;
+  card.style.setProperty('--cat-accent', col.accent);
+  card.style.setProperty('--cat-border', col.border);
+  card.style.setProperty('--cat-glow', col.glow);
+  card.tabIndex = -1;
+  card._cmdData = { cmd, catId, catLabel: cat.label };
+
+  const usageHtml = renderUsageHighlighted(cmd.usage);
+  const descHtml = searchQuery ? highlight(cmd.description, searchQuery) : escHtml(cmd.description);
+
+  card.innerHTML = `
+    <button class="pin-btn${pinned.has(cmd.name) ? ' pinned' : ''}" data-pin aria-label="${pinned.has(cmd.name) ? 'Unpin' : 'Pin'}" title="${pinned.has(cmd.name) ? 'Unpin' : 'Pin'} (P)">★</button>
+    <div class="cmd-usage">${usageHtml}</div>
+    <div class="cmd-desc">${descHtml}</div>
+    <div class="cmd-footer">
+      ${badge}${structBadge}${aliases}
+      <span class="copy-btn" data-copy-btn>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        copy
+      </span>
+    </div>
+  `;
+
+  card.querySelector('[data-pin]').addEventListener('click', e => {
+    e.stopPropagation();
+    togglePin(cmd.name);
+  });
+
+  card.addEventListener('click', e => {
+    if (e.target.closest('[data-pin]')) return;
+    if (e.shiftKey) {
+      e.preventDefault();
+      openModal(cmd, catId, cat.label);
+    } else {
+      copyCmd(card, cmd.usage, e);
+    }
+  });
+
+  return card;
+}
+
+/* ── PIN ── */
+function togglePin(name) {
+  if (pinned.has(name)) {
+    pinned.delete(name);
+    showToast('Unpinned');
+  } else {
+    pinned.add(name);
+    showToast('Pinned ★');
+  }
+  localStorage.setItem(STORAGE_KEYS.pins, JSON.stringify([...pinned]));
+  render();
+  if (modalOpen) updateModalPinState();
 }
 
 /* ── COPY ── */
 function copyCmd(card, usage, e) {
-  const text = usage.replace(/`/g, '').trim();
+  const text = usage.replace(/`/g, '').trim().split(' · ')[0].trim();
   navigator.clipboard.writeText(text).then(() => {
-    if (e) {
+    if (e && e.clientX) {
       const rect = card.getBoundingClientRect();
       const ripple = document.createElement('span');
       ripple.className = 'ripple';
@@ -1974,12 +2096,36 @@ function copyCmd(card, usage, e) {
   });
 }
 
+/* ── TOAST ── */
+let toastTimer = null;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.innerHTML = `<span class="toast-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span>${escHtml(msg)}</span>`;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+}
+
+/* ── SCROLL TO TOP ── */
+function setupScrollTop() {
+  const btn = document.getElementById('scroll-top');
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        btn.classList.toggle('show', window.scrollY > 600);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
 function escHtml(str) {
   return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 loadData();
