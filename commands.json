@@ -1,5 +1,5 @@
 {
-  "total_commands": 199,
+  "total_commands": 201,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -2022,6 +2022,38 @@
             "cog_file": "leveling.py"
           },
           {
+            "name": "disable",
+            "usage": ".disable level",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "disable",
+              "args": "level"
+            },
+            "description": "Disables the entire leveling system (XP gain, leaderboard, rank, roles).",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".disable level"
+            ],
+            "params": [
+              {
+                "name": "system",
+                "type": "str",
+                "required": true,
+                "desc": "Must be `level`."
+              }
+            ],
+            "note": "Owner/creator only. Stops all XP gain and blocks leveling commands until `.enable level` or restart.",
+            "category_id": "leveling",
+            "section": "Leveling",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "leveling.py"
+          },
+          {
             "name": "enable",
             "usage": ".levelnotify enable",
             "usage_parts": {
@@ -2043,6 +2075,38 @@
             "section": "Leveling",
             "group": "levelnotify",
             "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "leveling.py"
+          },
+          {
+            "name": "enable",
+            "usage": ".enable level",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "enable",
+              "args": "level"
+            },
+            "description": "Re-enables the entire leveling system.",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".enable level"
+            ],
+            "params": [
+              {
+                "name": "system",
+                "type": "str",
+                "required": true,
+                "desc": "Must be `level`."
+              }
+            ],
+            "note": "Owner/creator only. Restarts XP gain and leveling commands.",
+            "category_id": "leveling",
+            "section": "Leveling",
+            "group": null,
+            "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "leveling.py"
           },
