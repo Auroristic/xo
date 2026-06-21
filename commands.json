@@ -1,5 +1,5 @@
 {
-  "total_commands": 199,
+  "total_commands": 200,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -2256,6 +2256,39 @@
       "icon": "▪",
       "sections": {
         "Echo": [
+          {
+            "name": "anime",
+            "usage": "`.anime <search>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "anime",
+              "args": "<search>"
+            },
+            "description": "Search for an anime and get the seoulities.com link.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".anime aot",
+              ".anime steins gate"
+            ],
+            "params": [
+              {
+                "name": "query",
+                "type": "str",
+                "required": true,
+                "desc": "Anime title to search for."
+              }
+            ],
+            "note": null,
+            "category_id": "misc",
+            "section": "Echo",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
           {
             "name": "dm",
             "usage": "`.dm @user <message>`",
