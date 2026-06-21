@@ -1,5 +1,5 @@
 {
-  "total_commands": 201,
+  "total_commands": 199,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -582,39 +582,6 @@
             "cog_file": "ai.py"
           },
           {
-            "name": "aitoggle",
-            "usage": ".aitoggle nvidia | .aitoggle zen",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "aitoggle",
-              "args": "nvidia | .aitoggle zen"
-            },
-            "description": "Switches the active AI provider between NVIDIA and Zen.",
-            "aliases": [],
-            "owner": true,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".aitoggle nvidia",
-              ".aitoggle zen"
-            ],
-            "params": [
-              {
-                "name": "provider",
-                "type": "str",
-                "required": true,
-                "desc": "`nvidia` or `zen` — the AI backend to use."
-              }
-            ],
-            "note": "Owner only.",
-            "category_id": "ai",
-            "section": "AI",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "ai.py"
-          },
-          {
             "name": "crefresh",
             "usage": ".crefresh or .crefresh all",
             "usage_parts": {
@@ -821,46 +788,6 @@
             "cog_file": "ai.py"
           },
           {
-            "name": "model",
-            "usage": ".model | .model add <model> | .model remove <number>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "model",
-              "args": "| .model add <model> | .model remove <number>"
-            },
-            "description": "Lists, adds, or removes AI models used for response racing.",
-            "aliases": [],
-            "owner": true,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".model",
-              ".model add gpt-4",
-              ".model remove 2"
-            ],
-            "params": [
-              {
-                "name": "action",
-                "type": "str",
-                "required": false,
-                "desc": "`add` or `remove`."
-              },
-              {
-                "name": "value",
-                "type": "str/int",
-                "required": false,
-                "desc": "Model name (for add) or index number (for remove)."
-              }
-            ],
-            "note": "Owner only. Multiple models race to respond; the fastest reply wins.",
-            "category_id": "ai",
-            "section": "AI",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "ai.py"
-          },
-          {
             "name": "mreset",
             "usage": ".mreset [@user]",
             "usage_parts": {
@@ -926,7 +853,7 @@
               "name": "nvidia",
               "args": ""
             },
-            "description": "Browse all models from build.nvidia.com and add them to the race list.",
+            "description": "Browse all models from build.nvidia.com.",
             "aliases": [],
             "owner": true,
             "admin": false,
@@ -935,7 +862,7 @@
               ".nvidia"
             ],
             "params": [],
-            "note": "Owner only. Paginated list with a dropdown to pick models.",
+            "note": "Owner only.",
             "category_id": "ai",
             "section": "AI",
             "group": null,
