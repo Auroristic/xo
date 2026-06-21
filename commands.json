@@ -1,5 +1,5 @@
 {
-  "total_commands": 198,
+  "total_commands": 199,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -32,13 +32,13 @@
               {
                 "name": "channels",
                 "type": "discord.TextChannel",
-                "required": null,
+                "required": true,
                 "desc": "One or more channel mentions."
               },
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "A command name (e.g. `.ping`) or category name."
               }
             ],
@@ -71,7 +71,7 @@
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The command or category to clear the rule for."
               }
             ],
@@ -132,13 +132,13 @@
               {
                 "name": "channels",
                 "type": "discord.TextChannel",
-                "required": null,
+                "required": true,
                 "desc": "One or more channel mentions."
               },
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "A command name (e.g. `.play`) or category name."
               }
             ],
@@ -171,7 +171,7 @@
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Optional command or category to check."
               }
             ],
@@ -206,7 +206,7 @@
               {
                 "name": "limit",
                 "type": "int",
-                "required": null,
+                "required": false,
                 "desc": "Number of messages to scan (max 200, default 50)."
               }
             ],
@@ -268,19 +268,19 @@
               {
                 "name": "new",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "The new alias name."
               },
               {
                 "name": "existing",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "The existing command to alias."
               },
               {
                 "name": "action",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Use `remove` to delete an alias."
               }
             ],
@@ -312,13 +312,13 @@
               {
                 "name": "action",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Currently only `set` is supported."
               },
               {
                 "name": "channel",
                 "type": "discord.TextChannel",
-                "required": null,
+                "required": false,
                 "desc": "The channel to send confessions to."
               }
             ],
@@ -350,7 +350,7 @@
               {
                 "name": "user",
                 "type": "discord.Member",
-                "required": null,
+                "required": true,
                 "desc": "The member to ignore or unignore."
               }
             ],
@@ -408,7 +408,7 @@
               {
                 "name": "color",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Hex colour code with or without #."
               }
             ],
@@ -441,7 +441,7 @@
               {
                 "name": "user",
                 "type": "discord.Member",
-                "required": null,
+                "required": false,
                 "desc": "The member to toggle. Omit to see usage."
               }
             ],
@@ -511,7 +511,7 @@
               {
                 "name": "channel",
                 "type": "discord.TextChannel",
-                "required": null,
+                "required": false,
                 "desc": "The channel to enable AI in. Defaults to current channel."
               }
             ],
@@ -569,7 +569,7 @@
               {
                 "name": "channel",
                 "type": "discord.TextChannel",
-                "required": null,
+                "required": false,
                 "desc": "The channel to disable AI in. Defaults to current channel."
               }
             ],
@@ -602,7 +602,7 @@
               {
                 "name": "provider",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "`nvidia` or `zen` — the AI backend to use."
               }
             ],
@@ -635,7 +635,7 @@
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Set to `all` to refresh conversations for all users."
               }
             ],
@@ -669,7 +669,7 @@
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "A user mention or `all` to reset everyone."
               }
             ],
@@ -726,7 +726,7 @@
               {
                 "name": "user",
                 "type": "discord.User",
-                "required": null,
+                "required": true,
                 "desc": "The user to enable DM AI for."
               }
             ],
@@ -783,7 +783,7 @@
               {
                 "name": "user",
                 "type": "discord.User",
-                "required": null,
+                "required": true,
                 "desc": "The user to disable DM AI for."
               }
             ],
@@ -842,13 +842,13 @@
               {
                 "name": "action",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "`add` or `remove`."
               },
               {
                 "name": "value",
                 "type": "str/int",
-                "required": null,
+                "required": false,
                 "desc": "Model name (for add) or index number (for remove)."
               }
             ],
@@ -881,7 +881,7 @@
               {
                 "name": "user",
                 "type": "discord.User",
-                "required": null,
+                "required": false,
                 "desc": "The user to clear memory for. Omit for self."
               }
             ],
@@ -911,6 +911,31 @@
             ],
             "params": [],
             "note": "Owner only. Restores memory notes from the auto-backup.",
+            "category_id": "ai",
+            "section": "AI",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "ai.py"
+          },
+          {
+            "name": "nvidia",
+            "usage": ".nvidia",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "nvidia",
+              "args": ""
+            },
+            "description": "Browse all models from build.nvidia.com and add them to the race list.",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".nvidia"
+            ],
+            "params": [],
+            "note": "Owner only. Paginated list with a dropdown to pick models.",
             "category_id": "ai",
             "section": "AI",
             "group": null,
@@ -1515,7 +1540,7 @@
               {
                 "name": "command",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Optional command name to get detailed info about."
               }
             ],
@@ -1547,7 +1572,7 @@
               "name": "bar",
               "args": "[type] [color] [size] [name]"
             },
-            "description": "Adds a coloured bar or border to an image.",
+            "description": "Adds a coloured bar or border to every attached image.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1580,10 +1605,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image.",
+            "note": "Attach or reply with images. Multiple images produce multiple outputs.",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1599,7 +1624,7 @@
               "name": "bouncegif",
               "args": "[name]"
             },
-            "description": "Creates a bouncing animation with easing.",
+            "description": "Creates a bouncing animation with easing for every attached image.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1613,10 +1638,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image. Uses easing for smooth bouncing motion.",
+            "note": "Attach or reply with images. Multiple images produce multiple GIFs (suffixed _2, _3, ...).",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1632,7 +1657,7 @@
               "name": "downscale",
               "args": "[factor] [name]"
             },
-            "description": "Shrinks an image by a given factor.",
+            "description": "Shrinks every attached image by a given factor.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1653,10 +1678,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image.",
+            "note": "Attach or reply with images. Multiple images produce multiple outputs.",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1672,7 +1697,7 @@
               "name": "fadegif",
               "args": "[color] [name]"
             },
-            "description": "Creates a fade-in animation from a solid colour to the image.",
+            "description": "Creates a fade-in animation from a solid colour to every attached image.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1693,10 +1718,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image. The animation transitions from the solid colour to the full image.",
+            "note": "Attach or reply with images. Multiple images produce multiple GIFs (suffixed _2, _3, ...).",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1712,7 +1737,7 @@
               "name": "gif",
               "args": "[name]"
             },
-            "description": "Converts an image to a GIF. Reply to any image to use it.",
+            "description": "Converts every attached image to a GIF. Attach or reply with images.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1726,10 +1751,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional filename for the output GIF."
+                "desc": "Optional base filename; appended with _2, _3, ... for more."
               }
             ],
-            "note": "Reply to an image message. Supports PNG, JPG, WEBP input.",
+            "note": "Works on images attached to this message OR replies. If multiple images are present, every image is converted and sent back.",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1745,7 +1770,7 @@
               "name": "lowquality",
               "args": "[factor] [name]"
             },
-            "description": "Drastically reduces image quality for a cursed pixelated look.",
+            "description": "Drastically reduces image quality on every attached image for a cursed pixelated look.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1766,10 +1791,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image. Makes the image look extremely compressed/pixelated.",
+            "note": "Attach or reply with images. Multiple images produce multiple outputs.",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1785,7 +1810,7 @@
               "name": "spingif",
               "args": "[name]"
             },
-            "description": "Creates a spinning animation from an image (45-degree steps).",
+            "description": "Creates a spinning animation from every attached image (45-degree steps).",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1799,10 +1824,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image. The image rotates in 45-degree increments.",
+            "note": "Attach or reply with images. Multiple images produce multiple GIFs (suffixed _2, _3, ...).",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1850,7 +1875,7 @@
               "name": "thisu",
               "args": "thisu`"
             },
-            "description": "Applies a POV overlay effect to an image or GIF.",
+            "description": "Applies a POV overlay effect to every attached image or GIF.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1859,7 +1884,7 @@
               ".thisu"
             ],
             "params": [],
-            "note": "Reply to an image or GIF. Creates a first-person POV border effect.",
+            "note": "Attach or reply with images. Multiple images produce multiple outputs (suffixed _2, _3, ...). Uses a first-person POV border effect.",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1875,7 +1900,7 @@
               "name": "upscale",
               "args": "[factor] [name]"
             },
-            "description": "Upscales an image by a given factor (1x to 6x).",
+            "description": "Upscales every attached image by a given factor (1x to 6x).",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1896,10 +1921,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image. Higher factors produce larger file sizes.",
+            "note": "Attach or reply with images. Multiple images produce multiple outputs (suffixed _2, _3, ...).",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -1915,7 +1940,7 @@
               "name": "zoomgif",
               "args": "[in/out] [fade] [color] [name]"
             },
-            "description": "Creates a smooth zoom-in or zoom-out animation.",
+            "description": "Creates a smooth zoom-in or zoom-out animation for every attached image.",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -1948,10 +1973,10 @@
                 "name": "name",
                 "type": "str",
                 "required": false,
-                "desc": "Optional output filename."
+                "desc": "Optional base output filename."
               }
             ],
-            "note": "Reply to an image. Supports various combinations of direction, fade, and colour.",
+            "note": "Attach or reply with images. Multiple images produce multiple GIFs (suffixed _2, _3, ...).",
             "category_id": "image",
             "section": "Image",
             "group": null,
@@ -4830,13 +4855,13 @@
               {
                 "name": "emoji",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The emoji or symbol to use as prefix."
               },
               {
                 "name": "categories",
                 "type": "discord.CategoryChannel",
-                "required": null,
+                "required": true,
                 "desc": "One or more category channels to apply the prefix to."
               }
             ],
@@ -4869,13 +4894,13 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name of the target group."
               },
               {
                 "name": "category",
                 "type": "discord.CategoryChannel",
-                "required": null,
+                "required": true,
                 "desc": "The category to add to the group."
               }
             ],
@@ -4907,13 +4932,13 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name of the group whose prefix to use."
               },
               {
                 "name": "channel",
                 "type": "discord.TextChannel",
-                "required": null,
+                "required": true,
                 "desc": "The channel to stamp the prefix on."
               }
             ],
@@ -4972,13 +4997,13 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name for the new prefix group."
               },
               {
                 "name": "prefix",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The prefix emoji or symbol for channels in this group."
               }
             ],
@@ -5010,7 +5035,7 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name of the group to delete."
               }
             ],
@@ -5198,7 +5223,7 @@
               {
                 "name": "category",
                 "type": "discord.CategoryChannel",
-                "required": null,
+                "required": false,
                 "desc": "Category to strip prefixes from. Omit to strip all."
               }
             ],
@@ -5230,13 +5255,13 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name of the group."
               },
               {
                 "name": "category",
                 "type": "discord.CategoryChannel",
-                "required": null,
+                "required": true,
                 "desc": "The category to remove from the group."
               }
             ],
@@ -5269,13 +5294,13 @@
               {
                 "name": "n",
                 "type": "int",
-                "required": null,
+                "required": true,
                 "desc": "The index of the prefix to replace (from scan results)."
               },
               {
                 "name": "new",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The new prefix emoji or symbol."
               }
             ],
@@ -5308,7 +5333,7 @@
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "`all` for server-wide, or a category mention."
               }
             ],
@@ -5341,7 +5366,7 @@
               {
                 "name": "category",
                 "type": "discord.CategoryChannel",
-                "required": null,
+                "required": false,
                 "desc": "Category to scan. Omit to scan all channels."
               }
             ],
@@ -5374,7 +5399,7 @@
               {
                 "name": "emoji",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Emoji to apply server-wide. Omit to remove all prefixes."
               }
             ],
@@ -5407,13 +5432,13 @@
               {
                 "name": "font",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Font style name (from `.theme font list`)."
               },
               {
                 "name": "target",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "`all` for server-wide, or one or more category mentions."
               }
             ],
@@ -5446,13 +5471,13 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name of the group to update."
               },
               {
                 "name": "new prefix",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The new prefix emoji or symbol."
               }
             ],
@@ -5510,7 +5535,7 @@
               {
                 "name": "text",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The exact text to remove from all channel names."
               }
             ],
@@ -5623,7 +5648,7 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name of the preset to apply."
               }
             ],
@@ -5655,7 +5680,7 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name of the preset to delete."
               }
             ],
@@ -5738,7 +5763,7 @@
               {
                 "name": "name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "Name for the preset."
               }
             ],
@@ -5822,7 +5847,7 @@
               {
                 "name": "slot",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The slot to restore the previous name for."
               }
             ],
@@ -5855,13 +5880,13 @@
               {
                 "name": "slot",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The slot whose role to rename."
               },
               {
                 "name": "new name",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The new display name for the role."
               }
             ],
@@ -5894,13 +5919,13 @@
               {
                 "name": "slot",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The slot to set the icon for."
               },
               {
                 "name": "source",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Emoji, image URL, or attachment. Omit to clear."
               }
             ],
@@ -6010,7 +6035,7 @@
               {
                 "name": "source",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Image URL or attachment. Omit to clear the stored banner."
               }
             ],
@@ -6043,7 +6068,7 @@
               {
                 "name": "source",
                 "type": "str",
-                "required": null,
+                "required": false,
                 "desc": "Image URL or attachment. Omit to clear the stored icon."
               }
             ],
@@ -6076,13 +6101,13 @@
               {
                 "name": "slot",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The slot name (e.g. Owner, Admin, Member)."
               },
               {
                 "name": "role",
                 "type": "discord.Role",
-                "required": null,
+                "required": true,
                 "desc": "The discord role to map to this slot."
               }
             ],
@@ -6213,7 +6238,7 @@
               {
                 "name": "channel",
                 "type": "discord.TextChannel",
-                "required": null,
+                "required": true,
                 "desc": "The channel to send vanity match notifications to."
               }
             ],
@@ -6270,7 +6295,7 @@
               {
                 "name": "text",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The message template. Supports `{{user}}`, `{{username}}`, and `{{server}}` placeholders."
               }
             ],
@@ -6327,7 +6352,7 @@
               {
                 "name": "role",
                 "type": "discord.Role",
-                "required": null,
+                "required": true,
                 "desc": "The role to assign on status match."
               }
             ],
@@ -6360,7 +6385,7 @@
               {
                 "name": "text",
                 "type": "str",
-                "required": null,
+                "required": true,
                 "desc": "The substring to match in member statuses."
               }
             ],
