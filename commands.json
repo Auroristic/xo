@@ -1,5 +1,5 @@
 {
-  "total_commands": 200,
+  "total_commands": 211,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -186,6 +186,59 @@
         ],
         "Moderation": [
           {
+            "name": "bait",
+            "usage": ".bait <set|off|status|logs|jailrole|exempt|unexempt|pending|banned|forgive>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bait",
+              "args": "<set|off|status|logs|jailrole|exempt|unexempt|pending|banned|forgive>"
+            },
+            "description": "Configures a bait channel that deletes messages, jails or timeouts users, then bans them after the delay.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait set #trap 12h jail",
+              ".bait logs #mod-logs",
+              ".bait pending",
+              ".bait forgive @user appealed"
+            ],
+            "params": [],
+            "note": "Admins, whitelisted members, owner/creator, bots, and exempt roles are never punished.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "banned",
+            "usage": ".bait banned",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "banned",
+              "args": "bait banned"
+            },
+            "description": "Lists users banned by the bait system.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait banned"
+            ],
+            "params": [],
+            "note": "Use `.bait forgive @user` to unban a bait-banned user.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
             "name": "bots",
             "usage": ".purge bots [limit]",
             "usage_parts": {
@@ -219,6 +272,191 @@
             "cog_file": "admin.py"
           },
           {
+            "name": "exempt",
+            "usage": ".bait exempt @role",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "exempt",
+              "args": "bait exempt @role"
+            },
+            "description": "Adds a role that bait will ignore.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait exempt @staff"
+            ],
+            "params": [
+              {
+                "name": "role",
+                "type": "discord.Role",
+                "required": true,
+                "desc": "Role to exempt."
+              }
+            ],
+            "note": "Owner/creator, admins, bots, and whitelisted members are already exempt.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "forgive",
+            "usage": ".bait forgive @user|user_id [reason]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "forgive",
+              "args": "bait forgive @user|user_id [reason]"
+            },
+            "description": "Cancels a pending bait ban or unbans a user already banned by bait.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait forgive @user appealed",
+              ".bait forgive 123456789012345678 verified human"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member|int",
+                "required": true,
+                "desc": "Pending or banned bait user."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Appeal/forgive reason."
+              }
+            ],
+            "note": "Works for pending bait users and users in `.bait banned`.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "jailrole",
+            "usage": ".bait jailrole @role",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "jailrole",
+              "args": "bait jailrole @role"
+            },
+            "description": "Sets the role used by jail-mode bait.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait jailrole @jailed"
+            ],
+            "params": [
+              {
+                "name": "role",
+                "type": "discord.Role",
+                "required": true,
+                "desc": "Role to add when bait triggers."
+              }
+            ],
+            "note": "The bot must be able to add and remove this role.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "logs",
+            "usage": ".bait logs #channel",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "logs",
+              "args": "bait logs #channel"
+            },
+            "description": "Sets the channel where bait trigger, ban, and forgive events are logged.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait logs #mod-logs"
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": true,
+                "desc": "Log channel."
+              }
+            ],
+            "note": "Admin or whitelisted only.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "off",
+            "usage": ".bait off",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "off",
+              "args": "bait off"
+            },
+            "description": "Disables bait and cancels all pending bait bans.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait off"
+            ],
+            "params": [],
+            "note": "Cancels pending bans and tries to remove the immediate jail/timeout action.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "pending",
+            "usage": ".bait pending",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "pending",
+              "args": "bait pending"
+            },
+            "description": "Lists users waiting for delayed bait bans.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait pending"
+            ],
+            "params": [],
+            "note": "Use `.bait forgive @user` to cancel a pending bait ban.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
             "name": "purge",
             "usage": ".purge .purge bots [limit]",
             "usage_parts": {
@@ -242,6 +480,109 @@
             "group": null,
             "is_subcommand": false,
             "has_subcommands": true,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "set",
+            "usage": ".bait set #channel [delay] [jail|timeout]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "set",
+              "args": "bait set #channel [delay] [jail|timeout]"
+            },
+            "description": "Sets the bait channel. Messages are deleted, users are jailed or timed out, then banned after the delay.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait set #trap",
+              ".bait set #trap 12h jail",
+              ".bait set #trap 6h timeout"
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": true,
+                "desc": "The bait channel."
+              },
+              {
+                "name": "delay",
+                "type": "str",
+                "required": false,
+                "desc": "Delay before ban: 30m, 12h, 1d. Default 12h."
+              },
+              {
+                "name": "action",
+                "type": "str",
+                "required": false,
+                "desc": "Immediate action: jail or timeout. Default jail."
+              }
+            ],
+            "note": "Jail mode requires `.bait jailrole @role` first.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "status",
+            "usage": ".bait status",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "status",
+              "args": "bait status"
+            },
+            "description": "Shows bait channel configuration, exempt roles, and pending/banned counts.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait status"
+            ],
+            "params": [],
+            "note": "Shows exempt roles only; whitelisted members are always exempt.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "unexempt",
+            "usage": ".bait unexempt @role",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "unexempt",
+              "args": "bait unexempt @role"
+            },
+            "description": "Removes a bait-exempt role.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "examples": [
+              ".bait unexempt @staff"
+            ],
+            "params": [
+              {
+                "name": "role",
+                "type": "discord.Role",
+                "required": true,
+                "desc": "Role to remove from bait exemptions."
+              }
+            ],
+            "note": "Does not affect the existing whitelist exemption.",
+            "category_id": "admin",
+            "section": "Moderation",
+            "group": "bait",
+            "is_subcommand": true,
+            "has_subcommands": false,
             "cog_file": "admin.py"
           }
         ],
