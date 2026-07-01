@@ -265,6 +265,53 @@ body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
 
 .nav-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
+/* ── hamburger (mobile only) ─────── */
+.nav-hamburger {
+  display: none; width: 40px; height: 40px;
+  background: transparent; border: none; cursor: pointer;
+  padding: 10px 8px; flex-direction: column; justify-content: space-between;
+  align-items: center; flex-shrink: 0; position: relative; z-index: 1002;
+  margin-left: auto;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 1.8px;
+  background: var(--text); border-radius: 2px;
+  transition: transform 0.32s var(--ease-out-expo), opacity 0.18s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── mobile menu panel ─────── */
+.nav-menu {
+  display: none; position: fixed; top: 58px; left: 0; right: 0;
+  background: rgba(6,6,8,0.92);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-direction: column; padding: 8px 18px 18px;
+  gap: 2px; z-index: 1001;
+  opacity: 0; transform: translateY(-8px); pointer-events: none;
+  transition: opacity 0.22s var(--ease-out-expo), transform 0.22s var(--ease-out-expo);
+}
+.nav-menu.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.nav-menu-link {
+  font-size: 15px; font-weight: 400; color: var(--text-muted);
+  text-decoration: none; padding: 13px 14px; border-radius: 12px;
+  transition: color 0.15s, background 0.15s;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nav-menu-link:last-child { border-bottom: none; }
+.nav-menu-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-menu-link.primary {
+  color: var(--text); font-weight: 600;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  margin-top: 8px; border-radius: 12px; border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.nav-menu-link.primary:hover { background: rgba(255,255,255,0.12); }
+
 /* ── glass button — the core treatment ─────── */
 .glass-btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -1012,35 +1059,47 @@ body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 620px) {
+  /* static transparent nav — no floating pill */
+  #nav { padding: 0 16px !important; top: 0 !important; left: 0 !important; transform: none !important;
+         width: 100% !important; max-width: 100% !important; height: 58px !important;
+         border-radius: 0 !important; border-bottom: 1px solid rgba(255,255,255,0.05);
+         background: rgba(6,6,8,0.7) !important; backdrop-filter: blur(10px) !important;
+         -webkit-backdrop-filter: blur(10px) !important; box-shadow: none !important; }
+  #nav.scrolled { top: 0 !important; width: 100% !important; max-width: 100% !important;
+                  height: 58px !important; border-radius: 0 !important; box-shadow: none !important; }
+  .nav-hamburger { display: flex; }
+  .nav-links, .nav-right { display: none; }
+  .nav-menu { display: flex; }
+  /* fully black bg for commands view on mobile — kill all orbs/grid/rays/blur */
+  .bg-canvas, .bg-orb, .bg-grid, #star-canvas { display: none !important; }
+  body { background: #000 !important; }
+  #app { background: #000 !important; }
   .main { padding: 20px 16px 60px; }
   .cmd-grid { grid-template-columns: 1fr; }
   .topbar { padding: 0 14px; gap: 10px; }
   .nav-scroll { padding: 0 14px; }
   .brand-tag, .topbar-sep, .prefix-chip, .count-pill { display: none; }
-  .stats-row { padding: 8px 14px; gap: 6px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; border-bottom: 1px solid var(--border); }
+  .stats-row { padding: 8px 14px; gap: 6px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; border-bottom: 1px solid var(--border); background: #000; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .stats-row::-webkit-scrollbar { display: none; }
   .stat-card {
-    flex: 0 0 auto;
-    min-width: unset;
-    padding: 8px 14px;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.02);
+    flex: 0 0 auto; min-width: unset; padding: 8px 14px;
+    flex-direction: row; align-items: center; gap: 8px;
+    border-radius: 24px; background: rgba(255,255,255,0.03);
     border: 1px solid var(--border);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  [data-theme="light"] .stat-card {
-    background: rgba(0, 0, 0, 0.02);
-    border-color: rgba(0, 0, 0, 0.05);
+    backdrop-filter: none; -webkit-backdrop-filter: none;
   }
   .stat-num { font-size: 13px; letter-spacing: -0.5px; }
   .stat-label { font-size: 9.5px; letter-spacing: 0.4px; text-transform: uppercase; }
   .stat-tooltip { display: none; }
   #search { padding: 12px 90px 12px 44px; }
   .scroll-top { bottom: 16px; right: 16px; width: 36px; height: 36px; }
+  /* drop blur on command cards */
+  .cmd-card { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(14,14,18,0.9); }
+  .nav-pill { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .glass-btn { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  /* no hover lifts on touch */
+  .cmd-card:hover { transform: none; }
+  .stat-card:hover { transform: none; }
 }
 
 /* ── STAT CARD ENTRANCE ── */
@@ -1488,12 +1547,24 @@ footer {
 .rv-d4 { transition-delay: 0.28s; }
 
 /* ══════════════════════════════════════════
-   MOBILE
+   MOBILE — perf-first: static nav, no blur, stars only
    ══════════════════════════════════════════ */
 @media (max-width: 720px) {
-  #nav { padding: 0 18px; }
+  #nav { padding: 0 18px; top: 0 !important; left: 0 !important; transform: none !important;
+         width: 100% !important; max-width: 100% !important; height: 58px !important;
+         border-radius: 0 !important; border-bottom: 1px solid rgba(255,255,255,0.05);
+         background: rgba(6,6,8,0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+         box-shadow: none !important; }
+  #nav.scrolled { top: 0 !important; width: 100% !important; max-width: 100% !important;
+                  height: 58px !important; border-radius: 0 !important;
+                  background: rgba(6,6,8,0.7); box-shadow: none !important; }
+  .nav-hamburger { display: flex; }
   .nav-links { display: none; }
+  .nav-right { display: none; }
+  .nav-menu { display: flex; }
   .hero { padding: 110px 20px 64px; min-height: 100svh; }
+  .hero::before { display: none; }
+  .hero::after { display: none; }
   .feat-grid { grid-template-columns: 1fr; }
   .f-card.span2 { grid-column: 1; }
   .trust-stats-row { gap: 28px; }
@@ -1501,13 +1572,22 @@ footer {
   .cta-box { padding: 42px 24px; }
   footer { flex-direction: column; align-items: flex-start; gap: 16px; }
   .section { padding: 60px 18px; }
+  .f-card { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(20,20,28,0.72); }
+  .cta-box { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(20,20,28,0.74); }
+  .glass-btn { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .hero-badge, .sec-eyebrow-pill, .mq-tag { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .trust-orb { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(20,20,28,0.7); }
+  .f-card:hover { transform: none !important; }
 }
 @media (max-width: 440px) {
   .hero-btns { flex-direction: column; width: 100%; max-width: 260px; margin-left: auto; margin-right: auto; }
   .glass-btn.lg { width: 100%; }
   .cta-btns { flex-direction: column; width: 100%; max-width: 240px; margin-left: auto; margin-right: auto; }
 }
-/* reduce motion */
+@media (hover: none) {
+  .f-card:hover { transform: none !important; box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 4px 24px rgba(0,0,0,0.25) !important; }
+  .glass-btn:hover { transform: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .rv, .f-card { opacity: 1 !important; transform: none !important; }
@@ -1546,7 +1626,16 @@ footer {
       <div class="count-pill" id="total-badge">loading</div>
       <a href="#" class="glass-btn primary">Add to Discord</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-menu" id="nav-menu">
+    <a href="#/commands" class="nav-menu-link">Commands</a>
+    <a href="#" class="nav-menu-link">Status</a>
+    <a href="#" class="nav-menu-link">Support</a>
+    <a href="#" class="nav-menu-link primary">Add to Discord</a>
+  </div>
 
   <div id="home-view">
 
@@ -2950,6 +3039,43 @@ function escHtml(str) {
 
 loadData();
 
+/* ── HAMBURGER MENU ── */
+(function () {
+  const btn = document.getElementById('nav-hamburger');
+  const menu = document.getElementById('nav-menu');
+  if (!btn || !menu) return;
+  const toggle = (open) => {
+    const willOpen = open ?? !btn.classList.contains('open');
+    btn.classList.toggle('open', willOpen);
+    menu.classList.toggle('open', willOpen);
+    btn.setAttribute('aria-expanded', willOpen);
+    document.body.style.overflow = willOpen ? 'hidden' : '';
+  };
+  btn.addEventListener('click', () => toggle());
+  menu.querySelectorAll('.nav-menu-link').forEach(a => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') toggle(false); });
+})();
+
+/* ── PLACEHOLDER LINK INTERCEPT → toast ── */
+(function () {
+  const toast = document.getElementById('toast');
+  let timer;
+  window.showToast = function (msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => toast.classList.remove('show'), 1900);
+  };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href="#"]');
+    if (!a) return;
+    e.preventDefault();
+    const label = (a.textContent || '').trim().slice(0, 28);
+    window.showToast(label ? `${label} — in development` : 'In development');
+  });
+})();
+
 /* ── STARFIELD ── */
 (function () {
   const cvs = document.getElementById('star-canvas');
@@ -2959,7 +3085,8 @@ loadData();
   function resize() {
     W = cvs.width  = window.innerWidth;
     H = cvs.height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
-    const n = Math.floor(W * H / 5200);
+    const density = W < 720 ? 9000 : 5200;
+    const n = Math.floor(W * H / density);
     stars = Array.from({ length: n }, () => ({
       x:  Math.random() * W,
       y:  Math.random() * H,
@@ -2971,20 +3098,22 @@ loadData();
   }
   let t = 0;
   let currentScrollY = 0;
+  let running = true;
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) draw(); });
   function draw() {
-    ctx.clearRect(0, 0, W, H);
+    if (!running) return;
+    ctx.clearRect(0, 0, W, window.innerHeight);
     t++;
     currentScrollY += (window.scrollY - currentScrollY) * 0.085;
-    
-    // Smoothly rotate volumetric rays
     const rot = (currentScrollY * 0.03).toFixed(2);
     document.documentElement.style.setProperty('--ray-rot', `${rot}deg`);
-    
+    const viewTop = window.scrollY - 20, viewBot = window.scrollY + window.innerHeight + 20;
     for (const s of stars) {
-      const a = s.a * (0.4 + 0.6 * Math.sin(s.ph + t * s.sp));
       let y = (s.y - currentScrollY * 0.15) % H;
       if (y < 0) y += H;
-      ctx.beginPath(); ctx.arc(s.x, y, s.r, 0, 6.2832);
+      if (y < viewTop || y > viewBot) continue;
+      const a = s.a * (0.4 + 0.6 * Math.sin(s.ph + t * s.sp));
+      ctx.beginPath(); ctx.arc(s.x, y - window.scrollY, s.r, 0, 6.2832);
       ctx.fillStyle = `rgba(220,220,240,${a.toFixed(3)})`; ctx.fill();
     }
     requestAnimationFrame(draw);
