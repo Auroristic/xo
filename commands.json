@@ -1,5 +1,5 @@
 {
-  "total_commands": 211,
+  "total_commands": 208,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -4425,47 +4425,12 @@
     },
     "profile": {
       "label": "Profile",
-      "desc": "Per-guild custom avatars and profiles.",
+      "desc": "Bot profile customization (creator only).",
       "admin": false,
-      "owner": false,
+      "owner": true,
       "staff": false,
       "icon": "●",
       "sections": {
-        "Guild Avatars": [
-          {
-            "name": "viewavatar",
-            "usage": ".viewavatar [@user]",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "viewavatar",
-              "args": "[@user]"
-            },
-            "description": "Views a user's custom server avatar in full size.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".viewavatar",
-              ".viewavatar @user"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.Member",
-                "required": false,
-                "desc": "The member to view. Defaults to yourself."
-              }
-            ],
-            "note": "Shows the full-resolution custom server avatar.",
-            "category_id": "profile",
-            "section": "Guild Avatars",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "guild_avatars.py"
-          }
-        ],
         "Profile": [
           {
             "name": "activity",
@@ -4610,66 +4575,6 @@
             "cog_file": "profile.py"
           },
           {
-            "name": "profile",
-            "usage": ".profile [@user]",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "profile",
-              "args": "[@user]"
-            },
-            "description": "Views your or another user's profile with server avatar.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".profile",
-              ".profile @user"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.Member",
-                "required": false,
-                "desc": "The member to view. Defaults to yourself."
-              }
-            ],
-            "note": "Shows the server-specific profile including custom avatar.",
-            "category_id": "profile",
-            "section": "Profile",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "guild_avatars.py"
-          },
-          {
-            "name": "removeavatar",
-            "usage": ".removeavatar",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "removeavatar",
-              "args": ""
-            },
-            "description": "Removes your custom server avatar.",
-            "aliases": [
-              "clearavatar"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".removeavatar"
-            ],
-            "params": [],
-            "note": "Your global Discord avatar will be shown again.",
-            "category_id": "profile",
-            "section": "Profile",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "guild_avatars.py"
-          },
-          {
             "name": "rpc",
             "usage": "`.rpc`  ·  `.rpc add [emoji] <text>`  ·  `.rpc remove <n>`  ·  `.rpc clear`  ·  `.rpc interval <secs>`",
             "usage_parts": {
@@ -4730,63 +4635,70 @@
             "cog_file": "profile.py"
           },
           {
-            "name": "serveravatars",
-            "usage": ".serveravatars",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "serveravatars",
-              "args": ""
-            },
-            "description": "Shows all custom avatars set in this server.",
-            "aliases": [
-              "pfps"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".serveravatars"
-            ],
-            "params": [],
-            "note": "Displays a paginated list of all users with custom server avatars.",
-            "category_id": "profile",
-            "section": "Profile",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "guild_avatars.py"
-          },
-          {
             "name": "setavatar",
-            "usage": ".setavatar <image_url>",
+            "usage": "`.setavatar [url|attachment|reset]`",
             "usage_parts": {
               "prefix": ".",
               "name": "setavatar",
-              "args": "<image_url>"
+              "args": "[url|attachment|reset]"
             },
-            "description": "Sets a custom avatar for this server only.",
+            "description": "Changes the bot's server-specific avatar.",
             "aliases": [],
-            "owner": false,
+            "owner": true,
             "admin": false,
             "staff": false,
             "examples": [
-              ".setavatar https://i.imgur.com/abc.png"
+              ".setavatar https://i.imgur.com/abc.png",
+              ".setavatar reset"
             ],
             "params": [
               {
-                "name": "image_url",
+                "name": "source",
                 "type": "str",
-                "required": true,
-                "desc": "Direct URL to the image to use as avatar."
+                "required": false,
+                "desc": "Image URL, attachment, or `reset` to clear."
               }
             ],
-            "note": "The avatar only shows in this server. Other servers will still see your global Discord avatar.",
+            "note": "Server Owner / Bot Creator only. Discord rate-limits apply.",
             "category_id": "profile",
             "section": "Profile",
             "group": null,
             "is_subcommand": false,
             "has_subcommands": false,
-            "cog_file": "guild_avatars.py"
+            "cog_file": "profile.py"
+          },
+          {
+            "name": "setbanner",
+            "usage": "`.setbanner [url|attachment|reset]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setbanner",
+              "args": "[url|attachment|reset]"
+            },
+            "description": "Changes the bot's server-specific banner.",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".setbanner https://i.imgur.com/abc.png",
+              ".setbanner reset"
+            ],
+            "params": [
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Image URL, attachment, or `reset` to clear."
+              }
+            ],
+            "note": "Server Owner / Bot Creator only. Discord rate-limits apply.",
+            "category_id": "profile",
+            "section": "Profile",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "profile.py"
           },
           {
             "name": "username",
