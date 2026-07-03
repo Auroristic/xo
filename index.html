@@ -1067,11 +1067,13 @@ body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
          -webkit-backdrop-filter: blur(10px) !important; box-shadow: none !important; }
   #nav.scrolled { top: 0 !important; width: 100% !important; max-width: 100% !important;
                   height: 58px !important; border-radius: 0 !important; box-shadow: none !important; }
+  .nav-menu { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(6,6,8,0.96); }
   .nav-hamburger { display: flex; }
   .nav-links, .nav-right { display: none; }
   .nav-menu { display: flex; }
-  /* fully black bg for commands view on mobile — kill all orbs/grid/rays/blur */
-  .bg-canvas, .bg-orb, .bg-grid, #star-canvas { display: none !important; }
+  /* fully black bg for commands view on mobile — keep stars, kill orbs/grid/rays/blur */
+  .bg-canvas, .bg-orb, .bg-grid { display: none !important; }
+  #star-canvas { display: block !important; }
   body { background: #000 !important; }
   #app { background: #000 !important; }
   .main { padding: 20px 16px 60px; }
@@ -1094,12 +1096,120 @@ body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
   #search { padding: 12px 90px 12px 44px; }
   .scroll-top { bottom: 16px; right: 16px; width: 36px; height: 36px; }
   /* drop blur on command cards */
-  .cmd-card { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(14,14,18,0.9); }
+  .cmd-card { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(14,14,18,0.9); content-visibility: auto; contain-intrinsic-size: 118px; }
   .nav-pill { backdrop-filter: none; -webkit-backdrop-filter: none; }
   .glass-btn { backdrop-filter: none; -webkit-backdrop-filter: none; }
-  /* no hover lifts on touch */
-  .cmd-card:hover { transform: none; }
-  .stat-card:hover { transform: none; }
+  /* mobile/touch: no hover animations, shimmers, lifts, glow, or expensive transitions */
+  .cmd-card,
+  .cmd-card::before,
+  .cmd-card::after,
+  .stat-card,
+  .stat-card::before,
+  .stat-card::after,
+  .nav-pill,
+  .nav-pill .cat-svg-icon,
+  .glass-btn,
+  .icon-btn,
+  .info-btn,
+  .copy-btn,
+  .search-wrap,
+  #search,
+  .recent-tag,
+  .modal-box,
+  .modal-action-btn,
+  .modal-copy-btn,
+  .modal-alias-tag,
+  .modal-example,
+  .scroll-top {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+  .cmd-card:hover,
+  .cmd-card.kb-focused,
+  .stat-card:hover,
+  .nav-pill:hover,
+  .glass-btn:hover,
+  .icon-btn:hover,
+  .info-btn:hover,
+  .recent-tag:hover,
+  .modal-action-btn:hover,
+  .modal-copy-btn:hover,
+  .modal-alias-tag:hover,
+  .modal-example:hover,
+  .scroll-top:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .cmd-card:hover::before,
+  .cmd-card:hover::after,
+  .cmd-card.kb-focused::after,
+  .stat-card:hover::before,
+  .stat-card:hover::after {
+    opacity: 0 !important;
+    transform: none !important;
+  }
+  .cmd-card:hover .f-icon,
+  .cmd-card:hover .cat-svg-icon,
+  .cmd-card:hover .info-btn,
+  .cmd-card:hover .alias-tag,
+  .cmd-card:hover .copy-btn,
+  .stat-card:hover .stat-num,
+  .nav-pill:hover .cat-svg-icon {
+    transform: none !important;
+  }
+  .stat-card:hover .stat-label { color: var(--text-muted) !important; }
+  .cmd-card:hover .info-btn { opacity: 1 !important; }
+  .cmd-card:hover .copy-btn { opacity: 1 !important; }
+}
+
+@media (hover: none) {
+  .cmd-card,
+  .cmd-card::before,
+  .cmd-card::after,
+  .stat-card,
+  .stat-card::before,
+  .stat-card::after,
+  .nav-pill,
+  .glass-btn,
+  .icon-btn,
+  .info-btn,
+  .recent-tag,
+  .modal-action-btn,
+  .modal-copy-btn,
+  .modal-alias-tag,
+  .modal-example,
+  .scroll-top {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+  .cmd-card:hover,
+  .cmd-card.kb-focused,
+  .stat-card:hover,
+  .nav-pill:hover,
+  .glass-btn:hover,
+  .icon-btn:hover,
+  .info-btn:hover,
+  .recent-tag:hover,
+  .modal-action-btn:hover,
+  .modal-copy-btn:hover,
+  .modal-alias-tag:hover,
+  .modal-example:hover,
+  .scroll-top:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .cmd-card:hover::before,
+  .cmd-card:hover::after,
+  .cmd-card.kb-focused::after,
+  .stat-card:hover::before,
+  .stat-card:hover::after {
+    opacity: 0 !important;
+    transform: none !important;
+  }
 }
 
 /* ── STAT CARD ENTRANCE ── */
@@ -1558,6 +1668,7 @@ footer {
   #nav.scrolled { top: 0 !important; width: 100% !important; max-width: 100% !important;
                   height: 58px !important; border-radius: 0 !important;
                   background: rgba(6,6,8,0.7); box-shadow: none !important; }
+  .nav-menu { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(6,6,8,0.96); }
   .nav-hamburger { display: flex; }
   .nav-links { display: none; }
   .nav-right { display: none; }
@@ -3084,7 +3195,7 @@ loadData();
   let stars = [], W, H;
   function resize() {
     W = cvs.width  = window.innerWidth;
-    H = cvs.height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+    H = cvs.height = window.innerHeight;
     const density = W < 720 ? 9000 : 5200;
     const n = Math.floor(W * H / density);
     stars = Array.from({ length: n }, () => ({
@@ -3102,18 +3213,14 @@ loadData();
   document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) draw(); });
   function draw() {
     if (!running) return;
-    ctx.clearRect(0, 0, W, window.innerHeight);
+    ctx.clearRect(0, 0, W, H);
     t++;
     currentScrollY += (window.scrollY - currentScrollY) * 0.085;
     const rot = (currentScrollY * 0.03).toFixed(2);
     document.documentElement.style.setProperty('--ray-rot', `${rot}deg`);
-    const viewTop = window.scrollY - 20, viewBot = window.scrollY + window.innerHeight + 20;
     for (const s of stars) {
-      let y = (s.y - currentScrollY * 0.15) % H;
-      if (y < 0) y += H;
-      if (y < viewTop || y > viewBot) continue;
       const a = s.a * (0.4 + 0.6 * Math.sin(s.ph + t * s.sp));
-      ctx.beginPath(); ctx.arc(s.x, y - window.scrollY, s.r, 0, 6.2832);
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.2832);
       ctx.fillStyle = `rgba(220,220,240,${a.toFixed(3)})`; ctx.fill();
     }
     requestAnimationFrame(draw);
