@@ -1,5 +1,5 @@
 {
-  "total_commands": 208,
+  "total_commands": 209,
   "prefix": ".",
   "categories": {
     "admin": {
@@ -10,176 +10,236 @@
       "staff": false,
       "icon": "◆",
       "sections": {
-        "Command Channels": [
+        "Server Management": [
           {
-            "name": "allow",
-            "usage": ".cmd allow <#channel>... <category|command>",
+            "name": "alias",
+            "usage": ".alias .alias <new> <existing> .alias remove <name>",
             "usage_parts": {
               "prefix": ".",
-              "name": "allow",
-              "args": "cmd allow <#channel>... <category|command>"
+              "name": "alias",
+              "args": ".alias <new> <existing> .alias remove <name>"
             },
-            "description": "Restricts a category or command to only the specified channels.",
+            "description": "Lists, adds, or removes custom command aliases.",
             "aliases": [],
             "owner": false,
-            "admin": false,
+            "admin": true,
             "staff": false,
             "examples": [
-              ".cmd allow #mod #staff purge",
-              ".cmd allow #mod .ping"
+              ".alias",
+              ".alias bb .bday",
+              ".alias remove bb"
             ],
             "params": [
               {
-                "name": "channels",
-                "type": "discord.TextChannel",
-                "required": true,
-                "desc": "One or more channel mentions."
+                "name": "new",
+                "type": "str",
+                "required": false,
+                "desc": "The new alias name."
               },
               {
-                "name": "target",
+                "name": "existing",
                 "type": "str",
-                "required": true,
-                "desc": "A command name (e.g. `.ping`) or category name."
-              }
-            ],
-            "note": "Admin only. Overrides any existing rule for the target.",
-            "category_id": "admin",
-            "section": "Command Channels",
-            "group": "cmd",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "admin.py"
-          },
-          {
-            "name": "clear",
-            "usage": ".cmd clear <category|command>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "clear",
-              "args": "cmd clear <category|command>"
-            },
-            "description": "Removes the channel rule for a category or command so it works everywhere again.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".cmd clear .ping",
-              ".cmd clear music"
-            ],
-            "params": [
+                "required": false,
+                "desc": "The existing command to alias."
+              },
               {
-                "name": "target",
+                "name": "action",
                 "type": "str",
-                "required": true,
-                "desc": "The command or category to clear the rule for."
+                "required": false,
+                "desc": "Use `remove` to delete an alias."
               }
             ],
-            "note": "Admin only. The command/category will work in all channels after clearing.",
+            "note": "Anyone can view the alias list. Adding/removing requires admin. Built-in aliases are shown automatically.",
             "category_id": "admin",
-            "section": "Command Channels",
-            "group": "cmd",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "admin.py"
-          },
-          {
-            "name": "cmd",
-            "usage": ".cmd <allow|deny|clear|show>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "cmd",
-              "args": "<allow|deny|clear|show>"
-            },
-            "description": "Manages command channel rules — restrict or allow commands in specific channels.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".cmd allow #mod purge",
-              ".cmd deny #general .ping",
-              ".cmd clear .ping",
-              ".cmd show"
-            ],
-            "params": [],
-            "note": "Admin only. Subcommands: allow, deny, clear, show.",
-            "category_id": "admin",
-            "section": "Command Channels",
+            "section": "Server Management",
             "group": null,
             "is_subcommand": false,
-            "has_subcommands": true,
+            "has_subcommands": false,
             "cog_file": "admin.py"
           },
           {
-            "name": "deny",
-            "usage": ".cmd deny <#channel>... <category|command>",
+            "name": "confess",
+            "usage": ".confess set #channel",
             "usage_parts": {
               "prefix": ".",
-              "name": "deny",
-              "args": "cmd deny <#channel>... <category|command>"
+              "name": "confess",
+              "args": "set #channel"
             },
-            "description": "Blocks a category or command in the specified channels.",
+            "description": "Sets the confession channel for the server.",
             "aliases": [],
             "owner": false,
-            "admin": false,
+            "admin": true,
             "staff": false,
             "examples": [
-              ".cmd deny #general .play",
-              ".cmd deny #chat music"
+              ".confess set #confessions"
             ],
             "params": [
               {
-                "name": "channels",
-                "type": "discord.TextChannel",
-                "required": true,
-                "desc": "One or more channel mentions."
+                "name": "action",
+                "type": "str",
+                "required": false,
+                "desc": "Currently only `set` is supported."
               },
               {
-                "name": "target",
-                "type": "str",
-                "required": true,
-                "desc": "A command name (e.g. `.play`) or category name."
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": false,
+                "desc": "The channel to send confessions to."
               }
             ],
             "note": "Admin only.",
             "category_id": "admin",
-            "section": "Command Channels",
-            "group": "cmd",
-            "is_subcommand": true,
+            "section": "Server Management",
+            "group": null,
+            "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "admin.py"
           },
           {
-            "name": "show",
-            "usage": ".cmd show [category|command]",
+            "name": "ignore",
+            "usage": ".ignore @user",
             "usage_parts": {
               "prefix": ".",
-              "name": "show",
-              "args": "cmd show [category|command]"
+              "name": "ignore",
+              "args": "@user"
             },
-            "description": "Shows active channel rules for this server, or for a specific target.",
+            "description": "Toggles ignoring a user — the bot won't respond to them in AI channels.",
             "aliases": [],
             "owner": false,
             "admin": false,
-            "staff": false,
+            "staff": true,
             "examples": [
-              ".cmd show",
-              ".cmd show .ping"
+              ".ignore @user"
             ],
             "params": [
               {
-                "name": "target",
-                "type": "str",
-                "required": false,
-                "desc": "Optional command or category to check."
+                "name": "user",
+                "type": "discord.Member",
+                "required": true,
+                "desc": "The member to ignore or unignore."
               }
             ],
-            "note": "Admin only. Run without arguments to see all rules.",
+            "note": "Staff only (whitelisted users).",
             "category_id": "admin",
-            "section": "Command Channels",
-            "group": "cmd",
-            "is_subcommand": true,
+            "section": "Server Management",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "ignorelist",
+            "usage": ".ignorelist",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "ignorelist",
+              "args": ""
+            },
+            "description": "Shows all users currently ignored by the bot in AI channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".ignorelist"
+            ],
+            "params": [],
+            "note": "Staff only (whitelisted users).",
+            "category_id": "admin",
+            "section": "Server Management",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "setcolor",
+            "usage": ".setcolor #HEX",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setcolor",
+              "args": "#HEX"
+            },
+            "description": "Changes the embed accent colour for this server.",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".setcolor #FF0000",
+              ".setcolor FF0000"
+            ],
+            "params": [
+              {
+                "name": "color",
+                "type": "str",
+                "required": true,
+                "desc": "Hex colour code with or without #."
+              }
+            ],
+            "note": "Only the bot owner/creator can change the colour.",
+            "category_id": "admin",
+            "section": "Server Management",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "whitelist",
+            "usage": ".whitelist @user",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "whitelist",
+              "args": "@user"
+            },
+            "description": "Toggles a user on or off the staff whitelist.",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".whitelist",
+              ".whitelist @user"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "The member to toggle. Omit to see usage."
+              }
+            ],
+            "note": "Only the bot owner/creator can manage the whitelist.",
+            "category_id": "admin",
+            "section": "Server Management",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "whitelistshow",
+            "usage": ".whitelistshow",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "whitelistshow",
+              "args": ""
+            },
+            "description": "Shows all users currently on the staff whitelist.",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".whitelistshow"
+            ],
+            "params": [],
+            "note": "Only the bot owner/creator can view this.",
+            "category_id": "admin",
+            "section": "Server Management",
+            "group": null,
+            "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "admin.py"
           }
@@ -586,236 +646,176 @@
             "cog_file": "admin.py"
           }
         ],
-        "Server Management": [
+        "Command Channels": [
           {
-            "name": "alias",
-            "usage": ".alias .alias <new> <existing> .alias remove <name>",
+            "name": "allow",
+            "usage": ".cmd allow <#channel>... <category|command>",
             "usage_parts": {
               "prefix": ".",
-              "name": "alias",
-              "args": ".alias <new> <existing> .alias remove <name>"
+              "name": "allow",
+              "args": "cmd allow <#channel>... <category|command>"
             },
-            "description": "Lists, adds, or removes custom command aliases.",
+            "description": "Restricts a category or command to only the specified channels.",
             "aliases": [],
             "owner": false,
-            "admin": true,
+            "admin": false,
             "staff": false,
             "examples": [
-              ".alias",
-              ".alias bb .bday",
-              ".alias remove bb"
+              ".cmd allow #mod #staff purge",
+              ".cmd allow #mod .ping"
             ],
             "params": [
               {
-                "name": "new",
-                "type": "str",
-                "required": false,
-                "desc": "The new alias name."
+                "name": "channels",
+                "type": "discord.TextChannel",
+                "required": true,
+                "desc": "One or more channel mentions."
               },
               {
-                "name": "existing",
+                "name": "target",
                 "type": "str",
-                "required": false,
-                "desc": "The existing command to alias."
-              },
-              {
-                "name": "action",
-                "type": "str",
-                "required": false,
-                "desc": "Use `remove` to delete an alias."
+                "required": true,
+                "desc": "A command name (e.g. `.ping`) or category name."
               }
             ],
-            "note": "Anyone can view the alias list. Adding/removing requires admin. Built-in aliases are shown automatically.",
+            "note": "Admin only. Overrides any existing rule for the target.",
             "category_id": "admin",
-            "section": "Server Management",
-            "group": null,
-            "is_subcommand": false,
+            "section": "Command Channels",
+            "group": "cmd",
+            "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "admin.py"
           },
           {
-            "name": "confess",
-            "usage": ".confess set #channel",
+            "name": "clear",
+            "usage": ".cmd clear <category|command>",
             "usage_parts": {
               "prefix": ".",
-              "name": "confess",
-              "args": "set #channel"
+              "name": "clear",
+              "args": "cmd clear <category|command>"
             },
-            "description": "Sets the confession channel for the server.",
+            "description": "Removes the channel rule for a category or command so it works everywhere again.",
             "aliases": [],
             "owner": false,
-            "admin": true,
+            "admin": false,
             "staff": false,
             "examples": [
-              ".confess set #confessions"
+              ".cmd clear .ping",
+              ".cmd clear music"
             ],
             "params": [
               {
-                "name": "action",
+                "name": "target",
                 "type": "str",
-                "required": false,
-                "desc": "Currently only `set` is supported."
+                "required": true,
+                "desc": "The command or category to clear the rule for."
+              }
+            ],
+            "note": "Admin only. The command/category will work in all channels after clearing.",
+            "category_id": "admin",
+            "section": "Command Channels",
+            "group": "cmd",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "cmd",
+            "usage": ".cmd <allow|deny|clear|show>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "cmd",
+              "args": "<allow|deny|clear|show>"
+            },
+            "description": "Manages command channel rules — restrict or allow commands in specific channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".cmd allow #mod purge",
+              ".cmd deny #general .ping",
+              ".cmd clear .ping",
+              ".cmd show"
+            ],
+            "params": [],
+            "note": "Admin only. Subcommands: allow, deny, clear, show.",
+            "category_id": "admin",
+            "section": "Command Channels",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "admin.py"
+          },
+          {
+            "name": "deny",
+            "usage": ".cmd deny <#channel>... <category|command>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "deny",
+              "args": "cmd deny <#channel>... <category|command>"
+            },
+            "description": "Blocks a category or command in the specified channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".cmd deny #general .play",
+              ".cmd deny #chat music"
+            ],
+            "params": [
+              {
+                "name": "channels",
+                "type": "discord.TextChannel",
+                "required": true,
+                "desc": "One or more channel mentions."
               },
               {
-                "name": "channel",
-                "type": "discord.TextChannel",
-                "required": false,
-                "desc": "The channel to send confessions to."
+                "name": "target",
+                "type": "str",
+                "required": true,
+                "desc": "A command name (e.g. `.play`) or category name."
               }
             ],
             "note": "Admin only.",
             "category_id": "admin",
-            "section": "Server Management",
-            "group": null,
-            "is_subcommand": false,
+            "section": "Command Channels",
+            "group": "cmd",
+            "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "admin.py"
           },
           {
-            "name": "ignore",
-            "usage": ".ignore @user",
+            "name": "show",
+            "usage": ".cmd show [category|command]",
             "usage_parts": {
               "prefix": ".",
-              "name": "ignore",
-              "args": "@user"
+              "name": "show",
+              "args": "cmd show [category|command]"
             },
-            "description": "Toggles ignoring a user — the bot won't respond to them in AI channels.",
+            "description": "Shows active channel rules for this server, or for a specific target.",
             "aliases": [],
             "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".ignore @user"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.Member",
-                "required": true,
-                "desc": "The member to ignore or unignore."
-              }
-            ],
-            "note": "Staff only (whitelisted users).",
-            "category_id": "admin",
-            "section": "Server Management",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "admin.py"
-          },
-          {
-            "name": "ignorelist",
-            "usage": ".ignorelist",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "ignorelist",
-              "args": ""
-            },
-            "description": "Shows all users currently ignored by the bot in AI channels.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".ignorelist"
-            ],
-            "params": [],
-            "note": "Staff only (whitelisted users).",
-            "category_id": "admin",
-            "section": "Server Management",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "admin.py"
-          },
-          {
-            "name": "setcolor",
-            "usage": ".setcolor #HEX",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setcolor",
-              "args": "#HEX"
-            },
-            "description": "Changes the embed accent colour for this server.",
-            "aliases": [],
-            "owner": true,
             "admin": false,
             "staff": false,
             "examples": [
-              ".setcolor #FF0000",
-              ".setcolor FF0000"
+              ".cmd show",
+              ".cmd show .ping"
             ],
             "params": [
               {
-                "name": "color",
+                "name": "target",
                 "type": "str",
-                "required": true,
-                "desc": "Hex colour code with or without #."
-              }
-            ],
-            "note": "Only the bot owner/creator can change the colour.",
-            "category_id": "admin",
-            "section": "Server Management",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "admin.py"
-          },
-          {
-            "name": "whitelist",
-            "usage": ".whitelist @user",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "whitelist",
-              "args": "@user"
-            },
-            "description": "Toggles a user on or off the staff whitelist.",
-            "aliases": [],
-            "owner": true,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".whitelist",
-              ".whitelist @user"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.Member",
                 "required": false,
-                "desc": "The member to toggle. Omit to see usage."
+                "desc": "Optional command or category to check."
               }
             ],
-            "note": "Only the bot owner/creator can manage the whitelist.",
+            "note": "Admin only. Run without arguments to see all rules.",
             "category_id": "admin",
-            "section": "Server Management",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "admin.py"
-          },
-          {
-            "name": "whitelistshow",
-            "usage": ".whitelistshow",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "whitelistshow",
-              "args": ""
-            },
-            "description": "Shows all users currently on the staff whitelist.",
-            "aliases": [],
-            "owner": true,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".whitelistshow"
-            ],
-            "params": [],
-            "note": "Only the bot owner/creator can view this.",
-            "category_id": "admin",
-            "section": "Server Management",
-            "group": null,
-            "is_subcommand": false,
+            "section": "Command Channels",
+            "group": "cmd",
+            "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "admin.py"
           }
@@ -1214,6 +1214,95 @@
         ]
       }
     },
+    "utility": {
+      "label": "Utility",
+      "desc": "API status checks and utilities.",
+      "admin": false,
+      "owner": false,
+      "staff": false,
+      "icon": "■",
+      "sections": {
+        "Utility": [
+          {
+            "name": "anilist",
+            "usage": "`.anilist`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "anilist",
+              "args": ""
+            },
+            "description": "Checks AniList API status and latency.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".anilist"
+            ],
+            "params": [],
+            "note": "No authentication required. Uses the AniList GraphQL API.",
+            "category_id": "utility",
+            "section": "Utility",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "check.py"
+          }
+        ]
+      }
+    },
+    "staff": {
+      "label": "Staff",
+      "desc": "Staff moderation and vanity tools.",
+      "admin": false,
+      "owner": false,
+      "staff": true,
+      "icon": "▪",
+      "sections": {
+        "Staff": [
+          {
+            "name": "cid",
+            "usage": "`.cid latest | number | user <id>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "cid",
+              "args": "latest | number | user <id>"
+            },
+            "description": "Reveals who sent a confession (DM only).",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".cid latest",
+              ".cid 42",
+              ".cid user 123456789"
+            ],
+            "params": [
+              {
+                "name": "target",
+                "type": "str",
+                "required": true,
+                "desc": "`latest`, a confession number, or `user`."
+              },
+              {
+                "name": "user_id",
+                "type": "str",
+                "required": false,
+                "desc": "User ID to look up (only used with `user` mode)."
+              }
+            ],
+            "note": "Staff only. Must be run in DMs. Uses cached config.",
+            "category_id": "staff",
+            "section": "Staff",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "confessions.py"
+          }
+        ]
+      }
+    },
     "fun": {
       "label": "Fun",
       "desc": "Fun staff tools.",
@@ -1222,44 +1311,6 @@
       "staff": true,
       "icon": "♢",
       "sections": {
-        "Fun": [
-          {
-            "name": "imagine",
-            "usage": "`.imagine <prompt>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "imagine",
-              "args": "<prompt>"
-            },
-            "description": "Generate an image using AI.",
-            "aliases": [
-              "draw",
-              "gen"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".imagine a cat in space",
-              ".imagine cyberpunk city rain"
-            ],
-            "params": [
-              {
-                "name": "prompt",
-                "type": "str",
-                "required": true,
-                "desc": "Description of the image to generate."
-              }
-            ],
-            "note": "Uses NVIDIA FLUX.2 model. Per-user cooldown applies.",
-            "category_id": "fun",
-            "section": "Fun",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "imagine.py"
-          }
-        ],
         "Moderation": [
           {
             "name": "uwulist",
@@ -1267,7 +1318,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "uwulist",
-              "args": "uwulist`"
+              "args": ""
             },
             "description": "Shows who is currently uwulocked.",
             "aliases": [],
@@ -1325,500 +1376,43 @@
             "has_subcommands": false,
             "cog_file": "fun.py"
           }
-        ]
-      }
-    },
-    "general": {
-      "label": "General",
-      "desc": "Core utility and reaction commands.",
-      "admin": false,
-      "owner": false,
-      "staff": false,
-      "icon": "☆",
-      "sections": {
-        "Leaderboards": [
-          {
-            "name": "leaderboard",
-            "usage": "`.lb`  ·  `.lb messages`  ·  `.lb vctime`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "leaderboard",
-              "args": "lb` ·  `.lb messages`  ·  `.lb vctime"
-            },
-            "description": "Leaderboards for messages and VC time.",
-            "aliases": [
-              "lb"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb",
-              ".lb messages",
-              ".lb vctime"
-            ],
-            "params": [],
-            "note": "Subcommands: `messages`, `vctime`.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "messages",
-            "usage": "`.lb messages`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "messages",
-              "args": "lb messages"
-            },
-            "description": "Shows the top 200 message senders in the server.",
-            "aliases": [
-              "msgs",
-              "msg",
-              "lbm"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb messages"
-            ],
-            "params": [],
-            "note": "Updates in real-time as messages are sent.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": "leaderboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "vctime",
-            "usage": "`.lb vctime`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "vctime",
-              "args": "lb vctime"
-            },
-            "description": "Shows the top 200 VC time leaders in the server.",
-            "aliases": [
-              "vc",
-              "voice",
-              "lbv"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb vctime"
-            ],
-            "params": [],
-            "note": "Tracks time spent in voice channels.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": "leaderboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          }
         ],
-        "Reminders": [
+        "Fun": [
           {
-            "name": "bday",
-            "usage": "`.bday <date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]`",
+            "name": "imagine",
+            "usage": "`.imagine <prompt>`",
             "usage_parts": {
               "prefix": ".",
-              "name": "bday",
-              "args": "<date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]"
+              "name": "imagine",
+              "args": "<prompt>"
             },
-            "description": "Saves a birthday — the bot DMs you every year on the date. Date format: `MM/DD` or `YYYY/MM/DD`.",
+            "description": "Generate an image using AI.",
             "aliases": [
-              "birthday"
+              "draw",
+              "gen"
             ],
             "owner": false,
             "admin": false,
             "staff": false,
             "examples": [
-              ".bday 11/08",
-              ".bday 2002/11/08 @user",
-              ".bday list",
-              ".bday remove @user"
+              ".imagine a cat in space",
+              ".imagine cyberpunk city rain"
             ],
             "params": [
               {
-                "name": "date",
+                "name": "prompt",
                 "type": "str",
                 "required": true,
-                "desc": "Birthday date: `MM/DD` or `YYYY/MM/DD`."
-              },
-              {
-                "name": "target",
-                "type": "str",
-                "required": false,
-                "desc": "Optional @user or name. Defaults to yourself."
+                "desc": "Description of the image to generate."
               }
             ],
-            "note": "The bot will DM you a birthday greeting every year on the saved date.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "cancel",
-            "usage": ".remind cancel <id>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "cancel",
-              "args": "remind cancel <id>"
-            },
-            "description": "Cancels a reminder by its ID.",
-            "aliases": [
-              "rm",
-              "del",
-              "delete"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".remind cancel 3"
-            ],
-            "params": [
-              {
-                "name": "id",
-                "type": "int",
-                "required": true,
-                "desc": "The reminder ID (shown in `.remind list`)."
-              }
-            ],
-            "note": "You can only cancel your own reminders.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "remind",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "list",
-            "usage": ".remind list",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "remind list"
-            },
-            "description": "Lists all your active reminders.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".remind list"
-            ],
-            "params": [],
-            "note": "Shows reminder IDs, time remaining, and preview of the message.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "remind",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "list",
-            "usage": ".bday list",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "bday list"
-            },
-            "description": "Lists all your saved birthdays.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".bday list"
-            ],
-            "params": [],
-            "note": "Shows the saved dates and names.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "bday",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "remind",
-            "usage": "`.remind <when> <text>`  ·  `.remind list`  ·  `.remind cancel <id>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "remind",
-              "args": "<when> <text>`  ·  `.remind list`  ·  `.remind cancel <id>"
-            },
-            "description": "DM-yourself reminder. `<when>` accepts relative (`5s`, `5m`, `2h`, `2d`, `1w`) or absolute (`YYYY/MM/DD [HH:MM]`) time.",
-            "aliases": [
-              "reminder"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".remind 5m take out pizza rolls",
-              ".remind 2026/12/25 it's christmas!",
-              ".remind list"
-            ],
-            "params": [
-              {
-                "name": "when",
-                "type": "str",
-                "required": true,
-                "desc": "Time spec: relative (`5m`, `2h`, `1d`) or absolute (`2026/12/25 14:30`)."
-              },
-              {
-                "name": "text",
-                "type": "str",
-                "required": true,
-                "desc": "Reminder message (max 500 chars)."
-              }
-            ],
-            "note": "You will receive a DM when the reminder triggers. Time is UTC.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "remove",
-            "usage": ".bday remove [@user]",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "remove",
-              "args": "bday remove [@user]"
-            },
-            "description": "Removes a saved birthday.",
-            "aliases": [
-              "rm",
-              "del",
-              "delete"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".bday remove @user"
-            ],
-            "params": [
-              {
-                "name": "target",
-                "type": "str",
-                "required": false,
-                "desc": "The user or name whose birthday to remove. Defaults to yourself."
-              }
-            ],
-            "note": "This cannot be undone.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "bday",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          }
-        ],
-        "Server Stats": [
-          {
-            "name": "emoji",
-            "usage": ".starboard emoji <emoji>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "emoji",
-              "args": "starboard emoji <emoji>"
-            },
-            "description": "Changes the reaction emoji the starboard watches for.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".starboard emoji ⭐",
-              ".starboard emoji 😭"
-            ],
-            "params": [
-              {
-                "name": "emoji",
-                "type": "str",
-                "required": true,
-                "desc": "The emoji to track for starboard entries."
-              }
-            ],
-            "note": "Admin only. A starboard channel must be set first.",
-            "category_id": "general",
-            "section": "Server Stats",
-            "group": "starboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "seoulities",
-            "usage": "`.seoulities`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "seoulities",
-              "args": "seoulities`"
-            },
-            "description": "Shows a server info card with member stats, top emoji, top reactor, top chatter, and top VC user.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".seoulities"
-            ],
-            "params": [],
-            "note": "Cooldown: 15s per channel. Generates an info card image.",
-            "category_id": "general",
-            "section": "Server Stats",
+            "note": "Uses NVIDIA FLUX.2 model. Per-user cooldown applies.",
+            "category_id": "fun",
+            "section": "Fun",
             "group": null,
             "is_subcommand": false,
             "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "starboard",
-            "usage": "`.starboard #channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "starboard",
-              "args": "#channel [emoji] [threshold]"
-            },
-            "description": "Manages the starboard: set channel, emoji, and reaction threshold.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".starboard #starboard ⭐ 3",
-              ".starboard emoji 😭",
-              ".starboard threshold 5"
-            ],
-            "params": [
-              {
-                "name": "channel",
-                "type": "discord.TextChannel",
-                "required": false,
-                "desc": "The channel to use as starboard."
-              },
-              {
-                "name": "emoji",
-                "type": "str",
-                "required": false,
-                "desc": "Reaction emoji to track."
-              },
-              {
-                "name": "threshold",
-                "type": "int",
-                "required": false,
-                "desc": "Number of reactions required to appear on starboard."
-              }
-            ],
-            "note": "Admin only. Subcommands: `emoji`, `threshold`.",
-            "category_id": "general",
-            "section": "Server Stats",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "threshold",
-            "usage": ".starboard threshold <number>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "threshold",
-              "args": "starboard threshold <number>"
-            },
-            "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".starboard threshold 3",
-              ".starboard threshold 5"
-            ],
-            "params": [
-              {
-                "name": "threshold",
-                "type": "int",
-                "required": true,
-                "desc": "Minimum reaction count (must be at least 1)."
-              }
-            ],
-            "note": "Admin only. A starboard channel must be set first.",
-            "category_id": "general",
-            "section": "Server Stats",
-            "group": "starboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          }
-        ]
-      }
-    },
-    "help": {
-      "label": "Help",
-      "desc": "Help and command reference system.",
-      "admin": false,
-      "owner": false,
-      "staff": false,
-      "icon": "?",
-      "sections": {
-        "Help": [
-          {
-            "name": "help",
-            "usage": "`.help [command]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "help",
-              "args": "[command]"
-            },
-            "description": "Shows the full command catalogue or detailed info for a specific command.",
-            "aliases": [
-              "h"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".help",
-              ".help play",
-              ".help remind"
-            ],
-            "params": [
-              {
-                "name": "command",
-                "type": "str",
-                "required": false,
-                "desc": "Optional command name to get detailed info about."
-              }
-            ],
-            "note": "Without arguments, shows a link to the web help site. Use `.help <command>` for detailed info.",
-            "category_id": "help",
-            "section": "Help",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "help.py"
+            "cog_file": "imagine.py"
           }
         ]
       }
@@ -2141,7 +1735,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "thisu",
-              "args": "thisu`"
+              "args": ""
             },
             "description": "Applies a POV overlay effect to every attached image or GIF.",
             "aliases": [],
@@ -2255,13 +1849,61 @@
         ]
       }
     },
+    "help": {
+      "label": "Help",
+      "desc": "Help and command reference system.",
+      "admin": false,
+      "owner": false,
+      "staff": false,
+      "icon": "?",
+      "sections": {
+        "Help": [
+          {
+            "name": "help",
+            "usage": "`.help [command]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "help",
+              "args": "[command]"
+            },
+            "description": "Shows the full command catalogue or detailed info for a specific command.",
+            "aliases": [
+              "h"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".help",
+              ".help play",
+              ".help remind"
+            ],
+            "params": [
+              {
+                "name": "command",
+                "type": "str",
+                "required": false,
+                "desc": "Optional command name to get detailed info about."
+              }
+            ],
+            "note": "Without arguments, shows a link to the web help site. Use `.help <command>` for detailed info.",
+            "category_id": "help",
+            "section": "Help",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "help.py"
+          }
+        ]
+      }
+    },
     "leveling": {
       "label": "Leveling",
       "desc": "XP, levels, and leaderboard system.",
       "admin": false,
       "owner": false,
       "staff": false,
-      "icon": "▲",
+      "icon": "▪",
       "sections": {
         "Leveling": [
           {
@@ -2588,6 +2230,625 @@
         ]
       }
     },
+    "general": {
+      "label": "General",
+      "desc": "Core utility and reaction commands.",
+      "admin": false,
+      "owner": false,
+      "staff": false,
+      "icon": "☆",
+      "sections": {
+        "General": [
+          {
+            "name": "dm",
+            "usage": "`.dm @user <message>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "dm",
+              "args": "@user <message>"
+            },
+            "description": "Sends a DM to a user as the bot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".dm @fw_u hello!"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.User",
+                "required": true,
+                "desc": "The user to DM."
+              },
+              {
+                "name": "message",
+                "type": "str",
+                "required": true,
+                "desc": "The message content to send."
+              }
+            ],
+            "note": "Staff only. Requires whitelist.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "dmcheck",
+            "usage": "`.dmcheck @user`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "dmcheck",
+              "args": "@user"
+            },
+            "description": "Exports DM history with a user as a .txt file.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".dmcheck @fw_u"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.User",
+                "required": true,
+                "desc": "The user whose DM history to export."
+              }
+            ],
+            "note": "Staff only. Fetches up to 100 most recent messages.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "link",
+            "usage": "`.link`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "link",
+              "args": ""
+            },
+            "description": "Sends the Seoulities website link with an info embed.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".link"
+            ],
+            "params": [],
+            "note": "The image is loaded from local assets.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "ping",
+            "usage": "`.ping`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "ping",
+              "args": ""
+            },
+            "description": "Shows the bot's current WebSocket and round-trip latency.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".ping"
+            ],
+            "params": [],
+            "note": "Displays both heartbeat latency and message edit RTT. The ping target is purely flavour text.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "random",
+            "usage": "`.random`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "random",
+              "args": ""
+            },
+            "description": "Picks a random non-bot member in the server and mentions them.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".random"
+            ],
+            "params": [],
+            "note": "Has a GIF cooldown per user.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "status",
+            "usage": "`.status`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "status",
+              "args": ""
+            },
+            "description": "Shows uptime, latency, memory usage, and Lavalink status.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".status"
+            ],
+            "params": [],
+            "note": "Memory is read from /proc/self/status (Linux only). Lavalink RAM uses the /v4/stats endpoint.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          }
+        ],
+        "Reminders": [
+          {
+            "name": "bday",
+            "usage": "`.bday <date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bday",
+              "args": "<date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]"
+            },
+            "description": "Saves a birthday — the bot DMs you every year on the date. Date format: `MM/DD` or `YYYY/MM/DD`.",
+            "aliases": [
+              "birthday"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bday 11/08",
+              ".bday 2002/11/08 @user",
+              ".bday list",
+              ".bday remove @user"
+            ],
+            "params": [
+              {
+                "name": "date",
+                "type": "str",
+                "required": true,
+                "desc": "Birthday date: `MM/DD` or `YYYY/MM/DD`."
+              },
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "Optional @user or name. Defaults to yourself."
+              }
+            ],
+            "note": "The bot will DM you a birthday greeting every year on the saved date.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "cancel",
+            "usage": ".remind cancel <id>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "cancel",
+              "args": "remind cancel <id>"
+            },
+            "description": "Cancels a reminder by its ID.",
+            "aliases": [
+              "rm",
+              "del",
+              "delete"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".remind cancel 3"
+            ],
+            "params": [
+              {
+                "name": "id",
+                "type": "int",
+                "required": true,
+                "desc": "The reminder ID (shown in `.remind list`)."
+              }
+            ],
+            "note": "You can only cancel your own reminders.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "remind",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "list",
+            "usage": ".remind list",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "remind list"
+            },
+            "description": "Lists all your active reminders.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".remind list"
+            ],
+            "params": [],
+            "note": "Shows reminder IDs, time remaining, and preview of the message.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "remind",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "list",
+            "usage": ".bday list",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "bday list"
+            },
+            "description": "Lists all your saved birthdays.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bday list"
+            ],
+            "params": [],
+            "note": "Shows the saved dates and names.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "bday",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "remind",
+            "usage": "`.remind <when> <text>`  ·  `.remind list`  ·  `.remind cancel <id>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remind",
+              "args": "<when> <text>`  ·  `.remind list`  ·  `.remind cancel <id>"
+            },
+            "description": "DM-yourself reminder. `<when>` accepts relative (`5s`, `5m`, `2h`, `2d`, `1w`) or absolute (`YYYY/MM/DD [HH:MM]`) time.",
+            "aliases": [
+              "reminder"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".remind 5m take out pizza rolls",
+              ".remind 2026/12/25 it's christmas!",
+              ".remind list"
+            ],
+            "params": [
+              {
+                "name": "when",
+                "type": "str",
+                "required": true,
+                "desc": "Time spec: relative (`5m`, `2h`, `1d`) or absolute (`2026/12/25 14:30`)."
+              },
+              {
+                "name": "text",
+                "type": "str",
+                "required": true,
+                "desc": "Reminder message (max 500 chars)."
+              }
+            ],
+            "note": "You will receive a DM when the reminder triggers. Time is UTC.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "remove",
+            "usage": ".bday remove [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "bday remove [@user]"
+            },
+            "description": "Removes a saved birthday.",
+            "aliases": [
+              "rm",
+              "del",
+              "delete"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bday remove @user"
+            ],
+            "params": [
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "The user or name whose birthday to remove. Defaults to yourself."
+              }
+            ],
+            "note": "This cannot be undone.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "bday",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          }
+        ],
+        "Server Stats": [
+          {
+            "name": "emoji",
+            "usage": ".starboard emoji <emoji>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "emoji",
+              "args": "starboard emoji <emoji>"
+            },
+            "description": "Changes the reaction emoji the starboard watches for.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".starboard emoji ⭐",
+              ".starboard emoji 😭"
+            ],
+            "params": [
+              {
+                "name": "emoji",
+                "type": "str",
+                "required": true,
+                "desc": "The emoji to track for starboard entries."
+              }
+            ],
+            "note": "Admin only. A starboard channel must be set first.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": "starboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "seoulities",
+            "usage": "`.seoulities`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "seoulities",
+              "args": ""
+            },
+            "description": "Shows a server info card with member stats, top emoji, top reactor, top chatter, and top VC user.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".seoulities"
+            ],
+            "params": [],
+            "note": "Cooldown: 15s per channel. Generates an info card image.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "starboard",
+            "usage": "`.starboard #channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "starboard",
+              "args": "#channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5"
+            },
+            "description": "Manages the starboard: set channel, emoji, and reaction threshold.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".starboard #starboard ⭐ 3",
+              ".starboard emoji 😭",
+              ".starboard threshold 5"
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": false,
+                "desc": "The channel to use as starboard."
+              },
+              {
+                "name": "emoji",
+                "type": "str",
+                "required": false,
+                "desc": "Reaction emoji to track."
+              },
+              {
+                "name": "threshold",
+                "type": "int",
+                "required": false,
+                "desc": "Number of reactions required to appear on starboard."
+              }
+            ],
+            "note": "Admin only. Subcommands: `emoji`, `threshold`.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "threshold",
+            "usage": ".starboard threshold <number>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "threshold",
+              "args": "starboard threshold <number>"
+            },
+            "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".starboard threshold 3",
+              ".starboard threshold 5"
+            ],
+            "params": [
+              {
+                "name": "threshold",
+                "type": "int",
+                "required": true,
+                "desc": "Minimum reaction count (must be at least 1)."
+              }
+            ],
+            "note": "Admin only. A starboard channel must be set first.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": "starboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          }
+        ],
+        "Leaderboards": [
+          {
+            "name": "leaderboard",
+            "usage": "`.lb`  ·  `.lb messages`  ·  `.lb vctime`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "leaderboard",
+              "args": "lb`  ·  `.lb messages`  ·  `.lb vctime"
+            },
+            "description": "Leaderboards for messages and VC time.",
+            "aliases": [
+              "lb"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb",
+              ".lb messages",
+              ".lb vctime"
+            ],
+            "params": [],
+            "note": "Subcommands: `messages`, `vctime`.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "messages",
+            "usage": "`.lb messages`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "messages",
+              "args": "lb messages"
+            },
+            "description": "Shows the top 200 message senders in the server.",
+            "aliases": [
+              "msgs",
+              "msg",
+              "lbm"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb messages"
+            ],
+            "params": [],
+            "note": "Updates in real-time as messages are sent.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "vctime",
+            "usage": "`.lb vctime`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "vctime",
+              "args": "lb vctime"
+            },
+            "description": "Shows the top 200 VC time leaders in the server.",
+            "aliases": [
+              "vc",
+              "voice",
+              "lbv"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb vctime"
+            ],
+            "params": [],
+            "note": "Tracks time spent in voice channels.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          }
+        ]
+      }
+    },
     "misc": {
       "label": "Echo",
       "desc": "Staff utility to echo messages through the bot.",
@@ -2631,76 +2892,6 @@
             "cog_file": "misc.py"
           },
           {
-            "name": "dm",
-            "usage": "`.dm @user <message>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "dm",
-              "args": "@user <message>"
-            },
-            "description": "Sends a DM to a user as the bot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".dm @fw_u hello!"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.User",
-                "required": true,
-                "desc": "The user to DM."
-              },
-              {
-                "name": "message",
-                "type": "str",
-                "required": true,
-                "desc": "The message content to send."
-              }
-            ],
-            "note": "Staff only. Requires whitelist.",
-            "category_id": "misc",
-            "section": "Echo",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "dmcheck",
-            "usage": "`.dmcheck @user`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "dmcheck",
-              "args": "@user"
-            },
-            "description": "Exports DM history with a user as a .txt file.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".dmcheck @fw_u"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.User",
-                "required": true,
-                "desc": "The user whose DM history to export."
-              }
-            ],
-            "note": "Staff only. Fetches up to 100 most recent messages.",
-            "category_id": "misc",
-            "section": "Echo",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
             "name": "echo",
             "usage": "`.echo <message>`",
             "usage_parts": {
@@ -2724,106 +2915,6 @@
             "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "misc.py"
-          },
-          {
-            "name": "link",
-            "usage": "`.link`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "link",
-              "args": "link`"
-            },
-            "description": "Sends the Seoulities website link with an info embed.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".link"
-            ],
-            "params": [],
-            "note": "The image is loaded from local assets.",
-            "category_id": "misc",
-            "section": "Echo",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "ping",
-            "usage": "`.ping`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "ping",
-              "args": "ping`"
-            },
-            "description": "Shows the bot's current WebSocket and round-trip latency.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".ping"
-            ],
-            "params": [],
-            "note": "Displays both heartbeat latency and message edit RTT. The ping target is purely flavour text.",
-            "category_id": "misc",
-            "section": "Echo",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "random",
-            "usage": "`.random`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "random",
-              "args": "random`"
-            },
-            "description": "Picks a random non-bot member in the server and mentions them.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".random"
-            ],
-            "params": [],
-            "note": "Has a GIF cooldown per user.",
-            "category_id": "misc",
-            "section": "Echo",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "status",
-            "usage": "`.status`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "status",
-              "args": "status`"
-            },
-            "description": "Shows uptime, latency, memory usage, and Lavalink status.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".status"
-            ],
-            "params": [],
-            "note": "Memory is read from /proc/self/status (Linux only). Lavalink RAM uses the /v4/stats endpoint.",
-            "category_id": "misc",
-            "section": "Echo",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
           }
         ]
       }
@@ -2836,6 +2927,577 @@
       "staff": false,
       "icon": "♪",
       "sections": {
+        "Playback": [
+          {
+            "name": "autoplay",
+            "usage": "`.autoplay`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "autoplay",
+              "args": ""
+            },
+            "description": "Toggles autoplay — plays similar tracks after the queue ends.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".autoplay"
+            ],
+            "params": [],
+            "note": "When enabled, the bot will automatically add similar tracks when the queue is empty.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "dailyhits",
+            "usage": "`.dailyhits`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "dailyhits",
+              "args": ""
+            },
+            "description": "Opens a genre dropdown to load daily hit tracks.",
+            "aliases": [
+              "dh",
+              "genre",
+              "hits"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".dailyhits"
+            ],
+            "params": [],
+            "note": "Pick a genre from the dropdown to see today's top tracks in that genre.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "disconnect",
+            "usage": "`.disconnect`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "disconnect",
+              "args": ""
+            },
+            "description": "Stops playback, clears the queue, and leaves the voice channel.",
+            "aliases": [
+              "dc",
+              "stop"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".disconnect"
+            ],
+            "params": [],
+            "note": "Use this instead of just leaving the VC — it ensures proper cleanup.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "history",
+            "usage": "`.history`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "history",
+              "args": ""
+            },
+            "description": "Shows the last 10 tracks that were played in this session.",
+            "aliases": [
+              "recent"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".history"
+            ],
+            "params": [],
+            "note": "Session history resets when the bot leaves the voice channel.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "loop",
+            "usage": "`.loop`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "loop",
+              "args": ""
+            },
+            "description": "Opens a dropdown to set the loop mode (track / queue / off).",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".loop"
+            ],
+            "params": [],
+            "note": "Select from the dropdown: Track (repeat one), Queue (repeat all), or Off.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "lyrics",
+            "usage": "`.lyrics [query]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "lyrics",
+              "args": "[query]"
+            },
+            "description": "Fetches lyrics for the current track or a search query. Results are paginated.",
+            "aliases": [
+              "l",
+              "lyric"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lyrics",
+              ".lyrics never gonna give you up"
+            ],
+            "params": [
+              {
+                "name": "query",
+                "type": "str",
+                "required": false,
+                "desc": "Song name to search lyrics for. Omit to use current track."
+              }
+            ],
+            "note": "Uses syncedlyrics and LRCLIB. Supports synced/karaoke-style lyrics.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "nowplaying",
+            "usage": "`.nowplaying`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "nowplaying",
+              "args": ""
+            },
+            "description": "Shows the currently playing track with a generated music card.",
+            "aliases": [
+              "np",
+              "now"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".nowplaying"
+            ],
+            "params": [],
+            "note": "Displays an interactive embed with album art, progress bar, and controls.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "pause",
+            "usage": "`.pause`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "pause",
+              "args": ""
+            },
+            "description": "Pauses the current playback.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".pause"
+            ],
+            "params": [],
+            "note": "Use `.resume` to continue playing.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "play",
+            "usage": "`.play <query>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "play",
+              "args": "<query>"
+            },
+            "description": "Plays a song or playlist. Auto-detects YouTube, Spotify, and SoundCloud links.",
+            "aliases": [
+              "p"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".play never gonna give you up",
+              ".play https://youtu.be/dQw4w9WgXcQ",
+              ".play https://open.spotify.com/track/..."
+            ],
+            "params": [
+              {
+                "name": "query",
+                "type": "str",
+                "required": true,
+                "desc": "Song name or URL. Supports YouTube, Spotify, and SoundCloud links."
+              }
+            ],
+            "note": "Join a voice channel first. You can queue multiple songs. Spotify playlists are auto-scraped.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "playnext",
+            "usage": "`.playnext <query>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "playnext",
+              "args": "<query>"
+            },
+            "description": "Adds a track to the front of the queue so it plays next.",
+            "aliases": [
+              "pn"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".playnext never gonna give you up",
+              ".playnext https://youtu.be/dQw4w9WgXcQ"
+            ],
+            "params": [
+              {
+                "name": "query",
+                "type": "str",
+                "required": true,
+                "desc": "Song name or URL. Same sources as `.play`."
+              }
+            ],
+            "note": "The track is inserted at position 1 in the queue (after the current track).",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "radio",
+            "usage": "`.radio <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "radio",
+              "args": "<name>"
+            },
+            "description": "Plays an internet radio station by name.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".radio lofi",
+              ".radio chillhop"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Radio station name or search term."
+              }
+            ],
+            "note": "Joins voice and starts streaming the radio station.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "resume",
+            "usage": "`.resume`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "resume",
+              "args": ""
+            },
+            "description": "Resumes paused playback.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".resume"
+            ],
+            "params": [],
+            "note": "Only works if playback is currently paused.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "save",
+            "usage": "`.save`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "save",
+              "args": ""
+            },
+            "description": "DMs you the current track info so you don't lose it.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".save"
+            ],
+            "params": [],
+            "note": "Sends a DM with the track name, artist, and URL.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "shuffle",
+            "usage": "`.shuffle`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "shuffle",
+              "args": ""
+            },
+            "description": "Shuffles the current queue into a random order.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".shuffle"
+            ],
+            "params": [],
+            "note": "The current track continues playing; only upcoming tracks are shuffled.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "similar",
+            "usage": "`.similar`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "similar",
+              "args": ""
+            },
+            "description": "Shows similar tracks to the current one. Pick up to 7 to add to the queue.",
+            "aliases": [
+              "sim"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".similar"
+            ],
+            "params": [],
+            "note": "Uses the current track to recommend similar songs via a selection menu.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "skip",
+            "usage": "`.skip`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "skip",
+              "args": ""
+            },
+            "description": "Skips the current track. Requires a vote if multiple people are in voice.",
+            "aliases": [
+              "next"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".skip"
+            ],
+            "params": [],
+            "note": "If you're alone, the track skips immediately. In a group, a vote is started.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "stats",
+            "usage": "`.stats`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "stats",
+              "args": ""
+            },
+            "description": "Shows session stats: tracks played, total time, and top requester.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".stats"
+            ],
+            "params": [],
+            "note": "Stats reset when the bot leaves the voice channel.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "sync",
+            "usage": "`.sync`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "sync",
+              "args": ""
+            },
+            "description": "Forces synced karaoke-style lyrics for the current track.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".sync"
+            ],
+            "params": [],
+            "note": "Only works if synced lyrics are available for the current track.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "volume",
+            "usage": "`.volume [1-200]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "volume",
+              "args": "[1-200]"
+            },
+            "description": "Checks or sets the playback volume (1-200%).",
+            "aliases": [
+              "vol"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".volume",
+              ".volume 50",
+              ".volume 150"
+            ],
+            "params": [
+              {
+                "name": "level",
+                "type": "int",
+                "required": false,
+                "desc": "Volume level (1-200). Omit to check current volume."
+              }
+            ],
+            "note": "Default is 100%. Values above 100 may cause distortion.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "voteskip",
+            "usage": "`.voteskip`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "voteskip",
+              "args": ""
+            },
+            "description": "Starts a vote to skip the current track.",
+            "aliases": [
+              "vs"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".voteskip"
+            ],
+            "params": [],
+            "note": "Works in tandem with `.skip`. Majority vote is required in group sessions.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          }
+        ],
         "Controls": [
           {
             "name": "dedupe",
@@ -2895,7 +3557,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "exportqueue",
-              "args": "exportqueue`"
+              "args": ""
             },
             "description": "DMs you the current queue as clickable links.",
             "aliases": [
@@ -2997,7 +3659,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "queue",
-              "args": "queue`"
+              "args": ""
             },
             "description": "Shows the current queue with total duration and loop mode. Paginated.",
             "aliases": [
@@ -3058,7 +3720,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "replay",
-              "args": "replay`"
+              "args": ""
             },
             "description": "Restarts the current track from the beginning.",
             "aliases": [],
@@ -3212,7 +3874,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "bassboost",
-              "args": "bassboost`"
+              "args": ""
             },
             "description": "Applies a heavy bass boost filter — punchy low-end.",
             "aliases": [
@@ -3240,7 +3902,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "clearfilter",
-              "args": "clearfilter`"
+              "args": ""
             },
             "description": "Clears all active audio filters and restores clean audio.",
             "aliases": [
@@ -3268,7 +3930,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "concert",
-              "args": "concert`"
+              "args": ""
             },
             "description": "Applies a live concert hall reverb effect.",
             "aliases": [],
@@ -3293,7 +3955,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "dolby",
-              "args": "dolby`"
+              "args": ""
             },
             "description": "Applies a Dolby surround sound effect.",
             "aliases": [],
@@ -3318,7 +3980,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "dreamcore",
-              "args": "dreamcore`"
+              "args": ""
             },
             "description": "Applies a trance-like dreamy filter.",
             "aliases": [
@@ -3347,7 +4009,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "eightd",
-              "args": "eightd`"
+              "args": ""
             },
             "description": "Applies 8D audio — sound rotates around your head.",
             "aliases": [],
@@ -3372,7 +4034,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "heaven",
-              "args": "heaven`"
+              "args": ""
             },
             "description": "Applies an ethereal, airy filter — floaty and soft.",
             "aliases": [],
@@ -3397,7 +4059,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "instrumental",
-              "args": "instrumental`"
+              "args": ""
             },
             "description": "Attempts to remove vocals — karaoke mode.",
             "aliases": [
@@ -3425,7 +4087,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "lofi",
-              "args": "lofi`"
+              "args": ""
             },
             "description": "Applies a low-fidelity filter — mellow and warm sound.",
             "aliases": [],
@@ -3450,7 +4112,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "muffled",
-              "args": "muffled`"
+              "args": ""
             },
             "description": "Applies a muffled underwater effect.",
             "aliases": [
@@ -3478,7 +4140,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "nightcore",
-              "args": "nightcore`"
+              "args": ""
             },
             "description": "Applies a higher pitch and speed filter — anime/nightcore style.",
             "aliases": [],
@@ -3503,7 +4165,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "preset",
-              "args": "preset`"
+              "args": ""
             },
             "description": "Opens a dropdown to browse and apply audio filters.",
             "aliases": [],
@@ -3528,7 +4190,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "reverseroom",
-              "args": "reverseroom`"
+              "args": ""
             },
             "description": "Applies a reverse room — flipped spatial effect.",
             "aliases": [
@@ -3556,7 +4218,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "rotation",
-              "args": "rotation`"
+              "args": ""
             },
             "description": "Applies a hall/spacious cave-like ambience effect.",
             "aliases": [
@@ -3584,7 +4246,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "slowed",
-              "args": "slowed`"
+              "args": ""
             },
             "description": "Applies a slowed + reverb effect — chill and dreamy.",
             "aliases": [],
@@ -3609,7 +4271,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "tremolocmd",
-              "args": "tremolocmd`"
+              "args": ""
             },
             "description": "Applies a tremolo effect — rapid volume oscillation.",
             "aliases": [
@@ -3637,7 +4299,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "vibrato",
-              "args": "vibrato`"
+              "args": ""
             },
             "description": "Applies a vibrato effect — rapid pitch oscillation.",
             "aliases": [],
@@ -3849,577 +4511,6 @@
             "has_subcommands": false,
             "cog_file": "playlists.py"
           }
-        ],
-        "Playback": [
-          {
-            "name": "autoplay",
-            "usage": "`.autoplay`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "autoplay",
-              "args": "autoplay`"
-            },
-            "description": "Toggles autoplay — plays similar tracks after the queue ends.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".autoplay"
-            ],
-            "params": [],
-            "note": "When enabled, the bot will automatically add similar tracks when the queue is empty.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "dailyhits",
-            "usage": "`.dailyhits`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "dailyhits",
-              "args": "dailyhits`"
-            },
-            "description": "Opens a genre dropdown to load daily hit tracks.",
-            "aliases": [
-              "dh",
-              "genre",
-              "hits"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".dailyhits"
-            ],
-            "params": [],
-            "note": "Pick a genre from the dropdown to see today's top tracks in that genre.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "disconnect",
-            "usage": "`.disconnect`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "disconnect",
-              "args": "disconnect`"
-            },
-            "description": "Stops playback, clears the queue, and leaves the voice channel.",
-            "aliases": [
-              "dc",
-              "stop"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".disconnect"
-            ],
-            "params": [],
-            "note": "Use this instead of just leaving the VC — it ensures proper cleanup.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "history",
-            "usage": "`.history`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "history",
-              "args": "history`"
-            },
-            "description": "Shows the last 10 tracks that were played in this session.",
-            "aliases": [
-              "recent"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".history"
-            ],
-            "params": [],
-            "note": "Session history resets when the bot leaves the voice channel.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "loop",
-            "usage": "`.loop`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "loop",
-              "args": "loop`"
-            },
-            "description": "Opens a dropdown to set the loop mode (track / queue / off).",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".loop"
-            ],
-            "params": [],
-            "note": "Select from the dropdown: Track (repeat one), Queue (repeat all), or Off.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "lyrics",
-            "usage": "`.lyrics [query]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "lyrics",
-              "args": "[query]"
-            },
-            "description": "Fetches lyrics for the current track or a search query. Results are paginated.",
-            "aliases": [
-              "l",
-              "lyric"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lyrics",
-              ".lyrics never gonna give you up"
-            ],
-            "params": [
-              {
-                "name": "query",
-                "type": "str",
-                "required": false,
-                "desc": "Song name to search lyrics for. Omit to use current track."
-              }
-            ],
-            "note": "Uses syncedlyrics and LRCLIB. Supports synced/karaoke-style lyrics.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "nowplaying",
-            "usage": "`.nowplaying`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "nowplaying",
-              "args": "nowplaying`"
-            },
-            "description": "Shows the currently playing track with a generated music card.",
-            "aliases": [
-              "np",
-              "now"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".nowplaying"
-            ],
-            "params": [],
-            "note": "Displays an interactive embed with album art, progress bar, and controls.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "pause",
-            "usage": "`.pause`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "pause",
-              "args": "pause`"
-            },
-            "description": "Pauses the current playback.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".pause"
-            ],
-            "params": [],
-            "note": "Use `.resume` to continue playing.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "play",
-            "usage": "`.play <query>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "play",
-              "args": "<query>"
-            },
-            "description": "Plays a song or playlist. Auto-detects YouTube, Spotify, and SoundCloud links.",
-            "aliases": [
-              "p"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".play never gonna give you up",
-              ".play https://youtu.be/dQw4w9WgXcQ",
-              ".play https://open.spotify.com/track/..."
-            ],
-            "params": [
-              {
-                "name": "query",
-                "type": "str",
-                "required": true,
-                "desc": "Song name or URL. Supports YouTube, Spotify, and SoundCloud links."
-              }
-            ],
-            "note": "Join a voice channel first. You can queue multiple songs. Spotify playlists are auto-scraped.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "playnext",
-            "usage": "`.playnext <query>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "playnext",
-              "args": "<query>"
-            },
-            "description": "Adds a track to the front of the queue so it plays next.",
-            "aliases": [
-              "pn"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".playnext never gonna give you up",
-              ".playnext https://youtu.be/dQw4w9WgXcQ"
-            ],
-            "params": [
-              {
-                "name": "query",
-                "type": "str",
-                "required": true,
-                "desc": "Song name or URL. Same sources as `.play`."
-              }
-            ],
-            "note": "The track is inserted at position 1 in the queue (after the current track).",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "radio",
-            "usage": "`.radio <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "radio",
-              "args": "<name>"
-            },
-            "description": "Plays an internet radio station by name.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".radio lofi",
-              ".radio chillhop"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Radio station name or search term."
-              }
-            ],
-            "note": "Joins voice and starts streaming the radio station.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "resume",
-            "usage": "`.resume`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "resume",
-              "args": "resume`"
-            },
-            "description": "Resumes paused playback.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".resume"
-            ],
-            "params": [],
-            "note": "Only works if playback is currently paused.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "save",
-            "usage": "`.save`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "save",
-              "args": "save`"
-            },
-            "description": "DMs you the current track info so you don't lose it.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".save"
-            ],
-            "params": [],
-            "note": "Sends a DM with the track name, artist, and URL.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "shuffle",
-            "usage": "`.shuffle`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "shuffle",
-              "args": "shuffle`"
-            },
-            "description": "Shuffles the current queue into a random order.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".shuffle"
-            ],
-            "params": [],
-            "note": "The current track continues playing; only upcoming tracks are shuffled.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "similar",
-            "usage": "`.similar`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "similar",
-              "args": "similar`"
-            },
-            "description": "Shows similar tracks to the current one. Pick up to 7 to add to the queue.",
-            "aliases": [
-              "sim"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".similar"
-            ],
-            "params": [],
-            "note": "Uses the current track to recommend similar songs via a selection menu.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "skip",
-            "usage": "`.skip`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "skip",
-              "args": "skip`"
-            },
-            "description": "Skips the current track. Requires a vote if multiple people are in voice.",
-            "aliases": [
-              "next"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".skip"
-            ],
-            "params": [],
-            "note": "If you're alone, the track skips immediately. In a group, a vote is started.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "stats",
-            "usage": "`.stats`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "stats",
-              "args": "stats`"
-            },
-            "description": "Shows session stats: tracks played, total time, and top requester.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".stats"
-            ],
-            "params": [],
-            "note": "Stats reset when the bot leaves the voice channel.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "sync",
-            "usage": "`.sync`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "sync",
-              "args": "sync`"
-            },
-            "description": "Forces synced karaoke-style lyrics for the current track.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".sync"
-            ],
-            "params": [],
-            "note": "Only works if synced lyrics are available for the current track.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "volume",
-            "usage": "`.volume [1-200]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "volume",
-              "args": "[1-200]"
-            },
-            "description": "Checks or sets the playback volume (1-200%).",
-            "aliases": [
-              "vol"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".volume",
-              ".volume 50",
-              ".volume 150"
-            ],
-            "params": [
-              {
-                "name": "level",
-                "type": "int",
-                "required": false,
-                "desc": "Volume level (1-200). Omit to check current volume."
-              }
-            ],
-            "note": "Default is 100%. Values above 100 may cause distortion.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "voteskip",
-            "usage": "`.voteskip`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "voteskip",
-              "args": "voteskip`"
-            },
-            "description": "Starts a vote to skip the current track.",
-            "aliases": [
-              "vs"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".voteskip"
-            ],
-            "params": [],
-            "note": "Works in tandem with `.skip`. Majority vote is required in group sessions.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          }
         ]
       }
     },
@@ -4575,12 +4666,35 @@
             "cog_file": "profile.py"
           },
           {
+            "name": "removeavatar",
+            "usage": ".removeavatar",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "removeavatar",
+              "args": ""
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "profile",
+            "section": "Profile",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "profile.py"
+          },
+          {
             "name": "rpc",
             "usage": "`.rpc`  ·  `.rpc add [emoji] <text>`  ·  `.rpc remove <n>`  ·  `.rpc clear`  ·  `.rpc interval <secs>`",
             "usage_parts": {
               "prefix": ".",
               "name": "rpc",
-              "args": "rpc` ·  `.rpc add [emoji] <text>`  ·  `.rpc remove <n>`  ·  `.rpc clear`  ·  `.rpc interval <secs>"
+              "args": "`  ·  `.rpc add [emoji] <text>`  ·  `.rpc remove <n>`  ·  `.rpc clear`  ·  `.rpc interval <secs>"
             },
             "description": "Auto-managed status rotation. 1 entry = static, 2+ = cycles. Max 5 entries, min 5s interval.",
             "aliases": [],
@@ -4965,7 +5079,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "rsr",
-              "args": "rsr`"
+              "args": ""
             },
             "description": "Resets ALL reaction data for this server.",
             "aliases": [
@@ -4992,7 +5106,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "rtop",
-              "args": "rtop`"
+              "args": ""
             },
             "description": "Shows the reaction leaderboard for the whole server.",
             "aliases": [
@@ -5050,58 +5164,6 @@
         ]
       }
     },
-    "staff": {
-      "label": "Staff",
-      "desc": "Staff moderation and vanity tools.",
-      "admin": false,
-      "owner": false,
-      "staff": true,
-      "icon": "◈",
-      "sections": {
-        "Staff": [
-          {
-            "name": "cid",
-            "usage": "`.cid latest | number | user <id>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "cid",
-              "args": "latest | number | user <id>"
-            },
-            "description": "Reveals who sent a confession (DM only).",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".cid latest",
-              ".cid 42",
-              ".cid user 123456789"
-            ],
-            "params": [
-              {
-                "name": "target",
-                "type": "str",
-                "required": true,
-                "desc": "`latest`, a confession number, or `user`."
-              },
-              {
-                "name": "user_id",
-                "type": "str",
-                "required": false,
-                "desc": "User ID to look up (only used with `user` mode)."
-              }
-            ],
-            "note": "Staff only. Must be run in DMs. Uses cached config.",
-            "category_id": "staff",
-            "section": "Staff",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "confessions.py"
-          }
-        ]
-      }
-    },
     "theme": {
       "label": "Theme",
       "desc": "Server theme management — roles, channel prefixes, unicode fonts.",
@@ -5110,6 +5172,33 @@
       "staff": false,
       "icon": "★",
       "sections": {
+        "Overview": [
+          {
+            "name": "theme",
+            "usage": "`.theme`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "theme",
+              "args": ""
+            },
+            "description": "Shows the current theme summary — roles, prefixes, font, and snapshot status.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme"
+            ],
+            "params": [],
+            "note": "This is the entry point. Use `.theme help` to see all subcommands.",
+            "category_id": "theme",
+            "section": "Overview",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "theme.py"
+          }
+        ],
         "Channels": [
           {
             "name": "add",
@@ -5380,31 +5469,6 @@
           },
           {
             "name": "list",
-            "usage": "`.theme prefix list`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "theme prefix list"
-            },
-            "description": "Shows all stored channel prefixes for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme prefix list"
-            ],
-            "params": [],
-            "note": "Displays each channel and its current prefix.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "list",
             "usage": "`.theme font list`",
             "usage_parts": {
               "prefix": ".",
@@ -5424,6 +5488,31 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "font",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
+            "usage": "`.theme prefix list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme prefix list"
+            },
+            "description": "Shows all stored channel prefixes for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme prefix list"
+            ],
+            "params": [],
+            "note": "Displays each channel and its current prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -5830,7 +5919,7 @@
             "usage_parts": {
               "prefix": ".",
               "name": "tg",
-              "args": "tg`"
+              "args": ""
             },
             "description": "Shorthand alias for `.theme group` — accepts all the same subcommands.",
             "aliases": [],
@@ -5874,33 +5963,6 @@
             "group": "prefix",
             "is_subcommand": true,
             "has_subcommands": false,
-            "cog_file": "theme.py"
-          }
-        ],
-        "Overview": [
-          {
-            "name": "theme",
-            "usage": "`.theme`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "theme",
-              "args": "theme`"
-            },
-            "description": "Shows the current theme summary — roles, prefixes, font, and snapshot status.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme"
-            ],
-            "params": [],
-            "note": "This is the entry point. Use `.theme help` to see all subcommands.",
-            "category_id": "theme",
-            "section": "Overview",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
             "cog_file": "theme.py"
           }
         ],
@@ -6097,118 +6159,6 @@
             "note": "Same as `.theme reset`.",
             "category_id": "theme",
             "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          }
-        ],
-        "Roles": [
-          {
-            "name": "revert",
-            "usage": "`.theme role revert <slot>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "revert",
-              "args": "theme role revert <slot>"
-            },
-            "description": "Reverts one role back to its name from before the last theme apply.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme role revert Owner"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot to restore the previous name for."
-              }
-            ],
-            "note": "Only the most recent name change per role is stored.",
-            "category_id": "theme",
-            "section": "Roles",
-            "group": "role",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "role",
-            "usage": "`.theme role <slot> <new name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "role",
-              "args": "theme role <slot> <new name>"
-            },
-            "description": "Renames the Discord role mapped to a slot. E.g. `.theme role Owner God Emperor`",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme role Owner God Emperor",
-              ".theme role Member Peasant"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot whose role to rename."
-              },
-              {
-                "name": "new name",
-                "type": "str",
-                "required": true,
-                "desc": "The new display name for the role."
-              }
-            ],
-            "note": "This actually changes the role name on Discord. Use `.theme role revert` to undo.",
-            "category_id": "theme",
-            "section": "Roles",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": true,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "roleicon",
-            "usage": "`.theme roleicon <slot> [emoji|url|attachment]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "roleicon",
-              "args": "theme roleicon <slot> [emoji|url|attachment]"
-            },
-            "description": "Sets a role icon via emoji, URL, or image attachment. Requires boost level 2.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roleicon Owner 👑",
-              ".theme roleicon Admin https://i.imgur.com/icon.png"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot to set the icon for."
-              },
-              {
-                "name": "source",
-                "type": "str",
-                "required": false,
-                "desc": "Emoji, image URL, or attachment. Omit to clear."
-              }
-            ],
-            "note": "Requires server boost level 2 for role icons.",
-            "category_id": "theme",
-            "section": "Roles",
             "group": "theme",
             "is_subcommand": true,
             "has_subcommands": false,
@@ -6446,42 +6396,117 @@
             "has_subcommands": false,
             "cog_file": "theme.py"
           }
-        ]
-      }
-    },
-    "utility": {
-      "label": "Utility",
-      "desc": "API status checks and utilities.",
-      "admin": false,
-      "owner": false,
-      "staff": false,
-      "icon": "■",
-      "sections": {
-        "Utility": [
+        ],
+        "Roles": [
           {
-            "name": "anilist",
-            "usage": "`.anilist`",
+            "name": "revert",
+            "usage": "`.theme role revert <slot>`",
             "usage_parts": {
               "prefix": ".",
-              "name": "anilist",
-              "args": "anilist`"
+              "name": "revert",
+              "args": "theme role revert <slot>"
             },
-            "description": "Checks AniList API status and latency.",
+            "description": "Reverts one role back to its name from before the last theme apply.",
             "aliases": [],
             "owner": false,
             "admin": false,
             "staff": false,
             "examples": [
-              ".anilist"
+              ".theme role revert Owner"
             ],
-            "params": [],
-            "note": "No authentication required. Uses the AniList GraphQL API.",
-            "category_id": "utility",
-            "section": "Utility",
-            "group": null,
-            "is_subcommand": false,
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot to restore the previous name for."
+              }
+            ],
+            "note": "Only the most recent name change per role is stored.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "role",
+            "is_subcommand": true,
             "has_subcommands": false,
-            "cog_file": "check.py"
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "role",
+            "usage": "`.theme role <slot> <new name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "role",
+              "args": "theme role <slot> <new name>"
+            },
+            "description": "Renames the Discord role mapped to a slot. E.g. `.theme role Owner God Emperor`",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme role Owner God Emperor",
+              ".theme role Member Peasant"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot whose role to rename."
+              },
+              {
+                "name": "new name",
+                "type": "str",
+                "required": true,
+                "desc": "The new display name for the role."
+              }
+            ],
+            "note": "This actually changes the role name on Discord. Use `.theme role revert` to undo.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "roleicon",
+            "usage": "`.theme roleicon <slot> [emoji|url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "roleicon",
+              "args": "theme roleicon <slot> [emoji|url|attachment]"
+            },
+            "description": "Sets a role icon via emoji, URL, or image attachment. Requires boost level 2.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roleicon Owner 👑",
+              ".theme roleicon Admin https://i.imgur.com/icon.png"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot to set the icon for."
+              },
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Emoji, image URL, or attachment. Omit to clear."
+              }
+            ],
+            "note": "Requires server boost level 2 for role icons.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
           }
         ]
       }
