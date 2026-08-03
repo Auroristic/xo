@@ -1,5 +1,5 @@
 {
-  "total_commands": 210,
+  "total_commands": 211,
   "prefix": ".",
   "categories": {
     "profile": {
@@ -1802,7 +1802,7 @@
     },
     "music": {
       "label": "Music",
-      "desc": "",
+      "desc": "Music playback, queue controls, and audio filters.",
       "admin": false,
       "owner": false,
       "staff": false,
@@ -2233,7 +2233,7 @@
               "name": "play",
               "args": "<query>"
             },
-            "description": "Plays a song or playlist. Auto-detects YouTube, Spotify, and SoundCloud links.",
+            "description": "Plays a song or playlist. Auto-detects YouTube, Spotify, SoundCloud, and Bandcamp links.",
             "aliases": [
               "p"
             ],
@@ -2243,14 +2243,15 @@
             "examples": [
               ".play never gonna give you up",
               ".play https://youtu.be/dQw4w9WgXcQ",
-              ".play https://open.spotify.com/track/..."
+              ".play https://open.spotify.com/track/...",
+              ".play https://artist.bandcamp.com/track/..."
             ],
             "params": [
               {
                 "name": "query",
                 "type": "str",
                 "required": true,
-                "desc": "Song name or URL. Supports YouTube, Spotify, and SoundCloud links."
+                "desc": "Song name or URL. Supports YouTube, Spotify, SoundCloud, and Bandcamp links."
               }
             ],
             "note": "Join a voice channel first. You can queue multiple songs. Spotify playlists are auto-scraped.",
@@ -2599,6 +2600,41 @@
             ],
             "params": [],
             "note": "Works in tandem with `.skip`. Majority vote is required in group sessions.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
+            "name": "playbc",
+            "usage": "`.playbc <query>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "playbc",
+              "args": "<query>"
+            },
+            "description": "Plays a song directly from Bandcamp without touching YouTube.",
+            "aliases": [
+              "bc"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".playbc undertale soundtrack",
+              ".playbc https://artist.bandcamp.com/track/..."
+            ],
+            "params": [
+              {
+                "name": "query",
+                "type": "str",
+                "required": true,
+                "desc": "Bandcamp search text or a Bandcamp track/album URL."
+              }
+            ],
+            "note": "Join a voice channel first. Direct links are preferred when Bandcamp search is unavailable.",
             "category_id": "music",
             "section": "Playback",
             "group": null,
