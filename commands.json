@@ -676,13 +676,13 @@
           },
           {
             "name": "translate",
-            "usage": "`.translate <language> <text>`  ·  `.translate from <language> <text>`",
+            "usage": "`.translate <language> <text>`  ·  reply to a message + `.translate [language]`",
             "usage_parts": {
               "prefix": ".",
               "name": "translate",
-              "args": "<language> <text>`  ·  `.translate from <language> <text>"
+              "args": "<language> <text>`  ·  reply to a message + `.translate [language]"
             },
-            "description": "Translates text with NVIDIA riva (english <-> 36 languages).",
+            "description": "Translates text with NVIDIA riva (english <-> 36 languages). Replying to a message translates that message.",
             "aliases": [
               "tr",
               "trans"
@@ -699,10 +699,10 @@
                 "name": "args",
                 "type": "str",
                 "required": true,
-                "desc": "`<language> <text>` (source is english) or `from <language> <text>` (to english). `.translate langs` for the list."
+                "desc": "`<language> <text>` (source is english), `from <language> <text>` (to english), or reply to a message and use `.translate [language]` to translate it (any language -> english by default). `.translate langs` for the list."
               }
             ],
-            "note": "default direction is english -> chosen language. use `from <lang>` to go to english.",
+            "note": "replying with no args translates the replied message to english. reply + `.translate <lang>` goes to that language (auto-detects the source).",
             "category_id": "general",
             "section": "General",
             "group": null,
@@ -5367,6 +5367,317 @@
             "cog_file": "theme.py"
           }
         ],
+        "Roles": [
+          {
+            "name": "revert",
+            "usage": "`.theme role revert <slot>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "revert",
+              "args": "theme role revert <slot>"
+            },
+            "description": "Reverts one role back to its name from before the last theme apply.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme role revert Owner"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot to restore the previous name for."
+              }
+            ],
+            "note": "Only the most recent name change per role is stored.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "role",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "role",
+            "usage": "`.theme role <slot> <new name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "role",
+              "args": "theme role <slot> <new name>"
+            },
+            "description": "Renames the Discord role mapped to a slot. E.g. `.theme role Owner God Emperor`",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme role Owner God Emperor",
+              ".theme role Member Peasant"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot whose role to rename."
+              },
+              {
+                "name": "new name",
+                "type": "str",
+                "required": true,
+                "desc": "The new display name for the role."
+              }
+            ],
+            "note": "This actually changes the role name on Discord. Use `.theme role revert` to undo.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "roleicon",
+            "usage": "`.theme roleicon <slot> [emoji|url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "roleicon",
+              "args": "theme roleicon <slot> [emoji|url|attachment]"
+            },
+            "description": "Sets a role icon via emoji, URL, or image attachment. Requires boost level 2.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roleicon Owner 👑",
+              ".theme roleicon Admin https://i.imgur.com/icon.png"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot to set the icon for."
+              },
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Emoji, image URL, or attachment. Omit to clear."
+              }
+            ],
+            "note": "Requires server boost level 2 for role icons.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          }
+        ],
+        "Presets": [
+          {
+            "name": "apply",
+            "usage": "`.theme apply <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "apply",
+              "args": "theme apply <name>"
+            },
+            "description": "Previews then applies a saved preset to this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme apply mytheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to apply."
+              }
+            ],
+            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "delete",
+            "usage": "`.theme delete <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "delete",
+              "args": "theme delete <name>"
+            },
+            "description": "Deletes a saved preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme delete oldtheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to delete."
+              }
+            ],
+            "note": "This cannot be undone.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "presets",
+            "usage": "`.theme presets`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "presets",
+              "args": "theme presets"
+            },
+            "description": "Lists all saved presets for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme presets"
+            ],
+            "params": [],
+            "note": "Shows preset names and creation dates.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "reset",
+            "usage": "`.theme reset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "reset",
+              "args": "theme reset"
+            },
+            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme reset"
+            ],
+            "params": [],
+            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "save",
+            "usage": "`.theme save <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "save",
+              "args": "theme save <name>"
+            },
+            "description": "Saves the current server role and channel state as a named preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme save mytheme",
+              ".theme save backup1"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the preset."
+              }
+            ],
+            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "snapshot",
+            "usage": "`.theme snapshot`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "snapshot",
+              "args": "theme snapshot"
+            },
+            "description": "Shows what's currently saved in the undo snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme snapshot"
+            ],
+            "params": [],
+            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "undo",
+            "usage": "`.theme undo`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "undo",
+              "args": "theme undo"
+            },
+            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme undo"
+            ],
+            "params": [],
+            "note": "Same as `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          }
+        ],
         "Setup": [
           {
             "name": "clear",
@@ -5550,31 +5861,6 @@
           },
           {
             "name": "setup",
-            "usage": "`.theme setup`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setup",
-              "args": "theme setup"
-            },
-            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme setup"
-            ],
-            "params": [],
-            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setup",
             "usage": "`.theme roles setup`",
             "usage_parts": {
               "prefix": ".",
@@ -5594,6 +5880,31 @@
             "category_id": "theme",
             "section": "Setup",
             "group": "roles",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme setup"
+            },
+            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme setup"
+            ],
+            "params": [],
+            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -5869,6 +6180,31 @@
           },
           {
             "name": "list",
+            "usage": "`.theme font list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme font list"
+            },
+            "description": "Shows all available unicode font styles with live examples.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme font list"
+            ],
+            "params": [],
+            "note": "Each font style is displayed with a sample of how it transforms text.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "font",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
             "usage": "`.theme group list`",
             "usage_parts": {
               "prefix": ".",
@@ -5913,31 +6249,6 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "list",
-            "usage": "`.theme font list`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "theme font list"
-            },
-            "description": "Shows all available unicode font styles with live examples.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme font list"
-            ],
-            "params": [],
-            "note": "Each font style is displayed with a sample of how it transforms text.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "font",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -6179,45 +6490,6 @@
           },
           {
             "name": "set",
-            "usage": "`.theme group set <name> <new prefix>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "set",
-              "args": "theme group set <name> <new prefix>"
-            },
-            "description": "Changes a group's prefix and renames all channels in that group.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme group set gaming 🕹️",
-              ".theme group set info 📋"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the group to update."
-              },
-              {
-                "name": "new prefix",
-                "type": "str",
-                "required": true,
-                "desc": "The new prefix emoji or symbol."
-              }
-            ],
-            "note": "All channels in the group are immediately renamed with the new prefix.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "group",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "set",
             "usage": "`.theme font set <font> [all|<#cat> ...]`",
             "usage_parts": {
               "prefix": ".",
@@ -6251,6 +6523,45 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "font",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "set",
+            "usage": "`.theme group set <name> <new prefix>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "set",
+              "args": "theme group set <name> <new prefix>"
+            },
+            "description": "Changes a group's prefix and renames all channels in that group.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme group set gaming 🕹️",
+              ".theme group set info 📋"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the group to update."
+              },
+              {
+                "name": "new prefix",
+                "type": "str",
+                "required": true,
+                "desc": "The new prefix emoji or symbol."
+              }
+            ],
+            "note": "All channels in the group are immediately renamed with the new prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -6361,317 +6672,6 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          }
-        ],
-        "Presets": [
-          {
-            "name": "apply",
-            "usage": "`.theme apply <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "apply",
-              "args": "theme apply <name>"
-            },
-            "description": "Previews then applies a saved preset to this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme apply mytheme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to apply."
-              }
-            ],
-            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "delete",
-            "usage": "`.theme delete <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "delete",
-              "args": "theme delete <name>"
-            },
-            "description": "Deletes a saved preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme delete oldtheme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to delete."
-              }
-            ],
-            "note": "This cannot be undone.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "presets",
-            "usage": "`.theme presets`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "presets",
-              "args": "theme presets"
-            },
-            "description": "Lists all saved presets for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme presets"
-            ],
-            "params": [],
-            "note": "Shows preset names and creation dates.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "reset",
-            "usage": "`.theme reset`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "reset",
-              "args": "theme reset"
-            },
-            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme reset"
-            ],
-            "params": [],
-            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "save",
-            "usage": "`.theme save <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "save",
-              "args": "theme save <name>"
-            },
-            "description": "Saves the current server role and channel state as a named preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme save mytheme",
-              ".theme save backup1"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name for the preset."
-              }
-            ],
-            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "snapshot",
-            "usage": "`.theme snapshot`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "snapshot",
-              "args": "theme snapshot"
-            },
-            "description": "Shows what's currently saved in the undo snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme snapshot"
-            ],
-            "params": [],
-            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "undo",
-            "usage": "`.theme undo`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "undo",
-              "args": "theme undo"
-            },
-            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme undo"
-            ],
-            "params": [],
-            "note": "Same as `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          }
-        ],
-        "Roles": [
-          {
-            "name": "revert",
-            "usage": "`.theme role revert <slot>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "revert",
-              "args": "theme role revert <slot>"
-            },
-            "description": "Reverts one role back to its name from before the last theme apply.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme role revert Owner"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot to restore the previous name for."
-              }
-            ],
-            "note": "Only the most recent name change per role is stored.",
-            "category_id": "theme",
-            "section": "Roles",
-            "group": "role",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "role",
-            "usage": "`.theme role <slot> <new name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "role",
-              "args": "theme role <slot> <new name>"
-            },
-            "description": "Renames the Discord role mapped to a slot. E.g. `.theme role Owner God Emperor`",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme role Owner God Emperor",
-              ".theme role Member Peasant"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot whose role to rename."
-              },
-              {
-                "name": "new name",
-                "type": "str",
-                "required": true,
-                "desc": "The new display name for the role."
-              }
-            ],
-            "note": "This actually changes the role name on Discord. Use `.theme role revert` to undo.",
-            "category_id": "theme",
-            "section": "Roles",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": true,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "roleicon",
-            "usage": "`.theme roleicon <slot> [emoji|url|attachment]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "roleicon",
-              "args": "theme roleicon <slot> [emoji|url|attachment]"
-            },
-            "description": "Sets a role icon via emoji, URL, or image attachment. Requires boost level 2.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roleicon Owner 👑",
-              ".theme roleicon Admin https://i.imgur.com/icon.png"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot to set the icon for."
-              },
-              {
-                "name": "source",
-                "type": "str",
-                "required": false,
-                "desc": "Emoji, image URL, or attachment. Omit to clear."
-              }
-            ],
-            "note": "Requires server boost level 2 for role icons.",
-            "category_id": "theme",
-            "section": "Roles",
-            "group": "theme",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
