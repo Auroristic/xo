@@ -1,5 +1,5 @@
 {
-  "total_commands": 245,
+  "total_commands": 297,
   "prefix": ".",
   "categories": {
     "general": {
@@ -1944,13 +1944,269 @@
     },
     "fun": {
       "label": "Fun",
-      "desc": "Counting channel game.",
+      "desc": "Anime action gifs.",
       "admin": false,
       "owner": false,
       "staff": false,
       "icon": "♢",
       "sections": {
         "Fun": [
+          {
+            "name": "bite",
+            "usage": ".bite [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bite",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — bites someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bite @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "bleh",
+            "usage": ".bleh [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bleh",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — blehs at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bleh @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "blush",
+            "usage": ".blush [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "blush",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — blushes at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".blush @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "bonk",
+            "usage": ".bonk [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bonk",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — bonks someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bonk @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "bored",
+            "usage": ".bored [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bored",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — is bored with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bored @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "bye",
+            "usage": ".bye [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bye",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — says bye to someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bye @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "carry",
+            "usage": ".carry [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "carry",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — carries someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".carry @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "clap",
+            "usage": ".clap [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "clap",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — claps for someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".clap @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
           {
             "name": "counting",
             "usage": "`.counting <#channel>`  ·  `.counting off`",
@@ -2009,6 +2265,198 @@
             "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "counting.py"
+          },
+          {
+            "name": "cry",
+            "usage": ".cry [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "cry",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — cries with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".cry @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "cuddle",
+            "usage": ".cuddle [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "cuddle",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — cuddles someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".cuddle @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "dance",
+            "usage": ".dance [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "dance",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — dances with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".dance @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "eat",
+            "usage": ".eat [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "eat",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — eats with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".eat @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "facepalm",
+            "usage": ".facepalm [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "facepalm",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — facepalms at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".facepalm @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "feed",
+            "usage": ".feed [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "feed",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — feeds someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".feed @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
           },
           {
             "name": "giveaway",
@@ -2075,6 +2523,198 @@
             "cog_file": "giveaways.py"
           },
           {
+            "name": "handhold",
+            "usage": ".handhold [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "handhold",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — holds hands with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".handhold @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "handshake",
+            "usage": ".handshake [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "handshake",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — shakes hands with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".handshake @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "happy",
+            "usage": ".happy [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "happy",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — is happy with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".happy @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "hi",
+            "usage": ".hi [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "hi",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — says hi to someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".hi @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "highfive",
+            "usage": ".highfive [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "highfive",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — high-fives someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".highfive @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "hug",
+            "usage": ".hug [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "hug",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — hugs someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".hug @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
             "name": "imagine",
             "usage": "`.imagine <prompt>`",
             "usage_parts": {
@@ -2111,6 +2751,710 @@
             "cog_file": "imagine.py"
           },
           {
+            "name": "kick",
+            "usage": ".kick [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "kick",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — kicks someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".kick @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "kill",
+            "usage": ".kill [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "kill",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — kills someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".kill @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "kiss",
+            "usage": ".kiss [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "kiss",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — kisses someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".kiss @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "laugh",
+            "usage": ".laugh [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "laugh",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — laughs with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".laugh @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "nod",
+            "usage": ".nod [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "nod",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — nods at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".nod @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "nom",
+            "usage": ".nom [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "nom",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — noms on someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".nom @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "nope",
+            "usage": ".nope [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "nope",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — nopes at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".nope @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "nya",
+            "usage": ".nya [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "nya",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — nyas at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".nya @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "pat",
+            "usage": ".pat [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "pat",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — pats someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".pat @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "peck",
+            "usage": ".peck [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "peck",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — pecks someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".peck @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "poke",
+            "usage": ".poke [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "poke",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — pokes someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".poke @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "pout",
+            "usage": ".pout [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "pout",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — pouts at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".pout @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "punch",
+            "usage": ".punch [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "punch",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — punches someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".punch @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "run",
+            "usage": ".run [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "run",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — runs with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".run @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "shocked",
+            "usage": ".shocked [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "shocked",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — is shocked at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".shocked @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "shrug",
+            "usage": ".shrug [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "shrug",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — shrugs at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".shrug @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "shy",
+            "usage": ".shy [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "shy",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — is shy with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".shy @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "sip",
+            "usage": ".sip [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "sip",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — sips with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".sip @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "slap",
+            "usage": ".slap [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "slap",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — slaps someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".slap @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "sleep",
+            "usage": ".sleep [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "sleep",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — sleeps with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".sleep @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "smile",
+            "usage": ".smile [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "smile",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — smiles at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".smile @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "smug",
+            "usage": ".smug [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "smug",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — smugs at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".smug @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
             "name": "snipe",
             "usage": "`.snipe [n]`",
             "usage_parts": {
@@ -2144,6 +3488,198 @@
             "cog_file": "snipe.py"
           },
           {
+            "name": "spin",
+            "usage": ".spin [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "spin",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — spins with someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".spin @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "stare",
+            "usage": ".stare [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "stare",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — stares at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".stare @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "taunt",
+            "usage": ".taunt [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "taunt",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — taunts someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".taunt @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "think",
+            "usage": ".think [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "think",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — thinks about someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".think @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "thumbsup",
+            "usage": ".thumbsup [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "thumbsup",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — gives a thumbs up to someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".thumbsup @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "tickle",
+            "usage": ".tickle [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tickle",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — tickles someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".tickle @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
             "name": "top",
             "usage": "`.counting top`",
             "usage_parts": {
@@ -2167,6 +3703,134 @@
             "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "counting.py"
+          },
+          {
+            "name": "wag",
+            "usage": ".wag [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "wag",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — wags at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".wag @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "wave",
+            "usage": ".wave [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "wave",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — waves at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".wave @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "wink",
+            "usage": ".wink [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "wink",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — winks at someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".wink @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
+          },
+          {
+            "name": "yeet",
+            "usage": ".yeet [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "yeet",
+              "args": "[@user]"
+            },
+            "description": "Anime gif — yeets someone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".yeet @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Who to do it to. Leave empty for the void."
+              }
+            ],
+            "note": "anime gifs via gifukai (gender-paired) with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "actions.py"
           }
         ],
         "Moderation": [
@@ -5367,113 +7031,233 @@
             "cog_file": "theme.py"
           }
         ],
-        "Roles": [
+        "Setup": [
           {
-            "name": "revert",
-            "usage": "`.theme role revert <slot>`",
+            "name": "clear",
+            "usage": "`.theme roles clear`",
             "usage_parts": {
               "prefix": ".",
-              "name": "revert",
-              "args": "theme role revert <slot>"
+              "name": "clear",
+              "args": "theme roles clear"
             },
-            "description": "Reverts one role back to its name from before the last theme apply.",
+            "description": "Wipes all slot mappings. Role names in Discord are not changed. Run `.theme roles setup` after to remap.",
             "aliases": [],
             "owner": false,
             "admin": false,
             "staff": false,
             "examples": [
-              ".theme role revert Owner"
+              ".theme roles clear"
             ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot to restore the previous name for."
-              }
-            ],
-            "note": "Only the most recent name change per role is stored.",
+            "params": [],
+            "note": "This only clears the internal mapping, not the actual role names. Run setup again to remap.",
             "category_id": "theme",
-            "section": "Roles",
-            "group": "role",
+            "section": "Setup",
+            "group": "roles",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
           },
           {
-            "name": "role",
-            "usage": "`.theme role <slot> <new name>`",
+            "name": "help",
+            "usage": "`.theme help`",
             "usage_parts": {
               "prefix": ".",
-              "name": "role",
-              "args": "theme role <slot> <new name>"
+              "name": "help",
+              "args": "theme help"
             },
-            "description": "Renames the Discord role mapped to a slot. E.g. `.theme role Owner God Emperor`",
+            "description": "Shows all theme commands organised by section.",
             "aliases": [],
             "owner": false,
             "admin": false,
             "staff": false,
             "examples": [
-              ".theme role Owner God Emperor",
-              ".theme role Member Peasant"
+              ".theme help"
             ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot whose role to rename."
-              },
-              {
-                "name": "new name",
-                "type": "str",
-                "required": true,
-                "desc": "The new display name for the role."
-              }
-            ],
-            "note": "This actually changes the role name on Discord. Use `.theme role revert` to undo.",
+            "params": [],
+            "note": "Displays a complete list of theme subcommands grouped by category.",
             "category_id": "theme",
-            "section": "Roles",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "roles",
+            "usage": "`.theme roles`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "roles",
+              "args": "theme roles"
+            },
+            "description": "Lists all mapped role slots and their current Discord roles.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roles"
+            ],
+            "params": [],
+            "note": "Shows the current slot-to-role mappings.",
+            "category_id": "theme",
+            "section": "Setup",
             "group": "theme",
             "is_subcommand": true,
             "has_subcommands": true,
             "cog_file": "theme.py"
           },
           {
-            "name": "roleicon",
-            "usage": "`.theme roleicon <slot> [emoji|url|attachment]`",
+            "name": "setbanner",
+            "usage": "`.theme setbanner [url|attachment]`",
             "usage_parts": {
               "prefix": ".",
-              "name": "roleicon",
-              "args": "theme roleicon <slot> [emoji|url|attachment]"
+              "name": "setbanner",
+              "args": "theme setbanner [url|attachment]"
             },
-            "description": "Sets a role icon via emoji, URL, or image attachment. Requires boost level 2.",
+            "description": "Sets and stores the server banner in the current theme.",
             "aliases": [],
             "owner": false,
             "admin": false,
             "staff": false,
             "examples": [
-              ".theme roleicon Owner 👑",
-              ".theme roleicon Admin https://i.imgur.com/icon.png"
+              ".theme setbanner https://i.imgur.com/banner.png",
+              ".theme setbanner"
+            ],
+            "params": [
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Image URL or attachment. Omit to clear the stored banner."
+              }
+            ],
+            "note": "The banner is saved as part of the theme and can be restored with `.theme apply`.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "seticon",
+            "usage": "`.theme seticon [url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "seticon",
+              "args": "theme seticon [url|attachment]"
+            },
+            "description": "Sets and stores the server icon in the current theme.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme seticon https://i.imgur.com/icon.png",
+              ".theme seticon"
+            ],
+            "params": [
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Image URL or attachment. Omit to clear the stored icon."
+              }
+            ],
+            "note": "The icon is saved as part of the theme and can be restored with `.theme apply`.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setrole",
+            "usage": "`.theme setrole <slot> @Role`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setrole",
+              "args": "theme setrole <slot> @Role"
+            },
+            "description": "Quickly remaps one slot to a different role without going through the full wizard.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme setrole Owner @God Emperor",
+              ".theme setrole Member @User"
             ],
             "params": [
               {
                 "name": "slot",
                 "type": "str",
                 "required": true,
-                "desc": "The slot to set the icon for."
+                "desc": "The slot name (e.g. Owner, Admin, Member)."
               },
               {
-                "name": "source",
-                "type": "str",
-                "required": false,
-                "desc": "Emoji, image URL, or attachment. Omit to clear."
+                "name": "role",
+                "type": "discord.Role",
+                "required": true,
+                "desc": "The discord role to map to this slot."
               }
             ],
-            "note": "Requires server boost level 2 for role icons.",
+            "note": "Only maps the slot. Use `.theme role` to rename the role itself.",
             "category_id": "theme",
-            "section": "Roles",
+            "section": "Setup",
             "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme setup"
+            },
+            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme setup"
+            ],
+            "params": [],
+            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme roles setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme roles setup"
+            },
+            "description": "Runs the role mapping wizard. Shows current mapping per slot so you can skip or remap individual ones.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roles setup"
+            ],
+            "params": [],
+            "note": "Interactive — you will be prompted for each slot.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "roles",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -5678,278 +7462,7 @@
             "cog_file": "theme.py"
           }
         ],
-        "Setup": [
-          {
-            "name": "clear",
-            "usage": "`.theme roles clear`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "clear",
-              "args": "theme roles clear"
-            },
-            "description": "Wipes all slot mappings. Role names in Discord are not changed. Run `.theme roles setup` after to remap.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roles clear"
-            ],
-            "params": [],
-            "note": "This only clears the internal mapping, not the actual role names. Run setup again to remap.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "roles",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "help",
-            "usage": "`.theme help`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "help",
-              "args": "theme help"
-            },
-            "description": "Shows all theme commands organised by section.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme help"
-            ],
-            "params": [],
-            "note": "Displays a complete list of theme subcommands grouped by category.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "roles",
-            "usage": "`.theme roles`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "roles",
-              "args": "theme roles"
-            },
-            "description": "Lists all mapped role slots and their current Discord roles.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roles"
-            ],
-            "params": [],
-            "note": "Shows the current slot-to-role mappings.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": true,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setbanner",
-            "usage": "`.theme setbanner [url|attachment]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setbanner",
-              "args": "theme setbanner [url|attachment]"
-            },
-            "description": "Sets and stores the server banner in the current theme.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme setbanner https://i.imgur.com/banner.png",
-              ".theme setbanner"
-            ],
-            "params": [
-              {
-                "name": "source",
-                "type": "str",
-                "required": false,
-                "desc": "Image URL or attachment. Omit to clear the stored banner."
-              }
-            ],
-            "note": "The banner is saved as part of the theme and can be restored with `.theme apply`.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "seticon",
-            "usage": "`.theme seticon [url|attachment]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "seticon",
-              "args": "theme seticon [url|attachment]"
-            },
-            "description": "Sets and stores the server icon in the current theme.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme seticon https://i.imgur.com/icon.png",
-              ".theme seticon"
-            ],
-            "params": [
-              {
-                "name": "source",
-                "type": "str",
-                "required": false,
-                "desc": "Image URL or attachment. Omit to clear the stored icon."
-              }
-            ],
-            "note": "The icon is saved as part of the theme and can be restored with `.theme apply`.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setrole",
-            "usage": "`.theme setrole <slot> @Role`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setrole",
-              "args": "theme setrole <slot> @Role"
-            },
-            "description": "Quickly remaps one slot to a different role without going through the full wizard.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme setrole Owner @God Emperor",
-              ".theme setrole Member @User"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot name (e.g. Owner, Admin, Member)."
-              },
-              {
-                "name": "role",
-                "type": "discord.Role",
-                "required": true,
-                "desc": "The discord role to map to this slot."
-              }
-            ],
-            "note": "Only maps the slot. Use `.theme role` to rename the role itself.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setup",
-            "usage": "`.theme roles setup`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setup",
-              "args": "theme roles setup"
-            },
-            "description": "Runs the role mapping wizard. Shows current mapping per slot so you can skip or remap individual ones.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roles setup"
-            ],
-            "params": [],
-            "note": "Interactive — you will be prompted for each slot.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "roles",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setup",
-            "usage": "`.theme setup`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setup",
-              "args": "theme setup"
-            },
-            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme setup"
-            ],
-            "params": [],
-            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          }
-        ],
         "Channels": [
-          {
-            "name": "add",
-            "usage": "`.theme group add <name> #category`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "add",
-              "args": "theme group add <name> #category"
-            },
-            "description": "Adds a category to a group and applies the group's prefix to all its channels.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme group add gaming #game-chat",
-              ".theme group add info #information"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the target group."
-              },
-              {
-                "name": "category",
-                "type": "discord.CategoryChannel",
-                "required": true,
-                "desc": "The category to add to the group."
-              }
-            ],
-            "note": "All channels in the category will be prefixed with the group's prefix.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "group",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
           {
             "name": "add",
             "usage": "`.theme prefix add <emoji> <#cat> [...]`",
@@ -5985,6 +7498,45 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "add",
+            "usage": "`.theme group add <name> #category`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "add",
+              "args": "theme group add <name> #category"
+            },
+            "description": "Adds a category to a group and applies the group's prefix to all its channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme group add gaming #game-chat",
+              ".theme group add info #information"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the target group."
+              },
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": true,
+                "desc": "The category to add to the group."
+              }
+            ],
+            "note": "All channels in the category will be prefixed with the group's prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -6180,6 +7732,31 @@
           },
           {
             "name": "list",
+            "usage": "`.theme prefix list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme prefix list"
+            },
+            "description": "Shows all stored channel prefixes for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme prefix list"
+            ],
+            "params": [],
+            "note": "Displays each channel and its current prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
             "usage": "`.theme font list`",
             "usage_parts": {
               "prefix": ".",
@@ -6229,31 +7806,6 @@
             "cog_file": "theme.py"
           },
           {
-            "name": "list",
-            "usage": "`.theme prefix list`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "theme prefix list"
-            },
-            "description": "Shows all stored channel prefixes for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme prefix list"
-            ],
-            "params": [],
-            "note": "Displays each channel and its current prefix.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
             "name": "prefix",
             "usage": "`.theme prefix`",
             "usage_parts": {
@@ -6277,6 +7829,39 @@
             "group": "theme",
             "is_subcommand": true,
             "has_subcommands": true,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "remove",
+            "usage": "`.theme prefix remove <#cat>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "theme prefix remove <#cat>"
+            },
+            "description": "Strips prefixes from channels in specific categories, or from every channel.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme prefix remove #text-channels",
+              ".theme prefix remove"
+            ],
+            "params": [
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": false,
+                "desc": "Category to strip prefixes from. Omit to strip all."
+              }
+            ],
+            "note": "Only removes leading emojis/symbols that were detected as prefixes.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
             "cog_file": "theme.py"
           },
           {
@@ -6313,39 +7898,6 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "group",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "remove",
-            "usage": "`.theme prefix remove <#cat>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "remove",
-              "args": "theme prefix remove <#cat>"
-            },
-            "description": "Strips prefixes from channels in specific categories, or from every channel.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme prefix remove #text-channels",
-              ".theme prefix remove"
-            ],
-            "params": [
-              {
-                "name": "category",
-                "type": "discord.CategoryChannel",
-                "required": false,
-                "desc": "Category to strip prefixes from. Omit to strip all."
-              }
-            ],
-            "note": "Only removes leading emojis/symbols that were detected as prefixes.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "prefix",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -6672,6 +8224,118 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          }
+        ],
+        "Roles": [
+          {
+            "name": "revert",
+            "usage": "`.theme role revert <slot>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "revert",
+              "args": "theme role revert <slot>"
+            },
+            "description": "Reverts one role back to its name from before the last theme apply.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme role revert Owner"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot to restore the previous name for."
+              }
+            ],
+            "note": "Only the most recent name change per role is stored.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "role",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "role",
+            "usage": "`.theme role <slot> <new name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "role",
+              "args": "theme role <slot> <new name>"
+            },
+            "description": "Renames the Discord role mapped to a slot. E.g. `.theme role Owner God Emperor`",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme role Owner God Emperor",
+              ".theme role Member Peasant"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot whose role to rename."
+              },
+              {
+                "name": "new name",
+                "type": "str",
+                "required": true,
+                "desc": "The new display name for the role."
+              }
+            ],
+            "note": "This actually changes the role name on Discord. Use `.theme role revert` to undo.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "roleicon",
+            "usage": "`.theme roleicon <slot> [emoji|url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "roleicon",
+              "args": "theme roleicon <slot> [emoji|url|attachment]"
+            },
+            "description": "Sets a role icon via emoji, URL, or image attachment. Requires boost level 2.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roleicon Owner 👑",
+              ".theme roleicon Admin https://i.imgur.com/icon.png"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot to set the icon for."
+              },
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Emoji, image URL, or attachment. Omit to clear."
+              }
+            ],
+            "note": "Requires server boost level 2 for role icons.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
