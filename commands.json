@@ -1,5 +1,5 @@
 {
-  "total_commands": 232,
+  "total_commands": 244,
   "prefix": ".",
   "categories": {
     "general": {
@@ -195,6 +195,38 @@
             "cog_file": "misc.py"
           },
           {
+            "name": "embed",
+            "usage": "`.embed <title> | <description>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "embed",
+              "args": "<title> | <description>"
+            },
+            "description": "Posts a clean embed. Split title and description with ` | `.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".embed Announcement | we're having a movie night friday"
+            ],
+            "params": [
+              {
+                "name": "content",
+                "type": "str",
+                "required": true,
+                "desc": "`title | description` — optional `--color #hex` at the end."
+              }
+            ],
+            "note": "staff only.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "embedmaker.py"
+          },
+          {
             "name": "link",
             "usage": "`.link`",
             "usage_parts": {
@@ -245,6 +277,41 @@
             "cog_file": "autoresponse.py"
           },
           {
+            "name": "milestone",
+            "usage": "`.milestone <#channel>`  ·  `.milestone off`  ·  `.milestone status`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "milestone",
+              "args": "<#channel>`  ·  `.milestone off`  ·  `.milestone status"
+            },
+            "description": "Posts an image card when the server hits member milestones (100, 250, 500...).",
+            "aliases": [
+              "milestones"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".milestone #announcements",
+              ".milestone status"
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": false,
+                "desc": "Channel to post milestone cards to (turns it on)."
+              }
+            ],
+            "note": "admin only.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "milestones.py"
+          },
+          {
             "name": "off",
             "usage": "`.digest off`",
             "usage_parts": {
@@ -293,6 +360,31 @@
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "welcome.py"
+          },
+          {
+            "name": "off",
+            "usage": "`.milestone off`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "off",
+              "args": "milestone off"
+            },
+            "description": "Turns milestone cards off.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".milestone off"
+            ],
+            "params": [],
+            "note": "admin only.",
+            "category_id": "general",
+            "section": "General",
+            "group": "milestone",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "milestones.py"
           },
           {
             "name": "ping",
@@ -411,6 +503,40 @@
             "cog_file": "digest.py"
           },
           {
+            "name": "set",
+            "usage": "`.milestone <#channel>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "set",
+              "args": "milestone <#channel>"
+            },
+            "description": "Turns milestone cards on for a channel.",
+            "aliases": [
+              "on"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".milestone #announcements"
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": true,
+                "desc": "Channel to post milestone cards to."
+              }
+            ],
+            "note": "admin only.",
+            "category_id": "general",
+            "section": "General",
+            "group": "milestone",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "milestones.py"
+          },
+          {
             "name": "setup",
             "usage": "`.welcome setup #channel [message]`",
             "usage_parts": {
@@ -524,6 +650,31 @@
             "cog_file": "misc.py"
           },
           {
+            "name": "status",
+            "usage": "`.milestone status`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "status",
+              "args": "milestone status"
+            },
+            "description": "Shows whether milestone cards are on and where they post.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".milestone status"
+            ],
+            "params": [],
+            "note": "anyone can check.",
+            "category_id": "general",
+            "section": "General",
+            "group": "milestone",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "milestones.py"
+          },
+          {
             "name": "userinfo",
             "usage": "`.userinfo [@user]`",
             "usage_parts": {
@@ -585,6 +736,34 @@
           }
         ],
         "Leaderboards": [
+          {
+            "name": "birthdays",
+            "usage": "`.lb birthdays`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "birthdays",
+              "args": "lb birthdays"
+            },
+            "description": "Shows birthdays coming up this month in the server.",
+            "aliases": [
+              "bdays",
+              "bdaylb"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb birthdays"
+            ],
+            "params": [],
+            "note": "from the birthday registry (.bday).",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
           {
             "name": "bumps",
             "usage": "`.bumps [@user]`",
@@ -1562,6 +1741,171 @@
         ]
       }
     },
+    "moderation": {
+      "label": "Moderation",
+      "desc": "Warn system: warnings, auto-timeout, auto-ban.",
+      "admin": false,
+      "owner": false,
+      "staff": false,
+      "icon": "⚔",
+      "sections": {
+        "Moderation": [
+          {
+            "name": "clear",
+            "usage": ".warn clear [user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "clear",
+              "args": "warn clear [user]"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": "warn",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "log",
+            "usage": ".warn log [channel]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "log",
+              "args": "warn log [channel]"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": "warn",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "unwarn",
+            "usage": "`.unwarn <@user>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "unwarn",
+              "args": "<@user>"
+            },
+            "description": "Removes the most recent warn from a user.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".unwarn @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": true,
+                "desc": "User to unwarn."
+              }
+            ],
+            "note": "staff only.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "warn",
+            "usage": "`.warn <@user> <reason>`  ·  `.warnings [@user]`  ·  `.unwarn <@user>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "warn",
+              "args": "<@user> <reason>`  ·  `.warnings [@user]`  ·  `.unwarn <@user>"
+            },
+            "description": "Warns a user. 3 warns = 1h timeout, 5 warns = ban.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".warn @someone spamming",
+              ".warnings",
+              ".unwarn @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": true,
+                "desc": "User to warn."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": true,
+                "desc": "Why they're being warned."
+              }
+            ],
+            "note": "staff only. use `.warnlog #channel` to get a log channel.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "warnings",
+            "usage": "`.warnings [@user]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "warnings",
+              "args": "[@user]"
+            },
+            "description": "Shows warns for a user (or your own).",
+            "aliases": [
+              "warns"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".warnings",
+              ".warnings @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "User to check. Defaults to you."
+              }
+            ],
+            "note": "staff see anyone's warns.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "warns.py"
+          }
+        ]
+      }
+    },
     "fun": {
       "label": "Fun",
       "desc": "Counting channel game.",
@@ -1762,6 +2106,31 @@
             "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "snipe.py"
+          },
+          {
+            "name": "top",
+            "usage": "`.counting top`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "top",
+              "args": "counting top"
+            },
+            "description": "Shows the top counters from the counting channel.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".counting top"
+            ],
+            "params": [],
+            "note": "counts correct numbers only.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "counting.py"
           }
         ],
         "Moderation": [
@@ -5194,46 +5563,206 @@
             "cog_file": "theme.py"
           }
         ],
-        "Channels": [
+        "Presets": [
           {
-            "name": "add",
-            "usage": "`.theme group add <name> #category`",
+            "name": "apply",
+            "usage": "`.theme apply <name>`",
             "usage_parts": {
               "prefix": ".",
-              "name": "add",
-              "args": "theme group add <name> #category"
+              "name": "apply",
+              "args": "theme apply <name>"
             },
-            "description": "Adds a category to a group and applies the group's prefix to all its channels.",
+            "description": "Previews then applies a saved preset to this server.",
             "aliases": [],
             "owner": false,
             "admin": false,
             "staff": false,
             "examples": [
-              ".theme group add gaming #game-chat",
-              ".theme group add info #information"
+              ".theme apply mytheme"
             ],
             "params": [
               {
                 "name": "name",
                 "type": "str",
                 "required": true,
-                "desc": "Name of the target group."
-              },
-              {
-                "name": "category",
-                "type": "discord.CategoryChannel",
-                "required": true,
-                "desc": "The category to add to the group."
+                "desc": "Name of the preset to apply."
               }
             ],
-            "note": "All channels in the category will be prefixed with the group's prefix.",
+            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
             "category_id": "theme",
-            "section": "Channels",
-            "group": "group",
+            "section": "Presets",
+            "group": "theme",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
           },
+          {
+            "name": "delete",
+            "usage": "`.theme delete <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "delete",
+              "args": "theme delete <name>"
+            },
+            "description": "Deletes a saved preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme delete oldtheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to delete."
+              }
+            ],
+            "note": "This cannot be undone.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "presets",
+            "usage": "`.theme presets`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "presets",
+              "args": "theme presets"
+            },
+            "description": "Lists all saved presets for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme presets"
+            ],
+            "params": [],
+            "note": "Shows preset names and creation dates.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "reset",
+            "usage": "`.theme reset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "reset",
+              "args": "theme reset"
+            },
+            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme reset"
+            ],
+            "params": [],
+            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "save",
+            "usage": "`.theme save <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "save",
+              "args": "theme save <name>"
+            },
+            "description": "Saves the current server role and channel state as a named preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme save mytheme",
+              ".theme save backup1"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the preset."
+              }
+            ],
+            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "snapshot",
+            "usage": "`.theme snapshot`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "snapshot",
+              "args": "theme snapshot"
+            },
+            "description": "Shows what's currently saved in the undo snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme snapshot"
+            ],
+            "params": [],
+            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "undo",
+            "usage": "`.theme undo`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "undo",
+              "args": "theme undo"
+            },
+            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme undo"
+            ],
+            "params": [],
+            "note": "Same as `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          }
+        ],
+        "Channels": [
           {
             "name": "add",
             "usage": "`.theme prefix add <emoji> <#cat> [...]`",
@@ -5269,6 +5798,45 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "add",
+            "usage": "`.theme group add <name> #category`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "add",
+              "args": "theme group add <name> #category"
+            },
+            "description": "Adds a category to a group and applies the group's prefix to all its channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme group add gaming #game-chat",
+              ".theme group add info #information"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the target group."
+              },
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": true,
+                "desc": "The category to add to the group."
+              }
+            ],
+            "note": "All channels in the category will be prefixed with the group's prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -5464,6 +6032,31 @@
           },
           {
             "name": "list",
+            "usage": "`.theme prefix list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme prefix list"
+            },
+            "description": "Shows all stored channel prefixes for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme prefix list"
+            ],
+            "params": [],
+            "note": "Displays each channel and its current prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
             "usage": "`.theme font list`",
             "usage_parts": {
               "prefix": ".",
@@ -5513,31 +6106,6 @@
             "cog_file": "theme.py"
           },
           {
-            "name": "list",
-            "usage": "`.theme prefix list`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "theme prefix list"
-            },
-            "description": "Shows all stored channel prefixes for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme prefix list"
-            ],
-            "params": [],
-            "note": "Displays each channel and its current prefix.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
             "name": "prefix",
             "usage": "`.theme prefix`",
             "usage_parts": {
@@ -5561,6 +6129,39 @@
             "group": "theme",
             "is_subcommand": true,
             "has_subcommands": true,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "remove",
+            "usage": "`.theme prefix remove <#cat>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "theme prefix remove <#cat>"
+            },
+            "description": "Strips prefixes from channels in specific categories, or from every channel.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme prefix remove #text-channels",
+              ".theme prefix remove"
+            ],
+            "params": [
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": false,
+                "desc": "Category to strip prefixes from. Omit to strip all."
+              }
+            ],
+            "note": "Only removes leading emojis/symbols that were detected as prefixes.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
             "cog_file": "theme.py"
           },
           {
@@ -5597,39 +6198,6 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "group",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "remove",
-            "usage": "`.theme prefix remove <#cat>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "remove",
-              "args": "theme prefix remove <#cat>"
-            },
-            "description": "Strips prefixes from channels in specific categories, or from every channel.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme prefix remove #text-channels",
-              ".theme prefix remove"
-            ],
-            "params": [
-              {
-                "name": "category",
-                "type": "discord.CategoryChannel",
-                "required": false,
-                "desc": "Category to strip prefixes from. Omit to strip all."
-              }
-            ],
-            "note": "Only removes leading emojis/symbols that were detected as prefixes.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "prefix",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -5956,205 +6524,6 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          }
-        ],
-        "Presets": [
-          {
-            "name": "apply",
-            "usage": "`.theme apply <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "apply",
-              "args": "theme apply <name>"
-            },
-            "description": "Previews then applies a saved preset to this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme apply mytheme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to apply."
-              }
-            ],
-            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "delete",
-            "usage": "`.theme delete <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "delete",
-              "args": "theme delete <name>"
-            },
-            "description": "Deletes a saved preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme delete oldtheme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to delete."
-              }
-            ],
-            "note": "This cannot be undone.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "presets",
-            "usage": "`.theme presets`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "presets",
-              "args": "theme presets"
-            },
-            "description": "Lists all saved presets for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme presets"
-            ],
-            "params": [],
-            "note": "Shows preset names and creation dates.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "reset",
-            "usage": "`.theme reset`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "reset",
-              "args": "theme reset"
-            },
-            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme reset"
-            ],
-            "params": [],
-            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "save",
-            "usage": "`.theme save <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "save",
-              "args": "theme save <name>"
-            },
-            "description": "Saves the current server role and channel state as a named preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme save mytheme",
-              ".theme save backup1"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name for the preset."
-              }
-            ],
-            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "snapshot",
-            "usage": "`.theme snapshot`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "snapshot",
-              "args": "theme snapshot"
-            },
-            "description": "Shows what's currently saved in the undo snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme snapshot"
-            ],
-            "params": [],
-            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "undo",
-            "usage": "`.theme undo`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "undo",
-              "args": "theme undo"
-            },
-            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme undo"
-            ],
-            "params": [],
-            "note": "Same as `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
