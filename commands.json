@@ -1,7 +1,1046 @@
 {
-  "total_commands": 212,
+  "total_commands": 232,
   "prefix": ".",
   "categories": {
+    "general": {
+      "label": "General",
+      "desc": "User info cards.",
+      "admin": false,
+      "owner": false,
+      "staff": false,
+      "icon": "☆",
+      "sections": {
+        "General": [
+          {
+            "name": "afk",
+            "usage": "`.afk [reason]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "afk",
+              "args": "[reason]"
+            },
+            "description": "Sets you as AFK. Mentioned people get told you're gone.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".afk",
+              ".afk eating lunch"
+            ],
+            "params": [
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Optional reason people will see when they mention you."
+              }
+            ],
+            "note": "send any non-command message when you're back and it clears itself.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "afk.py"
+          },
+          {
+            "name": "auto",
+            "usage": "`.auto add <trigger> => <response>`  ·  `.auto remove <trigger>`  ·  `.auto list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "auto",
+              "args": "add <trigger> => <response>`  ·  `.auto remove <trigger>`  ·  `.auto list"
+            },
+            "description": "Custom auto-responses: when someone says the trigger, the bot replies.",
+            "aliases": [
+              "autoresponse"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".auto add hello => hi there",
+              ".auto remove hello",
+              ".auto list"
+            ],
+            "params": [],
+            "note": "admin only. placeholders: `{user}`, `{server}`, `{channel}`. max 15 triggers per server.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "autoresponse.py"
+          },
+          {
+            "name": "clear",
+            "usage": ".auto clear",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "clear",
+              "args": "auto clear"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "auto",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "autoresponse.py"
+          },
+          {
+            "name": "digest",
+            "usage": "`.digest <#channel>`  ·  `.digest off`  ·  `.digest status`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "digest",
+              "args": "<#channel>`  ·  `.digest off`  ·  `.digest status"
+            },
+            "description": "Weekly server digest image card, posted every sunday.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".digest #general",
+              ".digest status"
+            ],
+            "params": [],
+            "note": "admin only. shows top chatters, vc time, bumps, and member growth for the week.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "digest.py"
+          },
+          {
+            "name": "dm",
+            "usage": "`.dm @user <message>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "dm",
+              "args": "@user <message>"
+            },
+            "description": "Sends a DM to a user as the bot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".dm @fw_u hello!"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.User",
+                "required": true,
+                "desc": "The user to DM."
+              },
+              {
+                "name": "message",
+                "type": "str",
+                "required": true,
+                "desc": "The message content to send."
+              }
+            ],
+            "note": "Staff only. Requires whitelist.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "dmcheck",
+            "usage": "`.dmcheck @user`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "dmcheck",
+              "args": "@user"
+            },
+            "description": "Exports DM history with a user as a .txt file.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".dmcheck @fw_u"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.User",
+                "required": true,
+                "desc": "The user whose DM history to export."
+              }
+            ],
+            "note": "Staff only. Fetches up to 100 most recent messages.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "link",
+            "usage": "`.link`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "link",
+              "args": ""
+            },
+            "description": "Sends the Seoulities website link with an info embed.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".link"
+            ],
+            "params": [],
+            "note": "The image is loaded from local assets.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "list",
+            "usage": ".auto list",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "auto list"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "auto",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "autoresponse.py"
+          },
+          {
+            "name": "off",
+            "usage": ".digest off",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "off",
+              "args": "digest off"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "digest",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "digest.py"
+          },
+          {
+            "name": "off",
+            "usage": ".welcome off",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "off",
+              "args": "welcome off"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "welcome",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "welcome.py"
+          },
+          {
+            "name": "ping",
+            "usage": "`.ping`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "ping",
+              "args": ""
+            },
+            "description": "Shows the bot's current WebSocket and round-trip latency.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".ping"
+            ],
+            "params": [],
+            "note": "Displays both heartbeat latency and message edit RTT. The ping target is purely flavour text.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "random",
+            "usage": "`.random`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "random",
+              "args": ""
+            },
+            "description": "Picks a random non-bot member in the server and mentions them.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".random"
+            ],
+            "params": [],
+            "note": "Has a GIF cooldown per user.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "remove",
+            "usage": ".auto remove [trigger]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "auto remove [trigger]"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "auto",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "autoresponse.py"
+          },
+          {
+            "name": "set",
+            "usage": ".digest set [channel]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "set",
+              "args": "digest set [channel]"
+            },
+            "description": "No description.",
+            "aliases": [
+              "on"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "digest",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "digest.py"
+          },
+          {
+            "name": "setup",
+            "usage": ".welcome setup [channel] [message]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "welcome setup [channel] [message]"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "welcome",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "welcome.py"
+          },
+          {
+            "name": "status",
+            "usage": ".digest status",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "status",
+              "args": "digest status"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "digest",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "digest.py"
+          },
+          {
+            "name": "status",
+            "usage": ".welcome status",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "status",
+              "args": "welcome status"
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "general",
+            "section": "General",
+            "group": "welcome",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "welcome.py"
+          },
+          {
+            "name": "status",
+            "usage": "`.status`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "status",
+              "args": ""
+            },
+            "description": "Shows uptime, latency, memory usage, and Lavalink status.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".status"
+            ],
+            "params": [],
+            "note": "Memory is read from /proc/self/status (Linux only). Lavalink RAM uses the /v4/stats endpoint.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "misc.py"
+          },
+          {
+            "name": "userinfo",
+            "usage": "`.userinfo [@user]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "userinfo",
+              "args": "[@user]"
+            },
+            "description": "Shows a user info card with join dates, roles, and status.",
+            "aliases": [
+              "ui"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".userinfo",
+              ".userinfo @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.User",
+                "required": false,
+                "desc": "The user to show. Defaults to you."
+              }
+            ],
+            "note": "alias: `.ui`",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "userinfo.py"
+          },
+          {
+            "name": "welcome",
+            "usage": "`.welcome setup #channel [message]`  ·  `.welcome off`  ·  `.welcome status`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "welcome",
+              "args": "setup #channel [message]`  ·  `.welcome off`  ·  `.welcome status"
+            },
+            "description": "Image welcome cards for new members.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".welcome setup #welcome hey {user} welcome!"
+            ],
+            "params": [],
+            "note": "admin only. `{user}` in the message becomes the new member's mention.",
+            "category_id": "general",
+            "section": "General",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "welcome.py"
+          }
+        ],
+        "Leaderboards": [
+          {
+            "name": "bumps",
+            "usage": "`.bumps [@user]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bumps",
+              "args": "[@user]"
+            },
+            "description": "Shows the disboard bump leaderboard, or one user's bump count.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bumps",
+              ".bumps @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Show a specific user's bump count and rank."
+              }
+            ],
+            "note": "tracks disboard bumps. one bump every 2 hours, so it's a fair race.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "bumps.py"
+          },
+          {
+            "name": "emojis",
+            "usage": "`.lb emojis`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "emojis",
+              "args": "lb emojis"
+            },
+            "description": "Shows the most used emoji in the server, from reaction stats.",
+            "aliases": [
+              "emj",
+              "emoji",
+              "lbe"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb emojis"
+            ],
+            "params": [],
+            "note": "counts every reaction added in the server.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "leaderboard",
+            "usage": "`.lb`  ·  `.lb messages`  ·  `.lb vctime`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "leaderboard",
+              "args": "lb`  ·  `.lb messages`  ·  `.lb vctime"
+            },
+            "description": "Leaderboards for messages and VC time.",
+            "aliases": [
+              "lb"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb",
+              ".lb messages",
+              ".lb vctime"
+            ],
+            "params": [],
+            "note": "Subcommands: `messages`, `vctime`.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "messages",
+            "usage": "`.lb messages`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "messages",
+              "args": "lb messages"
+            },
+            "description": "Shows the top 200 message senders in the server.",
+            "aliases": [
+              "msgs",
+              "msg",
+              "lbm"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb messages"
+            ],
+            "params": [],
+            "note": "Updates in real-time as messages are sent.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "vctime",
+            "usage": "`.lb vctime`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "vctime",
+              "args": "lb vctime"
+            },
+            "description": "Shows the top 200 VC time leaders in the server.",
+            "aliases": [
+              "vc",
+              "voice",
+              "lbv"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb vctime"
+            ],
+            "params": [],
+            "note": "Tracks time spent in voice channels.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          }
+        ],
+        "Reminders": [
+          {
+            "name": "bday",
+            "usage": "`.bday <date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bday",
+              "args": "<date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]"
+            },
+            "description": "Saves a birthday — the bot DMs you every year on the date. Date format: `MM/DD` or `YYYY/MM/DD`.",
+            "aliases": [
+              "birthday"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bday 11/08",
+              ".bday 2002/11/08 @user",
+              ".bday list",
+              ".bday remove @user"
+            ],
+            "params": [
+              {
+                "name": "date",
+                "type": "str",
+                "required": true,
+                "desc": "Birthday date: `MM/DD` or `YYYY/MM/DD`."
+              },
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "Optional @user or name. Defaults to yourself."
+              }
+            ],
+            "note": "The bot will DM you a birthday greeting every year on the saved date.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "cancel",
+            "usage": ".remind cancel <id>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "cancel",
+              "args": "remind cancel <id>"
+            },
+            "description": "Cancels a reminder by its ID.",
+            "aliases": [
+              "rm",
+              "del",
+              "delete"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".remind cancel 3"
+            ],
+            "params": [
+              {
+                "name": "id",
+                "type": "int",
+                "required": true,
+                "desc": "The reminder ID (shown in `.remind list`)."
+              }
+            ],
+            "note": "You can only cancel your own reminders.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "remind",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "list",
+            "usage": ".remind list",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "remind list"
+            },
+            "description": "Lists all your active reminders.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".remind list"
+            ],
+            "params": [],
+            "note": "Shows reminder IDs, time remaining, and preview of the message.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "remind",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "list",
+            "usage": ".bday list",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "bday list"
+            },
+            "description": "Lists all your saved birthdays.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bday list"
+            ],
+            "params": [],
+            "note": "Shows the saved dates and names.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "bday",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "remind",
+            "usage": "`.remind <when> <text>`  ·  `.remind every <interval> <text>`  ·  `.remind list`  ·  `.remind cancel <id>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remind",
+              "args": "<when> <text>`  ·  `.remind every <interval> <text>`  ·  `.remind list`  ·  `.remind cancel <id>"
+            },
+            "description": "DM-yourself reminder. `<when>` accepts relative (`5s`, `5m`, `2h`, `2d`, `1w`) or absolute (`YYYY/MM/DD [HH:MM]`) time. Use `every` for recurring reminders.",
+            "aliases": [
+              "reminder"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".remind 5m take out pizza rolls",
+              ".remind every 1d water the plants",
+              ".remind 2026/12/25 it's christmas!",
+              ".remind list"
+            ],
+            "params": [
+              {
+                "name": "when",
+                "type": "str",
+                "required": true,
+                "desc": "Time spec: relative (`5m`, `2h`, `1d`), absolute (`2026/12/25 14:30`), or `every` for recurring."
+              },
+              {
+                "name": "text",
+                "type": "str",
+                "required": true,
+                "desc": "Reminder message (max 500 chars)."
+              }
+            ],
+            "note": "You will receive a DM when the reminder triggers. Time is UTC. Recurring: `.remind every 1d <text>`.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "reminders.py"
+          },
+          {
+            "name": "remove",
+            "usage": ".bday remove [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "bday remove [@user]"
+            },
+            "description": "Removes a saved birthday.",
+            "aliases": [
+              "rm",
+              "del",
+              "delete"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bday remove @user"
+            ],
+            "params": [
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "The user or name whose birthday to remove. Defaults to yourself."
+              }
+            ],
+            "note": "This cannot be undone.",
+            "category_id": "general",
+            "section": "Reminders",
+            "group": "bday",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "reminders.py"
+          }
+        ],
+        "Server Stats": [
+          {
+            "name": "emoji",
+            "usage": ".starboard emoji <emoji>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "emoji",
+              "args": "starboard emoji <emoji>"
+            },
+            "description": "Changes the reaction emoji the starboard watches for.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".starboard emoji ⭐",
+              ".starboard emoji 😭"
+            ],
+            "params": [
+              {
+                "name": "emoji",
+                "type": "str",
+                "required": true,
+                "desc": "The emoji to track for starboard entries."
+              }
+            ],
+            "note": "Admin only. A starboard channel must be set first.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": "starboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "seoulities",
+            "usage": "`.seoulities`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "seoulities",
+              "args": ""
+            },
+            "description": "Shows a server info card with member stats, top emoji, top reactor, top chatter, and top VC user.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".seoulities"
+            ],
+            "params": [],
+            "note": "Cooldown: 15s per channel. Generates an info card image.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "starboard",
+            "usage": "`.starboard #channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "starboard",
+              "args": "#channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5"
+            },
+            "description": "Manages the starboard: set channel, emoji, and reaction threshold.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".starboard #starboard ⭐ 3",
+              ".starboard emoji 😭",
+              ".starboard threshold 5"
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": false,
+                "desc": "The channel to use as starboard."
+              },
+              {
+                "name": "emoji",
+                "type": "str",
+                "required": false,
+                "desc": "Reaction emoji to track."
+              },
+              {
+                "name": "threshold",
+                "type": "int",
+                "required": false,
+                "desc": "Number of reactions required to appear on starboard."
+              }
+            ],
+            "note": "Admin only. Subcommands: `emoji`, `threshold`.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "threshold",
+            "usage": ".starboard threshold <number>",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "threshold",
+              "args": "starboard threshold <number>"
+            },
+            "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".starboard threshold 3",
+              ".starboard threshold 5"
+            ],
+            "params": [
+              {
+                "name": "threshold",
+                "type": "int",
+                "required": true,
+                "desc": "Minimum reaction count (must be at least 1)."
+              }
+            ],
+            "note": "Admin only. A starboard channel must be set first.",
+            "category_id": "general",
+            "section": "Server Stats",
+            "group": "starboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          }
+        ]
+      }
+    },
     "profile": {
       "label": "Profile",
       "desc": "Bot profile customization (creator only).",
@@ -478,6 +1517,274 @@
         ]
       }
     },
+    "fun": {
+      "label": "Fun",
+      "desc": "Counting channel game.",
+      "admin": false,
+      "owner": false,
+      "staff": false,
+      "icon": "♢",
+      "sections": {
+        "Fun": [
+          {
+            "name": "counting",
+            "usage": "`.counting <#channel>`  ·  `.counting off`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "counting",
+              "args": "<#channel>`  ·  `.counting off"
+            },
+            "description": "Turns a channel into a counting game: numbers must go up by 1.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".counting #counting",
+              ".counting off",
+              ".counting"
+            ],
+            "params": [
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": false,
+                "desc": "Channel to use as the counting channel, or `off` to disable."
+              }
+            ],
+            "note": "wrong number or counting twice in a row resets the count to 0.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "counting.py"
+          },
+          {
+            "name": "countingoff",
+            "usage": ".countingoff",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "countingoff",
+              "args": ""
+            },
+            "description": "No description.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [],
+            "params": [],
+            "note": null,
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "counting.py"
+          },
+          {
+            "name": "giveaway",
+            "usage": "`.giveaway <duration> <prize>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "giveaway",
+              "args": "<duration> <prize>"
+            },
+            "description": "Starts a giveaway. React 🎉 to enter, winner picked at random.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".giveaway 1h nitro",
+              ".giveaway 2d discord mod role"
+            ],
+            "params": [
+              {
+                "name": "duration",
+                "type": "str",
+                "required": true,
+                "desc": "How long it runs: `30m`, `2h`, `1d`, `1w`."
+              },
+              {
+                "name": "prize",
+                "type": "str",
+                "required": true,
+                "desc": "The prize."
+              }
+            ],
+            "note": "anyone can host. winners are picked randomly from 🎉 reactors.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "giveaways.py"
+          },
+          {
+            "name": "giveawaycancel",
+            "usage": "`.giveawaycancel`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "giveawaycancel",
+              "args": ""
+            },
+            "description": "Cancels the most recent active giveaway in this channel.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".giveawaycancel"
+            ],
+            "params": [],
+            "note": "admin only.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "giveaways.py"
+          },
+          {
+            "name": "imagine",
+            "usage": "`.imagine <prompt>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "imagine",
+              "args": "<prompt>"
+            },
+            "description": "Generate an image using AI.",
+            "aliases": [
+              "draw",
+              "gen"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".imagine a cat in space",
+              ".imagine cyberpunk city rain"
+            ],
+            "params": [
+              {
+                "name": "prompt",
+                "type": "str",
+                "required": true,
+                "desc": "Description of the image to generate."
+              }
+            ],
+            "note": "Uses NVIDIA FLUX.2 model. Per-user cooldown applies.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "imagine.py"
+          },
+          {
+            "name": "snipe",
+            "usage": "`.snipe [n]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "snipe",
+              "args": "[n]"
+            },
+            "description": "Shows the last deleted message in this channel (or the nth one).",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".snipe",
+              ".snipe 2"
+            ],
+            "params": [
+              {
+                "name": "n",
+                "type": "int",
+                "required": false,
+                "desc": "Which deleted message to show, 1 = most recent."
+              }
+            ],
+            "note": "only works while the message is still in my memory (up to 5 per channel).",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "snipe.py"
+          }
+        ],
+        "Moderation": [
+          {
+            "name": "uwulist",
+            "usage": "`.uwulist`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "uwulist",
+              "args": ""
+            },
+            "description": "Shows who is currently uwulocked.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".uwulist"
+            ],
+            "params": [],
+            "note": "Staff only.",
+            "category_id": "fun",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "fun.py"
+          },
+          {
+            "name": "uwulock",
+            "usage": "`.uwulock @user [#channel]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "uwulock",
+              "args": "@user [#channel]"
+            },
+            "description": "Toggles uwulock on a user — all their messages become uwufied.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": true,
+            "examples": [
+              ".uwulock @user",
+              ".uwulock @user #general"
+            ],
+            "params": [
+              {
+                "name": "member",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "The member to uwulock."
+              },
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": false,
+                "desc": "Specific channel to restrict it to (optional — omit for all channels)."
+              }
+            ],
+            "note": "Staff only. Uses webhooks to rewrite messages. If no channel is given, toggles all-channel lock.",
+            "category_id": "fun",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "fun.py"
+          }
+        ]
+      }
+    },
     "ai": {
       "label": "AI",
       "desc": "Server management and AI configuration.",
@@ -866,120 +2173,6 @@
             "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "ai.py"
-          }
-        ]
-      }
-    },
-    "fun": {
-      "label": "Fun",
-      "desc": "Fun staff tools.",
-      "admin": false,
-      "owner": false,
-      "staff": true,
-      "icon": "♢",
-      "sections": {
-        "Moderation": [
-          {
-            "name": "uwulist",
-            "usage": "`.uwulist`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "uwulist",
-              "args": ""
-            },
-            "description": "Shows who is currently uwulocked.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".uwulist"
-            ],
-            "params": [],
-            "note": "Staff only.",
-            "category_id": "fun",
-            "section": "Moderation",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "fun.py"
-          },
-          {
-            "name": "uwulock",
-            "usage": "`.uwulock @user [#channel]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "uwulock",
-              "args": "@user [#channel]"
-            },
-            "description": "Toggles uwulock on a user — all their messages become uwufied.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".uwulock @user",
-              ".uwulock @user #general"
-            ],
-            "params": [
-              {
-                "name": "member",
-                "type": "discord.Member",
-                "required": false,
-                "desc": "The member to uwulock."
-              },
-              {
-                "name": "channel",
-                "type": "discord.TextChannel",
-                "required": false,
-                "desc": "Specific channel to restrict it to (optional — omit for all channels)."
-              }
-            ],
-            "note": "Staff only. Uses webhooks to rewrite messages. If no channel is given, toggles all-channel lock.",
-            "category_id": "fun",
-            "section": "Moderation",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "fun.py"
-          }
-        ],
-        "Fun": [
-          {
-            "name": "imagine",
-            "usage": "`.imagine <prompt>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "imagine",
-              "args": "<prompt>"
-            },
-            "description": "Generate an image using AI.",
-            "aliases": [
-              "draw",
-              "gen"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".imagine a cat in space",
-              ".imagine cyberpunk city rain"
-            ],
-            "params": [
-              {
-                "name": "prompt",
-                "type": "str",
-                "required": true,
-                "desc": "Description of the image to generate."
-              }
-            ],
-            "note": "Uses NVIDIA FLUX.2 model. Per-user cooldown applies.",
-            "category_id": "fun",
-            "section": "Fun",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "imagine.py"
           }
         ]
       }
@@ -5499,658 +6692,6 @@
             "is_subcommand": false,
             "has_subcommands": false,
             "cog_file": "check.py"
-          }
-        ]
-      }
-    },
-    "general": {
-      "label": "General",
-      "desc": "Core utility and reaction commands.",
-      "admin": false,
-      "owner": false,
-      "staff": false,
-      "icon": "☆",
-      "sections": {
-        "General": [
-          {
-            "name": "dm",
-            "usage": "`.dm @user <message>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "dm",
-              "args": "@user <message>"
-            },
-            "description": "Sends a DM to a user as the bot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".dm @fw_u hello!"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.User",
-                "required": true,
-                "desc": "The user to DM."
-              },
-              {
-                "name": "message",
-                "type": "str",
-                "required": true,
-                "desc": "The message content to send."
-              }
-            ],
-            "note": "Staff only. Requires whitelist.",
-            "category_id": "general",
-            "section": "General",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "dmcheck",
-            "usage": "`.dmcheck @user`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "dmcheck",
-              "args": "@user"
-            },
-            "description": "Exports DM history with a user as a .txt file.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".dmcheck @fw_u"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.User",
-                "required": true,
-                "desc": "The user whose DM history to export."
-              }
-            ],
-            "note": "Staff only. Fetches up to 100 most recent messages.",
-            "category_id": "general",
-            "section": "General",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "link",
-            "usage": "`.link`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "link",
-              "args": ""
-            },
-            "description": "Sends the Seoulities website link with an info embed.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".link"
-            ],
-            "params": [],
-            "note": "The image is loaded from local assets.",
-            "category_id": "general",
-            "section": "General",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "ping",
-            "usage": "`.ping`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "ping",
-              "args": ""
-            },
-            "description": "Shows the bot's current WebSocket and round-trip latency.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".ping"
-            ],
-            "params": [],
-            "note": "Displays both heartbeat latency and message edit RTT. The ping target is purely flavour text.",
-            "category_id": "general",
-            "section": "General",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "random",
-            "usage": "`.random`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "random",
-              "args": ""
-            },
-            "description": "Picks a random non-bot member in the server and mentions them.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".random"
-            ],
-            "params": [],
-            "note": "Has a GIF cooldown per user.",
-            "category_id": "general",
-            "section": "General",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          },
-          {
-            "name": "status",
-            "usage": "`.status`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "status",
-              "args": ""
-            },
-            "description": "Shows uptime, latency, memory usage, and Lavalink status.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".status"
-            ],
-            "params": [],
-            "note": "Memory is read from /proc/self/status (Linux only). Lavalink RAM uses the /v4/stats endpoint.",
-            "category_id": "general",
-            "section": "General",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "misc.py"
-          }
-        ],
-        "Leaderboards": [
-          {
-            "name": "bumps",
-            "usage": "`.bumps [@user]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "bumps",
-              "args": "[@user]"
-            },
-            "description": "Shows the disboard bump leaderboard, or one user's bump count.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".bumps",
-              ".bumps @someone"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "discord.Member",
-                "required": false,
-                "desc": "Show a specific user's bump count and rank."
-              }
-            ],
-            "note": "tracks disboard bumps. one bump every 2 hours, so it's a fair race.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "bumps.py"
-          },
-          {
-            "name": "leaderboard",
-            "usage": "`.lb`  ·  `.lb messages`  ·  `.lb vctime`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "leaderboard",
-              "args": "lb`  ·  `.lb messages`  ·  `.lb vctime"
-            },
-            "description": "Leaderboards for messages and VC time.",
-            "aliases": [
-              "lb"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb",
-              ".lb messages",
-              ".lb vctime"
-            ],
-            "params": [],
-            "note": "Subcommands: `messages`, `vctime`.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "messages",
-            "usage": "`.lb messages`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "messages",
-              "args": "lb messages"
-            },
-            "description": "Shows the top 200 message senders in the server.",
-            "aliases": [
-              "msgs",
-              "msg",
-              "lbm"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb messages"
-            ],
-            "params": [],
-            "note": "Updates in real-time as messages are sent.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": "leaderboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "vctime",
-            "usage": "`.lb vctime`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "vctime",
-              "args": "lb vctime"
-            },
-            "description": "Shows the top 200 VC time leaders in the server.",
-            "aliases": [
-              "vc",
-              "voice",
-              "lbv"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb vctime"
-            ],
-            "params": [],
-            "note": "Tracks time spent in voice channels.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": "leaderboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          }
-        ],
-        "Reminders": [
-          {
-            "name": "bday",
-            "usage": "`.bday <date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "bday",
-              "args": "<date> [@user|name]`  ·  `.bday list`  ·  `.bday remove [@user]"
-            },
-            "description": "Saves a birthday — the bot DMs you every year on the date. Date format: `MM/DD` or `YYYY/MM/DD`.",
-            "aliases": [
-              "birthday"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".bday 11/08",
-              ".bday 2002/11/08 @user",
-              ".bday list",
-              ".bday remove @user"
-            ],
-            "params": [
-              {
-                "name": "date",
-                "type": "str",
-                "required": true,
-                "desc": "Birthday date: `MM/DD` or `YYYY/MM/DD`."
-              },
-              {
-                "name": "target",
-                "type": "str",
-                "required": false,
-                "desc": "Optional @user or name. Defaults to yourself."
-              }
-            ],
-            "note": "The bot will DM you a birthday greeting every year on the saved date.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "cancel",
-            "usage": ".remind cancel <id>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "cancel",
-              "args": "remind cancel <id>"
-            },
-            "description": "Cancels a reminder by its ID.",
-            "aliases": [
-              "rm",
-              "del",
-              "delete"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".remind cancel 3"
-            ],
-            "params": [
-              {
-                "name": "id",
-                "type": "int",
-                "required": true,
-                "desc": "The reminder ID (shown in `.remind list`)."
-              }
-            ],
-            "note": "You can only cancel your own reminders.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "remind",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "list",
-            "usage": ".remind list",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "remind list"
-            },
-            "description": "Lists all your active reminders.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".remind list"
-            ],
-            "params": [],
-            "note": "Shows reminder IDs, time remaining, and preview of the message.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "remind",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "list",
-            "usage": ".bday list",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "bday list"
-            },
-            "description": "Lists all your saved birthdays.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".bday list"
-            ],
-            "params": [],
-            "note": "Shows the saved dates and names.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "bday",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "remind",
-            "usage": "`.remind <when> <text>`  ·  `.remind list`  ·  `.remind cancel <id>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "remind",
-              "args": "<when> <text>`  ·  `.remind list`  ·  `.remind cancel <id>"
-            },
-            "description": "DM-yourself reminder. `<when>` accepts relative (`5s`, `5m`, `2h`, `2d`, `1w`) or absolute (`YYYY/MM/DD [HH:MM]`) time.",
-            "aliases": [
-              "reminder"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".remind 5m take out pizza rolls",
-              ".remind 2026/12/25 it's christmas!",
-              ".remind list"
-            ],
-            "params": [
-              {
-                "name": "when",
-                "type": "str",
-                "required": true,
-                "desc": "Time spec: relative (`5m`, `2h`, `1d`) or absolute (`2026/12/25 14:30`)."
-              },
-              {
-                "name": "text",
-                "type": "str",
-                "required": true,
-                "desc": "Reminder message (max 500 chars)."
-              }
-            ],
-            "note": "You will receive a DM when the reminder triggers. Time is UTC.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "reminders.py"
-          },
-          {
-            "name": "remove",
-            "usage": ".bday remove [@user]",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "remove",
-              "args": "bday remove [@user]"
-            },
-            "description": "Removes a saved birthday.",
-            "aliases": [
-              "rm",
-              "del",
-              "delete"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".bday remove @user"
-            ],
-            "params": [
-              {
-                "name": "target",
-                "type": "str",
-                "required": false,
-                "desc": "The user or name whose birthday to remove. Defaults to yourself."
-              }
-            ],
-            "note": "This cannot be undone.",
-            "category_id": "general",
-            "section": "Reminders",
-            "group": "bday",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "reminders.py"
-          }
-        ],
-        "Server Stats": [
-          {
-            "name": "emoji",
-            "usage": ".starboard emoji <emoji>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "emoji",
-              "args": "starboard emoji <emoji>"
-            },
-            "description": "Changes the reaction emoji the starboard watches for.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".starboard emoji ⭐",
-              ".starboard emoji 😭"
-            ],
-            "params": [
-              {
-                "name": "emoji",
-                "type": "str",
-                "required": true,
-                "desc": "The emoji to track for starboard entries."
-              }
-            ],
-            "note": "Admin only. A starboard channel must be set first.",
-            "category_id": "general",
-            "section": "Server Stats",
-            "group": "starboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "seoulities",
-            "usage": "`.seoulities`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "seoulities",
-              "args": ""
-            },
-            "description": "Shows a server info card with member stats, top emoji, top reactor, top chatter, and top VC user.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".seoulities"
-            ],
-            "params": [],
-            "note": "Cooldown: 15s per channel. Generates an info card image.",
-            "category_id": "general",
-            "section": "Server Stats",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "starboard",
-            "usage": "`.starboard #channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "starboard",
-              "args": "#channel [emoji] [threshold]`\n`.starboard emoji 😭`\n`.starboard threshold 5"
-            },
-            "description": "Manages the starboard: set channel, emoji, and reaction threshold.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".starboard #starboard ⭐ 3",
-              ".starboard emoji 😭",
-              ".starboard threshold 5"
-            ],
-            "params": [
-              {
-                "name": "channel",
-                "type": "discord.TextChannel",
-                "required": false,
-                "desc": "The channel to use as starboard."
-              },
-              {
-                "name": "emoji",
-                "type": "str",
-                "required": false,
-                "desc": "Reaction emoji to track."
-              },
-              {
-                "name": "threshold",
-                "type": "int",
-                "required": false,
-                "desc": "Number of reactions required to appear on starboard."
-              }
-            ],
-            "note": "Admin only. Subcommands: `emoji`, `threshold`.",
-            "category_id": "general",
-            "section": "Server Stats",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "threshold",
-            "usage": ".starboard threshold <number>",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "threshold",
-              "args": "starboard threshold <number>"
-            },
-            "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": true,
-            "examples": [
-              ".starboard threshold 3",
-              ".starboard threshold 5"
-            ],
-            "params": [
-              {
-                "name": "threshold",
-                "type": "int",
-                "required": true,
-                "desc": "Minimum reaction count (must be at least 1)."
-              }
-            ],
-            "note": "Admin only. A starboard channel must be set first.",
-            "category_id": "general",
-            "section": "Server Stats",
-            "group": "starboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
           }
         ]
       }
