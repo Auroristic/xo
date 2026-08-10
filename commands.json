@@ -1,5 +1,5 @@
 {
-  "total_commands": 211,
+  "total_commands": 212,
   "prefix": ".",
   "categories": {
     "profile": {
@@ -146,29 +146,6 @@
               }
             ],
             "note": "Owner only. Your current presence preference is saved and restored on restart.",
-            "category_id": "profile",
-            "section": "Profile",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "profile.py"
-          },
-          {
-            "name": "removeavatar",
-            "usage": ".removeavatar",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "removeavatar",
-              "args": ""
-            },
-            "description": "No description.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [],
-            "params": [],
-            "note": null,
             "category_id": "profile",
             "section": "Profile",
             "group": null,
@@ -331,6 +308,33 @@
             "note": "Owner only. Discord rate-limits username changes to ~2 per 2 hours.",
             "category_id": "profile",
             "section": "Profile",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "profile.py"
+          }
+        ],
+        "Bot Profile": [
+          {
+            "name": "removeavatar",
+            "usage": "`.removeavatar`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "removeavatar",
+              "args": ""
+            },
+            "description": "Removes the server-specific bot avatar (falls back to the global one).",
+            "aliases": [],
+            "owner": true,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".removeavatar"
+            ],
+            "params": [],
+            "note": "Owner only.",
+            "category_id": "profile",
+            "section": "Bot Profile",
             "group": null,
             "is_subcommand": false,
             "has_subcommands": false,
@@ -1802,9 +1806,9 @@
     },
     "music": {
       "label": "Music",
-      "desc": "Music playback, queue controls, and audio filters.",
+      "desc": "",
       "admin": false,
-      "owner": false,
+      "owner": true,
       "staff": false,
       "icon": "♪",
       "sections": {
@@ -2263,6 +2267,41 @@
             "cog_file": "music.py"
           },
           {
+            "name": "playbc",
+            "usage": "`.playbc <query>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "playbc",
+              "args": "<query>"
+            },
+            "description": "Plays a song directly from Bandcamp without touching YouTube.",
+            "aliases": [
+              "bc"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".playbc undertale soundtrack",
+              ".playbc https://artist.bandcamp.com/track/..."
+            ],
+            "params": [
+              {
+                "name": "query",
+                "type": "str",
+                "required": true,
+                "desc": "Bandcamp search text or a Bandcamp track/album URL."
+              }
+            ],
+            "note": "Join a voice channel first. Direct links are preferred when Bandcamp search is unavailable.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "music.py"
+          },
+          {
             "name": "playnext",
             "usage": "`.playnext <query>`",
             "usage_parts": {
@@ -2600,41 +2639,6 @@
             ],
             "params": [],
             "note": "Works in tandem with `.skip`. Majority vote is required in group sessions.",
-            "category_id": "music",
-            "section": "Playback",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "cog_file": "music.py"
-          },
-          {
-            "name": "playbc",
-            "usage": "`.playbc <query>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "playbc",
-              "args": "<query>"
-            },
-            "description": "Plays a song directly from Bandcamp without touching YouTube.",
-            "aliases": [
-              "bc"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".playbc undertale soundtrack",
-              ".playbc https://artist.bandcamp.com/track/..."
-            ],
-            "params": [
-              {
-                "name": "query",
-                "type": "str",
-                "required": true,
-                "desc": "Bandcamp search text or a Bandcamp track/album URL."
-              }
-            ],
-            "note": "Join a voice channel first. Direct links are preferred when Bandcamp search is unavailable.",
             "category_id": "music",
             "section": "Playback",
             "group": null,
@@ -3718,6 +3722,238 @@
             "cog_file": "theme.py"
           }
         ],
+        "Setup": [
+          {
+            "name": "clear",
+            "usage": "`.theme roles clear`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "clear",
+              "args": "theme roles clear"
+            },
+            "description": "Wipes all slot mappings. Role names in Discord are not changed. Run `.theme roles setup` after to remap.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roles clear"
+            ],
+            "params": [],
+            "note": "This only clears the internal mapping, not the actual role names. Run setup again to remap.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "roles",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "help",
+            "usage": "`.theme help`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "help",
+              "args": "theme help"
+            },
+            "description": "Shows all theme commands organised by section.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme help"
+            ],
+            "params": [],
+            "note": "Displays a complete list of theme subcommands grouped by category.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "roles",
+            "usage": "`.theme roles`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "roles",
+              "args": "theme roles"
+            },
+            "description": "Lists all mapped role slots and their current Discord roles.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roles"
+            ],
+            "params": [],
+            "note": "Shows the current slot-to-role mappings.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setbanner",
+            "usage": "`.theme setbanner [url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setbanner",
+              "args": "theme setbanner [url|attachment]"
+            },
+            "description": "Sets and stores the server banner in the current theme.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme setbanner https://i.imgur.com/banner.png",
+              ".theme setbanner"
+            ],
+            "params": [
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Image URL or attachment. Omit to clear the stored banner."
+              }
+            ],
+            "note": "The banner is saved as part of the theme and can be restored with `.theme apply`.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "seticon",
+            "usage": "`.theme seticon [url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "seticon",
+              "args": "theme seticon [url|attachment]"
+            },
+            "description": "Sets and stores the server icon in the current theme.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme seticon https://i.imgur.com/icon.png",
+              ".theme seticon"
+            ],
+            "params": [
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Image URL or attachment. Omit to clear the stored icon."
+              }
+            ],
+            "note": "The icon is saved as part of the theme and can be restored with `.theme apply`.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setrole",
+            "usage": "`.theme setrole <slot> @Role`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setrole",
+              "args": "theme setrole <slot> @Role"
+            },
+            "description": "Quickly remaps one slot to a different role without going through the full wizard.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme setrole Owner @God Emperor",
+              ".theme setrole Member @User"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot name (e.g. Owner, Admin, Member)."
+              },
+              {
+                "name": "role",
+                "type": "discord.Role",
+                "required": true,
+                "desc": "The discord role to map to this slot."
+              }
+            ],
+            "note": "Only maps the slot. Use `.theme role` to rename the role itself.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme setup"
+            },
+            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme setup"
+            ],
+            "params": [],
+            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "usage": "`.theme roles setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme roles setup"
+            },
+            "description": "Runs the role mapping wizard. Shows current mapping per slot so you can skip or remap individual ones.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme roles setup"
+            ],
+            "params": [],
+            "note": "Interactive — you will be prompted for each slot.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "roles",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          }
+        ],
         "Presets": [
           {
             "name": "apply",
@@ -3920,45 +4156,6 @@
         "Channels": [
           {
             "name": "add",
-            "usage": "`.theme group add <name> #category`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "add",
-              "args": "theme group add <name> #category"
-            },
-            "description": "Adds a category to a group and applies the group's prefix to all its channels.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme group add gaming #game-chat",
-              ".theme group add info #information"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the target group."
-              },
-              {
-                "name": "category",
-                "type": "discord.CategoryChannel",
-                "required": true,
-                "desc": "The category to add to the group."
-              }
-            ],
-            "note": "All channels in the category will be prefixed with the group's prefix.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "group",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "add",
             "usage": "`.theme prefix add <emoji> <#cat> [...]`",
             "usage_parts": {
               "prefix": ".",
@@ -3992,6 +4189,45 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "add",
+            "usage": "`.theme group add <name> #category`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "add",
+              "args": "theme group add <name> #category"
+            },
+            "description": "Adds a category to a group and applies the group's prefix to all its channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme group add gaming #game-chat",
+              ".theme group add info #information"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the target group."
+              },
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": true,
+                "desc": "The category to add to the group."
+              }
+            ],
+            "note": "All channels in the category will be prefixed with the group's prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -4187,6 +4423,31 @@
           },
           {
             "name": "list",
+            "usage": "`.theme prefix list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme prefix list"
+            },
+            "description": "Shows all stored channel prefixes for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme prefix list"
+            ],
+            "params": [],
+            "note": "Displays each channel and its current prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
             "usage": "`.theme font list`",
             "usage_parts": {
               "prefix": ".",
@@ -4236,31 +4497,6 @@
             "cog_file": "theme.py"
           },
           {
-            "name": "list",
-            "usage": "`.theme prefix list`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "list",
-              "args": "theme prefix list"
-            },
-            "description": "Shows all stored channel prefixes for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme prefix list"
-            ],
-            "params": [],
-            "note": "Displays each channel and its current prefix.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
             "name": "prefix",
             "usage": "`.theme prefix`",
             "usage_parts": {
@@ -4284,6 +4520,39 @@
             "group": "theme",
             "is_subcommand": true,
             "has_subcommands": true,
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "remove",
+            "usage": "`.theme prefix remove <#cat>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "theme prefix remove <#cat>"
+            },
+            "description": "Strips prefixes from channels in specific categories, or from every channel.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".theme prefix remove #text-channels",
+              ".theme prefix remove"
+            ],
+            "params": [
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": false,
+                "desc": "Category to strip prefixes from. Omit to strip all."
+              }
+            ],
+            "note": "Only removes leading emojis/symbols that were detected as prefixes.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
             "cog_file": "theme.py"
           },
           {
@@ -4320,39 +4589,6 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "group",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "remove",
-            "usage": "`.theme prefix remove <#cat>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "remove",
-              "args": "theme prefix remove <#cat>"
-            },
-            "description": "Strips prefixes from channels in specific categories, or from every channel.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme prefix remove #text-channels",
-              ".theme prefix remove"
-            ],
-            "params": [
-              {
-                "name": "category",
-                "type": "discord.CategoryChannel",
-                "required": false,
-                "desc": "Category to strip prefixes from. Omit to strip all."
-              }
-            ],
-            "note": "Only removes leading emojis/symbols that were detected as prefixes.",
-            "category_id": "theme",
-            "section": "Channels",
-            "group": "prefix",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -4679,238 +4915,6 @@
             "category_id": "theme",
             "section": "Channels",
             "group": "prefix",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          }
-        ],
-        "Setup": [
-          {
-            "name": "clear",
-            "usage": "`.theme roles clear`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "clear",
-              "args": "theme roles clear"
-            },
-            "description": "Wipes all slot mappings. Role names in Discord are not changed. Run `.theme roles setup` after to remap.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roles clear"
-            ],
-            "params": [],
-            "note": "This only clears the internal mapping, not the actual role names. Run setup again to remap.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "roles",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "help",
-            "usage": "`.theme help`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "help",
-              "args": "theme help"
-            },
-            "description": "Shows all theme commands organised by section.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme help"
-            ],
-            "params": [],
-            "note": "Displays a complete list of theme subcommands grouped by category.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "roles",
-            "usage": "`.theme roles`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "roles",
-              "args": "theme roles"
-            },
-            "description": "Lists all mapped role slots and their current Discord roles.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roles"
-            ],
-            "params": [],
-            "note": "Shows the current slot-to-role mappings.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": true,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setbanner",
-            "usage": "`.theme setbanner [url|attachment]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setbanner",
-              "args": "theme setbanner [url|attachment]"
-            },
-            "description": "Sets and stores the server banner in the current theme.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme setbanner https://i.imgur.com/banner.png",
-              ".theme setbanner"
-            ],
-            "params": [
-              {
-                "name": "source",
-                "type": "str",
-                "required": false,
-                "desc": "Image URL or attachment. Omit to clear the stored banner."
-              }
-            ],
-            "note": "The banner is saved as part of the theme and can be restored with `.theme apply`.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "seticon",
-            "usage": "`.theme seticon [url|attachment]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "seticon",
-              "args": "theme seticon [url|attachment]"
-            },
-            "description": "Sets and stores the server icon in the current theme.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme seticon https://i.imgur.com/icon.png",
-              ".theme seticon"
-            ],
-            "params": [
-              {
-                "name": "source",
-                "type": "str",
-                "required": false,
-                "desc": "Image URL or attachment. Omit to clear the stored icon."
-              }
-            ],
-            "note": "The icon is saved as part of the theme and can be restored with `.theme apply`.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setrole",
-            "usage": "`.theme setrole <slot> @Role`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setrole",
-              "args": "theme setrole <slot> @Role"
-            },
-            "description": "Quickly remaps one slot to a different role without going through the full wizard.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme setrole Owner @God Emperor",
-              ".theme setrole Member @User"
-            ],
-            "params": [
-              {
-                "name": "slot",
-                "type": "str",
-                "required": true,
-                "desc": "The slot name (e.g. Owner, Admin, Member)."
-              },
-              {
-                "name": "role",
-                "type": "discord.Role",
-                "required": true,
-                "desc": "The discord role to map to this slot."
-              }
-            ],
-            "note": "Only maps the slot. Use `.theme role` to rename the role itself.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setup",
-            "usage": "`.theme setup`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setup",
-              "args": "theme setup"
-            },
-            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme setup"
-            ],
-            "params": [],
-            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setup",
-            "usage": "`.theme roles setup`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setup",
-              "args": "theme roles setup"
-            },
-            "description": "Runs the role mapping wizard. Shows current mapping per slot so you can skip or remap individual ones.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".theme roles setup"
-            ],
-            "params": [],
-            "note": "Interactive — you will be prompted for each slot.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "roles",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "theme.py"
@@ -5679,6 +5683,128 @@
             "cog_file": "misc.py"
           }
         ],
+        "Leaderboards": [
+          {
+            "name": "bumps",
+            "usage": "`.bumps [@user]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bumps",
+              "args": "[@user]"
+            },
+            "description": "Shows the disboard bump leaderboard, or one user's bump count.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".bumps",
+              ".bumps @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "discord.Member",
+                "required": false,
+                "desc": "Show a specific user's bump count and rank."
+              }
+            ],
+            "note": "tracks disboard bumps. one bump every 2 hours, so it's a fair race.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "cog_file": "bumps.py"
+          },
+          {
+            "name": "leaderboard",
+            "usage": "`.lb`  ·  `.lb messages`  ·  `.lb vctime`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "leaderboard",
+              "args": "lb`  ·  `.lb messages`  ·  `.lb vctime"
+            },
+            "description": "Leaderboards for messages and VC time.",
+            "aliases": [
+              "lb"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb",
+              ".lb messages",
+              ".lb vctime"
+            ],
+            "params": [],
+            "note": "Subcommands: `messages`, `vctime`.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "messages",
+            "usage": "`.lb messages`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "messages",
+              "args": "lb messages"
+            },
+            "description": "Shows the top 200 message senders in the server.",
+            "aliases": [
+              "msgs",
+              "msg",
+              "lbm"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb messages"
+            ],
+            "params": [],
+            "note": "Updates in real-time as messages are sent.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          },
+          {
+            "name": "vctime",
+            "usage": "`.lb vctime`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "vctime",
+              "args": "lb vctime"
+            },
+            "description": "Shows the top 200 VC time leaders in the server.",
+            "aliases": [
+              "vc",
+              "voice",
+              "lbv"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "examples": [
+              ".lb vctime"
+            ],
+            "params": [],
+            "note": "Tracks time spent in voice channels.",
+            "category_id": "general",
+            "section": "Leaderboards",
+            "group": "leaderboard",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "cog_file": "serverstats.py"
+          }
+        ],
         "Reminders": [
           {
             "name": "bday",
@@ -6022,95 +6148,6 @@
             "category_id": "general",
             "section": "Server Stats",
             "group": "starboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          }
-        ],
-        "Leaderboards": [
-          {
-            "name": "leaderboard",
-            "usage": "`.lb`  ·  `.lb messages`  ·  `.lb vctime`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "leaderboard",
-              "args": "lb`  ·  `.lb messages`  ·  `.lb vctime"
-            },
-            "description": "Leaderboards for messages and VC time.",
-            "aliases": [
-              "lb"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb",
-              ".lb messages",
-              ".lb vctime"
-            ],
-            "params": [],
-            "note": "Subcommands: `messages`, `vctime`.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "messages",
-            "usage": "`.lb messages`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "messages",
-              "args": "lb messages"
-            },
-            "description": "Shows the top 200 message senders in the server.",
-            "aliases": [
-              "msgs",
-              "msg",
-              "lbm"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb messages"
-            ],
-            "params": [],
-            "note": "Updates in real-time as messages are sent.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": "leaderboard",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "cog_file": "serverstats.py"
-          },
-          {
-            "name": "vctime",
-            "usage": "`.lb vctime`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "vctime",
-              "args": "lb vctime"
-            },
-            "description": "Shows the top 200 VC time leaders in the server.",
-            "aliases": [
-              "vc",
-              "voice",
-              "lbv"
-            ],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "examples": [
-              ".lb vctime"
-            ],
-            "params": [],
-            "note": "Tracks time spent in voice channels.",
-            "category_id": "general",
-            "section": "Leaderboards",
-            "group": "leaderboard",
             "is_subcommand": true,
             "has_subcommands": false,
             "cog_file": "serverstats.py"
