@@ -2151,7 +2151,7 @@ function getOrderedSections(catId, sections) {
 async function loadData() {
   initTheme();
   try {
-    const res = await fetch(DATA_URL);
+    const res = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-cache' });
     allData = await res.json();
     init();
   } catch(e) {
