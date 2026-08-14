@@ -733,9 +733,11 @@ body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
 .cat-cmd-count { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); transition: color 0.18s; }
 .cat-header:hover .cat-cmd-count { color: var(--cat-accent, var(--red)); }
 .cat-perm { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 9px; border-radius: var(--radius-xs); }
-.perm-owner { background: rgba(168,85,247,0.12); color: #a855f7; border: 1px solid rgba(168,85,247,0.28); }
-.perm-staff { background: var(--staff-bg); color: var(--staff); border: 1px solid var(--staff-border); }
-.perm-admin { background: var(--red-xlo); color: var(--red); border: 1px solid var(--border-red); }
+.perm-creator, .perm-owner { background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.22); }
+.perm-guild-owner { background: rgba(255,255,255,0.06); color: #f0f0f5; border: 1px solid rgba(255,255,255,0.18); }
+.perm-whitelist, .perm-staff { background: rgba(255,255,255,0.05); color: #d0d0dc; border: 1px solid rgba(255,255,255,0.14); }
+.perm-admin { background: rgba(255,255,255,0.05); color: #b8b8c8; border: 1px solid rgba(255,255,255,0.12); }
+.perm-public { background: rgba(255,255,255,0.03); color: #888898; border: 1px solid rgba(255,255,255,0.08); }
 
 .cat-collapse-arrow {
   font-size: 10px; opacity: 0.4; transition: transform 0.25s var(--ease-out-expo), opacity 0.15s;
@@ -978,9 +980,19 @@ body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
 .modal-note { display: flex; align-items: flex-start; gap: 8px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 2px solid var(--text-dim); border-radius: var(--radius-sm); padding: 9px 12px; font-size: 12px; color: var(--text-muted); line-height: 1.45; }
 .modal-note-icon { flex-shrink: 0; margin-top: 1px; opacity: 0.5; }
 
-.cmd-sub-badge { font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 1.5px 5px; border-radius: 2px; background: rgba(99,102,241,0.08); color: #818cf8; border: 1px solid rgba(99,102,241,0.2); }
-.cmd-parent-badge { font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 1.5px 5px; border-radius: 2px; background: rgba(14,165,233,0.08); color: #38bdf8; border: 1px solid rgba(14,165,233,0.2); }
-.perm-admin { background: rgba(255,255,255,0.08); color: var(--red-hi); border: 1px solid var(--border-red); }
+.cmd-sub-badge { font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 1.5px 5px; border-radius: 2px; background: rgba(255,255,255,0.06); color: #d0d0dc; border: 1px solid rgba(255,255,255,0.12); }
+.cmd-parent-badge { font-size: 7.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; padding: 1.5px 5px; border-radius: 2px; background: rgba(255,255,255,0.08); color: #ffffff; border: 1px solid rgba(255,255,255,0.18); }
+
+.modal-subcmds { display: flex; flex-direction: column; gap: 6px; }
+.subcmd-card {
+  display: flex; flex-direction: column; gap: 4px;
+  background: var(--bg-1); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 8px 12px; cursor: pointer; transition: background 0.15s, border-color 0.15s;
+}
+.subcmd-card:hover { background: rgba(255,255,255,0.04); border-color: var(--cat-accent, var(--border-red)); }
+.subcmd-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.subcmd-usage { font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; color: var(--cat-accent, #ffffff); }
+.subcmd-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.35; }
 
 /* ── SHORTCUTS PANEL ── */
 .shortcuts-overlay { position: fixed; inset: 0; z-index: 600; background: rgba(7,7,10,0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
@@ -2017,6 +2029,10 @@ footer {
         <label>Aliases <span style="font-size:9px;color:var(--text-dim);letter-spacing:0;text-transform:none;font-weight:400">(click to copy)</span></label>
         <div class="modal-aliases" id="modal-aliases"></div>
       </div>
+      <div class="modal-field" id="modal-subcmds-wrap" style="display:none">
+        <label>Subcommands</label>
+        <div class="modal-subcmds" id="modal-subcmds"></div>
+      </div>
       <div class="modal-field">
         <label>Permission</label>
         <div class="modal-perm-row" id="modal-perm"></div>
@@ -2651,17 +2667,18 @@ function openModal(cmd, catId, catLabel) {
     b.className = 'modal-hbadge sub';
     b.textContent = cmd.group ? `sub of .${cmd.group}` : 'subcommand';
     badgesEl.appendChild(b);
-  } else if (cmd.has_subcommands) {
+  } else if (cmd.has_subcommands || (cmd.subcommands && cmd.subcommands.length)) {
     const b = document.createElement('span');
     b.className = 'modal-hbadge parent';
-    b.textContent = 'has subcommands';
+    b.textContent = `${cmd.subcommands ? cmd.subcommands.length : ''} subcommands`;
     badgesEl.appendChild(b);
   }
-  const isAdmin = cmd.admin || cat?.admin;
-  if (isAdmin && !cmd.owner && !cat?.owner && !cmd.staff && !cat?.staff) {
+
+  const tier = cmd.perm_tier || (cmd.owner || cat?.owner ? 'creator' : cmd.staff || cat?.staff ? 'whitelist' : (cmd.admin || cat?.admin) ? 'admin' : 'public');
+  if (tier !== 'public') {
     const b = document.createElement('span');
-    b.className = 'modal-hbadge admin-only';
-    b.textContent = 'admin';
+    b.className = `modal-hbadge perm-${tier === 'creator' ? 'creator' : tier === 'guild_owner' ? 'guild-owner' : tier === 'whitelist' ? 'whitelist' : 'admin'}`;
+    b.textContent = tier === 'creator' ? '♚ creator' : tier === 'guild_owner' ? '👑 owner' : tier === 'whitelist' ? '✦ whitelist' : '⚔ admin';
     badgesEl.appendChild(b);
   }
 
@@ -2694,6 +2711,34 @@ function openModal(cmd, catId, catLabel) {
       paramsContainer.appendChild(row);
     });
   } else paramsWrap.style.display = 'none';
+
+  // Subcommands Section
+  const subcmdsWrap = document.getElementById('modal-subcmds-wrap');
+  const subcmdsContainer = document.getElementById('modal-subcmds');
+  const subcmds = cmd.subcommands || [];
+  if (subcmds.length && subcmdsWrap && subcmdsContainer) {
+    subcmdsWrap.style.display = '';
+    subcmdsContainer.innerHTML = '';
+    subcmds.forEach(sc => {
+      const scCard = document.createElement('div');
+      scCard.className = 'subcmd-card';
+      scCard.innerHTML = `
+        <div class="subcmd-header">
+          <span class="subcmd-usage">${escHtml(sc.usage || '.' + sc.qualified_name)}</span>
+          <span class="cmd-badge perm-${sc.perm_tier || tier}">${sc.perm_tier || tier}</span>
+        </div>
+        <div class="subcmd-desc">${escHtml(sc.description || '')}</div>
+      `;
+      scCard.addEventListener('click', () => {
+        navigator.clipboard.writeText(sc.usage ? sc.usage.replace(/`/g, '') : '.' + sc.qualified_name).then(() => {
+          showToast(`Copied .${sc.name}`);
+        });
+      });
+      subcmdsContainer.appendChild(scCard);
+    });
+  } else if (subcmdsWrap) {
+    subcmdsWrap.style.display = 'none';
+  }
 
   const examplesWrap = document.getElementById('modal-examples-wrap');
   const examplesContainer = document.getElementById('modal-examples');
@@ -2741,12 +2786,30 @@ function openModal(cmd, catId, catLabel) {
   } else aliasWrap.style.display = 'none';
 
   const permEl = document.getElementById('modal-perm');
-  const isOwner = cmd.owner || cat?.owner;
-  const isStaff = cmd.staff || cat?.staff;
-  if (isOwner) permEl.innerHTML = `<span class="modal-perm-badge perm-owner">owner only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to bot owner</span>`;
-  else if (isStaff) permEl.innerHTML = `<span class="modal-perm-badge perm-staff">staff only</span><span style="font-size:12px;color:var(--text-muted)">Restricted to server staff</span>`;
-  else if (isAdmin) permEl.innerHTML = `<span class="modal-perm-badge perm-admin">admin only</span><span style="font-size:12px;color:var(--text-muted)">Requires server admin</span>`;
-  else permEl.innerHTML = `<span class="modal-perm-badge" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.22);">public</span><span style="font-size:12px;color:var(--text-muted)">Available to everyone</span>`;
+  let permBadgeClass = 'perm-public';
+  let permLabel = '✓ Public';
+  let permDesc = 'Available to everyone';
+
+  if (tier === 'creator') {
+    permBadgeClass = 'perm-creator';
+    permLabel = '♚ Creator Only';
+    permDesc = 'Restricted to bot creator / developer';
+  } else if (tier === 'guild_owner') {
+    permBadgeClass = 'perm-guild-owner';
+    permLabel = '👑 Server Owner';
+    permDesc = 'Restricted to Discord server owner';
+  } else if (tier === 'whitelist') {
+    permBadgeClass = 'perm-whitelist';
+    permLabel = '✦ Whitelisted Staff';
+    permDesc = 'Requires whitelisted bot permissions';
+  } else if (tier === 'admin') {
+    permBadgeClass = 'perm-admin';
+    permLabel = '⚔ Administrator';
+    const perms = (cmd.discord_perms && cmd.discord_perms.length) ? cmd.discord_perms.map(p => `\`${p}\``).join(', ') : 'Administrator';
+    permDesc = `Requires server staff permissions (${perms})`;
+  }
+
+  permEl.innerHTML = `<span class="modal-perm-badge ${permBadgeClass}">${permLabel}</span><span style="font-size:12px;color:var(--text-muted)">${permDesc}</span>`;
 
   const noteEl = document.getElementById('modal-note');
   if (cmd.note) {
@@ -2809,13 +2872,12 @@ function countVisible() {
   return total;
 }
 function passesFilter(cmd, catOwner, catStaff, catAdmin) {
-  const isOwner = cmd.owner || catOwner;
-  const isStaff = cmd.staff || catStaff;
-  const isAdmin = cmd.admin || catAdmin;
-  if (activeFilter === 'owner') return isOwner;
-  if (activeFilter === 'staff') return isStaff;
-  if (activeFilter === 'admin') return isAdmin && !isOwner && !isStaff;
-  if (activeFilter === 'public') return !isOwner && !isStaff && !isAdmin;
+  const tier = cmd.perm_tier || (cmd.owner || catOwner ? 'creator' : cmd.staff || catStaff ? 'whitelist' : (cmd.admin || catAdmin) ? 'admin' : 'public');
+  if (activeFilter === 'owner' || activeFilter === 'creator') return tier === 'creator';
+  if (activeFilter === 'guild_owner') return tier === 'guild_owner';
+  if (activeFilter === 'staff' || activeFilter === 'whitelist') return tier === 'whitelist';
+  if (activeFilter === 'admin') return tier === 'admin';
+  if (activeFilter === 'public') return tier === 'public';
   return true;
 }
 function matchesSearch(cmd) {
@@ -2991,16 +3053,16 @@ function render() {
 }
 
 function buildCard(cmd, cat, catOwner, catStaff, catAdmin, col, catId, i) {
-  const isOwner = cmd.owner || catOwner;
-  const isStaff = cmd.staff || catStaff;
-  const isAdmin = cmd.admin || catAdmin;
+  const tier = cmd.perm_tier || (cmd.owner || catOwner ? 'creator' : cmd.staff || catStaff ? 'whitelist' : (cmd.admin || catAdmin) ? 'admin' : 'public');
   let badge = '';
-  if (isOwner)      badge = `<span class="cmd-badge perm-owner">owner</span>`;
-  else if (isStaff) badge = `<span class="cmd-badge perm-staff">staff</span>`;
-  else if (isAdmin) badge = `<span class="cmd-badge perm-admin">admin</span>`;
+  if (tier === 'creator') badge = `<span class="cmd-badge perm-creator">♚ creator</span>`;
+  else if (tier === 'guild_owner') badge = `<span class="cmd-badge perm-guild-owner">👑 owner</span>`;
+  else if (tier === 'whitelist') badge = `<span class="cmd-badge perm-whitelist">✦ whitelist</span>`;
+  else if (tier === 'admin') badge = `<span class="cmd-badge perm-admin">⚔ admin</span>`;
+
   let structBadge = '';
   if (cmd.is_subcommand) structBadge = `<span class="cmd-sub-badge">sub</span>`;
-  else if (cmd.has_subcommands) structBadge = `<span class="cmd-parent-badge">+ subs</span>`;
+  else if (cmd.has_subcommands || (cmd.subcommands && cmd.subcommands.length)) structBadge = `<span class="cmd-parent-badge">+ subs</span>`;
   const aliases = (cmd.aliases || []).slice(0, 3)
     .map(a => `<span class="alias-tag">.${escHtml(a)}</span>`).join('');
 
