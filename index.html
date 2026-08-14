@@ -1035,6 +1035,80 @@ body.search-focused .filter-bar { filter: blur(1px); opacity: 0.5; }
 .skel-line:nth-child(3) { width: 60%; height: 9px; opacity: 0.45; }
 @keyframes shim { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
+/* ── EMBED BUILDER PLAYGROUND ── */
+.builder-overlay {
+  position: fixed; inset: 0; z-index: 600;
+  background: rgba(7,7,10,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.22s ease;
+}
+.builder-overlay.open { opacity: 1; pointer-events: auto; }
+.builder-box {
+  background: linear-gradient(170deg, #101016 0%, #08080c 100%);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
+  width: 100%; max-width: 960px; max-height: 90vh;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.8);
+  display: flex; flex-direction: column; overflow: hidden;
+  transform: scale(0.96); transition: transform 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.builder-overlay.open .builder-box { transform: scale(1); }
+.builder-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 22px; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.builder-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+.builder-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  padding: 20px 22px; overflow-y: auto; max-height: calc(90vh - 130px);
+}
+@media (max-width: 800px) { .builder-grid { grid-template-columns: 1fr; } }
+.builder-form { display: flex; flex-direction: column; gap: 12px; }
+.builder-field { display: flex; flex-direction: column; gap: 4px; }
+.builder-field label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-dim); }
+.builder-input, .builder-textarea {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 6px; padding: 7px 10px; font-size: 12px; color: #fff; font-family: inherit;
+  outline: none; transition: border-color 0.15s;
+}
+.builder-input:focus, .builder-textarea:focus { border-color: rgba(255,255,255,0.3); }
+.builder-textarea { resize: vertical; min-height: 60px; }
+.builder-colors { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+.builder-color-chip {
+  width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer; transition: transform 0.12s;
+}
+.builder-color-chip:hover { transform: scale(1.15); }
+.builder-color-chip.active { outline: 2px solid #fff; outline-offset: 1px; }
+
+/* Mockup preview */
+.builder-preview-wrap { display: flex; flex-direction: column; gap: 8px; }
+.discord-msg-box {
+  background: #313338; border-radius: 8px; padding: 14px;
+  display: flex; gap: 12px; font-family: 'gg sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.discord-avatar { width: 38px; height: 38px; border-radius: 50%; background: #5865f2; flex-shrink: 0; }
+.discord-msg-body { flex: 1; min-width: 0; }
+.discord-msg-header { display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px; }
+.discord-username { font-weight: 600; font-size: 13.5px; color: #f2f3f5; }
+.discord-bot-tag { font-size: 9px; font-weight: 700; background: #5865f2; color: #fff; padding: 1px 4px; border-radius: 3px; }
+.discord-timestamp { font-size: 10.5px; color: #949ba4; }
+.discord-embed-card {
+  background: #2b2d31; border-radius: 4px; border-left: 4px solid #121516;
+  padding: 10px 14px; display: flex; flex-direction: column; gap: 8px;
+  position: relative; overflow: hidden;
+}
+.discord-embed-author { font-size: 12px; font-weight: 600; color: #f2f3f5; display: flex; align-items: center; gap: 6px; }
+.discord-embed-author img { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; }
+.discord-embed-title { font-size: 14px; font-weight: 700; color: #00a8fc; text-decoration: none; word-break: break-word; }
+.discord-embed-desc { font-size: 12.5px; color: #dbdee1; line-height: 1.4; white-space: pre-wrap; word-break: break-word; }
+.discord-embed-thumb { width: 60px; height: 60px; border-radius: 4px; object-fit: cover; position: absolute; top: 12px; right: 12px; }
+.discord-embed-img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 4px; margin-top: 4px; }
+.discord-embed-footer { font-size: 11px; color: #949ba4; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
+.builder-footer-btns {
+  display: flex; gap: 8px; justify-content: flex-end; padding: 12px 22px;
+  border-top: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.2);
+}
+
 /* ── TOAST ── */
 .toast {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
@@ -1742,6 +1816,7 @@ footer {
     </a>
     <div class="nav-links">
       <a href="#/commands" class="active">Commands</a>
+      <a href="javascript:void(0)" id="open-builder-nav" class="nav-link-btn">Embed Builder</a>
       <a href="#">Status</a>
       <a href="#">Support</a>
     </div>
@@ -1755,6 +1830,7 @@ footer {
   </nav>
   <div class="nav-menu" id="nav-menu">
     <a href="#/commands" class="nav-menu-link">Commands</a>
+    <a href="javascript:void(0)" id="open-builder-menu" class="nav-menu-link">Embed Builder</a>
     <a href="#" class="nav-menu-link">Status</a>
     <a href="#" class="nav-menu-link">Support</a>
     <a href="#" class="nav-menu-link primary">Add to Discord</a>
@@ -2046,6 +2122,98 @@ footer {
   </div>
 </div>
 
+<!-- Embed Playground Modal -->
+<div class="builder-overlay" id="builder-overlay" role="dialog" aria-modal="true">
+  <div class="builder-box">
+    <div class="builder-header">
+      <div class="builder-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.35248 19.5 5.25055 20.3013 4.85857 20.8013C4.46659 21.3013 3.65857 21.5 3 21C2.34143 20.5 1.5 19.5 1 18C0.5 16.5 0 14.5 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C11.5 24 11 23.5 11 23C11 22.5 11.5 22 12 22Z"/></svg>
+        Embed Builder & Playground
+      </div>
+      <button class="icon-btn" id="builder-close" aria-label="Close">✕</button>
+    </div>
+    <div class="builder-grid">
+      <div class="builder-form">
+        <div class="builder-field">
+          <label>Title</label>
+          <input type="text" id="eb-title" class="builder-input" placeholder="Announcement / Rules / News" value="Server Announcement">
+        </div>
+        <div class="builder-field">
+          <label>Title Link (URL)</label>
+          <input type="url" id="eb-url" class="builder-input" placeholder="https://...">
+        </div>
+        <div class="builder-field">
+          <label>Description</label>
+          <textarea id="eb-desc" class="builder-textarea" placeholder="Embed content text...">Welcome to our community! Please make sure to check out the rules and have fun.</textarea>
+        </div>
+        <div class="builder-field">
+          <label>Color</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input type="color" id="eb-color-picker" value="#121516" style="width:34px;height:30px;padding:0;border:none;background:none;cursor:pointer">
+            <input type="text" id="eb-color-hex" class="builder-input" value="#121516" style="width:90px">
+          </div>
+          <div class="builder-colors">
+            <div class="builder-color-chip active" style="background:#121516" data-col="#121516" title="Dark"></div>
+            <div class="builder-color-chip" style="background:#5865f2" data-col="#5865f2" title="Blurple"></div>
+            <div class="builder-color-chip" style="background:#dc2626" data-col="#dc2626" title="Crimson"></div>
+            <div class="builder-color-chip" style="background:#06b6d4" data-col="#06b6d4" title="Cyan"></div>
+            <div class="builder-color-chip" style="background:#10b981" data-col="#10b981" title="Emerald"></div>
+            <div class="builder-color-chip" style="background:#8b5cf6" data-col="#8b5cf6" title="Violet"></div>
+            <div class="builder-color-chip" style="background:#f0f0f5" data-col="#f0f0f5" title="White"></div>
+          </div>
+        </div>
+        <div class="builder-field">
+          <label>Author Name & Icon URL</label>
+          <div style="display:flex;gap:6px">
+            <input type="text" id="eb-author-name" class="builder-input" placeholder="Author name" style="flex:1">
+            <input type="url" id="eb-author-icon" class="builder-input" placeholder="Icon URL" style="flex:1">
+          </div>
+        </div>
+        <div class="builder-field">
+          <label>Thumbnail & Image URLs</label>
+          <div style="display:flex;gap:6px">
+            <input type="url" id="eb-thumb" class="builder-input" placeholder="Thumbnail URL" style="flex:1">
+            <input type="url" id="eb-image" class="builder-input" placeholder="Large Image URL" style="flex:1">
+          </div>
+        </div>
+        <div class="builder-field">
+          <label>Footer Text</label>
+          <input type="text" id="eb-footer" class="builder-input" placeholder="Footer text..." value="xo system">
+        </div>
+      </div>
+
+      <div class="builder-preview-wrap">
+        <label style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-dim)">Live Discord Mockup</label>
+        <div class="discord-msg-box">
+          <div class="discord-avatar" style="background:url('icon.png?v=2') center/cover"></div>
+          <div class="discord-msg-body">
+            <div class="discord-msg-header">
+              <span class="discord-username">xo</span>
+              <span class="discord-bot-tag">BOT</span>
+              <span class="discord-timestamp">Today at 12:00 AM</span>
+            </div>
+            <div class="discord-embed-card" id="prev-card">
+              <div class="discord-embed-author" id="prev-author" style="display:none">
+                <img id="prev-author-img" src="" style="display:none">
+                <span id="prev-author-name"></span>
+              </div>
+              <a href="#" id="prev-title" class="discord-embed-title">Server Announcement</a>
+              <div id="prev-desc" class="discord-embed-desc">Welcome to our community! Please make sure to check out the rules and have fun.</div>
+              <img id="prev-thumb" class="discord-embed-thumb" style="display:none">
+              <img id="prev-image" class="discord-embed-img" style="display:none">
+              <div id="prev-footer" class="discord-embed-footer">xo system</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="builder-footer-btns">
+      <button class="glass-btn" id="eb-copy-json">Copy JSON</button>
+      <button class="glass-btn primary" id="eb-copy-cmd">Copy .embed Command</button>
+    </div>
+  </div>
+</div>
+
 <!-- Shortcuts Panel -->
 <div class="shortcuts-overlay" id="shortcuts-overlay" role="dialog" aria-modal="true">
   <div class="shortcuts-box">
@@ -2192,6 +2360,7 @@ function init() {
   setupSearch();
   setupScrollFade();
   setupModal();
+  setupEmbedBuilder();
   setupShortcuts();
   setupKeyboardNav();
   setupScrollTop();
@@ -2542,6 +2711,157 @@ function renderRecentSearches() {
     });
     el.appendChild(tag);
   });
+}
+
+/* ── EMBED BUILDER PLAYGROUND ── */
+function setupEmbedBuilder() {
+  const overlay = document.getElementById('builder-overlay');
+  const closeBtn = document.getElementById('builder-close');
+  const openNav = document.getElementById('open-builder-nav');
+  const openMenu = document.getElementById('open-builder-menu');
+
+  const openBuilder = () => { if (overlay) overlay.classList.add('open'); };
+  const closeBuilder = () => { if (overlay) overlay.classList.remove('open'); };
+
+  if (openNav) openNav.addEventListener('click', openBuilder);
+  if (openMenu) openMenu.addEventListener('click', openBuilder);
+  if (closeBtn) closeBtn.addEventListener('click', closeBuilder);
+  if (overlay) overlay.addEventListener('click', e => { if (e.target === overlay) closeBuilder(); });
+
+  const titleInput = document.getElementById('eb-title');
+  const urlInput = document.getElementById('eb-url');
+  const descInput = document.getElementById('eb-desc');
+  const colorPicker = document.getElementById('eb-color-picker');
+  const colorHex = document.getElementById('eb-color-hex');
+  const authName = document.getElementById('eb-author-name');
+  const authIcon = document.getElementById('eb-author-icon');
+  const thumbInput = document.getElementById('eb-thumb');
+  const imgInput = document.getElementById('eb-image');
+  const footerInput = document.getElementById('eb-footer');
+
+  const prevCard = document.getElementById('prev-card');
+  const prevTitle = document.getElementById('prev-title');
+  const prevDesc = document.getElementById('prev-desc');
+  const prevAuthor = document.getElementById('prev-author');
+  const prevAuthorName = document.getElementById('prev-author-name');
+  const prevAuthorImg = document.getElementById('prev-author-img');
+  const prevThumb = document.getElementById('prev-thumb');
+  const prevImg = document.getElementById('prev-image');
+  const prevFooter = document.getElementById('prev-footer');
+
+  if (!titleInput) return;
+
+  function updatePreview() {
+    const col = colorHex.value.trim() || '#121516';
+    prevCard.style.borderLeftColor = col;
+
+    prevTitle.textContent = titleInput.value.trim() || 'Embed Title';
+    if (urlInput.value.trim()) {
+      prevTitle.href = urlInput.value.trim();
+      prevTitle.style.color = '#00a8fc';
+    } else {
+      prevTitle.removeAttribute('href');
+      prevTitle.style.color = '#fff';
+    }
+
+    prevDesc.textContent = descInput.value || '';
+    prevDesc.style.display = descInput.value ? '' : 'none';
+
+    if (authName.value.trim()) {
+      prevAuthor.style.display = 'flex';
+      prevAuthorName.textContent = authName.value.trim();
+      if (authIcon.value.trim()) {
+        prevAuthorImg.src = authIcon.value.trim();
+        prevAuthorImg.style.display = '';
+      } else prevAuthorImg.style.display = 'none';
+    } else prevAuthor.style.display = 'none';
+
+    if (thumbInput.value.trim()) {
+      prevThumb.src = thumbInput.value.trim();
+      prevThumb.style.display = '';
+    } else prevThumb.style.display = 'none';
+
+    if (imgInput.value.trim()) {
+      prevImg.src = imgInput.value.trim();
+      prevImg.style.display = '';
+    } else prevImg.style.display = 'none';
+
+    prevFooter.textContent = footerInput.value.trim() || '';
+    prevFooter.style.display = footerInput.value.trim() ? '' : 'none';
+  }
+
+  [titleInput, urlInput, descInput, authName, authIcon, thumbInput, imgInput, footerInput].forEach(inp => {
+    if (inp) inp.addEventListener('input', updatePreview);
+  });
+
+  if (colorPicker && colorHex) {
+    colorPicker.addEventListener('input', () => {
+      colorHex.value = colorPicker.value;
+      updatePreview();
+    });
+    colorHex.addEventListener('input', () => {
+      if (/^#[0-9a-fA-F]{6}$/.test(colorHex.value.trim())) {
+        colorPicker.value = colorHex.value.trim();
+      }
+      updatePreview();
+    });
+  }
+
+  document.querySelectorAll('.builder-color-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.builder-color-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const hex = chip.dataset.col;
+      if (colorPicker) colorPicker.value = hex;
+      if (colorHex) colorHex.value = hex;
+      updatePreview();
+    });
+  });
+
+  const cmdBtn = document.getElementById('eb-copy-cmd');
+  if (cmdBtn) {
+    cmdBtn.addEventListener('click', () => {
+      const t = titleInput.value.trim() || 'Title';
+      const d = descInput.value.trim();
+      let cmd = `.embed ${t} | ${d}`;
+      if (colorHex.value.trim() && colorHex.value.trim() !== '#121516') cmd += ` --color ${colorHex.value.trim()}`;
+      if (imgInput.value.trim()) cmd += ` --image ${imgInput.value.trim()}`;
+      if (thumbInput.value.trim()) cmd += ` --thumb ${thumbInput.value.trim()}`;
+      if (authName.value.trim()) cmd += ` --author "${authName.value.trim()}"`;
+      if (authIcon.value.trim()) cmd += ` --author-icon ${authIcon.value.trim()}`;
+      if (urlInput.value.trim()) cmd += ` --url ${urlInput.value.trim()}`;
+      if (footerInput.value.trim() && footerInput.value.trim() !== 'xo system') cmd += ` --footer "${footerInput.value.trim()}"`;
+
+      navigator.clipboard.writeText(cmd).then(() => showToast('Copied .embed command!'));
+    });
+  }
+
+  const jsonBtn = document.getElementById('eb-copy-json');
+  if (jsonBtn) {
+    jsonBtn.addEventListener('click', () => {
+      const rawHex = (colorHex.value.trim() || '#121516').replace('#', '');
+      const intCol = parseInt(rawHex, 16) || 1184278;
+      const jsonPayload = {
+        title: titleInput.value.trim() || undefined,
+        url: urlInput.value.trim() || undefined,
+        description: descInput.value.trim() || undefined,
+        color: intCol,
+      };
+      if (authName.value.trim()) {
+        jsonPayload.author = {
+          name: authName.value.trim(),
+          icon_url: authIcon.value.trim() || undefined,
+        };
+      }
+      if (thumbInput.value.trim()) jsonPayload.thumbnail = { url: thumbInput.value.trim() };
+      if (imgInput.value.trim()) jsonPayload.image = { url: imgInput.value.trim() };
+      if (footerInput.value.trim()) jsonPayload.footer = { text: footerInput.value.trim() };
+
+      navigator.clipboard.writeText(JSON.stringify(jsonPayload, null, 2)).then(() => showToast('Copied JSON payload!'));
+    });
+  }
+
+  updatePreview();
 }
 
 /* ── KEYBOARD ── */
