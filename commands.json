@@ -1,5 +1,5 @@
 {
-  "total_commands": 283,
+  "total_commands": 338,
   "prefix": ".",
   "categories": {
     "fun": {
@@ -3348,18 +3348,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "clear",
-                "qualified_name": "rpc clear",
-                "usage": "`.rpc clear`",
-                "description": "Removes all RPC entries and stops rotation.",
-                "perm_tier": "creator",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".rpc clear"
-                ]
-              },
-              {
                 "name": "remove",
                 "qualified_name": "rpc remove",
                 "usage": "`.rpc remove <n>`",
@@ -3426,6 +3414,18 @@
                 "examples": [
                   ".rpc add 🌟 playing with fire",
                   ".rpc add listening to music"
+                ]
+              },
+              {
+                "name": "clear",
+                "qualified_name": "rpc clear",
+                "usage": "`.rpc clear`",
+                "description": "Removes all RPC entries and stops rotation.",
+                "perm_tier": "creator",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".rpc clear"
                 ]
               }
             ],
@@ -3513,6 +3513,21 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "stop",
+                "qualified_name": "tts stop",
+                "usage": "`.tts stop`",
+                "description": "Stops current TTS playback and disconnects the bot from voice channel.",
+                "perm_tier": "public",
+                "aliases": [
+                  "leave",
+                  "disconnect"
+                ],
+                "params": [],
+                "examples": [
+                  ".tts stop"
+                ]
+              },
+              {
                 "name": "voice",
                 "qualified_name": "tts voice",
                 "usage": "`.tts voice <voice_name>`",
@@ -3532,21 +3547,6 @@
                   ".tts voice jenny",
                   ".tts voice sonia",
                   ".tts voice nanami"
-                ]
-              },
-              {
-                "name": "stop",
-                "qualified_name": "tts stop",
-                "usage": "`.tts stop`",
-                "description": "Stops current TTS playback and disconnects the bot from voice channel.",
-                "perm_tier": "public",
-                "aliases": [
-                  "leave",
-                  "disconnect"
-                ],
-                "params": [],
-                "examples": [
-                  ".tts stop"
                 ]
               },
               {
@@ -3645,8 +3645,8 @@
             },
             "description": "Translates text (English to 36 languages). Replying to a message translates it.",
             "aliases": [
-              "tr",
-              "trans"
+              "trans",
+              "tl"
             ],
             "owner": false,
             "admin": false,
@@ -4463,6 +4463,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "list",
+                "qualified_name": "bday list",
+                "usage": "`.bday list`",
+                "description": "Lists all your saved birthdays.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".bday list"
+                ]
+              },
+              {
                 "name": "remove",
                 "qualified_name": "bday remove",
                 "usage": "`.bday remove [@user]`",
@@ -4483,18 +4495,6 @@
                 ],
                 "examples": [
                   ".bday remove @user"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "bday list",
-                "usage": "`.bday list`",
-                "description": "Lists all your saved birthdays.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".bday list"
                 ]
               }
             ],
@@ -4643,6 +4643,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "list",
+                "qualified_name": "remind list",
+                "usage": "`.remind list`",
+                "description": "Lists all your active reminders.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".remind list"
+                ]
+              },
+              {
                 "name": "cancel",
                 "qualified_name": "remind cancel",
                 "usage": "`.remind cancel <id>`",
@@ -4663,18 +4675,6 @@
                 ],
                 "examples": [
                   ".remind cancel 3"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "remind list",
-                "usage": "`.remind list`",
-                "description": "Lists all your active reminders.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".remind list"
                 ]
               }
             ],
@@ -4911,26 +4911,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "threshold",
-                "qualified_name": "starboard threshold",
-                "usage": "`.starboard threshold <number>`",
-                "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
-                "perm_tier": "whitelist",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "threshold",
-                    "type": "int",
-                    "required": true,
-                    "desc": "Minimum reaction count (must be at least 1)."
-                  }
-                ],
-                "examples": [
-                  ".starboard threshold 3",
-                  ".starboard threshold 5"
-                ]
-              },
-              {
                 "name": "emoji",
                 "qualified_name": "starboard emoji",
                 "usage": "`.starboard emoji <emoji>`",
@@ -4948,6 +4928,26 @@
                 "examples": [
                   ".starboard emoji ⭐",
                   ".starboard emoji 😭"
+                ]
+              },
+              {
+                "name": "threshold",
+                "qualified_name": "starboard threshold",
+                "usage": "`.starboard threshold <number>`",
+                "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
+                "perm_tier": "whitelist",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "threshold",
+                    "type": "int",
+                    "required": true,
+                    "desc": "Minimum reaction count (must be at least 1)."
+                  }
+                ],
+                "examples": [
+                  ".starboard threshold 3",
+                  ".starboard threshold 5"
                 ]
               }
             ],
@@ -5105,22 +5105,6 @@
                 ]
               },
               {
-                "name": "vctime",
-                "qualified_name": "leaderboard vctime",
-                "usage": "`.lb vctime`",
-                "description": "Shows the top 200 VC time leaders in the server.",
-                "perm_tier": "public",
-                "aliases": [
-                  "vc",
-                  "voice",
-                  "lbv"
-                ],
-                "params": [],
-                "examples": [
-                  ".lb vctime"
-                ]
-              },
-              {
                 "name": "birthdays",
                 "qualified_name": "leaderboard birthdays",
                 "usage": "`.lb birthdays`",
@@ -5149,6 +5133,22 @@
                 "params": [],
                 "examples": [
                   ".lb messages"
+                ]
+              },
+              {
+                "name": "vctime",
+                "qualified_name": "leaderboard vctime",
+                "usage": "`.lb vctime`",
+                "description": "Shows the top 200 VC time leaders in the server.",
+                "perm_tier": "public",
+                "aliases": [
+                  "vc",
+                  "voice",
+                  "lbv"
+                ],
+                "params": [],
+                "examples": [
+                  ".lb vctime"
                 ]
               }
             ],
@@ -5392,6 +5392,25 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "clear",
+                "qualified_name": "warn clear",
+                "usage": "`.warn clear <@user>`",
+                "description": "Clears all active warnings and resets the penalty counter for a member.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "user",
+                    "type": "user",
+                    "required": true,
+                    "desc": "Member whose warnings should be cleared."
+                  }
+                ],
+                "examples": [
+                  ".warn clear @someone"
+                ]
+              },
+              {
                 "name": "log",
                 "qualified_name": "warn log",
                 "usage": "`.warn log [#channel]`",
@@ -5409,25 +5428,6 @@
                 "examples": [
                   ".warn log",
                   ".warn log #mod-logs"
-                ]
-              },
-              {
-                "name": "clear",
-                "qualified_name": "warn clear",
-                "usage": "`.warn clear <@user>`",
-                "description": "Clears all active warnings and resets the penalty counter for a member.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "user",
-                    "type": "user",
-                    "required": true,
-                    "desc": "Member whose warnings should be cleared."
-                  }
-                ],
-                "examples": [
-                  ".warn clear @someone"
                 ]
               }
             ],
@@ -5584,6 +5584,30 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "clear",
+                "qualified_name": "auto clear",
+                "usage": "`.auto clear`",
+                "description": "Removes all auto-response triggers from this server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".auto clear"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "auto list",
+                "usage": "`.auto list`",
+                "description": "Lists all active auto-responses configured in this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".auto list"
+                ]
+              },
+              {
                 "name": "remove",
                 "qualified_name": "auto remove",
                 "usage": "`.auto remove <trigger>`",
@@ -5600,30 +5624,6 @@
                 ],
                 "examples": [
                   ".auto remove hello"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "auto list",
-                "usage": "`.auto list`",
-                "description": "Lists all active auto-responses configured in this server.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".auto list"
-                ]
-              },
-              {
-                "name": "clear",
-                "qualified_name": "auto clear",
-                "usage": "`.auto clear`",
-                "description": "Removes all auto-response triggers from this server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".auto clear"
                 ]
               }
             ],
@@ -5735,18 +5735,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "off",
-                "qualified_name": "digest off",
-                "usage": "`.digest off`",
-                "description": "Disables scheduled weekly digest cards.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".digest off"
-                ]
-              },
-              {
                 "name": "status",
                 "qualified_name": "digest status",
                 "usage": "`.digest status`",
@@ -5790,6 +5778,18 @@
                 "examples": [
                   ".digest set #general",
                   ".digest on #announcements"
+                ]
+              },
+              {
+                "name": "off",
+                "qualified_name": "digest off",
+                "usage": "`.digest off`",
+                "description": "Disables scheduled weekly digest cards.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".digest off"
                 ]
               }
             ],
@@ -6003,6 +6003,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "off",
+                "qualified_name": "milestone off",
+                "usage": "`.milestone off`",
+                "description": "Disables milestone celebration cards in the server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".milestone off"
+                ]
+              },
+              {
                 "name": "status",
                 "qualified_name": "milestone status",
                 "usage": "`.milestone status`",
@@ -6034,18 +6046,6 @@
                 "examples": [
                   ".milestone set #announcements",
                   ".milestone on #general"
-                ]
-              },
-              {
-                "name": "off",
-                "qualified_name": "milestone off",
-                "usage": "`.milestone off`",
-                "description": "Disables milestone celebration cards in the server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".milestone off"
                 ]
               }
             ],
@@ -6523,6 +6523,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "test",
+                "qualified_name": "welcome test",
+                "usage": "`.welcome test`",
+                "description": "Renders a live preview of the server welcome card using your profile avatar and banner.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".welcome test"
+                ]
+              },
+              {
                 "name": "off",
                 "qualified_name": "welcome off",
                 "usage": "`.welcome off`",
@@ -6532,6 +6544,18 @@
                 "params": [],
                 "examples": [
                   ".welcome off"
+                ]
+              },
+              {
+                "name": "status",
+                "qualified_name": "welcome status",
+                "usage": "`.welcome status`",
+                "description": "Shows whether welcome cards are enabled and which channel is configured.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".welcome status"
                 ]
               },
               {
@@ -6557,30 +6581,6 @@
                 ],
                 "examples": [
                   ".welcome setup #welcome Welcome {user} to the server!"
-                ]
-              },
-              {
-                "name": "status",
-                "qualified_name": "welcome status",
-                "usage": "`.welcome status`",
-                "description": "Shows whether welcome cards are enabled and which channel is configured.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".welcome status"
-                ]
-              },
-              {
-                "name": "test",
-                "qualified_name": "welcome test",
-                "usage": "`.welcome test`",
-                "description": "Renders a live preview of the server welcome card using your profile avatar and banner.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".welcome test"
                 ]
               }
             ],
@@ -6684,6 +6684,25 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "logs",
+                "qualified_name": "bait logs",
+                "usage": "`.bait logs #channel`",
+                "description": "Sets the channel where bait trigger, ban, and forgive events are logged.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "channel",
+                    "type": "discord.TextChannel",
+                    "required": true,
+                    "desc": "Log channel."
+                  }
+                ],
+                "examples": [
+                  ".bait logs #mod-logs"
+                ]
+              },
+              {
                 "name": "off",
                 "qualified_name": "bait off",
                 "usage": "`.bait off`",
@@ -6724,25 +6743,6 @@
                 "params": [],
                 "examples": [
                   ".bait status"
-                ]
-              },
-              {
-                "name": "logs",
-                "qualified_name": "bait logs",
-                "usage": "`.bait logs #channel`",
-                "description": "Sets the channel where bait trigger, ban, and forgive events are logged.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "channel",
-                    "type": "discord.TextChannel",
-                    "required": true,
-                    "desc": "Log channel."
-                  }
-                ],
-                "examples": [
-                  ".bait logs #mod-logs"
                 ]
               },
               {
@@ -7448,32 +7448,6 @@
                 ]
               },
               {
-                "name": "deny",
-                "qualified_name": "cmd deny",
-                "usage": "`.cmd deny <#channel>... <category|command>`",
-                "description": "Blocks a category or command in the specified channels.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "channels",
-                    "type": "discord.TextChannel",
-                    "required": true,
-                    "desc": "One or more channel mentions."
-                  },
-                  {
-                    "name": "target",
-                    "type": "str",
-                    "required": true,
-                    "desc": "A command name (e.g. `.play`) or category name."
-                  }
-                ],
-                "examples": [
-                  ".cmd deny #general .play",
-                  ".cmd deny #chat music"
-                ]
-              },
-              {
                 "name": "clear",
                 "qualified_name": "cmd clear",
                 "usage": "`.cmd clear <category|command>`",
@@ -7511,6 +7485,32 @@
                 "examples": [
                   ".cmd show",
                   ".cmd show .ping"
+                ]
+              },
+              {
+                "name": "deny",
+                "qualified_name": "cmd deny",
+                "usage": "`.cmd deny <#channel>... <category|command>`",
+                "description": "Blocks a category or command in the specified channels.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "channels",
+                    "type": "discord.TextChannel",
+                    "required": true,
+                    "desc": "One or more channel mentions."
+                  },
+                  {
+                    "name": "target",
+                    "type": "str",
+                    "required": true,
+                    "desc": "A command name (e.g. `.play`) or category name."
+                  }
+                ],
+                "examples": [
+                  ".cmd deny #general .play",
+                  ".cmd deny #chat music"
                 ]
               }
             ],
@@ -8357,10 +8357,10 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "save",
-                "qualified_name": "playlist save",
-                "usage": "`.playlist save <name>`",
-                "description": "Saves the current music queue as a named playlist.",
+                "name": "info",
+                "qualified_name": "playlist info",
+                "usage": "`.playlist info <name>`",
+                "description": "Shows detailed information about a saved playlist.",
                 "perm_tier": "public",
                 "aliases": [],
                 "params": [
@@ -8368,12 +8368,11 @@
                     "name": "name",
                     "type": "str",
                     "required": true,
-                    "desc": "Name for the new playlist."
+                    "desc": "Name of the playlist to inspect."
                   }
                 ],
                 "examples": [
-                  ".playlist save chill",
-                  ".playlist save workout"
+                  ".playlist info chill"
                 ]
               },
               {
@@ -8391,10 +8390,10 @@
                 ]
               },
               {
-                "name": "load",
-                "qualified_name": "playlist load",
-                "usage": "`.playlist load <name>`",
-                "description": "Loads a saved playlist into the queue.",
+                "name": "save",
+                "qualified_name": "playlist save",
+                "usage": "`.playlist save <name>`",
+                "description": "Saves the current music queue as a named playlist.",
                 "perm_tier": "public",
                 "aliases": [],
                 "params": [
@@ -8402,11 +8401,12 @@
                     "name": "name",
                     "type": "str",
                     "required": true,
-                    "desc": "Name of the playlist to load."
+                    "desc": "Name for the new playlist."
                   }
                 ],
                 "examples": [
-                  ".playlist load chill"
+                  ".playlist save chill",
+                  ".playlist save workout"
                 ]
               },
               {
@@ -8431,10 +8431,10 @@
                 ]
               },
               {
-                "name": "info",
-                "qualified_name": "playlist info",
-                "usage": "`.playlist info <name>`",
-                "description": "Shows detailed information about a saved playlist.",
+                "name": "load",
+                "qualified_name": "playlist load",
+                "usage": "`.playlist load <name>`",
+                "description": "Loads a saved playlist into the queue.",
                 "perm_tier": "public",
                 "aliases": [],
                 "params": [
@@ -8442,11 +8442,11 @@
                     "name": "name",
                     "type": "str",
                     "required": true,
-                    "desc": "Name of the playlist to inspect."
+                    "desc": "Name of the playlist to load."
                   }
                 ],
                 "examples": [
-                  ".playlist info chill"
+                  ".playlist load chill"
                 ]
               }
             ],
@@ -9424,6 +9424,32 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "empty",
+                "qualified_name": "queue empty",
+                "usage": "`.queue empty`",
+                "description": "Clears the entire queue.",
+                "perm_tier": "public",
+                "aliases": [
+                  "clear"
+                ],
+                "params": [],
+                "examples": [
+                  ".queue empty"
+                ]
+              },
+              {
+                "name": "dedupe",
+                "qualified_name": "queue dedupe",
+                "usage": "`.queue dedupe`",
+                "description": "Removes duplicate tracks from the queue.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".queue dedupe"
+                ]
+              },
+              {
                 "name": "skipto",
                 "qualified_name": "queue skipto",
                 "usage": "`.queue skipto <pos>`",
@@ -9442,6 +9468,27 @@
                 ],
                 "examples": [
                   ".queue skipto 5"
+                ]
+              },
+              {
+                "name": "remove",
+                "qualified_name": "queue remove",
+                "usage": "`.queue remove <position>`",
+                "description": "Removes a track from the queue by its position number.",
+                "perm_tier": "public",
+                "aliases": [
+                  "rm"
+                ],
+                "params": [
+                  {
+                    "name": "position",
+                    "type": "int",
+                    "required": true,
+                    "desc": "Position of the track in the queue to remove."
+                  }
+                ],
+                "examples": [
+                  ".queue remove 3"
                 ]
               },
               {
@@ -9481,53 +9528,6 @@
                 ],
                 "examples": [
                   ".queue move 5 2"
-                ]
-              },
-              {
-                "name": "empty",
-                "qualified_name": "queue empty",
-                "usage": "`.queue empty`",
-                "description": "Clears the entire queue.",
-                "perm_tier": "public",
-                "aliases": [
-                  "clear"
-                ],
-                "params": [],
-                "examples": [
-                  ".queue empty"
-                ]
-              },
-              {
-                "name": "dedupe",
-                "qualified_name": "queue dedupe",
-                "usage": "`.queue dedupe`",
-                "description": "Removes duplicate tracks from the queue.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".queue dedupe"
-                ]
-              },
-              {
-                "name": "remove",
-                "qualified_name": "queue remove",
-                "usage": "`.queue remove <position>`",
-                "description": "Removes a track from the queue by its position number.",
-                "perm_tier": "public",
-                "aliases": [
-                  "rm"
-                ],
-                "params": [
-                  {
-                    "name": "position",
-                    "type": "int",
-                    "required": true,
-                    "desc": "Position of the track in the queue to remove."
-                  }
-                ],
-                "examples": [
-                  ".queue remove 3"
                 ]
               }
             ],
@@ -10525,23 +10525,35 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "substring",
-                "qualified_name": "vanity substring",
-                "usage": "`.vanity substring <text>`",
-                "description": "Sets the status text substring the bot watches for in member custom statuses.",
+                "name": "reset",
+                "qualified_name": "vanity reset",
+                "usage": "`.vanity reset`",
+                "description": "Completely resets all vanity tracker settings for this server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".vanity reset"
+                ]
+              },
+              {
+                "name": "role",
+                "qualified_name": "vanity role",
+                "usage": "`.vanity role <@role>`",
+                "description": "Sets the reward role auto-assigned to members who put the vanity in their custom status.",
                 "perm_tier": "admin",
                 "aliases": [],
                 "params": [
                   {
-                    "name": "text",
-                    "type": "str",
+                    "name": "role",
+                    "type": "role",
                     "required": true,
-                    "desc": "The text snippet to match inside member statuses."
+                    "desc": "The role to automatically grant."
                   }
                 ],
                 "examples": [
-                  ".vanity substring seoulities",
-                  ".vanity substring .gg/myguild"
+                  ".vanity role @Vanity Rep",
+                  ".vanity role @Supporter"
                 ]
               },
               {
@@ -10576,18 +10588,6 @@
                 ]
               },
               {
-                "name": "reset",
-                "qualified_name": "vanity reset",
-                "usage": "`.vanity reset`",
-                "description": "Completely resets all vanity tracker settings for this server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".vanity reset"
-                ]
-              },
-              {
                 "name": "channel",
                 "qualified_name": "vanity channel",
                 "usage": "`.vanity channel <#channel>`",
@@ -10608,27 +10608,3097 @@
                 ]
               },
               {
-                "name": "role",
-                "qualified_name": "vanity role",
-                "usage": "`.vanity role <@role>`",
-                "description": "Sets the reward role auto-assigned to members who put the vanity in their custom status.",
+                "name": "substring",
+                "qualified_name": "vanity substring",
+                "usage": "`.vanity substring <text>`",
+                "description": "Sets the status text substring the bot watches for in member custom statuses.",
                 "perm_tier": "admin",
                 "aliases": [],
                 "params": [
                   {
-                    "name": "role",
-                    "type": "role",
+                    "name": "text",
+                    "type": "str",
                     "required": true,
-                    "desc": "The role to automatically grant."
+                    "desc": "The text snippet to match inside member statuses."
                   }
                 ],
                 "examples": [
-                  ".vanity role @Vanity Rep",
-                  ".vanity role @Supporter"
+                  ".vanity substring seoulities",
+                  ".vanity substring .gg/myguild"
                 ]
               }
             ],
             "cog_file": "vanity.py"
+          }
+        ]
+      }
+    },
+    "theme": {
+      "label": "Theme",
+      "desc": "Server aesthetics, custom embeds, colors, roles, and prefix configuration.",
+      "admin": false,
+      "owner": false,
+      "staff": false,
+      "icon": "★",
+      "sections": {
+        "Overview": [
+          {
+            "name": "theme",
+            "qualified_name": "theme",
+            "usage": "`.theme`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "theme",
+              "args": ""
+            },
+            "description": "Shows the current theme summary — roles, prefixes, font, and snapshot status.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme"
+            ],
+            "params": [],
+            "note": "This is the entry point. Use `.theme help` to see all subcommands.",
+            "category_id": "theme",
+            "section": "Overview",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "reset",
+                "qualified_name": "theme reset",
+                "usage": "`.theme reset`",
+                "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme reset"
+                ]
+              },
+              {
+                "name": "help",
+                "qualified_name": "theme help",
+                "usage": "`.theme help`",
+                "description": "Shows all theme commands organised by section.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme help"
+                ]
+              },
+              {
+                "name": "prefix",
+                "qualified_name": "theme prefix",
+                "usage": "`.theme prefix [add|scan|remove|list]`",
+                "description": "Manages channel prefixes across categories.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "p"
+                ],
+                "params": [],
+                "examples": [
+                  ".theme prefix add ✦ #general",
+                  ".theme prefix scan all",
+                  ".tprefix ✦ #general"
+                ]
+              },
+              {
+                "name": "apply",
+                "qualified_name": "theme apply",
+                "usage": "`.theme apply <name>`",
+                "description": "Previews then applies a saved preset to this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the preset to apply."
+                  }
+                ],
+                "examples": [
+                  ".theme apply mytheme"
+                ]
+              },
+              {
+                "name": "setup",
+                "qualified_name": "theme setup",
+                "usage": "`.theme setup`",
+                "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme setup"
+                ]
+              },
+              {
+                "name": "undo",
+                "qualified_name": "theme undo",
+                "usage": "`.theme undo`",
+                "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme undo"
+                ]
+              },
+              {
+                "name": "presets",
+                "qualified_name": "theme presets",
+                "usage": "`.theme presets`",
+                "description": "Lists all saved presets for this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme presets"
+                ]
+              },
+              {
+                "name": "setrole",
+                "qualified_name": "theme setrole",
+                "usage": "`.theme setrole <slot|#index> [@role]`",
+                "description": "Remaps a theme slot to a server role. Supports slot number or name.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "map",
+                  "bind",
+                  "m"
+                ],
+                "params": [
+                  {
+                    "name": "slot",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Slot number (1, 2...) or slot name to map."
+                  },
+                  {
+                    "name": "role",
+                    "type": "role",
+                    "required": false,
+                    "desc": "Discord role to map (omit for interactive picker)."
+                  }
+                ],
+                "examples": [
+                  ".theme setrole 1 @Owner",
+                  ".theme setrole owner @Owner",
+                  ".tmap 1 @Owner"
+                ]
+              },
+              {
+                "name": "snapshot",
+                "qualified_name": "theme snapshot",
+                "usage": "`.theme snapshot`",
+                "description": "Shows what's currently saved in the undo snapshot.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme snapshot"
+                ]
+              },
+              {
+                "name": "role",
+                "qualified_name": "theme role",
+                "usage": "`.theme role <slot|#index> <new name>`",
+                "description": "Renames the Discord role mapped to a slot. Supports slot index or name. E.g. `.theme role 1 True Dragon` or `.theme role Owner God Emperor`.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "rename",
+                  "r"
+                ],
+                "params": [
+                  {
+                    "name": "slot",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The slot number (1, 2...) or slot name whose role to rename."
+                  },
+                  {
+                    "name": "new_name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The new display name for the role."
+                  }
+                ],
+                "examples": [
+                  ".theme role 1 True Dragon",
+                  ".theme role owner God Emperor",
+                  ".theme role co owner Vice King",
+                  ".tr 1 True Dragon"
+                ]
+              },
+              {
+                "name": "delete",
+                "qualified_name": "theme delete",
+                "usage": "`.theme delete <name>`",
+                "description": "Deletes a saved preset.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the preset to delete."
+                  }
+                ],
+                "examples": [
+                  ".theme delete oldtheme"
+                ]
+              },
+              {
+                "name": "roleicon",
+                "qualified_name": "theme roleicon",
+                "usage": "`.theme roleicon <slot|#index> [emoji|url|attachment]`",
+                "description": "Sets a role icon via emoji, URL, or image attachment. Supports slot number or name. Requires boost level 2.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "icon",
+                  "i"
+                ],
+                "params": [
+                  {
+                    "name": "slot",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Slot number (1, 2...) or slot name."
+                  },
+                  {
+                    "name": "source",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Emoji, image URL, or attachment. Omit to clear."
+                  }
+                ],
+                "examples": [
+                  ".theme roleicon 1 👑",
+                  ".theme roleicon Owner 👑",
+                  ".theme icon 1 https://i.imgur.com/icon.png",
+                  ".tri 1 👑"
+                ]
+              },
+              {
+                "name": "font",
+                "qualified_name": "theme font",
+                "usage": "`.theme font [font_name|list|set|reset]`",
+                "description": "Manages channel fonts — list, set, reset.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "f"
+                ],
+                "params": [],
+                "examples": [
+                  ".theme font list",
+                  ".theme font bold all",
+                  ".tfont bold all"
+                ]
+              },
+              {
+                "name": "roles",
+                "qualified_name": "theme roles",
+                "usage": "`.theme roles`",
+                "description": "Lists all mapped role slots, their indices, and their current Discord roles.",
+                "perm_tier": "public",
+                "aliases": [
+                  "slots",
+                  "list",
+                  "ls",
+                  "l"
+                ],
+                "params": [],
+                "examples": [
+                  ".theme roles",
+                  ".troles",
+                  ".theme slots"
+                ]
+              },
+              {
+                "name": "group",
+                "qualified_name": "theme group",
+                "usage": "`.theme group` / `.tg`",
+                "description": "Manages named prefix groups — run `.theme group setup` to get started.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme group",
+                  ".theme group setup",
+                  ".tg"
+                ]
+              },
+              {
+                "name": "seticon",
+                "qualified_name": "theme seticon",
+                "usage": "`.theme seticon [url|attachment]`",
+                "description": "Sets and stores the server icon in the current theme.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "source",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Image URL or attachment. Omit to clear the stored icon."
+                  }
+                ],
+                "examples": [
+                  ".theme seticon https://i.imgur.com/icon.png",
+                  ".theme seticon"
+                ]
+              },
+              {
+                "name": "setbanner",
+                "qualified_name": "theme setbanner",
+                "usage": "`.theme setbanner [url|attachment]`",
+                "description": "Sets and stores the server banner in the current theme.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "source",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Image URL or attachment. Omit to clear the stored banner."
+                  }
+                ],
+                "examples": [
+                  ".theme setbanner https://i.imgur.com/banner.png",
+                  ".theme setbanner"
+                ]
+              },
+              {
+                "name": "save",
+                "qualified_name": "theme save",
+                "usage": "`.theme save <name>`",
+                "description": "Saves the current server role and channel state as a named preset.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name for the preset."
+                  }
+                ],
+                "examples": [
+                  ".theme save mytheme",
+                  ".theme save backup1"
+                ]
+              },
+              {
+                "name": "channel",
+                "qualified_name": "theme channel",
+                "usage": "`.theme channel`",
+                "description": "Manages channel names. Subcommand: `strip`.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme channel",
+                  ".theme channel strip -"
+                ]
+              }
+            ],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Presets": [
+          {
+            "name": "apply",
+            "qualified_name": "theme apply",
+            "usage": "`.theme apply <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "apply",
+              "args": "theme apply <name>"
+            },
+            "description": "Previews then applies a saved preset to this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme apply mytheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to apply."
+              }
+            ],
+            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "delete",
+            "qualified_name": "theme delete",
+            "usage": "`.theme delete <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "delete",
+              "args": "theme delete <name>"
+            },
+            "description": "Deletes a saved preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme delete oldtheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to delete."
+              }
+            ],
+            "note": "This cannot be undone.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "presets",
+            "qualified_name": "theme presets",
+            "usage": "`.theme presets`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "presets",
+              "args": "theme presets"
+            },
+            "description": "Lists all saved presets for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme presets"
+            ],
+            "params": [],
+            "note": "Shows preset names and creation dates.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "reset",
+            "qualified_name": "theme reset",
+            "usage": "`.theme reset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "reset",
+              "args": "theme reset"
+            },
+            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme reset"
+            ],
+            "params": [],
+            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "save",
+            "qualified_name": "theme save",
+            "usage": "`.theme save <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "save",
+              "args": "theme save <name>"
+            },
+            "description": "Saves the current server role and channel state as a named preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme save mytheme",
+              ".theme save backup1"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the preset."
+              }
+            ],
+            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "snapshot",
+            "qualified_name": "theme snapshot",
+            "usage": "`.theme snapshot`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "snapshot",
+              "args": "theme snapshot"
+            },
+            "description": "Shows what's currently saved in the undo snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme snapshot"
+            ],
+            "params": [],
+            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tapply",
+            "qualified_name": "tapply",
+            "usage": "`.tapply <preset_name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tapply",
+              "args": "<preset_name>"
+            },
+            "description": "Fast shortcut to apply a saved server theme preset.",
+            "aliases": [
+              "themeapply"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".tapply dark_fantasy",
+              ".tapply cyber_pink"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "The name of the saved preset to apply."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "treset",
+            "qualified_name": "treset",
+            "usage": "`.treset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "treset",
+              "args": ""
+            },
+            "description": "Fast shortcut to restore server roles and channels to snapshot.",
+            "aliases": [
+              "themereset"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".treset"
+            ],
+            "params": [],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tsave",
+            "qualified_name": "tsave",
+            "usage": "`.tsave <preset_name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tsave",
+              "args": "<preset_name>"
+            },
+            "description": "Fast shortcut to save the current server theme as a preset.",
+            "aliases": [
+              "themesave"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".tsave my_theme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the new preset."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "undo",
+            "qualified_name": "theme undo",
+            "usage": "`.theme undo`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "undo",
+              "args": "theme undo"
+            },
+            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme undo"
+            ],
+            "params": [],
+            "note": "Same as `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Setup": [
+          {
+            "name": "clear",
+            "qualified_name": "theme roles clear",
+            "usage": "`.theme roles clear`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "clear",
+              "args": "theme roles clear"
+            },
+            "description": "Wipes all slot mappings. Discord role names are unchanged; remap with `.theme roles setup`.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme roles clear"
+            ],
+            "params": [],
+            "note": "This only clears the internal mapping, not the actual role names. Run setup again to remap.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "roles",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "help",
+            "qualified_name": "theme help",
+            "usage": "`.theme help`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "help",
+              "args": "theme help"
+            },
+            "description": "Shows all theme commands organised by section.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme help"
+            ],
+            "params": [],
+            "note": "Displays a complete list of theme subcommands grouped by category.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "roles",
+            "qualified_name": "theme roles",
+            "usage": "`.theme roles`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "roles",
+              "args": "theme roles"
+            },
+            "description": "Lists all mapped role slots, their indices, and their current Discord roles.",
+            "aliases": [
+              "slots",
+              "list",
+              "ls",
+              "l"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme roles",
+              ".troles",
+              ".theme slots"
+            ],
+            "params": [],
+            "note": "Shows the current slot-to-role mappings.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "clear",
+                "qualified_name": "theme roles clear",
+                "usage": "`.theme roles clear`",
+                "description": "Wipes all slot mappings. Discord role names are unchanged; remap with `.theme roles setup`.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme roles clear"
+                ]
+              },
+              {
+                "name": "setup",
+                "qualified_name": "theme roles setup",
+                "usage": "`.theme roles setup`",
+                "description": "Runs the role mapping wizard. Shows the current mapping per slot so you can skip or remap.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme roles setup"
+                ]
+              }
+            ],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setbanner",
+            "qualified_name": "theme setbanner",
+            "usage": "`.theme setbanner [url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setbanner",
+              "args": "theme setbanner [url|attachment]"
+            },
+            "description": "Sets and stores the server banner in the current theme.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme setbanner https://i.imgur.com/banner.png",
+              ".theme setbanner"
+            ],
+            "params": [
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Image URL or attachment. Omit to clear the stored banner."
+              }
+            ],
+            "note": "The banner is saved as part of the theme and can be restored with `.theme apply`.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "seticon",
+            "qualified_name": "theme seticon",
+            "usage": "`.theme seticon [url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "seticon",
+              "args": "theme seticon [url|attachment]"
+            },
+            "description": "Sets and stores the server icon in the current theme.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme seticon https://i.imgur.com/icon.png",
+              ".theme seticon"
+            ],
+            "params": [
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Image URL or attachment. Omit to clear the stored icon."
+              }
+            ],
+            "note": "The icon is saved as part of the theme and can be restored with `.theme apply`.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setrole",
+            "qualified_name": "theme setrole",
+            "usage": "`.theme setrole <slot|#index> [@role]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setrole",
+              "args": "theme setrole <slot|#index> [@role]"
+            },
+            "description": "Remaps a theme slot to a server role. Supports slot number or name.",
+            "aliases": [
+              "map",
+              "bind",
+              "m"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".theme setrole 1 @Owner",
+              ".theme setrole owner @Owner",
+              ".tmap 1 @Owner"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "Slot number (1, 2...) or slot name to map."
+              },
+              {
+                "name": "role",
+                "type": "role",
+                "required": false,
+                "desc": "Discord role to map (omit for interactive picker)."
+              }
+            ],
+            "note": "Only maps the slot. Use `.theme role` or `.tr` to rename the role itself.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "qualified_name": "theme setup",
+            "usage": "`.theme setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme setup"
+            },
+            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme setup"
+            ],
+            "params": [],
+            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "qualified_name": "theme roles setup",
+            "usage": "`.theme roles setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme roles setup"
+            },
+            "description": "Runs the role mapping wizard. Shows the current mapping per slot so you can skip or remap.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme roles setup"
+            ],
+            "params": [],
+            "note": "Interactive — you will be prompted for each slot.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "roles",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tmap",
+            "qualified_name": "tmap",
+            "usage": "`.tmap <slot|#index> [@role]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tmap",
+              "args": "<slot|#index> [@role]"
+            },
+            "description": "Fast shortcut to bind a Discord role to a theme slot.",
+            "aliases": [
+              "tsetrole",
+              "themesetrole"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".tmap 1 @Owner",
+              ".tmap owner @Owner"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "Slot number or slot name to map."
+              },
+              {
+                "name": "role",
+                "type": "role",
+                "required": false,
+                "desc": "The Discord role to map to this slot."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Setup",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "troles",
+            "qualified_name": "troles",
+            "usage": "`.troles`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "troles",
+              "args": ""
+            },
+            "description": "Fast shortcut to list all mapped role slots and their current Discord roles.",
+            "aliases": [
+              "tslots",
+              "trl",
+              "themeroles"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".troles",
+              ".tslots"
+            ],
+            "params": [],
+            "note": null,
+            "category_id": "theme",
+            "section": "Setup",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tsetup",
+            "qualified_name": "tsetup",
+            "usage": "`.tsetup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tsetup",
+              "args": ""
+            },
+            "description": "Fast shortcut to run the interactive role slot mapping wizard.",
+            "aliases": [
+              "themesetup"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".tsetup"
+            ],
+            "params": [],
+            "note": null,
+            "category_id": "theme",
+            "section": "Setup",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Channels": [
+          {
+            "name": "add",
+            "qualified_name": "theme prefix add",
+            "usage": "`.theme prefix add <emoji> <#cat> [...]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "add",
+              "args": "theme prefix add <emoji> <#cat> [...]"
+            },
+            "description": "Adds or replaces a prefix emoji on all channels in one or more categories.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme prefix add ★ #text-channels",
+              ".theme prefix add 🎮 #gaming #general"
+            ],
+            "params": [
+              {
+                "name": "emoji",
+                "type": "str",
+                "required": true,
+                "desc": "The emoji or symbol to use as prefix."
+              },
+              {
+                "name": "categories",
+                "type": "discord.CategoryChannel",
+                "required": true,
+                "desc": "One or more category channels to apply the prefix to."
+              }
+            ],
+            "note": "Existing prefixes on channels will be replaced.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "add",
+            "qualified_name": "theme group add",
+            "usage": "`.theme group add <name> #category`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "add",
+              "args": "theme group add <name> #category"
+            },
+            "description": "Adds a category to a group and applies the group's prefix to all its channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group add gaming #game-chat",
+              ".theme group add info #information"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the target group."
+              },
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": true,
+                "desc": "The category to add to the group."
+              }
+            ],
+            "note": "All channels in the category will be prefixed with the group's prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "apply",
+            "qualified_name": "theme group apply",
+            "usage": "`.theme group apply <name> #channel`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "apply",
+              "args": "theme group apply <name> #channel"
+            },
+            "description": "Stamps a group's prefix onto one specific channel without adding it to the group.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group apply gaming #random"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the group whose prefix to use."
+              },
+              {
+                "name": "channel",
+                "type": "discord.TextChannel",
+                "required": true,
+                "desc": "The channel to stamp the prefix on."
+              }
+            ],
+            "note": "The channel's name is prefixed but it is NOT added to the group's category list.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "channel",
+            "qualified_name": "theme channel",
+            "usage": "`.theme channel`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "channel",
+              "args": "theme channel"
+            },
+            "description": "Manages channel names. Subcommand: `strip`.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme channel",
+              ".theme channel strip -"
+            ],
+            "params": [],
+            "note": "Root command for channel name subcommands.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "strip",
+                "qualified_name": "theme channel strip",
+                "usage": "`.theme channel strip <text>`",
+                "description": "Strips an exact piece of text from every channel name in the server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "text",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The exact text to remove from all channel names."
+                  }
+                ],
+                "examples": [
+                  ".theme channel strip -",
+                  ".theme channel strip oldtext"
+                ]
+              }
+            ],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "create",
+            "qualified_name": "theme group create",
+            "usage": "`.theme group create <name> <prefix>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "create",
+              "args": "theme group create <name> <prefix>"
+            },
+            "description": "Manually creates a named prefix group.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group create gaming 🎮",
+              ".theme group create info ℹ️"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the new prefix group."
+              },
+              {
+                "name": "prefix",
+                "type": "str",
+                "required": true,
+                "desc": "The prefix emoji or symbol for channels in this group."
+              }
+            ],
+            "note": "The prefix is not applied to any channels yet. Use `.theme group add` to assign categories.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "delete",
+            "qualified_name": "theme group delete",
+            "usage": "`.theme group delete <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "delete",
+              "args": "theme group delete <name>"
+            },
+            "description": "Deletes a prefix group record. Does not rename any channels.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group delete gaming"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the group to delete."
+              }
+            ],
+            "note": "Channel names are NOT changed when a group is deleted.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "font",
+            "qualified_name": "theme font",
+            "usage": "`.theme font [font_name|list|set|reset]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "font",
+              "args": "theme font [font_name|list|set|reset]"
+            },
+            "description": "Manages channel fonts — list, set, reset.",
+            "aliases": [
+              "f"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_channels"
+            ],
+            "examples": [
+              ".theme font list",
+              ".theme font bold all",
+              ".tfont bold all"
+            ],
+            "params": [],
+            "note": "Root command for unicode channel font transformations.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "reset",
+                "qualified_name": "theme font reset",
+                "usage": "`.theme font reset [all|<#cat>]`",
+                "description": "Strips unicode font styling from channel names.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "target",
+                    "type": "str",
+                    "required": false,
+                    "desc": "`all` for server-wide, or a category mention."
+                  }
+                ],
+                "examples": [
+                  ".theme font reset all",
+                  ".theme font reset #general"
+                ]
+              },
+              {
+                "name": "set",
+                "qualified_name": "theme font set",
+                "usage": "`.theme font set <font> [all|<#cat> ...]`",
+                "description": "Applies a unicode font to channel names.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "font",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Font style name (from `.theme font list`)."
+                  },
+                  {
+                    "name": "target",
+                    "type": "str",
+                    "required": false,
+                    "desc": "`all` for server-wide, or one or more category mentions."
+                  }
+                ],
+                "examples": [
+                  ".theme font set cursive #general",
+                  ".theme font set bold all"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "theme font list",
+                "usage": "`.theme font list`",
+                "description": "Shows all available unicode font styles with live examples.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme font list"
+                ]
+              }
+            ],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "group",
+            "qualified_name": "theme group",
+            "usage": "`.theme group` / `.tg`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "group",
+              "args": "theme group` / `.tg"
+            },
+            "description": "Manages named prefix groups — run `.theme group setup` to get started.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group",
+              ".theme group setup",
+              ".tg"
+            ],
+            "params": [],
+            "note": "Root command. Subcommands: setup, list, create, delete, set, add, remove, apply. `.tg` is a shorthand alias.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "setup",
+                "qualified_name": "theme group setup",
+                "usage": "`.theme group setup`",
+                "description": "Scans the entire server for prefixes and interactively creates named prefix groups.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme group setup"
+                ]
+              },
+              {
+                "name": "set",
+                "qualified_name": "theme group set",
+                "usage": "`.theme group set <name> <new prefix>`",
+                "description": "Changes a group's prefix and renames all channels in that group.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the group to update."
+                  },
+                  {
+                    "name": "new prefix",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The new prefix emoji or symbol."
+                  }
+                ],
+                "examples": [
+                  ".theme group set gaming 🕹️",
+                  ".theme group set info 📋"
+                ]
+              },
+              {
+                "name": "delete",
+                "qualified_name": "theme group delete",
+                "usage": "`.theme group delete <name>`",
+                "description": "Deletes a prefix group record. Does not rename any channels.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the group to delete."
+                  }
+                ],
+                "examples": [
+                  ".theme group delete gaming"
+                ]
+              },
+              {
+                "name": "apply",
+                "qualified_name": "theme group apply",
+                "usage": "`.theme group apply <name> #channel`",
+                "description": "Stamps a group's prefix onto one specific channel without adding it to the group.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the group whose prefix to use."
+                  },
+                  {
+                    "name": "channel",
+                    "type": "discord.TextChannel",
+                    "required": true,
+                    "desc": "The channel to stamp the prefix on."
+                  }
+                ],
+                "examples": [
+                  ".theme group apply gaming #random"
+                ]
+              },
+              {
+                "name": "create",
+                "qualified_name": "theme group create",
+                "usage": "`.theme group create <name> <prefix>`",
+                "description": "Manually creates a named prefix group.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name for the new prefix group."
+                  },
+                  {
+                    "name": "prefix",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The prefix emoji or symbol for channels in this group."
+                  }
+                ],
+                "examples": [
+                  ".theme group create gaming 🎮",
+                  ".theme group create info ℹ️"
+                ]
+              },
+              {
+                "name": "remove",
+                "qualified_name": "theme group remove",
+                "usage": "`.theme group remove <name> #category`",
+                "description": "Removes a category from a group. Channel names are not changed.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the group."
+                  },
+                  {
+                    "name": "category",
+                    "type": "discord.CategoryChannel",
+                    "required": true,
+                    "desc": "The category to remove from the group."
+                  }
+                ],
+                "examples": [
+                  ".theme group remove gaming #game-chat"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "theme group list",
+                "usage": "`.theme group list`",
+                "description": "Shows all prefix groups — name, prefix, categories, and channel count.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme group list"
+                ]
+              },
+              {
+                "name": "add",
+                "qualified_name": "theme group add",
+                "usage": "`.theme group add <name> #category`",
+                "description": "Adds a category to a group and applies the group's prefix to all its channels.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the target group."
+                  },
+                  {
+                    "name": "category",
+                    "type": "discord.CategoryChannel",
+                    "required": true,
+                    "desc": "The category to add to the group."
+                  }
+                ],
+                "examples": [
+                  ".theme group add gaming #game-chat",
+                  ".theme group add info #information"
+                ]
+              }
+            ],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
+            "qualified_name": "theme prefix list",
+            "usage": "`.theme prefix list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme prefix list"
+            },
+            "description": "Shows all stored channel prefixes for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme prefix list"
+            ],
+            "params": [],
+            "note": "Displays each channel and its current prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
+            "qualified_name": "theme font list",
+            "usage": "`.theme font list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme font list"
+            },
+            "description": "Shows all available unicode font styles with live examples.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme font list"
+            ],
+            "params": [],
+            "note": "Each font style is displayed with a sample of how it transforms text.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "font",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "list",
+            "qualified_name": "theme group list",
+            "usage": "`.theme group list`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "list",
+              "args": "theme group list"
+            },
+            "description": "Shows all prefix groups — name, prefix, categories, and channel count.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group list"
+            ],
+            "params": [],
+            "note": "Displays a summary of all configured prefix groups.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "prefix",
+            "qualified_name": "theme prefix",
+            "usage": "`.theme prefix [add|scan|remove|list]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "prefix",
+              "args": "theme prefix [add|scan|remove|list]"
+            },
+            "description": "Manages channel prefixes across categories.",
+            "aliases": [
+              "p"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_channels"
+            ],
+            "examples": [
+              ".theme prefix add ✦ #general",
+              ".theme prefix scan all",
+              ".tprefix ✦ #general"
+            ],
+            "params": [],
+            "note": "Root command for all prefix subcommands: scan, add, remove, server, replace, undo, list.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "add",
+                "qualified_name": "theme prefix add",
+                "usage": "`.theme prefix add <emoji> <#cat> [...]`",
+                "description": "Adds or replaces a prefix emoji on all channels in one or more categories.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "emoji",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The emoji or symbol to use as prefix."
+                  },
+                  {
+                    "name": "categories",
+                    "type": "discord.CategoryChannel",
+                    "required": true,
+                    "desc": "One or more category channels to apply the prefix to."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix add ★ #text-channels",
+                  ".theme prefix add 🎮 #gaming #general"
+                ]
+              },
+              {
+                "name": "undo",
+                "qualified_name": "theme prefix undo",
+                "usage": "`.theme prefix undo`",
+                "description": "Undoes the last prefix operation (add, remove, or all).",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme prefix undo"
+                ]
+              },
+              {
+                "name": "scan",
+                "qualified_name": "theme prefix scan",
+                "usage": "`.theme prefix scan <#cat|all>`",
+                "description": "Detects existing emoji/symbol prefixes in a category or server-wide.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "target",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Category mention to scan, or `all` to scan every channel."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix scan #general-category",
+                  ".theme prefix scan all"
+                ]
+              },
+              {
+                "name": "replace",
+                "qualified_name": "theme prefix replace",
+                "usage": "`.theme prefix replace <n> <new>`",
+                "description": "Replaces a detected prefix with a new one across the server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "n",
+                    "type": "int",
+                    "required": true,
+                    "desc": "The index of the prefix to replace (from scan results)."
+                  },
+                  {
+                    "name": "new",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The new prefix emoji or symbol."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix replace 3 ★",
+                  ".theme prefix replace 1 🎮"
+                ]
+              },
+              {
+                "name": "remove",
+                "qualified_name": "theme prefix remove",
+                "usage": "`.theme prefix remove <#cat> [...]`",
+                "description": "Strips prefixes from channels in specific categories, or from every channel.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "categories",
+                    "type": "str",
+                    "required": false,
+                    "desc": "One or more category mentions, or `all` to strip server-wide."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix remove #text-channels",
+                  ".theme prefix remove all"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "theme prefix list",
+                "usage": "`.theme prefix list`",
+                "description": "Shows all stored channel prefixes for this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme prefix list"
+                ]
+              },
+              {
+                "name": "server",
+                "qualified_name": "theme prefix server",
+                "usage": "`.theme prefix server <emoji>`",
+                "description": "Applies a prefix to every channel in the server, or removes all prefixes server-wide.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "emoji",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Emoji to apply server-wide. Omit to remove all prefixes."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix server ★",
+                  ".theme prefix server"
+                ]
+              }
+            ],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "remove",
+            "qualified_name": "theme prefix remove",
+            "usage": "`.theme prefix remove <#cat> [...]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "theme prefix remove <#cat> [...]"
+            },
+            "description": "Strips prefixes from channels in specific categories, or from every channel.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme prefix remove #text-channels",
+              ".theme prefix remove all"
+            ],
+            "params": [
+              {
+                "name": "categories",
+                "type": "str",
+                "required": false,
+                "desc": "One or more category mentions, or `all` to strip server-wide."
+              }
+            ],
+            "note": "Only removes leading emojis/symbols that were detected as prefixes.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "remove",
+            "qualified_name": "theme group remove",
+            "usage": "`.theme group remove <name> #category`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "remove",
+              "args": "theme group remove <name> #category"
+            },
+            "description": "Removes a category from a group. Channel names are not changed.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group remove gaming #game-chat"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the group."
+              },
+              {
+                "name": "category",
+                "type": "discord.CategoryChannel",
+                "required": true,
+                "desc": "The category to remove from the group."
+              }
+            ],
+            "note": "Channel names retain their current prefix. Use `.theme prefix remove` to strip prefixes.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "replace",
+            "qualified_name": "theme prefix replace",
+            "usage": "`.theme prefix replace <n> <new>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "replace",
+              "args": "theme prefix replace <n> <new>"
+            },
+            "description": "Replaces a detected prefix with a new one across the server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme prefix replace 3 ★",
+              ".theme prefix replace 1 🎮"
+            ],
+            "params": [
+              {
+                "name": "n",
+                "type": "int",
+                "required": true,
+                "desc": "The index of the prefix to replace (from scan results)."
+              },
+              {
+                "name": "new",
+                "type": "str",
+                "required": true,
+                "desc": "The new prefix emoji or symbol."
+              }
+            ],
+            "note": "Use `.theme prefix scan` first to see detected prefixes and their indices.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "reset",
+            "qualified_name": "theme font reset",
+            "usage": "`.theme font reset [all|<#cat>]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "reset",
+              "args": "theme font reset [all|<#cat>]"
+            },
+            "description": "Strips unicode font styling from channel names.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme font reset all",
+              ".theme font reset #general"
+            ],
+            "params": [
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "`all` for server-wide, or a category mention."
+              }
+            ],
+            "note": "Restores the original (pre-font) channel names.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "font",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "scan",
+            "qualified_name": "theme prefix scan",
+            "usage": "`.theme prefix scan <#cat|all>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "scan",
+              "args": "theme prefix scan <#cat|all>"
+            },
+            "description": "Detects existing emoji/symbol prefixes in a category or server-wide.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme prefix scan #general-category",
+              ".theme prefix scan all"
+            ],
+            "params": [
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "Category mention to scan, or `all` to scan every channel."
+              }
+            ],
+            "note": "The scan detects leading emojis/symbols in channel names and reports them.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "server",
+            "qualified_name": "theme prefix server",
+            "usage": "`.theme prefix server <emoji>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "server",
+              "args": "theme prefix server <emoji>"
+            },
+            "description": "Applies a prefix to every channel in the server, or removes all prefixes server-wide.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme prefix server ★",
+              ".theme prefix server"
+            ],
+            "params": [
+              {
+                "name": "emoji",
+                "type": "str",
+                "required": false,
+                "desc": "Emoji to apply server-wide. Omit to remove all prefixes."
+              }
+            ],
+            "note": "This overrides any existing prefixes on all channels.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "set",
+            "qualified_name": "theme font set",
+            "usage": "`.theme font set <font> [all|<#cat> ...]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "set",
+              "args": "theme font set <font> [all|<#cat> ...]"
+            },
+            "description": "Applies a unicode font to channel names.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme font set cursive #general",
+              ".theme font set bold all"
+            ],
+            "params": [
+              {
+                "name": "font",
+                "type": "str",
+                "required": true,
+                "desc": "Font style name (from `.theme font list`)."
+              },
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "`all` for server-wide, or one or more category mentions."
+              }
+            ],
+            "note": "Only visible to Discord clients that support unicode font rendering.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "font",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "set",
+            "qualified_name": "theme group set",
+            "usage": "`.theme group set <name> <new prefix>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "set",
+              "args": "theme group set <name> <new prefix>"
+            },
+            "description": "Changes a group's prefix and renames all channels in that group.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group set gaming 🕹️",
+              ".theme group set info 📋"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the group to update."
+              },
+              {
+                "name": "new prefix",
+                "type": "str",
+                "required": true,
+                "desc": "The new prefix emoji or symbol."
+              }
+            ],
+            "note": "All channels in the group are immediately renamed with the new prefix.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "qualified_name": "theme group setup",
+            "usage": "`.theme group setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme group setup"
+            },
+            "description": "Scans the entire server for prefixes and interactively creates named prefix groups.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme group setup"
+            ],
+            "params": [],
+            "note": "Interactive wizard. Detects existing prefixes and lets you assign them to named groups.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "group",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "strip",
+            "qualified_name": "theme channel strip",
+            "usage": "`.theme channel strip <text>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "strip",
+              "args": "theme channel strip <text>"
+            },
+            "description": "Strips an exact piece of text from every channel name in the server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme channel strip -",
+              ".theme channel strip oldtext"
+            ],
+            "params": [
+              {
+                "name": "text",
+                "type": "str",
+                "required": true,
+                "desc": "The exact text to remove from all channel names."
+              }
+            ],
+            "note": "Case-sensitive. Only exact matches are removed.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "channel",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tg",
+            "qualified_name": "tg",
+            "usage": "`.tg`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tg",
+              "args": ""
+            },
+            "description": "Shorthand alias for `.theme group` — accepts all the same subcommands.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".tg",
+              ".tg list",
+              ".tg setup"
+            ],
+            "params": [],
+            "note": "Same as `.theme group` but shorter to type.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "undo",
+            "qualified_name": "theme prefix undo",
+            "usage": "`.theme prefix undo`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "undo",
+              "args": "theme prefix undo"
+            },
+            "description": "Undoes the last prefix operation (add, remove, or all).",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme prefix undo"
+            ],
+            "params": [],
+            "note": "Only the most recent prefix change can be undone.",
+            "category_id": "theme",
+            "section": "Channels",
+            "group": "prefix",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Roles": [
+          {
+            "name": "revert",
+            "qualified_name": "theme role revert",
+            "usage": "`.theme role revert <slot|#index>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "revert",
+              "args": "theme role revert <slot|#index>"
+            },
+            "description": "Reverts one role back to its name from before the last theme apply.",
+            "aliases": [
+              "reset",
+              "rev"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".theme role revert 1",
+              ".theme role revert Owner",
+              ".trevert 1"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "Slot number (1, 2...) or slot name to restore previous name for."
+              }
+            ],
+            "note": "Only the most recent name change per role is stored.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "role",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "role",
+            "qualified_name": "theme role",
+            "usage": "`.theme role <slot|#index> <new name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "role",
+              "args": "theme role <slot|#index> <new name>"
+            },
+            "description": "Renames the Discord role mapped to a slot. Supports slot index or name. E.g. `.theme role 1 True Dragon` or `.theme role Owner God Emperor`.",
+            "aliases": [
+              "rename",
+              "r"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".theme role 1 True Dragon",
+              ".theme role owner God Emperor",
+              ".theme role co owner Vice King",
+              ".tr 1 True Dragon"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "The slot number (1, 2...) or slot name whose role to rename."
+              },
+              {
+                "name": "new_name",
+                "type": "str",
+                "required": true,
+                "desc": "The new display name for the role."
+              }
+            ],
+            "note": "This actually changes the role name on Discord. Use `.theme role revert` or `.trevert` to undo.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "revert",
+                "qualified_name": "theme role revert",
+                "usage": "`.theme role revert <slot|#index>`",
+                "description": "Reverts one role back to its name from before the last theme apply.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "reset",
+                  "rev"
+                ],
+                "params": [
+                  {
+                    "name": "slot",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Slot number (1, 2...) or slot name to restore previous name for."
+                  }
+                ],
+                "examples": [
+                  ".theme role revert 1",
+                  ".theme role revert Owner",
+                  ".trevert 1"
+                ]
+              }
+            ],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "roleicon",
+            "qualified_name": "theme roleicon",
+            "usage": "`.theme roleicon <slot|#index> [emoji|url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "roleicon",
+              "args": "theme roleicon <slot|#index> [emoji|url|attachment]"
+            },
+            "description": "Sets a role icon via emoji, URL, or image attachment. Supports slot number or name. Requires boost level 2.",
+            "aliases": [
+              "icon",
+              "i"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".theme roleicon 1 👑",
+              ".theme roleicon Owner 👑",
+              ".theme icon 1 https://i.imgur.com/icon.png",
+              ".tri 1 👑"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "Slot number (1, 2...) or slot name."
+              },
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Emoji, image URL, or attachment. Omit to clear."
+              }
+            ],
+            "note": "Requires server boost level 2 for role icons.",
+            "category_id": "theme",
+            "section": "Roles",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tr",
+            "qualified_name": "tr",
+            "usage": "`.tr <slot|#index> <new name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tr",
+              "args": "<slot|#index> <new name>"
+            },
+            "description": "Fast shortcut to rename a mapped server role. Supports slot number or name.",
+            "aliases": [
+              "themerole"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".tr 1 True Dragon",
+              ".tr owner God Emperor",
+              ".tr co owner Vice King"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "Slot number (1, 2...) or slot name."
+              },
+              {
+                "name": "new_name",
+                "type": "str",
+                "required": true,
+                "desc": "The new display name for the role."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Roles",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "trevert",
+            "qualified_name": "trevert",
+            "usage": "`.trevert <slot|#index>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "trevert",
+              "args": "<slot|#index>"
+            },
+            "description": "Fast shortcut to revert a role name from the latest snapshot.",
+            "aliases": [
+              "themeresetrole",
+              "tresetrole"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".trevert 1",
+              ".trevert owner"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "Slot number or slot name to revert."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Roles",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tri",
+            "qualified_name": "tri",
+            "usage": "`.tri <slot|#index> [emoji|url|attachment]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tri",
+              "args": "<slot|#index> [emoji|url|attachment]"
+            },
+            "description": "Fast shortcut to set a role icon for a slot. Supports slot number or name.",
+            "aliases": [
+              "themeroleicon",
+              "ticon"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_roles"
+            ],
+            "examples": [
+              ".tri 1 👑",
+              ".tri owner https://i.imgur.com/icon.png"
+            ],
+            "params": [
+              {
+                "name": "slot",
+                "type": "str",
+                "required": true,
+                "desc": "Slot number (1, 2...) or slot name."
+              },
+              {
+                "name": "source",
+                "type": "str",
+                "required": false,
+                "desc": "Emoji, URL, or image attachment."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Roles",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Fonts": [
+          {
+            "name": "tfont",
+            "qualified_name": "tfont",
+            "usage": "`.tfont <font_name> [all|<#category>]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tfont",
+              "args": "<font_name> [all|<#category>]"
+            },
+            "description": "Fast shortcut to apply a unicode font style to server channels.",
+            "aliases": [
+              "themefont"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_channels"
+            ],
+            "examples": [
+              ".tfont bold all",
+              ".tfont gothic #general",
+              ".tfont list"
+            ],
+            "params": [
+              {
+                "name": "font",
+                "type": "str",
+                "required": true,
+                "desc": "Font name (e.g. bold, italic, gothic, script)."
+              },
+              {
+                "name": "target",
+                "type": "str",
+                "required": false,
+                "desc": "'all' or category/channel mention."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Fonts",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tfonts",
+            "qualified_name": "tfonts",
+            "usage": "`.tfonts`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tfonts",
+              "args": ""
+            },
+            "description": "Fast shortcut to view all available unicode fonts.",
+            "aliases": [
+              "themefonts"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".tfonts"
+            ],
+            "params": [],
+            "note": null,
+            "category_id": "theme",
+            "section": "Fonts",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Prefixes": [
+          {
+            "name": "tprefix",
+            "qualified_name": "tprefix",
+            "usage": "`.tprefix <emoji|symbol> [<#category> ...]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tprefix",
+              "args": "<emoji|symbol> [<#category> ...]"
+            },
+            "description": "Fast shortcut to apply channel prefixes across categories.",
+            "aliases": [
+              "themeprefix"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_channels"
+            ],
+            "examples": [
+              ".tprefix ✦ #general",
+              ".tprefix list"
+            ],
+            "params": [
+              {
+                "name": "emoji",
+                "type": "str",
+                "required": true,
+                "desc": "Emoji or unicode symbol to prepend."
+              },
+              {
+                "name": "categories",
+                "type": "str",
+                "required": false,
+                "desc": "Category mentions or 'all'."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Prefixes",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Theme": [
+          {
+            "name": "edit",
+            "qualified_name": "embed edit",
+            "usage": "`.embed edit <message_id> <title> | <description> [flags]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "edit",
+              "args": "embed edit <message_id> <title> | <description> [flags]"
+            },
+            "description": "Edits an existing embed previously sent by the bot.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_messages"
+            ],
+            "examples": [
+              ".embed edit 1234567890 Updated Title | New description"
+            ],
+            "params": [
+              {
+                "name": "message_id",
+                "type": "int",
+                "required": true,
+                "desc": "ID of the bot message to edit."
+              },
+              {
+                "name": "content",
+                "type": "str",
+                "required": true,
+                "desc": "New embed content in `<title> | <description>` syntax with flags."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Theme",
+            "group": "embed",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "embedmaker.py"
+          },
+          {
+            "name": "embed",
+            "qualified_name": "embed",
+            "usage": "`.embed <title> | <description> [--color hex] [--image url] [--thumb url] [--footer text] [--author name] [--url link] [--timestamp]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "embed",
+              "args": "<title> | <description> [--color hex] [--image url] [--thumb url] [--footer text] [--author name] [--url link] [--timestamp]"
+            },
+            "description": "Creates and posts a sleek custom embed in the current channel with rich formatting flags.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_messages"
+            ],
+            "examples": [
+              ".embed Server News | Welcome our new members to the server! --color blurple",
+              ".embed Event | Movie night this Friday --color #707080 --thumb https://i.imgur.com/example.png --footer \"Starts at 8 PM UTC\"",
+              ".embed Rules | 1. Be polite\n2. No spam --color dark --timestamp",
+              ".embed json {\"title\": \"Discohook Export\", \"description\": \"Hello!\", \"color\": 1184278}",
+              ".embed edit 1234567890 Updated Title | New description",
+              ".embed raw 1234567890"
+            ],
+            "params": [
+              {
+                "name": "content",
+                "type": "str",
+                "required": true,
+                "desc": "`<title> | <description>` syntax with optional `--color`, `--image`, `--thumb`, `--footer`, `--author`, `--url`, `--timestamp` flags."
+              }
+            ],
+            "note": "Requires Administrator or Manage Messages. Automatically deletes invoking command on success.",
+            "category_id": "theme",
+            "section": "Theme",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": true,
+            "subcommands": [
+              {
+                "name": "json",
+                "qualified_name": "embed json",
+                "usage": "`.embed json <json_payload>`",
+                "description": "Parses and posts a raw Discord embed JSON payload (supports Discohook JSON).",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "payload",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Valid Discord embed JSON string or attached .json file."
+                  }
+                ],
+                "examples": [
+                  ".embed json {\"title\": \"Announcement\", \"description\": \"Hello world\", \"color\": 1184278}"
+                ]
+              },
+              {
+                "name": "edit",
+                "qualified_name": "embed edit",
+                "usage": "`.embed edit <message_id> <title> | <description> [flags]`",
+                "description": "Edits an existing embed previously sent by the bot.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "message_id",
+                    "type": "int",
+                    "required": true,
+                    "desc": "ID of the bot message to edit."
+                  },
+                  {
+                    "name": "content",
+                    "type": "str",
+                    "required": true,
+                    "desc": "New embed content in `<title> | <description>` syntax with flags."
+                  }
+                ],
+                "examples": [
+                  ".embed edit 1234567890 Updated Title | New description"
+                ]
+              },
+              {
+                "name": "raw",
+                "qualified_name": "embed raw",
+                "usage": "`.embed raw <message_id_or_link>`",
+                "description": "Extracts the raw JSON payload of an existing embed in the channel.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "message",
+                    "type": "message",
+                    "required": true,
+                    "desc": "Message ID or URL containing the embed."
+                  }
+                ],
+                "examples": [
+                  ".embed raw 123456789012345678"
+                ]
+              }
+            ],
+            "cog_file": "embedmaker.py"
+          },
+          {
+            "name": "json",
+            "qualified_name": "embed json",
+            "usage": "`.embed json <json_payload>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "json",
+              "args": "embed json <json_payload>"
+            },
+            "description": "Parses and posts a raw Discord embed JSON payload (supports Discohook JSON).",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_messages"
+            ],
+            "examples": [
+              ".embed json {\"title\": \"Announcement\", \"description\": \"Hello world\", \"color\": 1184278}"
+            ],
+            "params": [
+              {
+                "name": "payload",
+                "type": "str",
+                "required": true,
+                "desc": "Valid Discord embed JSON string or attached .json file."
+              }
+            ],
+            "note": "Supports raw dict or list containing embeds.",
+            "category_id": "theme",
+            "section": "Theme",
+            "group": "embed",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "embedmaker.py"
+          },
+          {
+            "name": "raw",
+            "qualified_name": "embed raw",
+            "usage": "`.embed raw <message_id_or_link>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "raw",
+              "args": "embed raw <message_id_or_link>"
+            },
+            "description": "Extracts the raw JSON payload of an existing embed in the channel.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_messages"
+            ],
+            "examples": [
+              ".embed raw 123456789012345678"
+            ],
+            "params": [
+              {
+                "name": "message",
+                "type": "message",
+                "required": true,
+                "desc": "Message ID or URL containing the embed."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Theme",
+            "group": "embed",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "embedmaker.py"
           }
         ]
       }
@@ -11420,245 +14490,6 @@
             "has_subcommands": false,
             "subcommands": [],
             "cog_file": "help.py"
-          }
-        ]
-      }
-    },
-    "theme": {
-      "label": "Theme",
-      "desc": "Server aesthetics, custom embeds, colors, roles, and prefix configuration.",
-      "admin": false,
-      "owner": false,
-      "staff": false,
-      "icon": "★",
-      "sections": {
-        "Theme": [
-          {
-            "name": "edit",
-            "qualified_name": "embed edit",
-            "usage": "`.embed edit <message_id> <title> | <description> [flags]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "edit",
-              "args": "embed edit <message_id> <title> | <description> [flags]"
-            },
-            "description": "Edits an existing embed previously sent by the bot.",
-            "aliases": [],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_messages"
-            ],
-            "examples": [
-              ".embed edit 1234567890 Updated Title | New description"
-            ],
-            "params": [
-              {
-                "name": "message_id",
-                "type": "int",
-                "required": true,
-                "desc": "ID of the bot message to edit."
-              },
-              {
-                "name": "content",
-                "type": "str",
-                "required": true,
-                "desc": "New embed content in `<title> | <description>` syntax with flags."
-              }
-            ],
-            "note": null,
-            "category_id": "theme",
-            "section": "Theme",
-            "group": "embed",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "embedmaker.py"
-          },
-          {
-            "name": "embed",
-            "qualified_name": "embed",
-            "usage": "`.embed <title> | <description> [--color hex] [--image url] [--thumb url] [--footer text] [--author name] [--url link] [--timestamp]`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "embed",
-              "args": "<title> | <description> [--color hex] [--image url] [--thumb url] [--footer text] [--author name] [--url link] [--timestamp]"
-            },
-            "description": "Creates and posts a sleek custom embed in the current channel with rich formatting flags.",
-            "aliases": [],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_messages"
-            ],
-            "examples": [
-              ".embed Server News | Welcome our new members to the server! --color blurple",
-              ".embed Event | Movie night this Friday --color #707080 --thumb https://i.imgur.com/example.png --footer \"Starts at 8 PM UTC\"",
-              ".embed Rules | 1. Be polite\n2. No spam --color dark --timestamp",
-              ".embed json {\"title\": \"Discohook Export\", \"description\": \"Hello!\", \"color\": 1184278}",
-              ".embed edit 1234567890 Updated Title | New description",
-              ".embed raw 1234567890"
-            ],
-            "params": [
-              {
-                "name": "content",
-                "type": "str",
-                "required": true,
-                "desc": "`<title> | <description>` syntax with optional `--color`, `--image`, `--thumb`, `--footer`, `--author`, `--url`, `--timestamp` flags."
-              }
-            ],
-            "note": "Requires Administrator or Manage Messages. Automatically deletes invoking command on success.",
-            "category_id": "theme",
-            "section": "Theme",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": true,
-            "subcommands": [
-              {
-                "name": "raw",
-                "qualified_name": "embed raw",
-                "usage": "`.embed raw <message_id_or_link>`",
-                "description": "Extracts the raw JSON payload of an existing embed in the channel.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "message",
-                    "type": "message",
-                    "required": true,
-                    "desc": "Message ID or URL containing the embed."
-                  }
-                ],
-                "examples": [
-                  ".embed raw 123456789012345678"
-                ]
-              },
-              {
-                "name": "edit",
-                "qualified_name": "embed edit",
-                "usage": "`.embed edit <message_id> <title> | <description> [flags]`",
-                "description": "Edits an existing embed previously sent by the bot.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "message_id",
-                    "type": "int",
-                    "required": true,
-                    "desc": "ID of the bot message to edit."
-                  },
-                  {
-                    "name": "content",
-                    "type": "str",
-                    "required": true,
-                    "desc": "New embed content in `<title> | <description>` syntax with flags."
-                  }
-                ],
-                "examples": [
-                  ".embed edit 1234567890 Updated Title | New description"
-                ]
-              },
-              {
-                "name": "json",
-                "qualified_name": "embed json",
-                "usage": "`.embed json <json_payload>`",
-                "description": "Parses and posts a raw Discord embed JSON payload (supports Discohook JSON).",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "payload",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Valid Discord embed JSON string or attached .json file."
-                  }
-                ],
-                "examples": [
-                  ".embed json {\"title\": \"Announcement\", \"description\": \"Hello world\", \"color\": 1184278}"
-                ]
-              }
-            ],
-            "cog_file": "embedmaker.py"
-          },
-          {
-            "name": "json",
-            "qualified_name": "embed json",
-            "usage": "`.embed json <json_payload>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "json",
-              "args": "embed json <json_payload>"
-            },
-            "description": "Parses and posts a raw Discord embed JSON payload (supports Discohook JSON).",
-            "aliases": [],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_messages"
-            ],
-            "examples": [
-              ".embed json {\"title\": \"Announcement\", \"description\": \"Hello world\", \"color\": 1184278}"
-            ],
-            "params": [
-              {
-                "name": "payload",
-                "type": "str",
-                "required": true,
-                "desc": "Valid Discord embed JSON string or attached .json file."
-              }
-            ],
-            "note": "Supports raw dict or list containing embeds.",
-            "category_id": "theme",
-            "section": "Theme",
-            "group": "embed",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "embedmaker.py"
-          },
-          {
-            "name": "raw",
-            "qualified_name": "embed raw",
-            "usage": "`.embed raw <message_id_or_link>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "raw",
-              "args": "embed raw <message_id_or_link>"
-            },
-            "description": "Extracts the raw JSON payload of an existing embed in the channel.",
-            "aliases": [],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_messages"
-            ],
-            "examples": [
-              ".embed raw 123456789012345678"
-            ],
-            "params": [
-              {
-                "name": "message",
-                "type": "message",
-                "required": true,
-                "desc": "Message ID or URL containing the embed."
-              }
-            ],
-            "note": null,
-            "category_id": "theme",
-            "section": "Theme",
-            "group": "embed",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "embedmaker.py"
           }
         ]
       }
