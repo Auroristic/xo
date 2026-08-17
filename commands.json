@@ -3377,6 +3377,26 @@
                 ]
               },
               {
+                "name": "interval",
+                "qualified_name": "rpc interval",
+                "usage": "`.rpc interval [seconds]`",
+                "description": "Sets or checks the interval for status rotation cycling.",
+                "perm_tier": "creator",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "seconds",
+                    "type": "int",
+                    "required": false,
+                    "desc": "Interval in seconds (min 5). Omit to check current interval."
+                  }
+                ],
+                "examples": [
+                  ".rpc interval 30",
+                  ".rpc interval 120"
+                ]
+              },
+              {
                 "name": "remove",
                 "qualified_name": "rpc remove",
                 "usage": "`.rpc remove <n>`",
@@ -3397,26 +3417,6 @@
                 ],
                 "examples": [
                   ".rpc remove 2"
-                ]
-              },
-              {
-                "name": "interval",
-                "qualified_name": "rpc interval",
-                "usage": "`.rpc interval [seconds]`",
-                "description": "Sets or checks the interval for status rotation cycling.",
-                "perm_tier": "creator",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "seconds",
-                    "type": "int",
-                    "required": false,
-                    "desc": "Interval in seconds (min 5). Omit to check current interval."
-                  }
-                ],
-                "examples": [
-                  ".rpc interval 30",
-                  ".rpc interval 120"
                 ]
               },
               {
@@ -3516,6 +3516,21 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "stop",
+                "qualified_name": "tts stop",
+                "usage": "`.tts stop`",
+                "description": "Stops current TTS playback and disconnects the bot from voice channel.",
+                "perm_tier": "public",
+                "aliases": [
+                  "leave",
+                  "disconnect"
+                ],
+                "params": [],
+                "examples": [
+                  ".tts stop"
+                ]
+              },
+              {
                 "name": "voices",
                 "qualified_name": "tts voices",
                 "usage": "`.tts voices`",
@@ -3547,21 +3562,6 @@
                   ".tts voice jenny",
                   ".tts voice sonia",
                   ".tts voice nanami"
-                ]
-              },
-              {
-                "name": "stop",
-                "qualified_name": "tts stop",
-                "usage": "`.tts stop`",
-                "description": "Stops current TTS playback and disconnects the bot from voice channel.",
-                "perm_tier": "public",
-                "aliases": [
-                  "leave",
-                  "disconnect"
-                ],
-                "params": [],
-                "examples": [
-                  ".tts stop"
                 ]
               }
             ],
@@ -4466,6 +4466,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "list",
+                "qualified_name": "bday list",
+                "usage": "`.bday list`",
+                "description": "Lists all your saved birthdays.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".bday list"
+                ]
+              },
+              {
                 "name": "remove",
                 "qualified_name": "bday remove",
                 "usage": "`.bday remove [@user]`",
@@ -4486,18 +4498,6 @@
                 ],
                 "examples": [
                   ".bday remove @user"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "bday list",
-                "usage": "`.bday list`",
-                "description": "Lists all your saved birthdays.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".bday list"
                 ]
               }
             ],
@@ -4646,18 +4646,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "list",
-                "qualified_name": "remind list",
-                "usage": "`.remind list`",
-                "description": "Lists all your active reminders.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".remind list"
-                ]
-              },
-              {
                 "name": "cancel",
                 "qualified_name": "remind cancel",
                 "usage": "`.remind cancel <id>`",
@@ -4678,6 +4666,18 @@
                 ],
                 "examples": [
                   ".remind cancel 3"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "remind list",
+                "usage": "`.remind list`",
+                "description": "Lists all your active reminders.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".remind list"
                 ]
               }
             ],
@@ -4914,26 +4914,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "emoji",
-                "qualified_name": "starboard emoji",
-                "usage": "`.starboard emoji <emoji>`",
-                "description": "Changes the reaction emoji the starboard watches for.",
-                "perm_tier": "whitelist",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "emoji",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The emoji to track for starboard entries."
-                  }
-                ],
-                "examples": [
-                  ".starboard emoji ⭐",
-                  ".starboard emoji 😭"
-                ]
-              },
-              {
                 "name": "threshold",
                 "qualified_name": "starboard threshold",
                 "usage": "`.starboard threshold <number>`",
@@ -4951,6 +4931,26 @@
                 "examples": [
                   ".starboard threshold 3",
                   ".starboard threshold 5"
+                ]
+              },
+              {
+                "name": "emoji",
+                "qualified_name": "starboard emoji",
+                "usage": "`.starboard emoji <emoji>`",
+                "description": "Changes the reaction emoji the starboard watches for.",
+                "perm_tier": "whitelist",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "emoji",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The emoji to track for starboard entries."
+                  }
+                ],
+                "examples": [
+                  ".starboard emoji ⭐",
+                  ".starboard emoji 😭"
                 ]
               }
             ],
@@ -5092,38 +5092,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "messages",
-                "qualified_name": "leaderboard messages",
-                "usage": "`.lb messages`",
-                "description": "Shows the top 200 message senders in the server.",
-                "perm_tier": "public",
-                "aliases": [
-                  "msgs",
-                  "msg",
-                  "lbm"
-                ],
-                "params": [],
-                "examples": [
-                  ".lb messages"
-                ]
-              },
-              {
-                "name": "emojis",
-                "qualified_name": "leaderboard emojis",
-                "usage": "`.lb emojis`",
-                "description": "Shows the most used emoji in the server, from reaction stats.",
-                "perm_tier": "public",
-                "aliases": [
-                  "emj",
-                  "emoji",
-                  "lbe"
-                ],
-                "params": [],
-                "examples": [
-                  ".lb emojis"
-                ]
-              },
-              {
                 "name": "vctime",
                 "qualified_name": "leaderboard vctime",
                 "usage": "`.lb vctime`",
@@ -5152,6 +5120,38 @@
                 "params": [],
                 "examples": [
                   ".lb birthdays"
+                ]
+              },
+              {
+                "name": "emojis",
+                "qualified_name": "leaderboard emojis",
+                "usage": "`.lb emojis`",
+                "description": "Shows the most used emoji in the server, from reaction stats.",
+                "perm_tier": "public",
+                "aliases": [
+                  "emj",
+                  "emoji",
+                  "lbe"
+                ],
+                "params": [],
+                "examples": [
+                  ".lb emojis"
+                ]
+              },
+              {
+                "name": "messages",
+                "qualified_name": "leaderboard messages",
+                "usage": "`.lb messages`",
+                "description": "Shows the top 200 message senders in the server.",
+                "perm_tier": "public",
+                "aliases": [
+                  "msgs",
+                  "msg",
+                  "lbm"
+                ],
+                "params": [],
+                "examples": [
+                  ".lb messages"
                 ]
               }
             ],
@@ -5395,25 +5395,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "clear",
-                "qualified_name": "warn clear",
-                "usage": "`.warn clear <@user>`",
-                "description": "Clears all active warnings and resets the penalty counter for a member.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "user",
-                    "type": "user",
-                    "required": true,
-                    "desc": "Member whose warnings should be cleared."
-                  }
-                ],
-                "examples": [
-                  ".warn clear @someone"
-                ]
-              },
-              {
                 "name": "log",
                 "qualified_name": "warn log",
                 "usage": "`.warn log [#channel]`",
@@ -5431,6 +5412,25 @@
                 "examples": [
                   ".warn log",
                   ".warn log #mod-logs"
+                ]
+              },
+              {
+                "name": "clear",
+                "qualified_name": "warn clear",
+                "usage": "`.warn clear <@user>`",
+                "description": "Clears all active warnings and resets the penalty counter for a member.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "user",
+                    "type": "user",
+                    "required": true,
+                    "desc": "Member whose warnings should be cleared."
+                  }
+                ],
+                "examples": [
+                  ".warn clear @someone"
                 ]
               }
             ],
@@ -5606,18 +5606,6 @@
                 ]
               },
               {
-                "name": "list",
-                "qualified_name": "auto list",
-                "usage": "`.auto list`",
-                "description": "Lists all active auto-responses configured in this server.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".auto list"
-                ]
-              },
-              {
                 "name": "clear",
                 "qualified_name": "auto clear",
                 "usage": "`.auto clear`",
@@ -5627,6 +5615,18 @@
                 "params": [],
                 "examples": [
                   ".auto clear"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "auto list",
+                "usage": "`.auto list`",
+                "description": "Lists all active auto-responses configured in this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".auto list"
                 ]
               }
             ],
@@ -5794,20 +5794,6 @@
                 ]
               },
               {
-                "name": "weekly",
-                "qualified_name": "digest weekly",
-                "usage": "`.digest weekly`",
-                "description": "Generates and previews this week's 7-day server digest card.",
-                "perm_tier": "admin",
-                "aliases": [
-                  "week"
-                ],
-                "params": [],
-                "examples": [
-                  ".digest weekly"
-                ]
-              },
-              {
                 "name": "status",
                 "qualified_name": "digest status",
                 "usage": "`.digest status`",
@@ -5841,20 +5827,6 @@
                 ]
               },
               {
-                "name": "monthly",
-                "qualified_name": "digest monthly",
-                "usage": "`.digest monthly`",
-                "description": "Generates and previews this month's 30-day server digest card.",
-                "perm_tier": "admin",
-                "aliases": [
-                  "month"
-                ],
-                "params": [],
-                "examples": [
-                  ".digest monthly"
-                ]
-              },
-              {
                 "name": "set",
                 "qualified_name": "digest set",
                 "usage": "`.digest set <#channel> [daily|weekly|monthly]`",
@@ -5885,6 +5857,20 @@
                 ]
               },
               {
+                "name": "monthly",
+                "qualified_name": "digest monthly",
+                "usage": "`.digest monthly`",
+                "description": "Generates and previews this month's 30-day server digest card.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "month"
+                ],
+                "params": [],
+                "examples": [
+                  ".digest monthly"
+                ]
+              },
+              {
                 "name": "me",
                 "qualified_name": "digest me",
                 "usage": "`.digest me`  ·  `.digest @user`",
@@ -5907,6 +5893,20 @@
                   ".digest me",
                   ".digest @user",
                   ".mydigest"
+                ]
+              },
+              {
+                "name": "weekly",
+                "qualified_name": "digest weekly",
+                "usage": "`.digest weekly`",
+                "description": "Generates and previews this week's 7-day server digest card.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "week"
+                ],
+                "params": [],
+                "examples": [
+                  ".digest weekly"
                 ]
               },
               {
@@ -6146,6 +6146,18 @@
                 ]
               },
               {
+                "name": "off",
+                "qualified_name": "milestone off",
+                "usage": "`.milestone off`",
+                "description": "Disables milestone celebration cards in the server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".milestone off"
+                ]
+              },
+              {
                 "name": "set",
                 "qualified_name": "milestone set",
                 "usage": "`.milestone set <#channel>`",
@@ -6165,18 +6177,6 @@
                 "examples": [
                   ".milestone set #announcements",
                   ".milestone on #general"
-                ]
-              },
-              {
-                "name": "off",
-                "qualified_name": "milestone off",
-                "usage": "`.milestone off`",
-                "description": "Disables milestone celebration cards in the server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".milestone off"
                 ]
               }
             ],
@@ -6746,15 +6746,27 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "test",
-                "qualified_name": "welcome test",
-                "usage": "`.welcome test`",
-                "description": "Renders a live preview of the server welcome card using your profile avatar and banner.",
+                "name": "off",
+                "qualified_name": "welcome off",
+                "usage": "`.welcome off`",
+                "description": "Disables welcome cards in the server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".welcome off"
+                ]
+              },
+              {
+                "name": "status",
+                "qualified_name": "welcome status",
+                "usage": "`.welcome status`",
+                "description": "Shows whether welcome cards are enabled and which channel is configured.",
                 "perm_tier": "public",
                 "aliases": [],
                 "params": [],
                 "examples": [
-                  ".welcome test"
+                  ".welcome status"
                 ]
               },
               {
@@ -6783,27 +6795,15 @@
                 ]
               },
               {
-                "name": "off",
-                "qualified_name": "welcome off",
-                "usage": "`.welcome off`",
-                "description": "Disables welcome cards in the server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".welcome off"
-                ]
-              },
-              {
-                "name": "status",
-                "qualified_name": "welcome status",
-                "usage": "`.welcome status`",
-                "description": "Shows whether welcome cards are enabled and which channel is configured.",
+                "name": "test",
+                "qualified_name": "welcome test",
+                "usage": "`.welcome test`",
+                "description": "Renders a live preview of the server welcome card using your profile avatar and banner.",
                 "perm_tier": "public",
                 "aliases": [],
                 "params": [],
                 "examples": [
-                  ".welcome status"
+                  ".welcome test"
                 ]
               }
             ],
@@ -6983,6 +6983,94 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "off",
+                "qualified_name": "bait off",
+                "usage": "`.bait off`",
+                "description": "Disables bait and cancels all pending bait bans.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".bait off"
+                ]
+              },
+              {
+                "name": "status",
+                "qualified_name": "bait status",
+                "usage": "`.bait status`",
+                "description": "Shows bait channel configuration, exempt roles, and pending/banned counts.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".bait status"
+                ]
+              },
+              {
+                "name": "forgive",
+                "qualified_name": "bait forgive",
+                "usage": "`.bait forgive @user|user_id [reason]`",
+                "description": "Cancels a pending bait ban or unbans a user already banned by bait.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "user",
+                    "type": "discord.Member|int",
+                    "required": true,
+                    "desc": "Pending or banned bait user."
+                  },
+                  {
+                    "name": "reason",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Appeal/forgive reason."
+                  }
+                ],
+                "examples": [
+                  ".bait forgive @user appealed",
+                  ".bait forgive 123456789012345678 verified human"
+                ]
+              },
+              {
+                "name": "jailrole",
+                "qualified_name": "bait jailrole",
+                "usage": "`.bait jailrole @role`",
+                "description": "Sets the role used by jail-mode bait.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "role",
+                    "type": "discord.Role",
+                    "required": true,
+                    "desc": "Role to add when bait triggers."
+                  }
+                ],
+                "examples": [
+                  ".bait jailrole @jailed"
+                ]
+              },
+              {
+                "name": "logs",
+                "qualified_name": "bait logs",
+                "usage": "`.bait logs #channel`",
+                "description": "Sets the channel where bait trigger, ban, and forgive events are logged.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "channel",
+                    "type": "discord.TextChannel",
+                    "required": true,
+                    "desc": "Log channel."
+                  }
+                ],
+                "examples": [
+                  ".bait logs #mod-logs"
+                ]
+              },
+              {
                 "name": "exempt",
                 "qualified_name": "bait exempt",
                 "usage": "`.bait exempt @role`",
@@ -6999,39 +7087,6 @@
                 ],
                 "examples": [
                   ".bait exempt @staff"
-                ]
-              },
-              {
-                "name": "set",
-                "qualified_name": "bait set",
-                "usage": "`.bait set #channel [delay] [jail|timeout]`",
-                "description": "Sets the bait channel. Users are jailed or timed out, then banned after the delay.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "channel",
-                    "type": "discord.TextChannel",
-                    "required": true,
-                    "desc": "The bait channel."
-                  },
-                  {
-                    "name": "delay",
-                    "type": "str",
-                    "required": false,
-                    "desc": "Delay before ban: 30m, 12h, 1d. Default 12h."
-                  },
-                  {
-                    "name": "action",
-                    "type": "str",
-                    "required": false,
-                    "desc": "Immediate action: jail or timeout. Default jail."
-                  }
-                ],
-                "examples": [
-                  ".bait set #trap",
-                  ".bait set #trap 12h jail",
-                  ".bait set #trap 6h timeout"
                 ]
               },
               {
@@ -7078,60 +7133,10 @@
                 ]
               },
               {
-                "name": "forgive",
-                "qualified_name": "bait forgive",
-                "usage": "`.bait forgive @user|user_id [reason]`",
-                "description": "Cancels a pending bait ban or unbans a user already banned by bait.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "user",
-                    "type": "discord.Member|int",
-                    "required": true,
-                    "desc": "Pending or banned bait user."
-                  },
-                  {
-                    "name": "reason",
-                    "type": "str",
-                    "required": false,
-                    "desc": "Appeal/forgive reason."
-                  }
-                ],
-                "examples": [
-                  ".bait forgive @user appealed",
-                  ".bait forgive 123456789012345678 verified human"
-                ]
-              },
-              {
-                "name": "status",
-                "qualified_name": "bait status",
-                "usage": "`.bait status`",
-                "description": "Shows bait channel configuration, exempt roles, and pending/banned counts.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".bait status"
-                ]
-              },
-              {
-                "name": "off",
-                "qualified_name": "bait off",
-                "usage": "`.bait off`",
-                "description": "Disables bait and cancels all pending bait bans.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".bait off"
-                ]
-              },
-              {
-                "name": "logs",
-                "qualified_name": "bait logs",
-                "usage": "`.bait logs #channel`",
-                "description": "Sets the channel where bait trigger, ban, and forgive events are logged.",
+                "name": "set",
+                "qualified_name": "bait set",
+                "usage": "`.bait set #channel [delay] [jail|timeout]`",
+                "description": "Sets the bait channel. Users are jailed or timed out, then banned after the delay.",
                 "perm_tier": "admin",
                 "aliases": [],
                 "params": [
@@ -7139,30 +7144,25 @@
                     "name": "channel",
                     "type": "discord.TextChannel",
                     "required": true,
-                    "desc": "Log channel."
-                  }
-                ],
-                "examples": [
-                  ".bait logs #mod-logs"
-                ]
-              },
-              {
-                "name": "jailrole",
-                "qualified_name": "bait jailrole",
-                "usage": "`.bait jailrole @role`",
-                "description": "Sets the role used by jail-mode bait.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
+                    "desc": "The bait channel."
+                  },
                   {
-                    "name": "role",
-                    "type": "discord.Role",
-                    "required": true,
-                    "desc": "Role to add when bait triggers."
+                    "name": "delay",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Delay before ban: 30m, 12h, 1d. Default 12h."
+                  },
+                  {
+                    "name": "action",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Immediate action: jail or timeout. Default jail."
                   }
                 ],
                 "examples": [
-                  ".bait jailrole @jailed"
+                  ".bait set #trap",
+                  ".bait set #trap 12h jail",
+                  ".bait set #trap 6h timeout"
                 ]
               }
             ],
@@ -7721,26 +7721,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "clear",
-                "qualified_name": "cmd clear",
-                "usage": "`.cmd clear <category|command>`",
-                "description": "Removes the channel rule for a category or command so it works everywhere again.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "target",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The command or category to clear the rule for."
-                  }
-                ],
-                "examples": [
-                  ".cmd clear .ping",
-                  ".cmd clear music"
-                ]
-              },
-              {
                 "name": "allow",
                 "qualified_name": "cmd allow",
                 "usage": "`.cmd allow <#channel>... <category|command>`",
@@ -7767,23 +7747,23 @@
                 ]
               },
               {
-                "name": "show",
-                "qualified_name": "cmd show",
-                "usage": "`.cmd show [category|command]`",
-                "description": "Shows active channel rules for this server, or for a specific target.",
+                "name": "clear",
+                "qualified_name": "cmd clear",
+                "usage": "`.cmd clear <category|command>`",
+                "description": "Removes the channel rule for a category or command so it works everywhere again.",
                 "perm_tier": "public",
                 "aliases": [],
                 "params": [
                   {
                     "name": "target",
                     "type": "str",
-                    "required": false,
-                    "desc": "Optional command or category to check."
+                    "required": true,
+                    "desc": "The command or category to clear the rule for."
                   }
                 ],
                 "examples": [
-                  ".cmd show",
-                  ".cmd show .ping"
+                  ".cmd clear .ping",
+                  ".cmd clear music"
                 ]
               },
               {
@@ -7810,6 +7790,26 @@
                 "examples": [
                   ".cmd deny #general .play",
                   ".cmd deny #chat music"
+                ]
+              },
+              {
+                "name": "show",
+                "qualified_name": "cmd show",
+                "usage": "`.cmd show [category|command]`",
+                "description": "Shows active channel rules for this server, or for a specific target.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "target",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Optional command or category to check."
+                  }
+                ],
+                "examples": [
+                  ".cmd show",
+                  ".cmd show .ping"
                 ]
               }
             ],
@@ -8656,6 +8656,25 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "info",
+                "qualified_name": "playlist info",
+                "usage": "`.playlist info <name>`",
+                "description": "Shows detailed information about a saved playlist.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the playlist to inspect."
+                  }
+                ],
+                "examples": [
+                  ".playlist info chill"
+                ]
+              },
+              {
                 "name": "save",
                 "qualified_name": "playlist save",
                 "usage": "`.playlist save <name>`",
@@ -8727,25 +8746,6 @@
                 ],
                 "examples": [
                   ".playlist delete chill"
-                ]
-              },
-              {
-                "name": "info",
-                "qualified_name": "playlist info",
-                "usage": "`.playlist info <name>`",
-                "description": "Shows detailed information about a saved playlist.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Name of the playlist to inspect."
-                  }
-                ],
-                "examples": [
-                  ".playlist info chill"
                 ]
               }
             ],
@@ -9762,86 +9762,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "shuffle",
-                "qualified_name": "queue shuffle",
-                "usage": "`.queue shuffle`",
-                "description": "Shuffles the queue in place.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".queue shuffle"
-                ]
-              },
-              {
-                "name": "skipto",
-                "qualified_name": "queue skipto",
-                "usage": "`.queue skipto <pos>`",
-                "description": "Skips directly to a specific position in the queue.",
-                "perm_tier": "public",
-                "aliases": [
-                  "st"
-                ],
-                "params": [
-                  {
-                    "name": "pos",
-                    "type": "int",
-                    "required": true,
-                    "desc": "Queue position to skip to."
-                  }
-                ],
-                "examples": [
-                  ".queue skipto 5"
-                ]
-              },
-              {
-                "name": "empty",
-                "qualified_name": "queue empty",
-                "usage": "`.queue empty`",
-                "description": "Clears the entire queue.",
-                "perm_tier": "public",
-                "aliases": [
-                  "clear"
-                ],
-                "params": [],
-                "examples": [
-                  ".queue empty"
-                ]
-              },
-              {
-                "name": "dedupe",
-                "qualified_name": "queue dedupe",
-                "usage": "`.queue dedupe`",
-                "description": "Removes duplicate tracks from the queue.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".queue dedupe"
-                ]
-              },
-              {
-                "name": "remove",
-                "qualified_name": "queue remove",
-                "usage": "`.queue remove <position>`",
-                "description": "Removes a track from the queue by its position number.",
-                "perm_tier": "public",
-                "aliases": [
-                  "rm"
-                ],
-                "params": [
-                  {
-                    "name": "position",
-                    "type": "int",
-                    "required": true,
-                    "desc": "Position of the track in the queue to remove."
-                  }
-                ],
-                "examples": [
-                  ".queue remove 3"
-                ]
-              },
-              {
                 "name": "move",
                 "qualified_name": "queue move",
                 "usage": "`.queue move <from> <to>`",
@@ -9866,6 +9786,86 @@
                 ],
                 "examples": [
                   ".queue move 5 2"
+                ]
+              },
+              {
+                "name": "shuffle",
+                "qualified_name": "queue shuffle",
+                "usage": "`.queue shuffle`",
+                "description": "Shuffles the queue in place.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".queue shuffle"
+                ]
+              },
+              {
+                "name": "remove",
+                "qualified_name": "queue remove",
+                "usage": "`.queue remove <position>`",
+                "description": "Removes a track from the queue by its position number.",
+                "perm_tier": "public",
+                "aliases": [
+                  "rm"
+                ],
+                "params": [
+                  {
+                    "name": "position",
+                    "type": "int",
+                    "required": true,
+                    "desc": "Position of the track in the queue to remove."
+                  }
+                ],
+                "examples": [
+                  ".queue remove 3"
+                ]
+              },
+              {
+                "name": "dedupe",
+                "qualified_name": "queue dedupe",
+                "usage": "`.queue dedupe`",
+                "description": "Removes duplicate tracks from the queue.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".queue dedupe"
+                ]
+              },
+              {
+                "name": "empty",
+                "qualified_name": "queue empty",
+                "usage": "`.queue empty`",
+                "description": "Clears the entire queue.",
+                "perm_tier": "public",
+                "aliases": [
+                  "clear"
+                ],
+                "params": [],
+                "examples": [
+                  ".queue empty"
+                ]
+              },
+              {
+                "name": "skipto",
+                "qualified_name": "queue skipto",
+                "usage": "`.queue skipto <pos>`",
+                "description": "Skips directly to a specific position in the queue.",
+                "perm_tier": "public",
+                "aliases": [
+                  "st"
+                ],
+                "params": [
+                  {
+                    "name": "pos",
+                    "type": "int",
+                    "required": true,
+                    "desc": "Queue position to skip to."
+                  }
+                ],
+                "examples": [
+                  ".queue skipto 5"
                 ]
               }
             ],
@@ -10863,18 +10863,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "reset",
-                "qualified_name": "vanity reset",
-                "usage": "`.vanity reset`",
-                "description": "Completely resets all vanity tracker settings for this server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".vanity reset"
-                ]
-              },
-              {
                 "name": "role",
                 "qualified_name": "vanity role",
                 "usage": "`.vanity role <@role>`",
@@ -10895,18 +10883,6 @@
                 ]
               },
               {
-                "name": "config",
-                "qualified_name": "vanity config",
-                "usage": "`.vanity config`",
-                "description": "Shows the current vanity URL tracker configuration for this server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".vanity config"
-                ]
-              },
-              {
                 "name": "message",
                 "qualified_name": "vanity message",
                 "usage": "`.vanity message <text>`",
@@ -10923,6 +10899,18 @@
                 ],
                 "examples": [
                   ".vanity message {{user}} is now repping {{server}}!"
+                ]
+              },
+              {
+                "name": "config",
+                "qualified_name": "vanity config",
+                "usage": "`.vanity config`",
+                "description": "Shows the current vanity URL tracker configuration for this server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".vanity config"
                 ]
               },
               {
@@ -10963,6 +10951,18 @@
                 "examples": [
                   ".vanity substring seoulities",
                   ".vanity substring .gg/myguild"
+                ]
+              },
+              {
+                "name": "reset",
+                "qualified_name": "vanity reset",
+                "usage": "`.vanity reset`",
+                "description": "Completely resets all vanity tracker settings for this server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".vanity reset"
                 ]
               }
             ],
@@ -11063,6 +11063,18 @@
                 ]
               },
               {
+                "name": "snapshot",
+                "qualified_name": "theme snapshot",
+                "usage": "`.theme snapshot`",
+                "description": "Shows what's currently saved in the undo snapshot.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme snapshot"
+                ]
+              },
+              {
                 "name": "role",
                 "qualified_name": "theme role",
                 "usage": "`.theme role <slot|#index> <new name>`",
@@ -11094,37 +11106,6 @@
                 ]
               },
               {
-                "name": "snapshot",
-                "qualified_name": "theme snapshot",
-                "usage": "`.theme snapshot`",
-                "description": "Shows what's currently saved in the undo snapshot.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme snapshot"
-                ]
-              },
-              {
-                "name": "delete",
-                "qualified_name": "theme delete",
-                "usage": "`.theme delete <name>`",
-                "description": "Deletes a saved preset.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Name of the preset to delete."
-                  }
-                ],
-                "examples": [
-                  ".theme delete oldtheme"
-                ]
-              },
-              {
                 "name": "roleicon",
                 "qualified_name": "theme roleicon",
                 "usage": "`.theme roleicon <slot|#index> [emoji|url|attachment]`",
@@ -11153,6 +11134,25 @@
                   ".theme roleicon Owner 👑",
                   ".theme icon 1 https://i.imgur.com/icon.png",
                   ".tri 1 👑"
+                ]
+              },
+              {
+                "name": "delete",
+                "qualified_name": "theme delete",
+                "usage": "`.theme delete <name>`",
+                "description": "Deletes a saved preset.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the preset to delete."
+                  }
+                ],
+                "examples": [
+                  ".theme delete oldtheme"
                 ]
               },
               {
@@ -11222,6 +11222,18 @@
                 "examples": [
                   ".theme seticon https://i.imgur.com/icon.png",
                   ".theme seticon"
+                ]
+              },
+              {
+                "name": "setup",
+                "qualified_name": "theme setup",
+                "usage": "`.theme setup`",
+                "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme setup"
                 ]
               },
               {
@@ -11315,18 +11327,6 @@
                 "params": [],
                 "examples": [
                   ".theme reset"
-                ]
-              },
-              {
-                "name": "setup",
-                "qualified_name": "theme setup",
-                "usage": "`.theme setup`",
-                "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme setup"
                 ]
               },
               {
@@ -12724,6 +12724,26 @@
                 ]
               },
               {
+                "name": "reset",
+                "qualified_name": "theme font reset",
+                "usage": "`.theme font reset [all|<#cat>]`",
+                "description": "Strips unicode font styling from channel names.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "target",
+                    "type": "str",
+                    "required": false,
+                    "desc": "`all` for server-wide, or a category mention."
+                  }
+                ],
+                "examples": [
+                  ".theme font reset all",
+                  ".theme font reset #general"
+                ]
+              },
+              {
                 "name": "set",
                 "qualified_name": "theme font set",
                 "usage": "`.theme font set <font> [all|<#cat> ...]`",
@@ -12747,26 +12767,6 @@
                 "examples": [
                   ".theme font set cursive #general",
                   ".theme font set bold all"
-                ]
-              },
-              {
-                "name": "reset",
-                "qualified_name": "theme font reset",
-                "usage": "`.theme font reset [all|<#cat>]`",
-                "description": "Strips unicode font styling from channel names.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "target",
-                    "type": "str",
-                    "required": false,
-                    "desc": "`all` for server-wide, or a category mention."
-                  }
-                ],
-                "examples": [
-                  ".theme font reset all",
-                  ".theme font reset #general"
                 ]
               }
             ],
@@ -12802,6 +12802,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "list",
+                "qualified_name": "theme group list",
+                "usage": "`.theme group list`",
+                "description": "Shows all prefix groups — name, prefix, categories, and channel count.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme group list"
+                ]
+              },
+              {
                 "name": "add",
                 "qualified_name": "theme group add",
                 "usage": "`.theme group add <name> #category`",
@@ -12825,6 +12837,31 @@
                 "examples": [
                   ".theme group add gaming #game-chat",
                   ".theme group add info #information"
+                ]
+              },
+              {
+                "name": "remove",
+                "qualified_name": "theme group remove",
+                "usage": "`.theme group remove <name> #category`",
+                "description": "Removes a category from a group. Channel names are not changed.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the group."
+                  },
+                  {
+                    "name": "category",
+                    "type": "discord.CategoryChannel",
+                    "required": true,
+                    "desc": "The category to remove from the group."
+                  }
+                ],
+                "examples": [
+                  ".theme group remove gaming #game-chat"
                 ]
               },
               {
@@ -12933,43 +12970,6 @@
                 "examples": [
                   ".theme group create gaming 🎮",
                   ".theme group create info ℹ️"
-                ]
-              },
-              {
-                "name": "remove",
-                "qualified_name": "theme group remove",
-                "usage": "`.theme group remove <name> #category`",
-                "description": "Removes a category from a group. Channel names are not changed.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Name of the group."
-                  },
-                  {
-                    "name": "category",
-                    "type": "discord.CategoryChannel",
-                    "required": true,
-                    "desc": "The category to remove from the group."
-                  }
-                ],
-                "examples": [
-                  ".theme group remove gaming #game-chat"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "theme group list",
-                "usage": "`.theme group list`",
-                "description": "Shows all prefix groups — name, prefix, categories, and channel count.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme group list"
                 ]
               }
             ],
@@ -13096,6 +13096,26 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "server",
+                "qualified_name": "theme prefix server",
+                "usage": "`.theme prefix server <emoji>`",
+                "description": "Applies a prefix to every channel in the server, or removes all prefixes server-wide.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "emoji",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Emoji to apply server-wide. Omit to remove all prefixes."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix server ★",
+                  ".theme prefix server"
+                ]
+              },
+              {
                 "name": "remove",
                 "qualified_name": "theme prefix remove",
                 "usage": "`.theme prefix remove <#cat> [...]`",
@@ -13128,18 +13148,6 @@
                 ]
               },
               {
-                "name": "undo",
-                "qualified_name": "theme prefix undo",
-                "usage": "`.theme prefix undo`",
-                "description": "Undoes the last prefix operation (add, remove, or all).",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme prefix undo"
-                ]
-              },
-              {
                 "name": "add",
                 "qualified_name": "theme prefix add",
                 "usage": "`.theme prefix add <emoji> <#cat> [...]`",
@@ -13163,6 +13171,18 @@
                 "examples": [
                   ".theme prefix add ★ #text-channels",
                   ".theme prefix add 🎮 #gaming #general"
+                ]
+              },
+              {
+                "name": "undo",
+                "qualified_name": "theme prefix undo",
+                "usage": "`.theme prefix undo`",
+                "description": "Undoes the last prefix operation (add, remove, or all).",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme prefix undo"
                 ]
               },
               {
@@ -13209,26 +13229,6 @@
                 "examples": [
                   ".theme prefix replace 3 ★",
                   ".theme prefix replace 1 🎮"
-                ]
-              },
-              {
-                "name": "server",
-                "qualified_name": "theme prefix server",
-                "usage": "`.theme prefix server <emoji>`",
-                "description": "Applies a prefix to every channel in the server, or removes all prefixes server-wide.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "emoji",
-                    "type": "str",
-                    "required": false,
-                    "desc": "Emoji to apply server-wide. Omit to remove all prefixes."
-                  }
-                ],
-                "examples": [
-                  ".theme prefix server ★",
-                  ".theme prefix server"
                 ]
               }
             ],
@@ -13897,6 +13897,31 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "edit",
+                "qualified_name": "embed edit",
+                "usage": "`.embed edit <message_id> <title> | <description> [flags]`",
+                "description": "Edits an existing embed previously sent by the bot.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "message_id",
+                    "type": "int",
+                    "required": true,
+                    "desc": "ID of the bot message to edit."
+                  },
+                  {
+                    "name": "content",
+                    "type": "str",
+                    "required": true,
+                    "desc": "New embed content in `<title> | <description>` syntax with flags."
+                  }
+                ],
+                "examples": [
+                  ".embed edit 1234567890 Updated Title | New description"
+                ]
+              },
+              {
                 "name": "json",
                 "qualified_name": "embed json",
                 "usage": "`.embed json <json_payload>`",
@@ -13932,31 +13957,6 @@
                 ],
                 "examples": [
                   ".embed raw 123456789012345678"
-                ]
-              },
-              {
-                "name": "edit",
-                "qualified_name": "embed edit",
-                "usage": "`.embed edit <message_id> <title> | <description> [flags]`",
-                "description": "Edits an existing embed previously sent by the bot.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "message_id",
-                    "type": "int",
-                    "required": true,
-                    "desc": "ID of the bot message to edit."
-                  },
-                  {
-                    "name": "content",
-                    "type": "str",
-                    "required": true,
-                    "desc": "New embed content in `<title> | <description>` syntax with flags."
-                  }
-                ],
-                "examples": [
-                  ".embed edit 1234567890 Updated Title | New description"
                 ]
               }
             ],
