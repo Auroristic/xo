@@ -1,5 +1,5 @@
 {
-  "total_commands": 397,
+  "total_commands": 399,
   "prefix": ".",
   "categories": {
     "fun": {
@@ -3256,18 +3256,6 @@
                 ]
               },
               {
-                "name": "clear",
-                "qualified_name": "auto clear",
-                "usage": "`.auto clear`",
-                "description": "Removes all auto-response triggers from this server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".auto clear"
-                ]
-              },
-              {
                 "name": "remove",
                 "qualified_name": "auto remove",
                 "usage": "`.auto remove <trigger>`",
@@ -3284,6 +3272,18 @@
                 ],
                 "examples": [
                   ".auto remove hello"
+                ]
+              },
+              {
+                "name": "clear",
+                "qualified_name": "auto clear",
+                "usage": "`.auto clear`",
+                "description": "Removes all auto-response triggers from this server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".auto clear"
                 ]
               }
             ],
@@ -8005,26 +8005,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "protect",
-                "qualified_name": "starboard protect",
-                "usage": "`.starboard protect on|off`",
-                "description": "Blocks self-stars and bot reactions from counting toward the starboard.",
-                "perm_tier": "whitelist",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "mode",
-                    "type": "str",
-                    "required": true,
-                    "desc": "`on` or `off`."
-                  }
-                ],
-                "examples": [
-                  ".starboard protect on",
-                  ".starboard protect off"
-                ]
-              },
-              {
                 "name": "threshold",
                 "qualified_name": "starboard threshold",
                 "usage": "`.starboard threshold <number>`",
@@ -8062,6 +8042,26 @@
                 "examples": [
                   ".starboard emoji ⭐",
                   ".starboard emoji 😭"
+                ]
+              },
+              {
+                "name": "protect",
+                "qualified_name": "starboard protect",
+                "usage": "`.starboard protect on|off`",
+                "description": "Blocks self-stars and bot reactions from counting toward the starboard.",
+                "perm_tier": "whitelist",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "mode",
+                    "type": "str",
+                    "required": true,
+                    "desc": "`on` or `off`."
+                  }
+                ],
+                "examples": [
+                  ".starboard protect on",
+                  ".starboard protect off"
                 ]
               }
             ],
@@ -8203,21 +8203,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "birthdays",
-                "qualified_name": "leaderboard birthdays",
-                "usage": "`.lb birthdays`",
-                "description": "Shows birthdays coming up this month in the server.",
-                "perm_tier": "public",
-                "aliases": [
-                  "bdays",
-                  "bdaylb"
-                ],
-                "params": [],
-                "examples": [
-                  ".lb birthdays"
-                ]
-              },
-              {
                 "name": "messages",
                 "qualified_name": "leaderboard messages",
                 "usage": "`.lb messages`",
@@ -8263,6 +8248,21 @@
                 "params": [],
                 "examples": [
                   ".lb vctime"
+                ]
+              },
+              {
+                "name": "birthdays",
+                "qualified_name": "leaderboard birthdays",
+                "usage": "`.lb birthdays`",
+                "description": "Shows birthdays coming up this month in the server.",
+                "perm_tier": "public",
+                "aliases": [
+                  "bdays",
+                  "bdaylb"
+                ],
+                "params": [],
+                "examples": [
+                  ".lb birthdays"
                 ]
               }
             ],
@@ -9161,18 +9161,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "list",
-                "qualified_name": "sticky list",
-                "usage": "`.sticky list`",
-                "description": "Lists every anchored channel on this server.",
-                "perm_tier": "whitelist",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".sticky list"
-                ]
-              },
-              {
                 "name": "unset",
                 "qualified_name": "sticky unset",
                 "usage": "`.sticky unset [#channel]`",
@@ -9189,6 +9177,18 @@
                 ],
                 "examples": [
                   ".sticky unset #rules"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "sticky list",
+                "usage": "`.sticky list`",
+                "description": "Lists every anchored channel on this server.",
+                "perm_tier": "whitelist",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".sticky list"
                 ]
               }
             ],
@@ -9822,6 +9822,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "list",
+                "qualified_name": "bday list",
+                "usage": "`.bday list`",
+                "description": "Lists all your saved birthdays.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".bday list"
+                ]
+              },
+              {
                 "name": "remove",
                 "qualified_name": "bday remove",
                 "usage": "`.bday remove [@user]`",
@@ -9842,18 +9854,6 @@
                 ],
                 "examples": [
                   ".bday remove @user"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "bday list",
-                "usage": "`.bday list`",
-                "description": "Lists all your saved birthdays.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".bday list"
                 ]
               }
             ],
@@ -10002,18 +10002,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "list",
-                "qualified_name": "remind list",
-                "usage": "`.remind list`",
-                "description": "Lists all your active reminders.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".remind list"
-                ]
-              },
-              {
                 "name": "cancel",
                 "qualified_name": "remind cancel",
                 "usage": "`.remind cancel <id>`",
@@ -10034,6 +10022,18 @@
                 ],
                 "examples": [
                   ".remind cancel 3"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "remind list",
+                "usage": "`.remind list`",
+                "description": "Lists all your active reminders.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".remind list"
                 ]
               }
             ],
@@ -11667,117 +11667,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "help",
-                "qualified_name": "theme help",
-                "usage": "`.theme help`",
-                "description": "Shows all theme commands organised by section.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme help"
-                ]
-              },
-              {
-                "name": "snapshot",
-                "qualified_name": "theme snapshot",
-                "usage": "`.theme snapshot`",
-                "description": "Shows what's currently saved in the undo snapshot.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme snapshot"
-                ]
-              },
-              {
-                "name": "presets",
-                "qualified_name": "theme presets",
-                "usage": "`.theme presets`",
-                "description": "Lists all saved presets for this server.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme presets"
-                ]
-              },
-              {
-                "name": "setup",
-                "qualified_name": "theme setup",
-                "usage": "`.theme setup`",
-                "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme setup"
-                ]
-              },
-              {
-                "name": "channel",
-                "qualified_name": "theme channel",
-                "usage": "`.theme channel`",
-                "description": "Manages channel names. Subcommand: `strip`.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme channel",
-                  ".theme channel strip -"
-                ]
-              },
-              {
-                "name": "role",
-                "qualified_name": "theme role",
-                "usage": "`.theme role <slot|#index> <new name>`",
-                "description": "Renames the Discord role mapped to a slot. Supports slot index or name. E.g. `.theme role 1 True Dragon` or `.theme role Owner God Emperor`.",
-                "perm_tier": "admin",
-                "aliases": [
-                  "rename",
-                  "r"
-                ],
-                "params": [
-                  {
-                    "name": "slot",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The slot number (1, 2...) or slot name whose role to rename."
-                  },
-                  {
-                    "name": "new_name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The new display name for the role."
-                  }
-                ],
-                "examples": [
-                  ".theme role 1 True Dragon",
-                  ".theme role owner God Emperor",
-                  ".theme role co owner Vice King",
-                  ".tr 1 True Dragon"
-                ]
-              },
-              {
-                "name": "delete",
-                "qualified_name": "theme delete",
-                "usage": "`.theme delete <name>`",
-                "description": "Deletes a saved preset.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Name of the preset to delete."
-                  }
-                ],
-                "examples": [
-                  ".theme delete oldtheme"
-                ]
-              },
-              {
                 "name": "setrole",
                 "qualified_name": "theme setrole",
                 "usage": "`.theme setrole <slot|#index> [@role]`",
@@ -11929,6 +11818,37 @@
                 ]
               },
               {
+                "name": "role",
+                "qualified_name": "theme role",
+                "usage": "`.theme role <slot|#index> <new name>`",
+                "description": "Renames the Discord role mapped to a slot. Supports slot index or name. E.g. `.theme role 1 True Dragon` or `.theme role Owner God Emperor`.",
+                "perm_tier": "admin",
+                "aliases": [
+                  "rename",
+                  "r"
+                ],
+                "params": [
+                  {
+                    "name": "slot",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The slot number (1, 2...) or slot name whose role to rename."
+                  },
+                  {
+                    "name": "new_name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The new display name for the role."
+                  }
+                ],
+                "examples": [
+                  ".theme role 1 True Dragon",
+                  ".theme role owner God Emperor",
+                  ".theme role co owner Vice King",
+                  ".tr 1 True Dragon"
+                ]
+              },
+              {
                 "name": "reset",
                 "qualified_name": "theme reset",
                 "usage": "`.theme reset`",
@@ -12005,6 +11925,86 @@
                 ],
                 "examples": [
                   ".theme apply mytheme"
+                ]
+              },
+              {
+                "name": "help",
+                "qualified_name": "theme help",
+                "usage": "`.theme help`",
+                "description": "Shows all theme commands organised by section.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme help"
+                ]
+              },
+              {
+                "name": "snapshot",
+                "qualified_name": "theme snapshot",
+                "usage": "`.theme snapshot`",
+                "description": "Shows what's currently saved in the undo snapshot.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme snapshot"
+                ]
+              },
+              {
+                "name": "presets",
+                "qualified_name": "theme presets",
+                "usage": "`.theme presets`",
+                "description": "Lists all saved presets for this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme presets"
+                ]
+              },
+              {
+                "name": "setup",
+                "qualified_name": "theme setup",
+                "usage": "`.theme setup`",
+                "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme setup"
+                ]
+              },
+              {
+                "name": "channel",
+                "qualified_name": "theme channel",
+                "usage": "`.theme channel`",
+                "description": "Manages channel names. Subcommand: `strip`.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme channel",
+                  ".theme channel strip -"
+                ]
+              },
+              {
+                "name": "delete",
+                "qualified_name": "theme delete",
+                "usage": "`.theme delete <name>`",
+                "description": "Deletes a saved preset.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the preset to delete."
+                  }
+                ],
+                "examples": [
+                  ".theme delete oldtheme"
                 ]
               }
             ],
@@ -12105,18 +12105,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "clear",
-                "qualified_name": "theme roles clear",
-                "usage": "`.theme roles clear`",
-                "description": "Wipes all slot mappings. Discord role names are unchanged; remap with `.theme roles setup`.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme roles clear"
-                ]
-              },
-              {
                 "name": "setup",
                 "qualified_name": "theme roles setup",
                 "usage": "`.theme roles setup`",
@@ -12126,6 +12114,18 @@
                 "params": [],
                 "examples": [
                   ".theme roles setup"
+                ]
+              },
+              {
+                "name": "clear",
+                "qualified_name": "theme roles clear",
+                "usage": "`.theme roles clear`",
+                "description": "Wipes all slot mappings. Discord role names are unchanged; remap with `.theme roles setup`.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme roles clear"
                 ]
               }
             ],
@@ -12257,35 +12257,6 @@
           },
           {
             "name": "setup",
-            "qualified_name": "theme setup",
-            "usage": "`.theme setup`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "setup",
-              "args": "theme setup"
-            },
-            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme setup"
-            ],
-            "params": [],
-            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
-            "category_id": "theme",
-            "section": "Setup",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "setup",
             "qualified_name": "theme roles setup",
             "usage": "`.theme roles setup`",
             "usage_parts": {
@@ -12308,6 +12279,35 @@
             "category_id": "theme",
             "section": "Setup",
             "group": "roles",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "setup",
+            "qualified_name": "theme setup",
+            "usage": "`.theme setup`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "setup",
+              "args": "theme setup"
+            },
+            "description": "Interactive wizard — define custom role slots and map them to server roles via dropdowns.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme setup"
+            ],
+            "params": [],
+            "note": "This is the recommended starting point for new servers. Guides you through the entire configuration.",
+            "category_id": "theme",
+            "section": "Setup",
+            "group": "theme",
             "is_subcommand": true,
             "has_subcommands": false,
             "subcommands": [],
@@ -12424,347 +12424,6 @@
             "section": "Setup",
             "group": null,
             "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          }
-        ],
-        "Presets": [
-          {
-            "name": "apply",
-            "qualified_name": "theme apply",
-            "usage": "`.theme apply <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "apply",
-              "args": "theme apply <name>"
-            },
-            "description": "Previews then applies a saved preset to this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme apply mytheme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to apply."
-              }
-            ],
-            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "delete",
-            "qualified_name": "theme delete",
-            "usage": "`.theme delete <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "delete",
-              "args": "theme delete <name>"
-            },
-            "description": "Deletes a saved preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme delete oldtheme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to delete."
-              }
-            ],
-            "note": "This cannot be undone.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "presets",
-            "qualified_name": "theme presets",
-            "usage": "`.theme presets`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "presets",
-              "args": "theme presets"
-            },
-            "description": "Lists all saved presets for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme presets"
-            ],
-            "params": [],
-            "note": "Shows preset names and creation dates.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "reset",
-            "qualified_name": "theme reset",
-            "usage": "`.theme reset`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "reset",
-              "args": "theme reset"
-            },
-            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme reset"
-            ],
-            "params": [],
-            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "save",
-            "qualified_name": "theme save",
-            "usage": "`.theme save <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "save",
-              "args": "theme save <name>"
-            },
-            "description": "Saves the current server role and channel state as a named preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme save mytheme",
-              ".theme save backup1"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name for the preset."
-              }
-            ],
-            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "snapshot",
-            "qualified_name": "theme snapshot",
-            "usage": "`.theme snapshot`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "snapshot",
-              "args": "theme snapshot"
-            },
-            "description": "Shows what's currently saved in the undo snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme snapshot"
-            ],
-            "params": [],
-            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "tapply",
-            "qualified_name": "tapply",
-            "usage": "`.tapply <preset_name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "tapply",
-              "args": "<preset_name>"
-            },
-            "description": "Fast shortcut to apply a saved server theme preset.",
-            "aliases": [
-              "themeapply"
-            ],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_guild"
-            ],
-            "examples": [
-              ".tapply dark_fantasy",
-              ".tapply cyber_pink"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "The name of the saved preset to apply."
-              }
-            ],
-            "note": null,
-            "category_id": "theme",
-            "section": "Presets",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "treset",
-            "qualified_name": "treset",
-            "usage": "`.treset`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "treset",
-              "args": ""
-            },
-            "description": "Fast shortcut to restore server roles and channels to snapshot.",
-            "aliases": [
-              "themereset"
-            ],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_guild"
-            ],
-            "examples": [
-              ".treset"
-            ],
-            "params": [],
-            "note": null,
-            "category_id": "theme",
-            "section": "Presets",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "tsave",
-            "qualified_name": "tsave",
-            "usage": "`.tsave <preset_name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "tsave",
-              "args": "<preset_name>"
-            },
-            "description": "Fast shortcut to save the current server theme as a preset.",
-            "aliases": [
-              "themesave"
-            ],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_guild"
-            ],
-            "examples": [
-              ".tsave my_theme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name for the new preset."
-              }
-            ],
-            "note": null,
-            "category_id": "theme",
-            "section": "Presets",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "undo",
-            "qualified_name": "theme undo",
-            "usage": "`.theme undo`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "undo",
-              "args": "theme undo"
-            },
-            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme undo"
-            ],
-            "params": [],
-            "note": "Same as `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
             "has_subcommands": false,
             "subcommands": [],
             "cog_file": "theme.py"
@@ -13089,6 +12748,18 @@
                 ]
               },
               {
+                "name": "list",
+                "qualified_name": "theme font list",
+                "usage": "`.theme font list`",
+                "description": "Shows all available unicode font styles with live examples.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme font list"
+                ]
+              },
+              {
                 "name": "reset",
                 "qualified_name": "theme font reset",
                 "usage": "`.theme font reset [all|<#cat>]`",
@@ -13106,18 +12777,6 @@
                 "examples": [
                   ".theme font reset all",
                   ".theme font reset #general"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "theme font list",
-                "usage": "`.theme font list`",
-                "description": "Shows all available unicode font styles with live examples.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme font list"
                 ]
               }
             ],
@@ -13152,32 +12811,6 @@
             "is_subcommand": true,
             "has_subcommands": true,
             "subcommands": [
-              {
-                "name": "create",
-                "qualified_name": "theme group create",
-                "usage": "`.theme group create <name> <prefix>`",
-                "description": "Manually creates a named prefix group.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Name for the new prefix group."
-                  },
-                  {
-                    "name": "prefix",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The prefix emoji or symbol for channels in this group."
-                  }
-                ],
-                "examples": [
-                  ".theme group create gaming 🎮",
-                  ".theme group create info ℹ️"
-                ]
-              },
               {
                 "name": "set",
                 "qualified_name": "theme group set",
@@ -13322,6 +12955,32 @@
                   ".theme group add gaming #game-chat",
                   ".theme group add info #information"
                 ]
+              },
+              {
+                "name": "create",
+                "qualified_name": "theme group create",
+                "usage": "`.theme group create <name> <prefix>`",
+                "description": "Manually creates a named prefix group.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name for the new prefix group."
+                  },
+                  {
+                    "name": "prefix",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The prefix emoji or symbol for channels in this group."
+                  }
+                ],
+                "examples": [
+                  ".theme group create gaming 🎮",
+                  ".theme group create info ℹ️"
+                ]
               }
             ],
             "cog_file": "theme.py"
@@ -13447,32 +13106,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "replace",
-                "qualified_name": "theme prefix replace",
-                "usage": "`.theme prefix replace <n> <new>`",
-                "description": "Replaces a detected prefix with a new one across the server.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "n",
-                    "type": "int",
-                    "required": true,
-                    "desc": "The index of the prefix to replace (from scan results)."
-                  },
-                  {
-                    "name": "new",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The new prefix emoji or symbol."
-                  }
-                ],
-                "examples": [
-                  ".theme prefix replace 3 ★",
-                  ".theme prefix replace 1 🎮"
-                ]
-              },
-              {
                 "name": "add",
                 "qualified_name": "theme prefix add",
                 "usage": "`.theme prefix add <emoji> <#cat> [...]`",
@@ -13580,6 +13213,32 @@
                 "examples": [
                   ".theme prefix remove #text-channels",
                   ".theme prefix remove all"
+                ]
+              },
+              {
+                "name": "replace",
+                "qualified_name": "theme prefix replace",
+                "usage": "`.theme prefix replace <n> <new>`",
+                "description": "Replaces a detected prefix with a new one across the server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "n",
+                    "type": "int",
+                    "required": true,
+                    "desc": "The index of the prefix to replace (from scan results)."
+                  },
+                  {
+                    "name": "new",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The new prefix emoji or symbol."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix replace 3 ★",
+                  ".theme prefix replace 1 🎮"
                 ]
               }
             ],
@@ -14334,6 +13993,347 @@
             "section": "Roles",
             "group": null,
             "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Presets": [
+          {
+            "name": "apply",
+            "qualified_name": "theme apply",
+            "usage": "`.theme apply <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "apply",
+              "args": "theme apply <name>"
+            },
+            "description": "Previews then applies a saved preset to this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme apply mytheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to apply."
+              }
+            ],
+            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "delete",
+            "qualified_name": "theme delete",
+            "usage": "`.theme delete <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "delete",
+              "args": "theme delete <name>"
+            },
+            "description": "Deletes a saved preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme delete oldtheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to delete."
+              }
+            ],
+            "note": "This cannot be undone.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "presets",
+            "qualified_name": "theme presets",
+            "usage": "`.theme presets`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "presets",
+              "args": "theme presets"
+            },
+            "description": "Lists all saved presets for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme presets"
+            ],
+            "params": [],
+            "note": "Shows preset names and creation dates.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "reset",
+            "qualified_name": "theme reset",
+            "usage": "`.theme reset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "reset",
+              "args": "theme reset"
+            },
+            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme reset"
+            ],
+            "params": [],
+            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "save",
+            "qualified_name": "theme save",
+            "usage": "`.theme save <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "save",
+              "args": "theme save <name>"
+            },
+            "description": "Saves the current server role and channel state as a named preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme save mytheme",
+              ".theme save backup1"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the preset."
+              }
+            ],
+            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "snapshot",
+            "qualified_name": "theme snapshot",
+            "usage": "`.theme snapshot`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "snapshot",
+              "args": "theme snapshot"
+            },
+            "description": "Shows what's currently saved in the undo snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme snapshot"
+            ],
+            "params": [],
+            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tapply",
+            "qualified_name": "tapply",
+            "usage": "`.tapply <preset_name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tapply",
+              "args": "<preset_name>"
+            },
+            "description": "Fast shortcut to apply a saved server theme preset.",
+            "aliases": [
+              "themeapply"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".tapply dark_fantasy",
+              ".tapply cyber_pink"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "The name of the saved preset to apply."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "treset",
+            "qualified_name": "treset",
+            "usage": "`.treset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "treset",
+              "args": ""
+            },
+            "description": "Fast shortcut to restore server roles and channels to snapshot.",
+            "aliases": [
+              "themereset"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".treset"
+            ],
+            "params": [],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tsave",
+            "qualified_name": "tsave",
+            "usage": "`.tsave <preset_name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tsave",
+              "args": "<preset_name>"
+            },
+            "description": "Fast shortcut to save the current server theme as a preset.",
+            "aliases": [
+              "themesave"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".tsave my_theme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the new preset."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "undo",
+            "qualified_name": "theme undo",
+            "usage": "`.theme undo`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "undo",
+              "args": "theme undo"
+            },
+            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme undo"
+            ],
+            "params": [],
+            "note": "Same as `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
             "has_subcommands": false,
             "subcommands": [],
             "cog_file": "theme.py"
@@ -15166,6 +15166,45 @@
             "cog_file": "minigames.py"
           },
           {
+            "name": "bombvotekick",
+            "qualified_name": "bombvotekick",
+            "usage": "`.bvk @player`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "bombvotekick",
+              "args": "bvk @player"
+            },
+            "description": "Vote to kick an inactive player from an active Word Bomb game.",
+            "aliases": [
+              "bvk",
+              "bombvk"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".bvk @someone"
+            ],
+            "params": [
+              {
+                "name": "player",
+                "type": "member",
+                "required": true,
+                "desc": "The player to vote kick"
+              }
+            ],
+            "note": null,
+            "category_id": "minigames",
+            "section": "Mini-Games",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "minigames.py"
+          },
+          {
             "name": "c4",
             "qualified_name": "c4",
             "usage": "`.c4 [@user|bot]`",
@@ -15411,6 +15450,46 @@
               ".lwstop"
             ],
             "params": [],
+            "note": null,
+            "category_id": "minigames",
+            "section": "Mini-Games",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "lastword.py"
+          },
+          {
+            "name": "lwvotekick",
+            "qualified_name": "lwvotekick",
+            "usage": "`.lwvk @player`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "lwvotekick",
+              "args": "lwvk @player"
+            },
+            "description": "Vote to kick an inactive player from an active Last Word game.",
+            "aliases": [
+              "lwvk",
+              "votekick",
+              "vk"
+            ],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".lwvk @someone"
+            ],
+            "params": [
+              {
+                "name": "player",
+                "type": "member",
+                "required": true,
+                "desc": "The player to vote kick"
+              }
+            ],
             "note": null,
             "category_id": "minigames",
             "section": "Mini-Games",
@@ -16446,6 +16525,46 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "role",
+                "qualified_name": "vanity role",
+                "usage": "`.vanity role <@role>`",
+                "description": "Sets the reward role auto-assigned to members who put the vanity in their custom status.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "role",
+                    "type": "role",
+                    "required": true,
+                    "desc": "The role to automatically grant."
+                  }
+                ],
+                "examples": [
+                  ".vanity role @Vanity Rep",
+                  ".vanity role @Supporter"
+                ]
+              },
+              {
+                "name": "substring",
+                "qualified_name": "vanity substring",
+                "usage": "`.vanity substring <text>`",
+                "description": "Sets the status text substring the bot watches for in member custom statuses.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "text",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The text snippet to match inside member statuses."
+                  }
+                ],
+                "examples": [
+                  ".vanity substring seoulities",
+                  ".vanity substring .gg/myguild"
+                ]
+              },
+              {
                 "name": "message",
                 "qualified_name": "vanity message",
                 "usage": "`.vanity message <text>`",
@@ -16506,46 +16625,6 @@
                 "examples": [
                   ".vanity channel #announcements",
                   ".vanity channel #reps"
-                ]
-              },
-              {
-                "name": "role",
-                "qualified_name": "vanity role",
-                "usage": "`.vanity role <@role>`",
-                "description": "Sets the reward role auto-assigned to members who put the vanity in their custom status.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "role",
-                    "type": "role",
-                    "required": true,
-                    "desc": "The role to automatically grant."
-                  }
-                ],
-                "examples": [
-                  ".vanity role @Vanity Rep",
-                  ".vanity role @Supporter"
-                ]
-              },
-              {
-                "name": "substring",
-                "qualified_name": "vanity substring",
-                "usage": "`.vanity substring <text>`",
-                "description": "Sets the status text substring the bot watches for in member custom statuses.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "text",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The text snippet to match inside member statuses."
-                  }
-                ],
-                "examples": [
-                  ".vanity substring seoulities",
-                  ".vanity substring .gg/myguild"
                 ]
               }
             ],
