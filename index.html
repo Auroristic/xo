@@ -84,6 +84,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; color-scheme: dark; }
 [data-theme="light"] { color-scheme: light; }
 body {
@@ -1807,11 +1808,77 @@ footer {
 
 <div class="search-blur-overlay" id="search-blur-overlay"></div>
 
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;" id="xo-sprites">
+  <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+  <symbol id="icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/><line x1="12" y1="12" x2="12" y2="16"/>
+  </symbol>
+  <symbol id="icon-cat-general" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>
+  </symbol>
+  <symbol id="icon-cat-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+  </symbol>
+  <symbol id="icon-cat-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+  </symbol>
+  <symbol id="icon-cat-reactions" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+  </symbol>
+  <symbol id="icon-cat-leveling" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a4 4 0 0 1 4 4v5a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z"/>
+  </symbol>
+  <symbol id="icon-cat-profile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+  </symbol>
+  <symbol id="icon-cat-theme" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.35248 19.5 5.25055 20.3013 4.85857 20.8013C4.46659 21.3013 3.65857 21.5 3 21C2.34143 20.5 1.5 19.5 1 18C0.5 16.5 0 14.5 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C11.5 24 11 23.5 11 23C11 22.5 11.5 22 12 22Z"/><circle cx="7.5" cy="10.5" r="1.5"/><circle cx="11.5" cy="7.5" r="1.5"/><circle cx="16.5" cy="9.5" r="1.5"/><circle cx="15.5" cy="14.5" r="1.5"/>
+  </symbol>
+  <symbol id="icon-cat-utility" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m21 16-4 4M17 16l4 4"/><rect x="3" y="4" width="18" height="8" rx="2"/><path d="M7 8h.01M11 8h.01M15 8h.01"/><rect x="3" y="16" width="10" height="4" rx="1"/>
+  </symbol>
+  <symbol id="icon-cat-fun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/><rect x="2" y="6" width="20" height="12" rx="3"/>
+  </symbol>
+  <symbol id="icon-cat-minigames" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="3" ry="3"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/>
+  </symbol>
+  <symbol id="icon-cat-misc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/>
+  </symbol>
+  <symbol id="icon-cat-vanity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18v2H3z"/>
+  </symbol>
+  <symbol id="icon-cat-moderation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </symbol>
+  <symbol id="icon-cat-staff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </symbol>
+  <symbol id="icon-cat-ai" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/>
+  </symbol>
+  <symbol id="icon-cat-admin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+  </symbol>
+  <symbol id="icon-cat-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </symbol>
+  <symbol id="icon-cat-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+  </symbol>
+</svg>
+
 <div id="app">
 
   <nav id="nav">
     <a href="#/" class="nav-brand">
-      <img src="icon.png?v=2" alt="xo" class="nav-avatar">
+      <picture style="display:contents"><source srcset="icon.webp" type="image/webp"><img src="icon.png?v=2" alt="xo" class="nav-avatar"></picture>
       <span class="nav-name">xo</span>
     </a>
     <div class="nav-links">
@@ -2005,7 +2072,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <a href="#/" class="foot-brand">
-    <img src="icon.png?v=2" alt="xo">
+    <picture style="display:contents"><source srcset="icon.webp" type="image/webp"><img src="icon.png?v=2" alt="xo"></picture>
     <span>xo — Discord Bot</span>
   </a>
   <div class="foot-links">
@@ -2185,7 +2252,7 @@ footer {
       <div class="builder-preview-wrap">
         <label style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text-dim)">Live Discord Mockup</label>
         <div class="discord-msg-box">
-          <div class="discord-avatar" style="background:url('icon.png?v=2') center/cover"></div>
+          <div class="discord-avatar" style="background:url('icon.webp') center/cover, url('icon.png?v=2') center/cover"></div>
           <div class="discord-msg-body">
             <div class="discord-msg-header">
               <span class="discord-username">xo</span>
@@ -2243,7 +2310,8 @@ footer {
 </button>
 
 <script>
-const DATA_URL = 'commands.json';
+const DATA_VERSION = '1.0.0';
+const DATA_URL = `commands.json?v=${DATA_VERSION}`;
 const STORAGE_KEYS = {
   theme: 'xo:theme',
   recent: 'xo:recent',
@@ -2254,6 +2322,7 @@ let allData = null;
 let activeFilter = 'all';
 let activeCat = 'all';
 let searchQuery = '';
+let prevHighlightedSearch = '';
 let modalOpen = false;
 let shortcutsOpen = false;
 let currentModalCmd = null;
@@ -2262,26 +2331,30 @@ let recentSearches = JSON.parse(localStorage.getItem(STORAGE_KEYS.recent) || '[]
 let collapsedCats = new Set(JSON.parse(localStorage.getItem(STORAGE_KEYS.collapsed) || '[]'));
 let kbFocusedIdx = -1;
 let visibleCards = [];
+let allCardRecords = [];
+let allSecWraps = [];
+let allCatSections = [];
 let searchDebounce = null;
 
 const CAT_SVGS = {
-  general: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>`,
-  music: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
-  image: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>`,
-  reactions: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`,
-  leveling: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a4 4 0 0 1 4 4v5a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4Z"/></svg>`,
-  profile: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
-  theme: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 14.7255 3.09032 17.1962 4.85857 19C5.35248 19.5 5.25055 20.3013 4.85857 20.8013C4.46659 21.3013 3.65857 21.5 3 21C2.34143 20.5 1.5 19.5 1 18C0.5 16.5 0 14.5 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C11.5 24 11 23.5 11 23C11 22.5 11.5 22 12 22Z"/><circle cx="7.5" cy="10.5" r="1.5"/><circle cx="11.5" cy="7.5" r="1.5"/><circle cx="16.5" cy="9.5" r="1.5"/><circle cx="15.5" cy="14.5" r="1.5"/></svg>`,
-  utility: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4M17 16l4 4"/><rect x="3" y="4" width="18" height="8" rx="2"/><path d="M7 8h.01M11 8h.01M15 8h.01"/><rect x="3" y="16" width="10" height="4" rx="1"/></svg>`,
-  fun: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4M8 10v4M15 11h.01M18 13h.01"/><rect x="2" y="6" width="20" height="12" rx="3"/></svg>`,
-  misc: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>`,
-  vanity: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18v2H3z"/></svg>`,
-  moderation: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-  staff: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-  ai: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>`,
-  admin: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
-  help: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
-  all: `<svg class="cat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>`
+  general: `<svg class="cat-svg-icon"><use href="#icon-cat-general"/></svg>`,
+  music: `<svg class="cat-svg-icon"><use href="#icon-cat-music"/></svg>`,
+  image: `<svg class="cat-svg-icon"><use href="#icon-cat-image"/></svg>`,
+  reactions: `<svg class="cat-svg-icon"><use href="#icon-cat-reactions"/></svg>`,
+  leveling: `<svg class="cat-svg-icon"><use href="#icon-cat-leveling"/></svg>`,
+  profile: `<svg class="cat-svg-icon"><use href="#icon-cat-profile"/></svg>`,
+  theme: `<svg class="cat-svg-icon"><use href="#icon-cat-theme"/></svg>`,
+  utility: `<svg class="cat-svg-icon"><use href="#icon-cat-utility"/></svg>`,
+  fun: `<svg class="cat-svg-icon"><use href="#icon-cat-fun"/></svg>`,
+  minigames: `<svg class="cat-svg-icon"><use href="#icon-cat-minigames"/></svg>`,
+  misc: `<svg class="cat-svg-icon"><use href="#icon-cat-misc"/></svg>`,
+  vanity: `<svg class="cat-svg-icon"><use href="#icon-cat-vanity"/></svg>`,
+  moderation: `<svg class="cat-svg-icon"><use href="#icon-cat-moderation"/></svg>`,
+  staff: `<svg class="cat-svg-icon"><use href="#icon-cat-staff"/></svg>`,
+  ai: `<svg class="cat-svg-icon"><use href="#icon-cat-ai"/></svg>`,
+  admin: `<svg class="cat-svg-icon"><use href="#icon-cat-admin"/></svg>`,
+  help: `<svg class="cat-svg-icon"><use href="#icon-cat-help"/></svg>`,
+  all: `<svg class="cat-svg-icon"><use href="#icon-cat-all"/></svg>`
 };
 
 const CAT_COLORS = {
@@ -2294,6 +2367,7 @@ const CAT_COLORS = {
   theme:     { accent: '#e2e2e8', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.10)', glow: 'rgba(255,255,255,0.06)' },
   leveling:  { accent: '#e2e2e8', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.10)', glow: 'rgba(255,255,255,0.06)' },
   fun:       { accent: '#e2e2e8', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.10)', glow: 'rgba(255,255,255,0.06)' },
+  minigames: { accent: '#e2e2e8', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.10)', glow: 'rgba(255,255,255,0.06)' },
   reactions: { accent: '#e2e2e8', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.10)', glow: 'rgba(255,255,255,0.06)' },
   image:     { accent: '#e2e2e8', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.10)', glow: 'rgba(255,255,255,0.06)' },
   vanity:    { accent: '#e2e2e8', bg: 'rgba(255,255,255,0.05)', border: 'rgba(255,255,255,0.10)', glow: 'rgba(255,255,255,0.06)' },
@@ -2302,7 +2376,7 @@ const CAT_COLORS = {
   misc:      { accent: '#b0b0c0', bg: 'rgba(255,255,255,0.04)', border: 'rgba(255,255,255,0.08)', glow: 'rgba(255,255,255,0.04)' },
 };
 
-const CAT_ORDER = ['utility','music','ai','profile','admin','moderation','theme','leveling','fun','reactions','image','vanity','staff','help'];
+const CAT_ORDER = ['utility','music','ai','profile','admin','moderation','theme','leveling','fun','minigames','reactions','image','vanity','staff','help'];
 const SECTION_ORDER = { music: ['Playback','Controls','Music','Filters'] };
 
 function getOrderedCats(cats) {
@@ -2322,7 +2396,7 @@ function getOrderedSections(catId, sections) {
 async function loadData() {
   initTheme();
   try {
-    const res = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-cache' });
+    const res = await fetch(DATA_URL);
     allData = await res.json();
     indexCommands(allData);
     init();
@@ -2365,8 +2439,9 @@ function init() {
   setupKeyboardNav();
   setupScrollTop();
   setupStatClickFilters();
-  renderRecentSearches();
-  render();
+  setupContentDelegation();
+  buildDOM();
+  applyFilterAndSearch();
   setupHashRouting();
 }
 
@@ -2611,7 +2686,7 @@ function setFilter(key) {
   document.querySelectorAll('.nav-pill.filter-pill').forEach(b =>
     b.classList.toggle('active', b.dataset.filter === key));
   syncURL();
-  render();
+  applyFilterAndSearch();
 }
 function setCat(id) {
   activeCat = id;
@@ -2621,7 +2696,7 @@ function setCat(id) {
   const active = document.querySelector('.nav-pill[data-cat].active');
   if (active) active.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: 'smooth' });
   syncURL();
-  render();
+  applyFilterAndSearch();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -2629,7 +2704,6 @@ function setCat(id) {
 function setupSearch() {
   const searchEl   = document.getElementById('search');
   const searchWrap = document.getElementById('search-wrap');
-  const countEl    = document.getElementById('search-count');
   const clearEl    = document.getElementById('search-clear');
 
   searchEl.addEventListener('focus', () => {
@@ -2639,7 +2713,6 @@ function setupSearch() {
   searchEl.addEventListener('blur', () => {
     document.body.classList.remove('search-focused');
     searchWrap.classList.remove('focused');
-    // Save to recent if non-trivial
     if (searchQuery.length >= 2) saveRecentSearch(searchQuery);
   });
 
@@ -2647,19 +2720,12 @@ function setupSearch() {
     searchQuery = val.trim().toLowerCase();
     clearEl.classList.toggle('visible', !!searchQuery);
     syncURL();
-    render();
-    if (searchQuery) {
-      const n = countVisible();
-      countEl.textContent = n + ' result' + (n !== 1 ? 's' : '');
-      countEl.classList.add('visible');
-    } else {
-      countEl.textContent = ''; countEl.classList.remove('visible');
-    }
+    applyFilterAndSearch();
   };
 
   searchEl.addEventListener('input', e => {
     clearTimeout(searchDebounce);
-    searchDebounce = setTimeout(() => doSearch(e.target.value), 80);
+    searchDebounce = setTimeout(() => doSearch(e.target.value), 60);
   });
 
   clearEl.addEventListener('click', () => {
@@ -2667,7 +2733,6 @@ function setupSearch() {
     doSearch('');
     searchEl.focus();
   });
-  // restore from URL
   if (searchQuery) {
     searchEl.value = searchQuery;
     clearEl.classList.add('visible');
@@ -2701,12 +2766,8 @@ function renderRecentSearches() {
         document.getElementById('search').value = q;
         searchQuery = q.toLowerCase();
         document.getElementById('search-clear').classList.add('visible');
-        const countEl = document.getElementById('search-count');
         syncURL();
-        render();
-        const n = countVisible();
-        countEl.textContent = n + ' result' + (n !== 1 ? 's' : '');
-        countEl.classList.add('visible');
+        applyFilterAndSearch();
       }
     });
     el.appendChild(tag);
@@ -2907,7 +2968,6 @@ function setupKeyboardNav() {
     }
     if (modalOpen || shortcutsOpen) return;
 
-    // Card navigation
     if (['ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(e.key)) {
       e.preventDefault();
       handleArrowNav(e.key);
@@ -2919,7 +2979,7 @@ function setupKeyboardNav() {
       if (!card) return;
       if (e.shiftKey) {
         const cmd = card._cmdData;
-        openModal(cmd.cmd, cmd.catId, cmd.catLabel);
+        if (cmd) openModal(cmd.cmd, cmd.catId, cmd.catLabel);
       } else {
         card.click();
       }
@@ -2935,17 +2995,15 @@ function handleArrowNav(key) {
   if (!card) return;
 
   if (key === 'ArrowDown' || key === 'ArrowUp') {
-    // Move by grid column-aware row
     const cardRect = card.getBoundingClientRect();
     const grid = card.parentElement;
-    const gridCards = Array.from(grid.children);
+    const gridCards = Array.from(grid.children).filter(c => !c.hidden);
     const colCount = Math.max(1, Math.round(grid.clientWidth / (cardRect.width + 7)));
     const localIdx = gridCards.indexOf(card);
     const targetLocal = key === 'ArrowDown' ? localIdx + colCount : localIdx - colCount;
     if (targetLocal >= 0 && targetLocal < gridCards.length) {
       kbFocusedIdx = visibleCards.indexOf(gridCards[targetLocal]);
     } else {
-      // jump to next/prev grid
       moveFocus(key === 'ArrowDown' ? 1 : -1);
       return;
     }
@@ -3050,132 +3108,72 @@ function openModal(cmd, catId, catLabel) {
         <span class="param-name">${escHtml(p.name)}</span>
         ${typeStr ? `<span class="param-type">${escHtml(typeStr)}</span>` : ''}
         ${reqBadge}
-        ${p.desc ? `<span class="param-desc">${escHtml(p.desc)}</span>` : ''}
+        <span class="param-desc">${escHtml(p.desc || '—')}</span>
+        ${p.default !== undefined && p.default !== null ? `<span class="param-default">default: ${escHtml(String(p.default))}</span>` : ''}
       `;
       paramsContainer.appendChild(row);
     });
-  } else paramsWrap.style.display = 'none';
-
-  // Subcommands Section
-  const subcmdsWrap = document.getElementById('modal-subcmds-wrap');
-  const subcmdsContainer = document.getElementById('modal-subcmds');
-  const subcmds = cmd.subcommands || [];
-  if (subcmds.length && subcmdsWrap && subcmdsContainer) {
-    subcmdsWrap.style.display = '';
-    subcmdsContainer.innerHTML = '';
-    subcmds.forEach(sc => {
-      const scCard = document.createElement('div');
-      scCard.className = 'subcmd-card';
-      scCard.innerHTML = `
-        <div class="subcmd-header">
-          <span class="subcmd-usage">${escHtml(sc.usage || '.' + sc.qualified_name)}</span>
-          <span class="cmd-badge perm-${sc.perm_tier || tier}">${sc.perm_tier || tier}</span>
-        </div>
-        <div class="subcmd-desc">${escHtml(sc.description || '')}</div>
-      `;
-      scCard.addEventListener('click', () => {
-        navigator.clipboard.writeText(sc.usage ? sc.usage.replace(/`/g, '') : '.' + sc.qualified_name).then(() => {
-          showToast(`Copied .${sc.name}`);
-        });
-      });
-      subcmdsContainer.appendChild(scCard);
-    });
-  } else if (subcmdsWrap) {
-    subcmdsWrap.style.display = 'none';
+  } else {
+    paramsWrap.style.display = 'none';
   }
 
-  const examplesWrap = document.getElementById('modal-examples-wrap');
-  const examplesContainer = document.getElementById('modal-examples');
-  examplesContainer.innerHTML = '';
-  const examples = cmd.examples || [];
-  if (examples.length) {
-    examplesWrap.style.display = '';
-    examples.forEach(ex => {
-      const row = document.createElement('div');
-      row.className = 'modal-example';
-      row.innerHTML = `<span>${escHtml(ex)}</span><span class="modal-example-copy">copy</span>`;
-      row.style.setProperty('--cat-accent', col.accent);
-      row.addEventListener('click', () => {
-        navigator.clipboard.writeText(ex).then(() => {
-          row.classList.add('copied-ex');
-          row.querySelector('.modal-example-copy').textContent = '✓';
-          setTimeout(() => {
-            row.classList.remove('copied-ex');
-            row.querySelector('.modal-example-copy').textContent = 'copy';
-          }, 1500);
-        });
-      });
-      examplesContainer.appendChild(row);
-    });
-  } else examplesWrap.style.display = 'none';
-
-  const aliasWrap = document.getElementById('modal-aliases-wrap');
-  const aliasContainer = document.getElementById('modal-aliases');
-  aliasContainer.innerHTML = '';
+  const aliasesWrap = document.getElementById('modal-aliases-wrap');
+  const aliasesContainer = document.getElementById('modal-aliases');
   if (cmd.aliases && cmd.aliases.length) {
-    aliasWrap.style.display = '';
-    cmd.aliases.forEach(a => {
-      const tag = document.createElement('span');
-      tag.className = 'modal-alias-tag';
-      tag.textContent = '.' + a;
-      tag.addEventListener('click', () => {
-        navigator.clipboard.writeText('.' + a).then(() => {
-          tag.classList.add('copied-tag');
-          tag.textContent = '✓ copied';
-          setTimeout(() => { tag.classList.remove('copied-tag'); tag.textContent = '.' + a; }, 1500);
-        });
-      });
-      aliasContainer.appendChild(tag);
-    });
-  } else aliasWrap.style.display = 'none';
-
-  const permEl = document.getElementById('modal-perm');
-  let permBadgeClass = 'perm-public';
-  let permLabel = '✓ Public';
-  let permDesc = 'Available to everyone';
-
-  if (tier === 'creator') {
-    permBadgeClass = 'perm-creator';
-    permLabel = '♚ Creator Only';
-    permDesc = 'Restricted to bot creator / developer';
-  } else if (tier === 'guild_owner') {
-    permBadgeClass = 'perm-guild-owner';
-    permLabel = '👑 Server Owner';
-    permDesc = 'Restricted to Discord server owner';
-  } else if (tier === 'whitelist') {
-    permBadgeClass = 'perm-whitelist';
-    permLabel = '✦ Whitelisted Staff';
-    permDesc = 'Requires whitelisted bot permissions';
-  } else if (tier === 'admin') {
-    permBadgeClass = 'perm-admin';
-    permLabel = '⚔ Administrator';
-    const perms = (cmd.discord_perms && cmd.discord_perms.length) ? cmd.discord_perms.map(p => `\`${p}\``).join(', ') : 'Administrator';
-    permDesc = `Requires server staff permissions (${perms})`;
+    aliasesWrap.style.display = '';
+    aliasesContainer.innerHTML = cmd.aliases.map(a => `<span class="alias-tag">.${escHtml(a)}</span>`).join('');
+  } else {
+    aliasesWrap.style.display = 'none';
   }
 
-  permEl.innerHTML = `<span class="modal-perm-badge ${permBadgeClass}">${permLabel}</span><span style="font-size:12px;color:var(--text-muted)">${permDesc}</span>`;
+  const exWrap = document.getElementById('modal-examples-wrap');
+  const exList = document.getElementById('modal-examples');
+  if (cmd.examples && cmd.examples.length) {
+    exWrap.style.display = '';
+    exList.innerHTML = cmd.examples.map(ex => `<div class="example-item">${escHtml(ex)}</div>`).join('');
+  } else {
+    exWrap.style.display = 'none';
+  }
 
-  const noteEl = document.getElementById('modal-note');
+  const noteWrap = document.getElementById('modal-note-wrap');
+  const noteContent = document.getElementById('modal-note-content');
   if (cmd.note) {
-    noteEl.style.display = 'flex';
-    noteEl.innerHTML = `
-      <svg class="modal-note-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <span>${escHtml(cmd.note)}</span>
-    `;
-  } else noteEl.style.display = 'none';
+    noteWrap.style.display = '';
+    noteContent.textContent = cmd.note;
+  } else {
+    noteWrap.style.display = 'none';
+  }
 
-  const copyBtn = document.getElementById('modal-copy-btn');
-  copyBtn.className = 'modal-copy-btn';
-  copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Command`;
-  copyBtn.onclick = () => {
-    const text = cmd.usage.replace(/`/g, '').trim().split(' · ')[0].trim();
-    navigator.clipboard.writeText(text).then(() => {
-      copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
-      copyBtn.classList.add('done');
+  const subWrap = document.getElementById('modal-subcmds-wrap');
+  const subList = document.getElementById('modal-subcmds');
+  const subcmds = cmd.subcommands || [];
+  if (subcmds.length) {
+    subWrap.style.display = '';
+    subList.innerHTML = '';
+    subcmds.forEach(sub => {
+      const row = document.createElement('div');
+      row.className = 'modal-sub-row';
+      row.innerHTML = `
+        <span class="modal-sub-name">.${escHtml(sub.name)}</span>
+        <span class="modal-sub-desc">${escHtml(sub.description || '—')}</span>
+      `;
+      row.addEventListener('click', () => {
+        openModal(sub, catId, catLabel);
+      });
+      subList.appendChild(row);
+    });
+  } else {
+    subWrap.style.display = 'none';
+  }
+
+  const copyUsageBtn = document.getElementById('modal-copy-usage-btn');
+  copyUsageBtn.onclick = () => {
+    const rawUsage = cmd.usage.replace(/`/g, '').trim().split(' · ')[0].trim();
+    navigator.clipboard.writeText(rawUsage).then(() => {
+      copyUsageBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24"><use href="#icon-check"/></svg> copied!`;
       setTimeout(() => {
-        copyBtn.classList.remove('done');
-        copyBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Command`;
-      }, 1800);
+        copyUsageBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24"><use href="#icon-copy"/></svg> copy command`;
+      }, 1600);
     });
   };
 
@@ -3201,19 +3199,7 @@ function catCount(catId) {
   return Object.values(cat.sections).reduce((n, cmds) => n + cmds.length, 0);
 }
 function countVisible() {
-  if (!allData) return 0;
-  let total = 0;
-  const cats = activeCat === 'all'
-    ? getOrderedCats(allData.categories).map(id => [id, allData.categories[id]])
-    : [[activeCat, allData.categories[activeCat]]].filter(([, v]) => v);
-  cats.forEach(([, cat]) => {
-    Object.values(cat.sections).forEach(cmds => {
-      cmds.forEach(cmd => {
-        if (passesFilter(cmd, cat.owner, cat.staff, cat.admin) && matchesSearch(cmd)) total++;
-      });
-    });
-  });
-  return total;
+  return visibleCards.length;
 }
 function passesFilter(cmd, catOwner, catStaff, catAdmin) {
   const tier = cmd.perm_tier || (cmd.owner || catOwner ? 'creator' : cmd.staff || catStaff ? 'whitelist' : (cmd.admin || catAdmin) ? 'admin' : 'public');
@@ -3251,80 +3237,72 @@ function renderSingleToken(token) {
   return `<span class="u-prefix">.</span><span class="u-name">${escHtml(s.slice(1, sp))}</span><span class="u-args">${escHtml(s.slice(sp))}</span>`;
 }
 function renderUsage(raw) {
+  if (!raw) return '';
   if (raw.includes(' · '))
     return raw.split(' · ').map(p => renderSingleToken(p.trim())).join('<span class="u-sep"> · </span>');
   return renderSingleToken(raw);
 }
-function renderSingleTokenHl(token) {
-  const s = token.replace(/^`|`$/g, '').trim();
-  if (!s.startsWith('.')) return searchQuery ? highlight(s, searchQuery) : escHtml(s);
-  const sp = s.indexOf(' ');
-  if (sp === -1) return `<span class="u-prefix">.</span><span class="u-name">${searchQuery ? highlight(s.slice(1), searchQuery) : escHtml(s.slice(1))}</span>`;
-  return `<span class="u-prefix">.</span><span class="u-name">${searchQuery ? highlight(s.slice(1, sp), searchQuery) : escHtml(s.slice(1, sp))}</span><span class="u-args">${escHtml(s.slice(sp))}</span>`;
-}
-function renderUsageHighlighted(raw) {
-  if (raw.includes(' · '))
-    return raw.split(' · ').map(p => renderSingleTokenHl(p.trim())).join('<span class="u-sep"> · </span>');
-  return renderSingleTokenHl(raw);
-}
 
-/* ── RENDER ── */
-function render() {
-  const content   = document.getElementById('content');
-  const noResults = document.getElementById('no-results');
+/* ── ONE-TIME DOM BUILD ── */
+function buildDOM() {
+  const content = document.getElementById('content');
   content.innerHTML = '';
-  visibleCards = [];
-  kbFocusedIdx = -1;
-  let totalRendered = 0;
-
-  const cats = activeCat === 'all'
-    ? getOrderedCats(allData.categories).map(id => [id, allData.categories[id]])
-    : [[activeCat, allData.categories[activeCat]]].filter(([, v]) => v);
+  allCardRecords = [];
+  allSecWraps = [];
+  allCatSections = [];
 
   const frag = document.createDocumentFragment();
   let secIdx = 0;
 
-  cats.forEach(([catId, cat]) => {
+  getOrderedCats(allData.categories).forEach(catId => {
+    const cat = allData.categories[catId];
+    if (!cat) return;
     const catOwner = cat.owner;
     const catStaff = cat.staff;
     const catAdmin = cat.admin;
     const col = CAT_COLORS[catId] || CAT_COLORS.admin;
-    let catHasAny = false;
+
     const secNodes = [];
-    let catCardCount = 0;
 
     getOrderedSections(catId, cat.sections).forEach(([secName, cmds]) => {
-      const filtered = cmds.filter(cmd => passesFilter(cmd, catOwner, catStaff, cat.admin) && matchesSearch(cmd));
-      if (!filtered.length) return;
-      catHasAny = true;
-      totalRendered += filtered.length;
+      if (!cmds.length) return;
 
       const secWrap = document.createElement('div');
       secWrap.className = 'sec-wrap';
       const label = document.createElement('div');
       label.className = 'sec-label';
       label.innerHTML = `${escHtml(secName)}<span class="sec-collapse-icon">▾</span>`;
-      label.addEventListener('click', () => secWrap.classList.toggle('collapsed'));
       secWrap.appendChild(label);
+
       const secContent = document.createElement('div');
       secContent.className = 'sec-content';
       const grid = document.createElement('div');
       grid.className = 'cmd-grid';
 
-      filtered.forEach((cmd, i) => {
+      cmds.forEach((cmd, i) => {
         const card = buildCard(cmd, cat, catOwner, catStaff, catAdmin, col, catId, i);
         grid.appendChild(card);
+
+        allCardRecords.push({
+          cardEl: card,
+          descEl: card.querySelector('.cmd-desc'),
+          rawDesc: cmd.description || '',
+          cmd,
+          catId,
+          catLabel: cat.label,
+          catOwner,
+          catStaff,
+          catAdmin,
+          secWrapEl: secWrap,
+          catSecEl: null,
+          isHighlighted: false
+        });
       });
 
       secContent.appendChild(grid);
       secWrap.appendChild(secContent);
       secNodes.push(secWrap);
-    });
-
-    if (!catHasAny) return;
-
-    Object.values(cat.sections).flat().forEach(cmd => {
-      if (passesFilter(cmd, catOwner, catStaff, catAdmin) && matchesSearch(cmd)) catCardCount++;
+      allSecWraps.push(secWrap);
     });
 
     const section = document.createElement('div');
@@ -3351,47 +3329,30 @@ function render() {
         ${cat.desc ? `<span class="cat-desc">${escHtml(cat.desc)}</span>` : ''}
       </div>
       <div class="cat-meta">
-        <span class="cat-cmd-count">${catCardCount} cmd${catCardCount !== 1 ? 's' : ''}</span>
+        <span class="cat-cmd-count">0 cmds</span>
         ${permBadge}
         <span class="cat-collapse-arrow">▾</span>
       </div>
     `;
-    hdr.addEventListener('click', () => {
-      section.classList.toggle('collapsed');
-      if (section.classList.contains('collapsed')) collapsedCats.add(catId);
-      else collapsedCats.delete(catId);
-      localStorage.setItem(STORAGE_KEYS.collapsed, JSON.stringify([...collapsedCats]));
-    });
 
     section.appendChild(hdr);
     secNodes.forEach(n => section.appendChild(n));
     frag.appendChild(section);
+
+    allCatSections.push({
+      catSecEl: section,
+      catId,
+      countEl: hdr.querySelector('.cat-cmd-count')
+    });
+  });
+
+  allCatSections.forEach(({ catSecEl, catId }) => {
+    allCardRecords.forEach(rec => {
+      if (rec.catId === catId) rec.catSecEl = catSecEl;
+    });
   });
 
   content.appendChild(frag);
-  visibleCards = Array.from(content.querySelectorAll('.cmd-card'));
-
-  const empty = totalRendered === 0;
-  noResults.classList.toggle('show', empty);
-  if (empty) {
-    document.getElementById('no-results-query').textContent =
-      `"${searchQuery || (activeFilter !== 'all' ? activeFilter : 'this filter')}"`;
-  }
-  document.getElementById('nr-clear-btn').onclick = () => {
-    activeFilter = 'all'; activeCat = 'all'; searchQuery = '';
-    document.getElementById('search').value = '';
-    document.getElementById('search-clear').classList.remove('visible');
-    document.getElementById('search-count').textContent = '';
-    document.querySelectorAll('.nav-pill').forEach(b => {
-      const isAll = b.dataset.cat === 'all' || b.dataset.filter === 'all';
-      b.classList.toggle('active', isAll);
-      const col = CAT_COLORS[b.dataset.cat];
-      if (col) { b.style.color = ''; b.style.borderColor = ''; b.style.background = ''; }
-    });
-    syncURL();
-    render();
-  };
-  renderRecentSearches();
 }
 
 function buildCard(cmd, cat, catOwner, catStaff, catAdmin, col, catId, i) {
@@ -3417,8 +3378,8 @@ function buildCard(cmd, cat, catOwner, catStaff, catAdmin, col, catId, i) {
   card.tabIndex = -1;
   card._cmdData = { cmd, catId, catLabel: cat.label };
 
-  const usageHtml = renderUsageHighlighted(cmd.usage);
-  const descHtml = searchQuery ? highlight(cmd.description, searchQuery) : escHtml(cmd.description);
+  const usageHtml = renderUsage(cmd.usage);
+  const descHtml = escHtml(cmd.description || '');
 
   card.innerHTML = `
     <div class="cmd-usage">${usageHtml}</div>
@@ -3427,63 +3388,234 @@ function buildCard(cmd, cat, catOwner, catStaff, catAdmin, col, catId, i) {
       ${badge}${structBadge}${aliases}
       <span class="cmd-footer-spacer"></span>
       <span class="copy-btn" data-copy-btn>
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <svg width="10" height="10" viewBox="0 0 24 24"><use href="#icon-copy"/></svg>
         copy
       </span>
       <button class="info-btn" data-info-btn aria-label="View details" title="View details (Shift+Click or long press on mobile)">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
+        <svg width="11" height="11" viewBox="0 0 24 24"><use href="#icon-info"/></svg>
       </button>
     </div>
   `;
 
-  /* ── info btn → opens modal ── */
-  card.querySelector('[data-info-btn]').addEventListener('click', e => {
-    e.stopPropagation();
-    openModal(cmd, catId, cat.label);
-  });
+  return card;
+}
 
-  /* ── desktop: Shift+Click → modal; plain click → copy ── */
-  card.addEventListener('click', e => {
-    if (e.target.closest('[data-info-btn]')) return;
-    if (e.shiftKey) {
-      e.preventDefault();
-      openModal(cmd, catId, cat.label);
+/* ── FAST FILTERING & SEARCH ── */
+function applyFilterAndSearch() {
+  const isSearchChanged = (searchQuery !== prevHighlightedSearch);
+  let totalRendered = 0;
+  visibleCards = [];
+
+  const catVisibility = new Map();
+  const secVisibility = new Map();
+
+  allCardRecords.forEach(rec => {
+    const isCatActive = (activeCat === 'all' || activeCat === rec.catId);
+    const passes = isCatActive && passesFilter(rec.cmd, rec.catOwner, rec.catStaff, rec.catAdmin) && matchesSearch(rec.cmd);
+
+    if (passes) {
+      rec.cardEl.hidden = false;
+      visibleCards.push(rec.cardEl);
+      totalRendered++;
+
+      if (isSearchChanged) {
+        if (searchQuery) {
+          rec.descEl.innerHTML = highlight(rec.rawDesc, searchQuery);
+          rec.isHighlighted = true;
+        } else if (rec.isHighlighted) {
+          rec.descEl.textContent = rec.rawDesc;
+          rec.isHighlighted = false;
+        }
+      }
+
+      secVisibility.set(rec.secWrapEl, (secVisibility.get(rec.secWrapEl) || 0) + 1);
+      catVisibility.set(rec.catSecEl, (catVisibility.get(rec.catSecEl) || 0) + 1);
     } else {
-      copyCmd(card, cmd.usage, e);
+      rec.cardEl.hidden = true;
+      if (!searchQuery && rec.isHighlighted) {
+        rec.descEl.textContent = rec.rawDesc;
+        rec.isHighlighted = false;
+      }
     }
   });
 
-  /* ── mobile: long press → modal ── */
-  let longPressTimer = null;
-  let longPressFired = false;
-  card.addEventListener('touchstart', e => {
-    if (e.target.closest('[data-info-btn]')) return;
-    longPressFired = false;
+  prevHighlightedSearch = searchQuery;
+
+  allSecWraps.forEach(secWrap => {
+    const count = secVisibility.get(secWrap) || 0;
+    secWrap.hidden = (count === 0);
+  });
+
+  allCatSections.forEach(({ catSecEl, catId, countEl }) => {
+    const isCatActive = (activeCat === 'all' || activeCat === catId);
+    const count = catVisibility.get(catSecEl) || 0;
+    if (!isCatActive || count === 0) {
+      catSecEl.hidden = true;
+    } else {
+      catSecEl.hidden = false;
+      if (countEl) {
+        countEl.textContent = `${count} cmd${count !== 1 ? 's' : ''}`;
+      }
+    }
+  });
+
+  const empty = (totalRendered === 0);
+  const noResults = document.getElementById('no-results');
+  if (noResults) {
+    noResults.classList.toggle('show', empty);
+    if (empty) {
+      document.getElementById('no-results-query').textContent =
+        `"${searchQuery || (activeFilter !== 'all' ? activeFilter : 'this filter')}"`;
+    }
+  }
+
+  const countEl = document.getElementById('search-count');
+  if (countEl) {
+    if (searchQuery) {
+      countEl.textContent = totalRendered + ' result' + (totalRendered !== 1 ? 's' : '');
+      countEl.classList.add('visible');
+    } else {
+      countEl.textContent = '';
+      countEl.classList.remove('visible');
+    }
+  }
+
+  const nrClearBtn = document.getElementById('nr-clear-btn');
+  if (nrClearBtn) {
+    nrClearBtn.onclick = () => {
+      activeFilter = 'all'; activeCat = 'all'; searchQuery = '';
+      const s = document.getElementById('search');
+      if (s) s.value = '';
+      const sc = document.getElementById('search-clear');
+      if (sc) sc.classList.remove('visible');
+      const cnt = document.getElementById('search-count');
+      if (cnt) cnt.textContent = '';
+      document.querySelectorAll('.nav-pill').forEach(b => {
+        const isAll = b.dataset.cat === 'all' || b.dataset.filter === 'all';
+        b.classList.toggle('active', isAll);
+        const col = CAT_COLORS[b.dataset.cat];
+        if (col) { b.style.color = ''; b.style.borderColor = ''; b.style.background = ''; }
+      });
+      syncURL();
+      applyFilterAndSearch();
+    };
+  }
+
+  kbFocusedIdx = -1;
+  renderRecentSearches();
+}
+
+function render() {
+  applyFilterAndSearch();
+}
+
+/* ── EVENT DELEGATION ── */
+let touchStartX = 0;
+let touchStartY = 0;
+let longPressTimer = null;
+let longPressTriggered = false;
+
+function setupContentDelegation() {
+  const content = document.getElementById('content');
+  if (!content) return;
+
+  content.addEventListener('click', (e) => {
+    if (longPressTriggered) {
+      longPressTriggered = false;
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
+    const catHdr = e.target.closest('.cat-header');
+    if (catHdr) {
+      const catSec = catHdr.closest('.cat-section');
+      if (catSec) {
+        const catId = catSec.id.replace('cat-', '');
+        catSec.classList.toggle('collapsed');
+        if (catSec.classList.contains('collapsed')) collapsedCats.add(catId);
+        else collapsedCats.delete(catId);
+        localStorage.setItem(STORAGE_KEYS.collapsed, JSON.stringify([...collapsedCats]));
+      }
+      return;
+    }
+
+    const secLbl = e.target.closest('.sec-label');
+    if (secLbl) {
+      const secWrap = secLbl.closest('.sec-wrap');
+      if (secWrap) secWrap.classList.toggle('collapsed');
+      return;
+    }
+
+    const infoBtn = e.target.closest('[data-info-btn]');
+    if (infoBtn) {
+      e.stopPropagation();
+      const card = infoBtn.closest('.cmd-card');
+      if (card && card._cmdData) {
+        openModal(card._cmdData.cmd, card._cmdData.catId, card._cmdData.catLabel);
+      }
+      return;
+    }
+
+    const card = e.target.closest('.cmd-card');
+    if (card && card._cmdData) {
+      if (e.shiftKey) {
+        e.preventDefault();
+        openModal(card._cmdData.cmd, card._cmdData.catId, card._cmdData.catLabel);
+      } else {
+        copyCmd(card, card._cmdData.cmd.usage, e);
+      }
+    }
+  });
+
+  content.addEventListener('touchstart', (e) => {
+    const card = e.target.closest('.cmd-card');
+    if (!card || e.target.closest('[data-info-btn]')) return;
+    longPressTriggered = false;
+    const touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+
+    clearTimeout(longPressTimer);
     longPressTimer = setTimeout(() => {
-      longPressFired = true;
+      longPressTriggered = true;
       card.classList.add('long-pressing');
-      openModal(cmd, catId, cat.label);
+      if (card._cmdData) {
+        openModal(card._cmdData.cmd, card._cmdData.catId, card._cmdData.catLabel);
+      }
       setTimeout(() => card.classList.remove('long-pressing'), 300);
     }, 500);
   }, { passive: true });
-  card.addEventListener('touchend', e => {
-    clearTimeout(longPressTimer);
-    if (longPressFired) {
-      e.preventDefault(); // prevent the click from firing after a long press
+
+  content.addEventListener('touchmove', (e) => {
+    if (!longPressTimer) return;
+    const touch = e.touches[0];
+    const dx = Math.abs(touch.clientX - touchStartX);
+    const dy = Math.abs(touch.clientY - touchStartY);
+    if (dx > 10 || dy > 10) {
+      clearTimeout(longPressTimer);
+      longPressTimer = null;
     }
-    card.classList.remove('long-pressing');
-  });
-  card.addEventListener('touchmove', () => {
-    clearTimeout(longPressTimer);
-    card.classList.remove('long-pressing');
   }, { passive: true });
 
-  return card;
+  content.addEventListener('touchend', () => {
+    if (longPressTimer) {
+      clearTimeout(longPressTimer);
+      longPressTimer = null;
+    }
+  }, { passive: true });
+
+  content.addEventListener('touchcancel', () => {
+    if (longPressTimer) {
+      clearTimeout(longPressTimer);
+      longPressTimer = null;
+    }
+  }, { passive: true });
 }
 
 /* ── COPY ── */
 function copyCmd(card, usage, e) {
-  const text = usage.replace(/`/g, '').trim().split(' · ')[0].trim();
+  const text = (usage || '').replace(/`/g, '').trim().split(' · ')[0].trim();
   navigator.clipboard.writeText(text).then(() => {
     if (e && e.clientX) {
       const rect = card.getBoundingClientRect();
@@ -3497,7 +3629,7 @@ function copyCmd(card, usage, e) {
     card.classList.add('copied');
     const btn = card.querySelector('[data-copy-btn]');
     if (btn) {
-      btn.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> copied!`;
+      btn.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24"><use href="#icon-check"/></svg> copied!`;
       btn.classList.add('done');
     }
     setTimeout(() => {
@@ -3514,7 +3646,7 @@ function copyCmd(card, usage, e) {
 let toastTimer = null;
 function showToast(msg) {
   const toast = document.getElementById('toast');
-  toast.innerHTML = `<span class="toast-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span>${escHtml(msg)}</span>`;
+  toast.innerHTML = `<span class="toast-icon"><svg width="13" height="13" viewBox="0 0 24 24"><use href="#icon-check"/></svg></span><span>${escHtml(msg)}</span>`;
   toast.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
