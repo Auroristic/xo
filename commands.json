@@ -1,5 +1,5 @@
 {
-  "total_commands": 388,
+  "total_commands": 395,
   "prefix": ".",
   "categories": {
     "fun": {
@@ -166,6 +166,43 @@
             "has_subcommands": false,
             "subcommands": [],
             "cog_file": "social.py"
+          },
+          {
+            "name": "akick",
+            "qualified_name": "akick",
+            "usage": ".akick [@user]",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "akick",
+              "args": "[@user]"
+            },
+            "description": "Anime reaction GIF — kicks someone or react to a situation.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".akick",
+              ".akick @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "user",
+                "required": false,
+                "desc": "Member to direct the action towards. Omit to perform on yourself."
+              }
+            ],
+            "note": "Anime reaction GIFs via gifukai with nekos.best fallback.",
+            "category_id": "fun",
+            "section": "Fun",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "actions.py"
           },
           {
             "name": "bite",
@@ -1445,43 +1482,6 @@
             "examples": [
               ".hug",
               ".hug @someone"
-            ],
-            "params": [
-              {
-                "name": "user",
-                "type": "user",
-                "required": false,
-                "desc": "Member to direct the action towards. Omit to perform on yourself."
-              }
-            ],
-            "note": "Anime reaction GIFs via gifukai with nekos.best fallback.",
-            "category_id": "fun",
-            "section": "Fun",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "actions.py"
-          },
-          {
-            "name": "kick",
-            "qualified_name": "kick",
-            "usage": ".kick [@user]",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "kick",
-              "args": "[@user]"
-            },
-            "description": "Anime reaction GIF — kicks someone or react to a situation.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".kick",
-              ".kick @someone"
             ],
             "params": [
               {
@@ -4253,18 +4253,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "status",
-                "qualified_name": "milestone status",
-                "usage": "`.milestone status`",
-                "description": "Shows whether milestone celebration cards are enabled and which channel they post to.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".milestone status"
-                ]
-              },
-              {
                 "name": "off",
                 "qualified_name": "milestone off",
                 "usage": "`.milestone off`",
@@ -4296,6 +4284,18 @@
                 "examples": [
                   ".milestone set #announcements",
                   ".milestone on #general"
+                ]
+              },
+              {
+                "name": "status",
+                "qualified_name": "milestone status",
+                "usage": "`.milestone status`",
+                "description": "Shows whether milestone celebration cards are enabled and which channel they post to.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".milestone status"
                 ]
               }
             ],
@@ -4865,30 +4865,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "off",
-                "qualified_name": "welcome off",
-                "usage": "`.welcome off`",
-                "description": "Disables welcome cards in the server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".welcome off"
-                ]
-              },
-              {
-                "name": "status",
-                "qualified_name": "welcome status",
-                "usage": "`.welcome status`",
-                "description": "Shows whether welcome cards are enabled and which channel is configured.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".welcome status"
-                ]
-              },
-              {
                 "name": "setup",
                 "qualified_name": "welcome setup",
                 "usage": "`.welcome setup <#channel> [message]`",
@@ -4923,6 +4899,30 @@
                 "params": [],
                 "examples": [
                   ".welcome test"
+                ]
+              },
+              {
+                "name": "off",
+                "qualified_name": "welcome off",
+                "usage": "`.welcome off`",
+                "description": "Disables welcome cards in the server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".welcome off"
+                ]
+              },
+              {
+                "name": "status",
+                "qualified_name": "welcome status",
+                "usage": "`.welcome status`",
+                "description": "Shows whether welcome cards are enabled and which channel is configured.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".welcome status"
                 ]
               }
             ],
@@ -6390,6 +6390,35 @@
         ],
         "Playback": [
           {
+            "name": "autopause",
+            "qualified_name": "autopause",
+            "usage": "`.autopause`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "autopause",
+              "args": ""
+            },
+            "description": "Toggles automatic pausing when the voice channel is empty.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".autopause"
+            ],
+            "params": [],
+            "note": "When enabled, music automatically pauses when all listeners leave and resumes when someone rejoins.",
+            "category_id": "music",
+            "section": "Playback",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "music.py"
+          },
+          {
             "name": "autoplay",
             "qualified_name": "autoplay",
             "usage": "`.autoplay`",
@@ -6474,7 +6503,7 @@
               ".disconnect"
             ],
             "params": [],
-            "note": "Use this instead of just leaving the VC — it ensures proper cleanup.",
+            "note": "When 5 or more tracks are queued, prompts a 15s confirmation to prevent accidental wipes.",
             "category_id": "music",
             "section": "Playback",
             "group": null,
@@ -8438,26 +8467,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "threshold",
-                "qualified_name": "starboard threshold",
-                "usage": "`.starboard threshold <number>`",
-                "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
-                "perm_tier": "whitelist",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "threshold",
-                    "type": "int",
-                    "required": true,
-                    "desc": "Minimum reaction count (must be at least 1)."
-                  }
-                ],
-                "examples": [
-                  ".starboard threshold 3",
-                  ".starboard threshold 5"
-                ]
-              },
-              {
                 "name": "protect",
                 "qualified_name": "starboard protect",
                 "usage": "`.starboard protect on|off`",
@@ -8475,6 +8484,26 @@
                 "examples": [
                   ".starboard protect on",
                   ".starboard protect off"
+                ]
+              },
+              {
+                "name": "threshold",
+                "qualified_name": "starboard threshold",
+                "usage": "`.starboard threshold <number>`",
+                "description": "Sets the minimum reactions needed for a message to appear on the starboard.",
+                "perm_tier": "whitelist",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "threshold",
+                    "type": "int",
+                    "required": true,
+                    "desc": "Minimum reaction count (must be at least 1)."
+                  }
+                ],
+                "examples": [
+                  ".starboard threshold 3",
+                  ".starboard threshold 5"
                 ]
               },
               {
@@ -9806,6 +9835,38 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "limit",
+                "qualified_name": "voice limit",
+                "usage": "`.voice limit <0-99>`",
+                "description": "Caps how many people fit your temp room. 0 removes the cap.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "limit",
+                    "type": "int",
+                    "required": true,
+                    "desc": "User cap (0 = unlimited)."
+                  }
+                ],
+                "examples": [
+                  ".voice limit 4",
+                  ".voice limit 0"
+                ]
+              },
+              {
+                "name": "unlock",
+                "qualified_name": "voice unlock",
+                "usage": "`.voice unlock`",
+                "description": "Reopens your locked room.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".voice unlock"
+                ]
+              },
+              {
                 "name": "off",
                 "qualified_name": "voice off",
                 "usage": "`.voice off`",
@@ -9866,38 +9927,6 @@
                 ],
                 "examples": [
                   ".voice rename study hall"
-                ]
-              },
-              {
-                "name": "limit",
-                "qualified_name": "voice limit",
-                "usage": "`.voice limit <0-99>`",
-                "description": "Caps how many people fit your temp room. 0 removes the cap.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "limit",
-                    "type": "int",
-                    "required": true,
-                    "desc": "User cap (0 = unlimited)."
-                  }
-                ],
-                "examples": [
-                  ".voice limit 4",
-                  ".voice limit 0"
-                ]
-              },
-              {
-                "name": "unlock",
-                "qualified_name": "voice unlock",
-                "usage": "`.voice unlock`",
-                "description": "Reopens your locked room.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".voice unlock"
                 ]
               }
             ],
@@ -10047,6 +10076,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "voices",
+                "qualified_name": "tts voices",
+                "usage": "`.tts voices`",
+                "description": "Lists all available female neural voice models.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".tts voices"
+                ]
+              },
+              {
                 "name": "stop",
                 "qualified_name": "tts stop",
                 "usage": "`.tts stop`",
@@ -10081,18 +10122,6 @@
                   ".tts voice jenny",
                   ".tts voice sonia",
                   ".tts voice nanami"
-                ]
-              },
-              {
-                "name": "voices",
-                "qualified_name": "tts voices",
-                "usage": "`.tts voices`",
-                "description": "Lists all available female neural voice models.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".tts voices"
                 ]
               }
             ],
@@ -10435,6 +10464,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "list",
+                "qualified_name": "remind list",
+                "usage": "`.remind list`",
+                "description": "Lists all your active reminders.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".remind list"
+                ]
+              },
+              {
                 "name": "cancel",
                 "qualified_name": "remind cancel",
                 "usage": "`.remind cancel <id>`",
@@ -10455,18 +10496,6 @@
                 ],
                 "examples": [
                   ".remind cancel 3"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "remind list",
-                "usage": "`.remind list`",
-                "description": "Lists all your active reminders.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".remind list"
                 ]
               }
             ],
@@ -11035,15 +11064,23 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "clear",
-                "qualified_name": "rpc clear",
-                "usage": "`.rpc clear`",
-                "description": "Removes all RPC entries and stops rotation.",
+                "name": "interval",
+                "qualified_name": "rpc interval",
+                "usage": "`.rpc interval [seconds]`",
+                "description": "Sets or checks the interval for status rotation cycling.",
                 "perm_tier": "creator",
                 "aliases": [],
-                "params": [],
+                "params": [
+                  {
+                    "name": "seconds",
+                    "type": "int",
+                    "required": false,
+                    "desc": "Interval in seconds (min 5). Omit to check current interval."
+                  }
+                ],
                 "examples": [
-                  ".rpc clear"
+                  ".rpc interval 30",
+                  ".rpc interval 120"
                 ]
               },
               {
@@ -11073,23 +11110,15 @@
                 ]
               },
               {
-                "name": "interval",
-                "qualified_name": "rpc interval",
-                "usage": "`.rpc interval [seconds]`",
-                "description": "Sets or checks the interval for status rotation cycling.",
+                "name": "clear",
+                "qualified_name": "rpc clear",
+                "usage": "`.rpc clear`",
+                "description": "Removes all RPC entries and stops rotation.",
                 "perm_tier": "creator",
                 "aliases": [],
-                "params": [
-                  {
-                    "name": "seconds",
-                    "type": "int",
-                    "required": false,
-                    "desc": "Interval in seconds (min 5). Omit to check current interval."
-                  }
-                ],
+                "params": [],
                 "examples": [
-                  ".rpc interval 30",
-                  ".rpc interval 120"
+                  ".rpc clear"
                 ]
               },
               {
@@ -11665,18 +11694,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "enable",
-                "qualified_name": "levelnotify enable",
-                "usage": "`.levelnotify enable`",
-                "description": "Enables level-up notifications for this server.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".levelnotify enable"
-                ]
-              },
-              {
                 "name": "disable",
                 "qualified_name": "levelnotify disable",
                 "usage": "`.levelnotify disable`",
@@ -11686,6 +11703,18 @@
                 "params": [],
                 "examples": [
                   ".levelnotify disable"
+                ]
+              },
+              {
+                "name": "enable",
+                "qualified_name": "levelnotify enable",
+                "usage": "`.levelnotify enable`",
+                "description": "Enables level-up notifications for this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".levelnotify enable"
                 ]
               }
             ],
@@ -11700,7 +11729,7 @@
               "name": "levelrole",
               "args": "<level> <@role>"
             },
-            "description": "Assigns a role to be awarded at a specific level.",
+            "description": "Assigns a role to be awarded at a specific level. [beta]",
             "aliases": [],
             "owner": false,
             "admin": true,
@@ -11725,7 +11754,7 @@
                 "desc": "The role to assign."
               }
             ],
-            "note": "Admin only. The role is automatically assigned when a member reaches the specified level. Run with no args to list configured level roles.",
+            "note": "[beta] Admin only. The role is automatically assigned when a member reaches the specified level. Run with no args to list configured level roles.",
             "category_id": "leveling",
             "section": "Leveling",
             "group": null,
@@ -11928,25 +11957,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "raw",
-                "qualified_name": "embed raw",
-                "usage": "`.embed raw <message_id_or_link>`",
-                "description": "Extracts the raw JSON payload of an existing embed in the channel.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "message",
-                    "type": "message",
-                    "required": true,
-                    "desc": "Message ID or URL containing the embed."
-                  }
-                ],
-                "examples": [
-                  ".embed raw 123456789012345678"
-                ]
-              },
-              {
                 "name": "edit",
                 "qualified_name": "embed edit",
                 "usage": "`.embed edit <message_id> <title> | <description> [flags]`",
@@ -11989,6 +11999,25 @@
                 ],
                 "examples": [
                   ".embed json {\"title\": \"Announcement\", \"description\": \"Hello world\", \"color\": 1184278}"
+                ]
+              },
+              {
+                "name": "raw",
+                "qualified_name": "embed raw",
+                "usage": "`.embed raw <message_id_or_link>`",
+                "description": "Extracts the raw JSON payload of an existing embed in the channel.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "message",
+                    "type": "message",
+                    "required": true,
+                    "desc": "Message ID or URL containing the embed."
+                  }
+                ],
+                "examples": [
+                  ".embed raw 123456789012345678"
                 ]
               }
             ],
@@ -12100,18 +12129,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "presets",
-                "qualified_name": "theme presets",
-                "usage": "`.theme presets`",
-                "description": "Lists all saved presets for this server.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme presets"
-                ]
-              },
-              {
                 "name": "setup",
                 "qualified_name": "theme setup",
                 "usage": "`.theme setup`",
@@ -12134,25 +12151,6 @@
                 "examples": [
                   ".theme channel",
                   ".theme channel strip -"
-                ]
-              },
-              {
-                "name": "delete",
-                "qualified_name": "theme delete",
-                "usage": "`.theme delete <name>`",
-                "description": "Deletes a saved preset.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Name of the preset to delete."
-                  }
-                ],
-                "examples": [
-                  ".theme delete oldtheme"
                 ]
               },
               {
@@ -12184,6 +12182,25 @@
                   ".theme role owner God Emperor",
                   ".theme role co owner Vice King",
                   ".tr 1 True Dragon"
+                ]
+              },
+              {
+                "name": "delete",
+                "qualified_name": "theme delete",
+                "usage": "`.theme delete <name>`",
+                "description": "Deletes a saved preset.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the preset to delete."
+                  }
+                ],
+                "examples": [
+                  ".theme delete oldtheme"
                 ]
               },
               {
@@ -12439,349 +12456,20 @@
                 "examples": [
                   ".theme snapshot"
                 ]
-              }
-            ],
-            "cog_file": "theme.py"
-          }
-        ],
-        "Presets": [
-          {
-            "name": "apply",
-            "qualified_name": "theme apply",
-            "usage": "`.theme apply <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "apply",
-              "args": "theme apply <name>"
-            },
-            "description": "Previews then applies a saved preset to this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme apply mytheme"
-            ],
-            "params": [
+              },
               {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to apply."
+                "name": "presets",
+                "qualified_name": "theme presets",
+                "usage": "`.theme presets`",
+                "description": "Lists all saved presets for this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme presets"
+                ]
               }
             ],
-            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "delete",
-            "qualified_name": "theme delete",
-            "usage": "`.theme delete <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "delete",
-              "args": "theme delete <name>"
-            },
-            "description": "Deletes a saved preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme delete oldtheme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name of the preset to delete."
-              }
-            ],
-            "note": "This cannot be undone.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "presets",
-            "qualified_name": "theme presets",
-            "usage": "`.theme presets`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "presets",
-              "args": "theme presets"
-            },
-            "description": "Lists all saved presets for this server.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme presets"
-            ],
-            "params": [],
-            "note": "Shows preset names and creation dates.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "reset",
-            "qualified_name": "theme reset",
-            "usage": "`.theme reset`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "reset",
-              "args": "theme reset"
-            },
-            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme reset"
-            ],
-            "params": [],
-            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "save",
-            "qualified_name": "theme save",
-            "usage": "`.theme save <name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "save",
-              "args": "theme save <name>"
-            },
-            "description": "Saves the current server role and channel state as a named preset.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme save mytheme",
-              ".theme save backup1"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name for the preset."
-              }
-            ],
-            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "snapshot",
-            "qualified_name": "theme snapshot",
-            "usage": "`.theme snapshot`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "snapshot",
-              "args": "theme snapshot"
-            },
-            "description": "Shows what's currently saved in the undo snapshot.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme snapshot"
-            ],
-            "params": [],
-            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "tapply",
-            "qualified_name": "tapply",
-            "usage": "`.tapply <preset_name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "tapply",
-              "args": "<preset_name>"
-            },
-            "description": "Fast shortcut to apply a saved server theme preset.",
-            "aliases": [
-              "themeapply"
-            ],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_guild"
-            ],
-            "examples": [
-              ".tapply dark_fantasy",
-              ".tapply cyber_pink"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "The name of the saved preset to apply."
-              }
-            ],
-            "note": null,
-            "category_id": "theme",
-            "section": "Presets",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "treset",
-            "qualified_name": "treset",
-            "usage": "`.treset`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "treset",
-              "args": ""
-            },
-            "description": "Fast shortcut to restore server roles and channels to snapshot.",
-            "aliases": [
-              "themereset"
-            ],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_guild"
-            ],
-            "examples": [
-              ".treset"
-            ],
-            "params": [],
-            "note": null,
-            "category_id": "theme",
-            "section": "Presets",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "tsave",
-            "qualified_name": "tsave",
-            "usage": "`.tsave <preset_name>`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "tsave",
-              "args": "<preset_name>"
-            },
-            "description": "Fast shortcut to save the current server theme as a preset.",
-            "aliases": [
-              "themesave"
-            ],
-            "owner": false,
-            "admin": true,
-            "staff": false,
-            "perm_tier": "admin",
-            "discord_perms": [
-              "manage_guild"
-            ],
-            "examples": [
-              ".tsave my_theme"
-            ],
-            "params": [
-              {
-                "name": "name",
-                "type": "str",
-                "required": true,
-                "desc": "Name for the new preset."
-              }
-            ],
-            "note": null,
-            "category_id": "theme",
-            "section": "Presets",
-            "group": null,
-            "is_subcommand": false,
-            "has_subcommands": false,
-            "subcommands": [],
-            "cog_file": "theme.py"
-          },
-          {
-            "name": "undo",
-            "qualified_name": "theme undo",
-            "usage": "`.theme undo`",
-            "usage_parts": {
-              "prefix": ".",
-              "name": "undo",
-              "args": "theme undo"
-            },
-            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
-            "aliases": [],
-            "owner": false,
-            "admin": false,
-            "staff": false,
-            "perm_tier": "public",
-            "discord_perms": [],
-            "examples": [
-              ".theme undo"
-            ],
-            "params": [],
-            "note": "Same as `.theme reset`.",
-            "category_id": "theme",
-            "section": "Presets",
-            "group": "theme",
-            "is_subcommand": true,
-            "has_subcommands": false,
-            "subcommands": [],
             "cog_file": "theme.py"
           }
         ],
@@ -12879,18 +12567,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "setup",
-                "qualified_name": "theme roles setup",
-                "usage": "`.theme roles setup`",
-                "description": "Runs the role mapping wizard. Shows the current mapping per slot so you can skip or remap.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme roles setup"
-                ]
-              },
-              {
                 "name": "clear",
                 "qualified_name": "theme roles clear",
                 "usage": "`.theme roles clear`",
@@ -12900,6 +12576,18 @@
                 "params": [],
                 "examples": [
                   ".theme roles clear"
+                ]
+              },
+              {
+                "name": "setup",
+                "qualified_name": "theme roles setup",
+                "usage": "`.theme roles setup`",
+                "description": "Runs the role mapping wizard. Shows the current mapping per slot so you can skip or remap.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme roles setup"
                 ]
               }
             ],
@@ -13496,6 +13184,18 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "list",
+                "qualified_name": "theme font list",
+                "usage": "`.theme font list`",
+                "description": "Shows all available unicode font styles with live examples.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme font list"
+                ]
+              },
+              {
                 "name": "reset",
                 "qualified_name": "theme font reset",
                 "usage": "`.theme font reset [all|<#cat>]`",
@@ -13513,18 +13213,6 @@
                 "examples": [
                   ".theme font reset all",
                   ".theme font reset #general"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "theme font list",
-                "usage": "`.theme font list`",
-                "description": "Shows all available unicode font styles with live examples.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme font list"
                 ]
               },
               {
@@ -13585,44 +13273,6 @@
             "is_subcommand": true,
             "has_subcommands": true,
             "subcommands": [
-              {
-                "name": "set",
-                "qualified_name": "theme group set",
-                "usage": "`.theme group set <name> <new prefix>`",
-                "description": "Changes a group's prefix and renames all channels in that group.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "name",
-                    "type": "str",
-                    "required": true,
-                    "desc": "Name of the group to update."
-                  },
-                  {
-                    "name": "new prefix",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The new prefix emoji or symbol."
-                  }
-                ],
-                "examples": [
-                  ".theme group set gaming 🕹️",
-                  ".theme group set info 📋"
-                ]
-              },
-              {
-                "name": "list",
-                "qualified_name": "theme group list",
-                "usage": "`.theme group list`",
-                "description": "Shows all prefix groups — name, prefix, categories, and channel count.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme group list"
-                ]
-              },
               {
                 "name": "apply",
                 "qualified_name": "theme group apply",
@@ -13755,6 +13405,44 @@
                   ".theme group create gaming 🎮",
                   ".theme group create info ℹ️"
                 ]
+              },
+              {
+                "name": "set",
+                "qualified_name": "theme group set",
+                "usage": "`.theme group set <name> <new prefix>`",
+                "description": "Changes a group's prefix and renames all channels in that group.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "name",
+                    "type": "str",
+                    "required": true,
+                    "desc": "Name of the group to update."
+                  },
+                  {
+                    "name": "new prefix",
+                    "type": "str",
+                    "required": true,
+                    "desc": "The new prefix emoji or symbol."
+                  }
+                ],
+                "examples": [
+                  ".theme group set gaming 🕹️",
+                  ".theme group set info 📋"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "theme group list",
+                "usage": "`.theme group list`",
+                "description": "Shows all prefix groups — name, prefix, categories, and channel count.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme group list"
+                ]
               }
             ],
             "cog_file": "theme.py"
@@ -13880,38 +13568,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "list",
-                "qualified_name": "theme prefix list",
-                "usage": "`.theme prefix list`",
-                "description": "Shows all stored channel prefixes for this server.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".theme prefix list"
-                ]
-              },
-              {
-                "name": "server",
-                "qualified_name": "theme prefix server",
-                "usage": "`.theme prefix server <emoji>`",
-                "description": "Applies a prefix to every channel in the server, or removes all prefixes server-wide.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "emoji",
-                    "type": "str",
-                    "required": false,
-                    "desc": "Emoji to apply server-wide. Omit to remove all prefixes."
-                  }
-                ],
-                "examples": [
-                  ".theme prefix server ★",
-                  ".theme prefix server"
-                ]
-              },
-              {
                 "name": "scan",
                 "qualified_name": "theme prefix scan",
                 "usage": "`.theme prefix scan <#cat|all>`",
@@ -14013,6 +13669,38 @@
                 "examples": [
                   ".theme prefix add ★ #text-channels",
                   ".theme prefix add 🎮 #gaming #general"
+                ]
+              },
+              {
+                "name": "list",
+                "qualified_name": "theme prefix list",
+                "usage": "`.theme prefix list`",
+                "description": "Shows all stored channel prefixes for this server.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".theme prefix list"
+                ]
+              },
+              {
+                "name": "server",
+                "qualified_name": "theme prefix server",
+                "usage": "`.theme prefix server <emoji>`",
+                "description": "Applies a prefix to every channel in the server, or removes all prefixes server-wide.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "emoji",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Emoji to apply server-wide. Omit to remove all prefixes."
+                  }
+                ],
+                "examples": [
+                  ".theme prefix server ★",
+                  ".theme prefix server"
                 ]
               }
             ],
@@ -14767,6 +14455,347 @@
             "section": "Roles",
             "group": null,
             "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          }
+        ],
+        "Presets": [
+          {
+            "name": "apply",
+            "qualified_name": "theme apply",
+            "usage": "`.theme apply <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "apply",
+              "args": "theme apply <name>"
+            },
+            "description": "Previews then applies a saved preset to this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme apply mytheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to apply."
+              }
+            ],
+            "note": "A snapshot is created before applying so you can revert with `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "delete",
+            "qualified_name": "theme delete",
+            "usage": "`.theme delete <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "delete",
+              "args": "theme delete <name>"
+            },
+            "description": "Deletes a saved preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme delete oldtheme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name of the preset to delete."
+              }
+            ],
+            "note": "This cannot be undone.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "presets",
+            "qualified_name": "theme presets",
+            "usage": "`.theme presets`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "presets",
+              "args": "theme presets"
+            },
+            "description": "Lists all saved presets for this server.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme presets"
+            ],
+            "params": [],
+            "note": "Shows preset names and creation dates.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "reset",
+            "qualified_name": "theme reset",
+            "usage": "`.theme reset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "reset",
+              "args": "theme reset"
+            },
+            "description": "Undoes the last `.theme apply` — restores roles and channels from the snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme reset"
+            ],
+            "params": [],
+            "note": "Only one snapshot is stored. A new `.theme apply` overwrites it.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "save",
+            "qualified_name": "theme save",
+            "usage": "`.theme save <name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "save",
+              "args": "theme save <name>"
+            },
+            "description": "Saves the current server role and channel state as a named preset.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme save mytheme",
+              ".theme save backup1"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the preset."
+              }
+            ],
+            "note": "Presets include role mappings, channel names, prefixes, and fonts.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "snapshot",
+            "qualified_name": "theme snapshot",
+            "usage": "`.theme snapshot`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "snapshot",
+              "args": "theme snapshot"
+            },
+            "description": "Shows what's currently saved in the undo snapshot.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme snapshot"
+            ],
+            "params": [],
+            "note": "Displays the pre-apply state that would be restored by `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tapply",
+            "qualified_name": "tapply",
+            "usage": "`.tapply <preset_name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tapply",
+              "args": "<preset_name>"
+            },
+            "description": "Fast shortcut to apply a saved server theme preset.",
+            "aliases": [
+              "themeapply"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".tapply dark_fantasy",
+              ".tapply cyber_pink"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "The name of the saved preset to apply."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "treset",
+            "qualified_name": "treset",
+            "usage": "`.treset`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "treset",
+              "args": ""
+            },
+            "description": "Fast shortcut to restore server roles and channels to snapshot.",
+            "aliases": [
+              "themereset"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".treset"
+            ],
+            "params": [],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "tsave",
+            "qualified_name": "tsave",
+            "usage": "`.tsave <preset_name>`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tsave",
+              "args": "<preset_name>"
+            },
+            "description": "Fast shortcut to save the current server theme as a preset.",
+            "aliases": [
+              "themesave"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "manage_guild"
+            ],
+            "examples": [
+              ".tsave my_theme"
+            ],
+            "params": [
+              {
+                "name": "name",
+                "type": "str",
+                "required": true,
+                "desc": "Name for the new preset."
+              }
+            ],
+            "note": null,
+            "category_id": "theme",
+            "section": "Presets",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "theme.py"
+          },
+          {
+            "name": "undo",
+            "qualified_name": "theme undo",
+            "usage": "`.theme undo`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "undo",
+              "args": "theme undo"
+            },
+            "description": "Alias for `.theme reset` — pops a single snapshot to undo the last change.",
+            "aliases": [],
+            "owner": false,
+            "admin": false,
+            "staff": false,
+            "perm_tier": "public",
+            "discord_perms": [],
+            "examples": [
+              ".theme undo"
+            ],
+            "params": [],
+            "note": "Same as `.theme reset`.",
+            "category_id": "theme",
+            "section": "Presets",
+            "group": "theme",
+            "is_subcommand": true,
             "has_subcommands": false,
             "subcommands": [],
             "cog_file": "theme.py"
@@ -15534,13 +15563,58 @@
     },
     "moderation": {
       "label": "Moderation",
-      "desc": "Warn system: warnings, auto-timeout, auto-ban.",
+      "desc": "Moderation suite: warnings, tempban/tempmute with background sweeper, ban, kick, and mod logs.",
       "admin": false,
       "owner": false,
       "staff": false,
       "icon": "⚔",
       "sections": {
         "Moderation": [
+          {
+            "name": "ban",
+            "qualified_name": "ban",
+            "usage": "`.ban <@user> [reason]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "ban",
+              "args": "<@user> [reason]"
+            },
+            "description": "Permanently bans a member from the server.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "ban_members"
+            ],
+            "examples": [
+              ".ban @someone spamming",
+              ".ban @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "user",
+                "required": true,
+                "desc": "Member or User ID to ban."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Reason for the ban."
+              }
+            ],
+            "note": "Requires Ban Members permission.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "warns.py"
+          },
           {
             "name": "clear",
             "qualified_name": "warn clear",
@@ -15575,6 +15649,51 @@
             "section": "Moderation",
             "group": "warn",
             "is_subcommand": true,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "kick",
+            "qualified_name": "kick",
+            "usage": "`.kick <@user> [reason]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "kick",
+              "args": "<@user> [reason]"
+            },
+            "description": "Kicks a member from the server.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "kick_members"
+            ],
+            "examples": [
+              ".kick @someone breaking rules",
+              ".kick @someone"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "member",
+                "required": true,
+                "desc": "Member to kick."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Reason for the kick."
+              }
+            ],
+            "note": "Requires Kick Members permission.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
             "has_subcommands": false,
             "subcommands": [],
             "cog_file": "warns.py"
@@ -15615,6 +15734,201 @@
             "group": "warn",
             "is_subcommand": true,
             "has_subcommands": true,
+            "subcommands": [],
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "tempban",
+            "qualified_name": "tempban",
+            "usage": "`.tempban <@user> <duration> [reason]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "tempban",
+              "args": "<@user> <duration> [reason]"
+            },
+            "description": "Temporarily bans a member; automatically unbans when the timer expires.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "ban_members"
+            ],
+            "examples": [
+              ".tempban @someone 7d raid",
+              ".tempban @someone 2h cooldown"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "user",
+                "required": true,
+                "desc": "Member or User ID to temporarily ban."
+              },
+              {
+                "name": "duration",
+                "type": "str",
+                "required": true,
+                "desc": "Time duration (e.g. 10m, 2h, 7d)."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Reason for the temporary ban."
+              }
+            ],
+            "note": "Persistent across bot reboots via background sweeper.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "timeout",
+            "qualified_name": "timeout",
+            "usage": "`.timeout <@user> <duration> [reason]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "timeout",
+              "args": "<@user> <duration> [reason]"
+            },
+            "description": "Times out / mutes a member for a specified duration.",
+            "aliases": [
+              "mute"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "moderate_members"
+            ],
+            "examples": [
+              ".timeout @someone 10m spam",
+              ".mute @someone 1h breaking rules"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "member",
+                "required": true,
+                "desc": "Member to timeout."
+              },
+              {
+                "name": "duration",
+                "type": "str",
+                "required": true,
+                "desc": "Duration (e.g. 5m, 1h, 7d). Max 28 days."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Reason for the timeout."
+              }
+            ],
+            "note": "Requires Moderate Members permission.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "unban",
+            "qualified_name": "unban",
+            "usage": "`.unban <user_id> [reason]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "unban",
+              "args": "<user_id> [reason]"
+            },
+            "description": "Unbans a user by ID.",
+            "aliases": [],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "ban_members"
+            ],
+            "examples": [
+              ".unban 1234567890 pardon"
+            ],
+            "params": [
+              {
+                "name": "user_id",
+                "type": "int",
+                "required": true,
+                "desc": "Discord ID of the banned user."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Reason for the unban."
+              }
+            ],
+            "note": "Requires Ban Members permission.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
+            "subcommands": [],
+            "cog_file": "warns.py"
+          },
+          {
+            "name": "untimeout",
+            "qualified_name": "untimeout",
+            "usage": "`.untimeout <@user> [reason]`",
+            "usage_parts": {
+              "prefix": ".",
+              "name": "untimeout",
+              "args": "<@user> [reason]"
+            },
+            "description": "Removes timeout / mute from a member.",
+            "aliases": [
+              "unmute"
+            ],
+            "owner": false,
+            "admin": true,
+            "staff": false,
+            "perm_tier": "admin",
+            "discord_perms": [
+              "moderate_members"
+            ],
+            "examples": [
+              ".untimeout @someone",
+              ".unmute @someone pardon"
+            ],
+            "params": [
+              {
+                "name": "user",
+                "type": "member",
+                "required": true,
+                "desc": "Member to untimeout."
+              },
+              {
+                "name": "reason",
+                "type": "str",
+                "required": false,
+                "desc": "Reason for lifting timeout."
+              }
+            ],
+            "note": "Requires Moderate Members permission.",
+            "category_id": "moderation",
+            "section": "Moderation",
+            "group": null,
+            "is_subcommand": false,
+            "has_subcommands": false,
             "subcommands": [],
             "cog_file": "warns.py"
           },
@@ -15701,25 +16015,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "clear",
-                "qualified_name": "warn clear",
-                "usage": "`.warn clear <@user>`",
-                "description": "Clears all active warnings and resets the penalty counter for a member.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "user",
-                    "type": "user",
-                    "required": true,
-                    "desc": "Member whose warnings should be cleared."
-                  }
-                ],
-                "examples": [
-                  ".warn clear @someone"
-                ]
-              },
-              {
                 "name": "log",
                 "qualified_name": "warn log",
                 "usage": "`.warn log [#channel]`",
@@ -15737,6 +16032,25 @@
                 "examples": [
                   ".warn log",
                   ".warn log #mod-logs"
+                ]
+              },
+              {
+                "name": "clear",
+                "qualified_name": "warn clear",
+                "usage": "`.warn clear <@user>`",
+                "description": "Clears all active warnings and resets the penalty counter for a member.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "user",
+                    "type": "user",
+                    "required": true,
+                    "desc": "Member whose warnings should be cleared."
+                  }
+                ],
+                "examples": [
+                  ".warn clear @someone"
                 ]
               }
             ],
@@ -16043,50 +16357,6 @@
             "has_subcommands": true,
             "subcommands": [
               {
-                "name": "config",
-                "qualified_name": "vanity config",
-                "usage": "`.vanity config`",
-                "description": "Shows the current vanity URL tracker configuration for this server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".vanity config"
-                ]
-              },
-              {
-                "name": "reset",
-                "qualified_name": "vanity reset",
-                "usage": "`.vanity reset`",
-                "description": "Completely resets all vanity tracker settings for this server.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [],
-                "examples": [
-                  ".vanity reset"
-                ]
-              },
-              {
-                "name": "channel",
-                "qualified_name": "vanity channel",
-                "usage": "`.vanity channel <#channel>`",
-                "description": "Sets the announcement channel where vanity status promotions are posted.",
-                "perm_tier": "admin",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "channel",
-                    "type": "channel",
-                    "required": true,
-                    "desc": "The channel to send vanity match alerts to."
-                  }
-                ],
-                "examples": [
-                  ".vanity channel #announcements",
-                  ".vanity channel #reps"
-                ]
-              },
-              {
                 "name": "role",
                 "qualified_name": "vanity role",
                 "usage": "`.vanity role <@role>`",
@@ -16143,6 +16413,50 @@
                 ],
                 "examples": [
                   ".vanity message {{user}} is now repping {{server}}!"
+                ]
+              },
+              {
+                "name": "config",
+                "qualified_name": "vanity config",
+                "usage": "`.vanity config`",
+                "description": "Shows the current vanity URL tracker configuration for this server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".vanity config"
+                ]
+              },
+              {
+                "name": "channel",
+                "qualified_name": "vanity channel",
+                "usage": "`.vanity channel <#channel>`",
+                "description": "Sets the announcement channel where vanity status promotions are posted.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "channel",
+                    "type": "channel",
+                    "required": true,
+                    "desc": "The channel to send vanity match alerts to."
+                  }
+                ],
+                "examples": [
+                  ".vanity channel #announcements",
+                  ".vanity channel #reps"
+                ]
+              },
+              {
+                "name": "reset",
+                "qualified_name": "vanity reset",
+                "usage": "`.vanity reset`",
+                "description": "Completely resets all vanity tracker settings for this server.",
+                "perm_tier": "admin",
+                "aliases": [],
+                "params": [],
+                "examples": [
+                  ".vanity reset"
                 ]
               }
             ],
