@@ -5300,6 +5300,26 @@
             "has_subcommands": true,
             "subcommands": [
               {
+                "name": "show",
+                "qualified_name": "cmd show",
+                "usage": "`.cmd show [category|command]`",
+                "description": "Shows active channel rules for this server, or for a specific target.",
+                "perm_tier": "public",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "target",
+                    "type": "str",
+                    "required": false,
+                    "desc": "Optional command or category to check."
+                  }
+                ],
+                "examples": [
+                  ".cmd show",
+                  ".cmd show .ping"
+                ]
+              },
+              {
                 "name": "allow",
                 "qualified_name": "cmd allow",
                 "usage": "`.cmd allow <#channel>... <category|command>`",
@@ -5326,23 +5346,23 @@
                 ]
               },
               {
-                "name": "show",
-                "qualified_name": "cmd show",
-                "usage": "`.cmd show [category|command]`",
-                "description": "Shows active channel rules for this server, or for a specific target.",
+                "name": "clear",
+                "qualified_name": "cmd clear",
+                "usage": "`.cmd clear <category|command>`",
+                "description": "Removes the channel rule for a category or command so it works everywhere again.",
                 "perm_tier": "public",
                 "aliases": [],
                 "params": [
                   {
                     "name": "target",
                     "type": "str",
-                    "required": false,
-                    "desc": "Optional command or category to check."
+                    "required": true,
+                    "desc": "The command or category to clear the rule for."
                   }
                 ],
                 "examples": [
-                  ".cmd show",
-                  ".cmd show .ping"
+                  ".cmd clear .ping",
+                  ".cmd clear music"
                 ]
               },
               {
@@ -5369,26 +5389,6 @@
                 "examples": [
                   ".cmd deny #general .play",
                   ".cmd deny #chat music"
-                ]
-              },
-              {
-                "name": "clear",
-                "qualified_name": "cmd clear",
-                "usage": "`.cmd clear <category|command>`",
-                "description": "Removes the channel rule for a category or command so it works everywhere again.",
-                "perm_tier": "public",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "target",
-                    "type": "str",
-                    "required": true,
-                    "desc": "The command or category to clear the rule for."
-                  }
-                ],
-                "examples": [
-                  ".cmd clear .ping",
-                  ".cmd clear music"
                 ]
               }
             ],
@@ -8023,26 +8023,6 @@
                 ]
               },
               {
-                "name": "protect",
-                "qualified_name": "starboard protect",
-                "usage": "`.starboard protect on|off`",
-                "description": "Blocks self-stars and bot reactions from counting toward the starboard.",
-                "perm_tier": "whitelist",
-                "aliases": [],
-                "params": [
-                  {
-                    "name": "mode",
-                    "type": "str",
-                    "required": true,
-                    "desc": "`on` or `off`."
-                  }
-                ],
-                "examples": [
-                  ".starboard protect on",
-                  ".starboard protect off"
-                ]
-              },
-              {
                 "name": "threshold",
                 "qualified_name": "starboard threshold",
                 "usage": "`.starboard threshold <number>`",
@@ -8060,6 +8040,26 @@
                 "examples": [
                   ".starboard threshold 3",
                   ".starboard threshold 5"
+                ]
+              },
+              {
+                "name": "protect",
+                "qualified_name": "starboard protect",
+                "usage": "`.starboard protect on|off`",
+                "description": "Blocks self-stars and bot reactions from counting toward the starboard.",
+                "perm_tier": "whitelist",
+                "aliases": [],
+                "params": [
+                  {
+                    "name": "mode",
+                    "type": "str",
+                    "required": true,
+                    "desc": "`on` or `off`."
+                  }
+                ],
+                "examples": [
+                  ".starboard protect on",
+                  ".starboard protect off"
                 ]
               }
             ],
@@ -16942,13 +16942,13 @@
           {
             "name": "textgif",
             "qualified_name": "textgif",
-            "usage": "`.textgif <text>`",
+            "usage": "`.textgif [speed] [repetition] <text>`",
             "usage_parts": {
               "prefix": ".",
               "name": "textgif",
-              "args": "<text>"
+              "args": "[speed] [repetition] <text>"
             },
-            "description": "Creates a typing animation GIF (max 30 characters).",
+            "description": "creates a gif of text shifting fonts",
             "aliases": [],
             "owner": false,
             "admin": false,
@@ -16956,17 +16956,30 @@
             "perm_tier": "public",
             "discord_perms": [],
             "examples": [
-              ".textgif Hello!"
+              ".textgif hello",
+              ".textgif 0.2 15 grand blue dreaming"
             ],
             "params": [
+              {
+                "name": "speed",
+                "type": "float",
+                "required": false,
+                "desc": "frame duration in s (0.05-2.0, default 0.3)"
+              },
+              {
+                "name": "repetition",
+                "type": "int",
+                "required": false,
+                "desc": "frame changes count (2-30, default 20)"
+              },
               {
                 "name": "text",
                 "type": "str",
                 "required": true,
-                "desc": "Text to animate (max 30 chars)."
+                "desc": "text to animate (max 50 chars)"
               }
             ],
-            "note": "Generates an animated GIF that simulates typing the text character by character. 10s cooldown between uses.",
+            "note": "generates a gif of text shifting across available fonts. 10s cooldown between uses.",
             "category_id": "image",
             "section": "Image",
             "group": null,
